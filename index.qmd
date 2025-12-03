@@ -13,7 +13,7 @@ format:
 
 # Research Notes & Analysis {.hero-headline}
 
-[Documenting progress, sharing findings, and tracking methodological decisions for our ongoing project collaboration.]{.hero-tagline}
+[]{.hero-tagline}
 
 [View Recent Work](#latest-research){.cta-primary}
 
@@ -24,7 +24,7 @@ format:
 ::: {.container}
 
 ::: {.section-header}
-## Latest Research {#latest-research}
+## This Month {#latest-research}
 Recent analyses and code reviews documenting progress on the project.
 :::
 
