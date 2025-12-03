@@ -12,8 +12,6 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: about.qmd
-        text: About
       - href: github.qmd
         text: Github
     right:
