@@ -11,11 +11,11 @@ format:
 ::: {.hero}
 ::: {.hero-content}
 
-# Advancing Sound Economic Policy for the 21st Century {.hero-headline}
+# Research Assistant Work Hub {.hero-headline}
 
-[Rigorous research. Real-world impact. Transparent insight.]{.hero-tagline}
+[Organized notes and analyses for PI review and collaboration.]{.hero-tagline}
 
-[Explore Research](#latest-research){.cta-primary}
+[View Recent Work](#latest-research){.cta-primary}
 
 :::
 :::
@@ -25,7 +25,7 @@ format:
 
 ::: {.section-header}
 ## Latest Research {#latest-research}
-Recent working papers, analyses, and policy briefs from our team.
+Recent analyses and code reviews documenting progress on the project.
 :::
 
 ::: {.card-grid .card-grid-3}
@@ -75,9 +75,9 @@ Recent working papers, analyses, and policy briefs from our team.
 ::: {.container}
 
 ::: {.mission-block}
-[The Research Hub produces rigorous, transparent research on education finance and economic policy. Our work advances academic discourse, informs policymakers, and serves the public interest through open data and reproducible analysis.]{.mission-text}
+[This site organizes my research notes, analyses, and documentation for PI review. It serves as a centralized hub for tracking project progress, sharing findings, and maintaining transparent records of methodological decisions and code reviews.]{.mission-text}
 
-[Learn About Us](about.qmd){.cta-secondary}
+[Learn About This Project](about.qmd){.cta-secondary}
 :::
 
 :::
@@ -88,7 +88,7 @@ Recent working papers, analyses, and policy briefs from our team.
 
 ::: {.section-header}
 ## Quick Access Resources
-Key links for collaboration and data access.
+Key links for PI collaboration and shared materials.
 :::
 
 ::: {.card-grid}
@@ -96,7 +96,7 @@ Key links for collaboration and data access.
 ::: {.card}
 ### Weekly Meetings
 
-Synchronized notes and agenda for team coordination.
+Meeting notes and agenda for PI check-ins and project updates.
 
 [Open Google Doc](https://docs.google.com/document/d/12HWKK_0nlRcxNbcCX9QPQGAwK9ejVl5VxKu-PMaEjyg/edit?tab=t.0){.card-link}
 :::
