@@ -8,7 +8,6 @@ website:
   navbar:
     background: light
     foreground: dark
-    title: "Research Hub"
     left:
       - href: index.qmd
         text: Home
