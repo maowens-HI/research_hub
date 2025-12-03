@@ -16,12 +16,6 @@ format:
 Understanding the long-term effects of education finance policy through rigorous, transparent research.
 :::
 
-## Our Mission
-
-The Research Hub produces independent, nonpartisan research on education finance and economic policy. Our work is grounded in rigorous empirical methods, transparent data practices, and a commitment to informing both academic discourse and real-world policy decisions.
-
-We believe that sound economic policy must be built on a foundation of credible evidence. Our research focuses on understanding the causal effects of education spending on long-term outcomes, with particular attention to methodological rigor and reproducibility.
-
 ## Current Research Focus
 
 Our primary research project examines the long-term impacts of school finance reforms on educational and economic outcomes. This work involves:
@@ -46,19 +40,11 @@ We are committed to open science practices:
 
 - All code is documented and version-controlled
 - Data sources and processing steps are clearly described
-- Intermediate results and working papers are shared publicly
+- Intermediate results and notes are shared publicly
 - We maintain detailed research logs tracking methodological decisions
 
 ## Collaboration
 
 This research is conducted in collaboration with academic economists and policy researchers. We welcome inquiries about our work and opportunities for collaboration.
-
----
-
-::: {.mission-block}
-[Questions about our research? Interested in collaboration? We'd love to hear from you.]{.mission-text}
-
-[Contact Us](mailto:research@example.com){.cta-primary}
-:::
 
 :::

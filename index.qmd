@@ -33,7 +33,7 @@ Recent analyses and code reviews documenting progress on the project.
 
 ::: {.carousel-slide}
 ::: {.research-card}
-[Working Paper]{.card-category}
+[Notes]{.card-category}
 
 [Figure 2 Fixes & Jackknife Strategy]{.card-title}
 
@@ -54,18 +54,6 @@ Recent analyses and code reviews documenting progress on the project.
 <button class="carousel-btn carousel-next" aria-label="Next">›</button>
 :::
 
-:::
-
-:::
-:::
-
-::: {.section .section-alt}
-::: {.container}
-
-::: {.mission-block}
-[This hub organizes my research work for your review—tracking analyses, documenting methodological decisions, and maintaining a transparent record of our project's evolution. Think of it as a living research notebook that makes our collaboration more efficient.]{.mission-text}
-
-[Learn About This Project](about.qmd){.cta-secondary}
 :::
 
 :::
