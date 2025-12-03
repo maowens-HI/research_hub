@@ -1,11 +1,79 @@
 ---
-title: "research_hub"
+title: "Research Hub"
+subtitle: "A Collaborative Platform for Research and Analysis"
 ---
 
-This is a Quarto website.
+## Welcome to Research Hub
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+This is a Quarto-based research platform designed for organizing, documenting, and sharing research projects, data analysis, and scientific findings.
+
+## Key Features
+
+- **Reproducible Research**: Integrate code, analysis, and documentation in one place
+- **Multi-Language Support**: Work with R, Python, Julia, and other languages
+- **Dynamic Content**: Create interactive reports with live code execution
+- **Version Control**: All work is tracked with Git for collaboration and reproducibility
+- **Publishing Ready**: Generate publication-quality documents, presentations, and websites
+
+## Getting Started
+
+### Quick Start Guide
+
+1. **Create New Content**: Add `.qmd` files to create new research documents or analyses
+2. **Run Analysis**: Embed code chunks directly in your documents for reproducible research
+3. **Preview Changes**: Use `quarto preview` to see your changes in real-time
+4. **Publish**: Render your work with `quarto render` to share with others
+
+### Example: Running Code
+
+You can embed and execute code directly in your documents. Here's a simple example:
 
 ```{r}
-1 + 1
+# Load basic statistics
+data <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+summary_stats <- summary(data)
+print(summary_stats)
 ```
+
+## Project Organization
+
+This research hub follows a structured approach:
+
+- **Home**: Overview and quick access to key resources (this page)
+- **About**: Information about the project and contributors
+- **Documentation**: Detailed guides and references (see `claude.md`)
+
+## Common Research Tasks
+
+### Data Analysis Workflow
+
+1. Import your data
+2. Clean and preprocess
+3. Perform statistical analysis
+4. Visualize results
+5. Document findings
+6. Share reproducible reports
+
+### Adding New Research Pages
+
+To add a new research page:
+
+1. Create a new `.qmd` file (e.g., `my-analysis.qmd`)
+2. Add it to the navigation in `_quarto.yml`
+3. Write your content using Markdown and code chunks
+4. Render to see results
+
+## Resources
+
+- [Quarto Documentation](https://quarto.org/) - Official Quarto guide
+- [Quarto Gallery](https://quarto.org/docs/gallery/) - Examples and inspiration
+- [R for Data Science](https://r4ds.had.co.nz/) - Learn R for research
+- [Git Guide](https://git-scm.com/doc) - Version control basics
+
+## Next Steps
+
+Explore the [About](about.html) page to learn more about this project, or dive into creating your first research document!
+
+---
+
+*Last updated: 2025-12-03*
