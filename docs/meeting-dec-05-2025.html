@@ -39,7 +39,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-d10a2db0c9daa32a04344ff252510ad5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-937d584fb5d552ffcd9025614ad707e2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -80,6 +80,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Research Hub</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -125,7 +126,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Figure 2 Results: Fixes Applied &amp; Jackknife Analysis</h1>
+<h1 class="title">Never-Treated Jackknife Fixes</h1>
 </div>
 
 
@@ -166,6 +167,7 @@ ul.task-list li input[type="checkbox"] {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
+<p><strong>Problem: Never-treateds</strong> - Never-treated counties had missing values for <code>high</code> which led them to eb dropped from the regression despite the logic to include them.</p>
 <p><strong>Fix 1: Missing Data Issue</strong> - Set <code>high=0</code> for never-treated units to include them in interacted regressions</p>
 <p><strong>Fix 2: Interaction Term Issue</strong> - Removed interactions between “high” and year effects - Never-treated units now properly influence year effects for all groups</p>
 </div>
@@ -175,16 +177,13 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="results-six-step-analysis-sequence" class="level2">
 <h2 class="anchored" data-anchor-id="results-six-step-analysis-sequence">Results: Six-Step Analysis Sequence</h2>
-<section id="phase-1-no-jackknife-specifications" class="level3">
-<h3 class="anchored" data-anchor-id="phase-1-no-jackknife-specifications">Phase 1: No Jackknife Specifications</h3>
 <section id="fig-2-1" class="level4">
 <h4 class="anchored" data-anchor-id="fig-2-1">Figure 2.1: Baseline Spending Only (No Jackknife)</h4>
-<p><strong>Specification:</strong> Core event study with baseline spending quartiles only.</p>
-<p><strong>Sample:</strong> Full sample, no states excluded.</p>
+<p><strong>Specification:</strong> Core event study with <code>baseline spending</code> quartiles only.</p>
 <div id="fig-2-1-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2-1-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/fig2_1_baseline_no_jk.png" class="img-fluid figure-img">
+<img src="images/12_5_25/baseline_spec_A_def_A_high_vs_low.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2-1-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: Event study estimates by baseline spending quartile
@@ -195,12 +194,11 @@ Figure&nbsp;1: Event study estimates by baseline spending quartile
 </section>
 <section id="fig-2-2" class="level4">
 <h4 class="anchored" data-anchor-id="fig-2-2">Figure 2.2: Baseline + Income Quartiles (No Jackknife)</h4>
-<p><strong>Specification:</strong> Event study interacted with both baseline spending and income quartiles.</p>
-<p><strong>Sample:</strong> Full sample, no states excluded.</p>
+<p><strong>Specification:</strong> Event study interacted with both <code>baseline spending</code> and <code>income</code> quartiles.</p>
 <div id="fig-2-2-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2-2-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/fig2_2_income_no_jk.png" class="img-fluid figure-img">
+<img src="images/12_5_25/baseline_spec_B_def_A_high_vs_low.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2-2-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2: Event study estimates by baseline spending and income quartiles
@@ -211,12 +209,11 @@ Figure&nbsp;2: Event study estimates by baseline spending and income quartiles
 </section>
 <section id="fig-2-3" class="level4">
 <h4 class="anchored" data-anchor-id="fig-2-3">Figure 2.3: Baseline + Income + Reform Types (No Jackknife)</h4>
-<p><strong>Specification:</strong> Full model with baseline spending, income quartiles, and reform type indicators.</p>
-<p><strong>Sample:</strong> Full sample, no states excluded.</p>
+<p><strong>Specification:</strong> Full model with <code>baseline spending</code>, <code>income quartiles</code>, and <code>reform type</code> indicators.</p>
 <div id="fig-2-3-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2-3-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/fig2_3_reforms_no_jk.png" class="img-fluid figure-img">
+<img src="images/12_5_25/baseline_spec_C_def_A_high_vs_low.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2-3-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3: Event study estimates by baseline spending, income quartiles, and reform types
@@ -225,17 +222,15 @@ Figure&nbsp;3: Event study estimates by baseline spending, income quartiles, and
 </div>
 <hr>
 </section>
-</section>
 <section id="phase-2-jackknife-robustness-checks" class="level3">
 <h3 class="anchored" data-anchor-id="phase-2-jackknife-robustness-checks">Phase 2: Jackknife Robustness Checks</h3>
 <section id="fig-2-4" class="level4">
 <h4 class="anchored" data-anchor-id="fig-2-4">Figure 2.4: Baseline Spending Only (Jackknife)</h4>
-<p><strong>Specification:</strong> Core event study with baseline spending quartiles, iteratively excluding each state.</p>
-<p><strong>Method:</strong> Jackknife resampling - each line represents results with one state removed.</p>
+<p><strong>Specification:</strong> Jackknife with <code>baseline spending quartiles</code>, iteratively excluding each state.</p>
 <div id="fig-2-4-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2-4-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/fig2_4_baseline_jk.png" class="img-fluid figure-img">
+<img src="images/12_5_25/jackknife_spec_A_def_A_high_vs_low.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2-4-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4: Jackknife event study estimates - baseline spending only
@@ -256,12 +251,11 @@ Figure&nbsp;4: Jackknife event study estimates - baseline spending only
 </section>
 <section id="fig-2-5" class="level4">
 <h4 class="anchored" data-anchor-id="fig-2-5">Figure 2.5: Baseline + Income Quartiles (Jackknife)</h4>
-<p><strong>Specification:</strong> Event study with baseline spending and income quartiles, iteratively excluding each state.</p>
-<p><strong>Method:</strong> Jackknife resampling across full income heterogeneity specification.</p>
+<p><strong>Specification:</strong> Jackknife with baseline <code>spending</code> and <code>income</code> quartiles, iteratively excluding each state.</p>
 <div id="fig-2-5-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2-5-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/fig2_5_income_jk.png" class="img-fluid figure-img">
+<img src="images/12_5_25/jackknife_spec_B_def_A_high_vs_low.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2-5-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5: Jackknife event study estimates - baseline spending and income quartiles
@@ -272,8 +266,7 @@ Figure&nbsp;5: Jackknife event study estimates - baseline spending and income qu
 </section>
 <section id="fig-2-6" class="level4">
 <h4 class="anchored" data-anchor-id="fig-2-6">Figure 2.6: Baseline + Income + Reform Types (Jackknife)</h4>
-<p><strong>Specification:</strong> Full model with all controls, iteratively excluding each state.</p>
-<p><strong>Method:</strong> Jackknife resampling across complete specification.</p>
+<p><strong>Specification:</strong> Jackknife with all controls (<code>spending</code>, <code>income</code>, <code>reforms</code>), iteratively excluding each state.</p>
 <div id="fig-2-6-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2-6-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
