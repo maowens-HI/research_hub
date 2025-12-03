@@ -116,25 +116,25 @@ a { text-decoration: none; font-weight: 500; }
 a:hover { text-decoration: underline; }
 
 </style>
-````
+```
 
-\<div class="resource-grid"\>
-\<a href="https://docs.google.com/document/d/12HWKK\_0nlRcxNbcCX9QPQGAwK9ejVl5VxKu-PMaEjyg/edit?tab=t.0" class="resource-btn"\>
-\<span\>📝 Weekly Meeting Notes\</span\>
-\<span\>→\</span\>
-\</a\>
-\<a href="https://drive.google.com/drive/folders/1ww0lXRawQ7TCRBm0FGwCJii-3QA9pc6t?usp=sharing" class="resource-btn"\>
-\<span\>📂 Code & Data Drive\</span\>
-\<span\>→\</span\>
-\</a\>
-\</div\>
+<div class="resource-grid">
+<a href="https://docs.google.com/document/d/12HWKK_0nlRcxNbcCX9QPQGAwK9ejVl5VxKu-PMaEjyg/edit?tab=t.0" class="resource-btn">
+<span>📝 Weekly Meeting Notes</span>
+<span>→</span>
+</a>
+<a href="https://drive.google.com/drive/folders/1ww0lXRawQ7TCRBm0FGwCJii-3QA9pc6t?usp=sharing" class="resource-btn">
+<span>📂 Code & Data Drive</span>
+<span>→</span>
+</a>
+</div>
 
 # December 2025
 
 ::: {.entry-card}
-\<span class="date-tag"\>02 DEC 2025\</span\>
+<span class="date-tag">02 DEC 2025</span>
 
-### Figure 2 Fixes & Jackknife \<span class="badge badge-fix"\>FIXED\</span\>
+### Figure 2 Fixes & Jackknife <span class="badge badge-fix">FIXED</span>
 
 **Topic:** Resolving the "Never Treated" interaction issue.
 
@@ -154,9 +154,9 @@ a:hover { text-decoration: underline; }
 # November 2025
 
 ::: {.entry-card}
-\<span class="date-tag"\>25 NOV 2025\</span\>
+<span class="date-tag">25 NOV 2025</span>
 
-### Robustness & JJP Comparison \<span class="badge badge-analysis"\>ANALYSIS\</span\>
+### Robustness & JJP Comparison <span class="badge badge-analysis">ANALYSIS</span>
 
 > [**View Analysis**](https://maowens.quarto.pub/jackknife/)
 
@@ -165,9 +165,9 @@ a:hover { text-decoration: underline; }
     :::
 
 ::: {.entry-card}
-\<span class="date-tag"\>17-21 NOV 2025\</span\>
+<span class="date-tag">17-21 NOV 2025</span>
 
-### District & Panel Analysis \<span class="badge badge-analysis"\>EXPANSION\</span\>
+### District & Panel Analysis <span class="badge badge-analysis">EXPANSION</span>
 
   * [District Level Results](https://maowens.quarto.pub/district_and_top_100/)
   * [Balanced Panel Results](https://maowens.quarto.pub/balanced-panel-event-study-analysis/)
@@ -177,9 +177,9 @@ a:hover { text-decoration: underline; }
 :::
 
 ::: {.entry-card}
-\<span class="date-tag"\>06 NOV 2025\</span\>
+<span class="date-tag">06 NOV 2025</span>
 
-### Sample Variations \<span class="badge badge-decision"\>ROBUSTNESS\</span\>
+### Sample Variations <span class="badge badge-decision">ROBUSTNESS</span>
 
 ::: {.panel-tabset}
 
@@ -211,9 +211,9 @@ a:hover { text-decoration: underline; }
 # October 2025
 
 ::: {.entry-card}
-\<span class="date-tag"\>31 OCT 2025\</span\>
+<span class="date-tag">31 OCT 2025</span>
 
-### The "Mixed" County Problem \<span class="badge badge-bug"\>COMPLEX DATA\</span\>
+### The "Mixed" County Problem <span class="badge badge-bug">COMPLEX DATA</span>
 
 **The Issue:** We lack school-age population data for non-tracted areas. If a county has \>1 non-tracted area, we cannot weight them relative to each other.
 <br>
@@ -221,9 +221,9 @@ a:hover { text-decoration: underline; }
 :::
 
 ::: {.entry-card}
-\<span class="date-tag"\>28 OCT 2025\</span\>
+<span class="date-tag">28 OCT 2025</span>
 
-### Defining "Good" Counties \<span class="badge badge-decision"\>DECISION\</span\>
+### Defining "Good" Counties <span class="badge badge-decision">DECISION</span>
 
   * **Definition:** A "Good County" is one where every linked tract/LEAID has non-missing spending data for **every year from 1966-1971**.
   * **Action:** Created indicator variables `good_county_6671` to filter samples.
@@ -251,9 +251,9 @@ a:hover { text-decoration: underline; }
     :::
 
 ::: {.entry-card}
-\<span class="date-tag"\>17 OCT 2025\</span\>
+<span class="date-tag">17 OCT 2025</span>
 
-### Interpolation & Winsorizing \<span class="badge badge-decision"\>METHODOLOGY\</span\>
+### Interpolation & Winsorizing <span class="badge badge-decision">METHODOLOGY</span>
 
 [**View Full Notes**](https://maowens.quarto.pub/10_17_25/)
 
@@ -273,9 +273,9 @@ a:hover { text-decoration: underline; }
     :::
 
 ::: {.entry-card}
-\<span class="date-tag"\>07 OCT 2025\</span\>
+<span class="date-tag">07 OCT 2025</span>
 
-### Debugging `pred_spend` \<span class="badge badge-bug"\>DEBUG\</span\>
+### Debugging `pred_spend` <span class="badge badge-bug">DEBUG</span>
 
 [**View Full Notes**](https://maowens.quarto.pub/10_7_25/)
 
@@ -286,9 +286,9 @@ a:hover { text-decoration: underline; }
 # September 2025
 
 ::: {.entry-card}
-\<span class="date-tag"\>30 SEP 2025\</span\>
+<span class="date-tag">30 SEP 2025</span>
 
-### Reform Variables \<span class="badge badge-decision"\>DECISION\</span\>
+### Reform Variables <span class="badge badge-decision">DECISION</span>
 
 [**View Full Notes**](https://maowens.quarto.pub/9_30_25/)
 
@@ -296,9 +296,9 @@ a:hover { text-decoration: underline; }
     :::
 
 ::: {.entry-card}
-\<span class="date-tag"\>23 SEP 2025\</span\>
+<span class="date-tag">23 SEP 2025</span>
 
-### Wisconsin Binning Fix \<span class="badge badge-fix"\>FIXED\</span\>
+### Wisconsin Binning Fix <span class="badge badge-fix">FIXED</span>
 
 [**View Full Notes**](https://maowens.quarto.pub/9_23_25/)
 
@@ -319,9 +319,9 @@ a:hover { text-decoration: underline; }
 # August 2025
 
 ::: {.entry-card}
-\<span class="date-tag"\>26 AUG 2025\</span\>
+<span class="date-tag">26 AUG 2025</span>
 
-### Data Cleaning \<span class="badge badge-analysis"\>DATA\</span\>
+### Data Cleaning <span class="badge badge-analysis">DATA</span>
 
   * **Imputation:** Imputed 1986 enrollment using 1987 numbers for district 3416800.
   * **Zero Values:** For 1983 `enrollment==0`, replaced with '84 (or '82) values.
@@ -340,9 +340,9 @@ a:hover { text-decoration: underline; }
         :::
 
 ::: {.entry-card}
-\<span class="date-tag"\>01 AUG 2025\</span\>
+<span class="date-tag">01 AUG 2025</span>
 
-### The PPE Formula \<span class="badge badge-analysis"\>MATH\</span\>
+### The PPE Formula <span class="badge badge-analysis">MATH</span>
 
 **Topic:** Calculating Per Pupil Expenditures (PPE) for split tracts.
 
@@ -356,9 +356,9 @@ a:hover { text-decoration: underline; }
 # July 2025
 
 ::: {.entry-card}
-\<span class="date-tag"\>29 JUL 2025\</span\>
+<span class="date-tag">29 JUL 2025</span>
 
-### Duplicate Tracts \<span class="badge badge-fix"\>FIXED\</span\>
+### Duplicate Tracts <span class="badge badge-fix">FIXED</span>
 
 **Issue:** Tracts appearing multiple times (once for elementary, once for secondary).
 **Resolution:** Reshape to tract level with separate variables for elementary/secondary districts.
