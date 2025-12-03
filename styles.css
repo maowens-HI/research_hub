@@ -169,7 +169,7 @@ a:hover {
    ========================================================================== */
 
 .hero {
-  background: linear-gradient(135deg, #E8EEF4 0%, #D5E3F0 50%, #C2D8EC 100%);
+  background: linear-gradient(135deg, #F0F4F8 0%, #E8EFF6 50%, #E0EAF4 100%);
   padding: var(--space-xl) var(--space-lg);
   text-align: center;
   position: relative;
@@ -179,7 +179,6 @@ a:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-bottom: 3px solid var(--color-accent);
 }
 
 .hero::before {
@@ -190,8 +189,25 @@ a:hover {
   right: 0;
   bottom: 0;
   background-image:
-    radial-gradient(circle at 20% 50%, rgba(30, 58, 95, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 80% 50%, rgba(30, 58, 95, 0.08) 0%, transparent 50%);
+    radial-gradient(circle at 20% 50%, rgba(30, 58, 95, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(30, 58, 95, 0.04) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    var(--color-bg) 0%,
+    transparent 15%,
+    transparent 85%,
+    var(--color-bg) 100%
+  );
   pointer-events: none;
 }
 
