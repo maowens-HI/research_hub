@@ -11,9 +11,9 @@ format:
 ::: {.hero}
 ::: {.hero-content}
 
-# Research Assistant Work Hub {.hero-headline}
+# Research Notes & Analysis {.hero-headline}
 
-[Organized notes and analyses for PI review and collaboration.]{.hero-tagline}
+[Documenting progress, sharing findings, and tracking methodological decisions for our ongoing project collaboration.]{.hero-tagline}
 
 [View Recent Work](#latest-research){.cta-primary}
 
@@ -75,7 +75,7 @@ Recent analyses and code reviews documenting progress on the project.
 ::: {.container}
 
 ::: {.mission-block}
-[This site organizes my research notes, analyses, and documentation for PI review. It serves as a centralized hub for tracking project progress, sharing findings, and maintaining transparent records of methodological decisions and code reviews.]{.mission-text}
+[This hub organizes my research work for your review—tracking analyses, documenting methodological decisions, and maintaining a transparent record of our project's evolution. Think of it as a living research notebook that makes our collaboration more efficient.]{.mission-text}
 
 [Learn About This Project](about.qmd){.cta-secondary}
 :::
@@ -87,8 +87,8 @@ Recent analyses and code reviews documenting progress on the project.
 ::: {.container}
 
 ::: {.section-header}
-## Quick Access Resources
-Key links for PI collaboration and shared materials.
+## Quick Access
+Links to our shared workspace and meeting notes.
 :::
 
 ::: {.card-grid}
