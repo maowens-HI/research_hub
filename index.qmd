@@ -1,79 +1,210 @@
 ---
-title: "Research Hub"
-subtitle: "A Collaborative Platform for Research and Analysis"
+title: "Research Notes Hub"
+format:
+  html:
+    toc: true
+    toc-location: left
+    number-sections: false
+    search: true
+editor: visual
 ---
 
-## Welcome to Research Hub
+#### Welcome to the Research Hub!
 
-This is a Quarto-based research platform designed for organizing, documenting, and sharing research projects, data analysis, and scientific findings.
+This page links out to each week's notes. It also provides quick access to resources (methods, data, decisions).
 
-## Key Features
-
-- **Reproducible Research**: Integrate code, analysis, and documentation in one place
-- **Multi-Language Support**: Work with R, Python, Julia, and other languages
-- **Dynamic Content**: Create interactive reports with live code execution
-- **Version Control**: All work is tracked with Git for collaboration and reproducibility
-- **Publishing Ready**: Generate publication-quality documents, presentations, and websites
-
-## Getting Started
-
-### Quick Start Guide
-
-1. **Create New Content**: Add `.qmd` files to create new research documents or analyses
-2. **Run Analysis**: Embed code chunks directly in your documents for reproducible research
-3. **Preview Changes**: Use `quarto preview` to see your changes in real-time
-4. **Publish**: Render your work with `quarto render` to share with others
-
-### Example: Running Code
-
-You can embed and execute code directly in your documents. Here's a simple example:
-
-```{r}
-# Load basic statistics
-data <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-summary_stats <- summary(data)
-print(summary_stats)
-```
-
-## Project Organization
-
-This research hub follows a structured approach:
-
-- **Home**: Overview and quick access to key resources (this page)
-- **About**: Information about the project and contributors
-- **Documentation**: Detailed guides and references (see `claude.md`)
-
-## Common Research Tasks
-
-### Data Analysis Workflow
-
-1. Import your data
-2. Clean and preprocess
-3. Perform statistical analysis
-4. Visualize results
-5. Document findings
-6. Share reproducible reports
-
-### Adding New Research Pages
-
-To add a new research page:
-
-1. Create a new `.qmd` file (e.g., `my-analysis.qmd`)
-2. Add it to the navigation in `_quarto.yml`
-3. Write your content using Markdown and code chunks
-4. Render to see results
+------------------------------------------------------------------------
 
 ## Resources
 
-- [Quarto Documentation](https://quarto.org/) - Official Quarto guide
-- [Quarto Gallery](https://quarto.org/docs/gallery/) - Examples and inspiration
-- [R for Data Science](https://r4ds.had.co.nz/) - Learn R for research
-- [Git Guide](https://git-scm.com/doc) - Version control basics
+-   [Weekly Meetings Google Doc](https://docs.google.com/document/d/12HWKK_0nlRcxNbcCX9QPQGAwK9ejVl5VxKu-PMaEjyg/edit?tab=t.0)
+-   [Shared Code & Data](https://drive.google.com/drive/folders/1ww0lXRawQ7TCRBm0FGwCJii-3QA9pc6t?usp=sharing)
 
-## Next Steps
+------------------------------------------------------------------------
 
-Explore the [About](about.html) page to learn more about this project, or dive into creating your first research document!
+| **Figure** | **Sample Definition** | **Weighted** | **Link** |
+|----------------|---------------------|----------------|-------------------|
+| Fig 1 | Includes counties with \>2 non-tract areas | Yes | [link](https://maowens.quarto.pub/11_7_25_wt/) |
+| Fig 1 | Includes counties with \>2 non-tract areas | No | [link](https://maowens.quarto.pub/11_7_25_no_wt/) |
+| Fig 1 | Excludes counties with \>2 non-tract areas | Yes | [link](https://maowens.quarto.pub/11_7_25_wt_rest_tract/) |
+| Fig 1 | Excludes counties with \>2 non-tract areas | No | [link](https://maowens.quarto.pub/11_7_25_no_wt_rest_tract/) |
 
----
+## 2 December 2025
 
-*Last updated: 2025-12-03*
+In this document we investigate our code which builds predicted-spending for our figure 2s.
+
+[Jackknife Review](https://maowens.quarto.pub/jk_code_review/)
+
+## 25 November 2025
+
+In this document I present jackknife and non jackknife regressions.
+
+[Jackknife](https://maowens.quarto.pub/jackknife/)
+
+## 17 November - 21 November 2025
+
+[District Level Results](https://maowens.quarto.pub/district_and_top_100/)
+
+[Balanced Panel Results](https://maowens.quarto.pub/balanced-panel-event-study-analysis/)
+
+## 6 November 2025
+
+### All Counties
+
+[Figure 1s Weighted](https://maowens.quarto.pub/11_4_25_wt/)
+
+This set of figures are weighted and include all counties regardless of how many non-tract areas they contain.
+
+[Figure 1s not Weighted](https://maowens.quarto.pub/11_4_25_no_wt/)
+
+This set of figures are not weighted and include all counties regardless of how many non-tract areas they contain.
+
+[Figure 2s Weighted](https://maowens.quarto.pub/11_6_25_wt/)
+
+This contains results from jackknife regressions using baseline spending and fmaily income.
+
+### No Problematic Counties
+
+[Figure 1s Weighted](https://maowens.quarto.pub/11_3_25_wt/)
+
+This set of figures are weighted and do not include counties where there are \>= 2 non-tract areas present.
+
+[Figure 1s not Weighted](https://maowens.quarto.pub/11_3_25_no_wt/)
+
+This set of figures are not weighted and do not include counties where there are \>= 2 non-tract areas present.
+
+------------------------------------------------------------------------
+
+## 24 October 2025
+
+[View Notes](https://maowens.quarto.pub/10_24_25-b397/)
+
+Findings: 1. We ruled out using only one of the earlier years. 2. Our choice is 71 on its own or average across several years.
+
+Goals: 1. Figure 2's with restricted set of counties. 2. Indicator variable for missing vs non missing baseline spending.
+
+------------------------------------------------------------------------
+
+## 21 October 2025
+
+[View Notes](https://maowens.quarto.pub/10_21_25-da7b/)
+
+Goals for next meeting:
+
+1.  Compare individual pre-q splits: Check whether quartiles based on different single years (e.g., 1967 vs 1971) yield meaningfully different results. If they're similar, the specific year doesn't matter; if not, investigate why or consider instability across years.
+
+2.  Compare single-year vs average pre-q splits: See if defining quartiles from a multi-year average changes the overall patterns. If differences are small, either approach is fine; if large, the average version is likely more robust and should be preferred.
+
+------------------------------------------------------------------------
+
+## 17 October 2025
+
+[View Notes](https://maowens.quarto.pub/10_17_25/)
+
+------------------------------------------------------------------------
+
+## 13 October 2025
+
+[View Notes](https://maowens.quarto.pub/10_13_25/)
+
+------------------------------------------------------------------------
+
+## 10 October 2025
+
+View Notes\](https://maowens.quarto.pub/10_10_25/)
+
+------------------------------------------------------------------------
+
+## 07 October 2025
+
+[View Notes](https://maowens.quarto.pub/10_7_25/)
+
+------------------------------------------------------------------------
+
+## 03 October 2025
+
+[View Notes](https://maowens.quarto.pub/9_30_25-2f01/)
+
+------------------------------------------------------------------------
+
+## 30 Septmeber 2025
+
+[View Notes](https://maowens.quarto.pub/9_30_25/)
+
+-   **Challenges**
+    -   We discussed our confusion with the variable `pred_spend`.
+    -   We examined several figure 2 event studies using a different combination of reforms.
+    -   We are unsure how never_treateds should be incorporated or if they should be given a `pred_spend`.
+-   **Decisions**
+-   We decided to build `pred_spend` without reforms to see if something fundamental is wrong with `pred_spend` or if it is`reform_*`.
+
+------------------------------------------------------------------------
+
+## 26 September 2025
+
+[View Notes](https://maowens.quarto.pub/9_23_25-5bb5/)
+
+------------------------------------------------------------------------
+
+## 23 September 2025
+
+[View Notes](https://maowens.quarto.pub/9_23_25/)
+
+-   **Challenges**
+-   We primarily reviewed 9/16/25 notes which featured regression output for Wisconin's jacknife regression.\
+-   The central problem was that there was a binning issue when these results were estimated which is now fixed.
+
+------------------------------------------------------------------------
+
+## 16 September 2025
+
+[View Notes](https://maowens.quarto.pub/9_16_25/)
+
+-   **Methods / Models**
+    -   We investigate suspicious zero coefficients in the equation IV estiamte for Wisconsin\
+    -   We walkthrough the footnote 20 predicted spend code to ensure coefficients are added correctly\
+-   **Challenges**
+    -   We discuss the incorrection addition of predicted spending.
+    -   We need to add the main effects.
+    -   Binning needs to be: lag_20 = rel_year \>= 20 & \~missing(rel_year)
+
+------------------------------------------------------------------------
+
+## 9 September 2025
+
+[View Notes](https://maowens.quarto.pub/9_9_25/)
+
+-   **Decisions Made**
+    -   We chose the "strict" moving average model.\
+-   **Methods / Models**
+    -   Compared pros and cons of two moving average models.\
+    -   Example included to illustrate crux of discussion.\
+    -   Outlined estimation of JJP equation 4 for one state.\
+-   **Challenges**
+    -   Difficulties calculating predicted spending change.
+
+------------------------------------------------------------------------
+
+## 5 September 2025
+
+[View Notes](https://maowens.quarto.pub/952025/)
+
+-   **Decisions Made**
+    -   Standardized coding to JJP's Table D.\
+-   **Methods / Models**
+    -   Documented mismatches between Hanushek's dataset and JJP Table D.\
+    -   Sketched estimation steps for Figure 2, including dropping state data and setting up interactions.\
+    -   Estimated Figure 1 including never-treated observations.
+
+------------------------------------------------------------------------
+
+## 2 September 2025
+
+[View Notes](https://maowens.quarto.pub/jjp_first_stage/)
+
+-   **Methods / Models**
+    -   Estimated Figure 1 using JJP Table D over Hanushek database.\
+-   **Findings**
+    -   Results consistent with prior Figure 1 estimates.
+
+------------------------------------------------------------------------
