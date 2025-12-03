@@ -1,3 +1,4 @@
+
 ---
 title: "Research Hub"
 subtitle: "Project Documentation & Chronological Notes"
@@ -13,6 +14,7 @@ format:
     search: true
     mainfont: "Segoe UI, sans-serif"
     linkcolor: "#2780e3"
+    css: styles.css
 editor: visual
 ---
 
@@ -26,28 +28,46 @@ Key links for weekly synchronization and data access.
 
 # December 2025
 
-### Dec 02: Jackknife Code Review
-**Focus:** Investigation of code building predicted-spending for Figure 2s.
+### Dec 02: Figure 2 Fixes & Jackknife Strategy
+**Topic:** Resolving the "Never Treated" interaction issue.
 
 > [**View Jackknife Code Review**](https://maowens.quarto.pub/jk_code_review/)
+
+::: {.callout-warning appearance="minimal"}
+**Bug Found:** "High" variable was defined as missing for never-treated units, dropping them from interaction regressions.
+**Fix:** Define `high=0` among NTs and remove interaction with year effects (let NTs dictate year effects).
+:::
+
+**Next Steps (Jackknife Iterations):**
+1.  Baseline spending only (No Jackknife)
+2.  Baseline + Income Quartiles (No Jackknife)
+3.  Baseline + Income + Reform Types (No Jackknife)
+4.  *Repeat 1-3 with Jackknife.*
 
 ---
 
 # November 2025
 
-### Nov 25: Jackknife vs Non-Jackknife
-**Focus:** Comparison of jackknife and non-jackknife regression approaches.
+### Nov 25: Robustness & JJP Comparison
+**Topic:** Jackknife vs Non-Jackknife and Sample Selection Bias.
 
 > [**View Analysis**](https://maowens.quarto.pub/jackknife/)
 
+* **Decision:** Run Fig 1 among bottom 10% baseline spending counties.
+* **Context (JJP Comparison):** JJP's Figure 1 (large effect) uses PSID-linked districts (~10% of districts, selected for low income). JJP Appendix B2 (all districts) shows smaller effects closer to our findings.
+
 ### Nov 17-21: District & Panel Analysis
-**Focus:** Expansion to district level and balanced panel checks.
+**Topic:** District level expansion and balancing checks.
 
 * [District Level Results](https://maowens.quarto.pub/district_and_top_100/)
 * [Balanced Panel Results](https://maowens.quarto.pub/balanced-panel-event-study-analysis/)
 
+**Key Actions:**
+* **Balance Exercise:** Sample balanced on non-missing `lexp_ma_strict` from event times -5 to 17.
+* **Hypothesis:** Aggregating to county level smooths variation across districts, potentially leading to smaller effects than JJP.
+
 ### Nov 06: Sample Variations (Fig 1 & 2)
-**Focus:** Robustness checks across weighted/unweighted and sample restrictions.
+**Topic:** Robustness checks across weighted/unweighted and sample restrictions.
 
 ::: {.panel-tabset}
 
@@ -67,7 +87,6 @@ Key links for weekly synchronization and data access.
 * **Figure 1s (Weighted):** [View Results](https://maowens.quarto.pub/11_4_25_wt/)
 * **Figure 1s (Unweighted):** [View Results](https://maowens.quarto.pub/11_4_25_no_wt/)
 * **Figure 2s (Weighted):** [View Results](https://maowens.quarto.pub/11_6_25_wt/)
-    * *Note: Jackknife regressions using baseline spending and family income.*
 
 ## 🚫 Restricted Sample
 
@@ -82,66 +101,112 @@ Key links for weekly synchronization and data access.
 
 # October 2025
 
-### Oct 24: Year Selection & Spending
+### Oct 31: The "Mixed" County Problem
+**Topic:** Handling counties with multiple non-tracted areas.
+
+
+
+::: {.callout-note appearance="minimal"}
+**The Issue:** We lack school-age population data for non-tracted areas. If a county has >1 non-tracted area, we cannot weight them relative to each other.
+**The Fix:** Combine all non-tracted areas in a county into a single "pseudo-area." Average their PPE (unweighted), then weight this pseudo-area against the tracts using the residual county population.
+:::
+
+### Oct 28: Defining "Good" Counties
+**Topic:** Creating a clean baseline dataset.
+
+* **Definition:** A "Good County" is one where every linked tract/LEAID has non-missing spending data for **every year from 1966-1971**.
+* **Action:** Created indicator variables `good_county_6671` to filter samples.
+
+### Oct 24: Baseline Year Selection
 [**View Full Notes**](https://maowens.quarto.pub/10_24_25-b397/)
 
-* **Findings:** Ruled out using only one of the earlier years.
-* **Decision:** Choice is 1971 on its own or average across several years.
-* **Next Steps:** Figure 2s with restricted set of counties; Indicator variable for missing vs non-missing baseline.
+* **Findings:** 1971 vs. 1966-70 average yields similar results.
+* **Decision:** Use 1971 on its own or average across several years (robustness check).
 
 ### Oct 21: Pre-Quartile Splits
 [**View Full Notes**](https://maowens.quarto.pub/10_21_25-da7b/)
 
-* **Goals:**
-    1.  Compare individual pre-quartile splits (e.g., 1967 vs 1971).
-    2.  Compare single-year vs average pre-quartile splits.
+* **Goal:** Compare individual pre-quartile splits (e.g., 1967 vs 1971) to ensure single-year spikes aren't driving results.
 
-### Oct 17 - Oct 03: Weekly Logs
-* **Oct 17:** [View Notes](https://maowens.quarto.pub/10_17_25/)
-* **Oct 13:** [View Notes](https://maowens.quarto.pub/10_13_25/)
-* **Oct 10:** [View Notes](https://maowens.quarto.pub/10_10_25/)
-* **Oct 07:** [View Notes](https://maowens.quarto.pub/10_7_25/)
-* **Oct 03:** [View Notes](https://maowens.quarto.pub/9_30_25-2f01/)
+### Oct 17: Interpolation & Winsorizing
+[**View Full Notes**](https://maowens.quarto.pub/10_17_25/)
+
+* **Method:** Winsorize all spending values at 1st and 99th percentiles (within year).
+* **Refinement:** Interpolate at the *district* level before tract-to-county processing (previously done at tract level).
+
+### Oct 11: Common Core & Balancing
+[**View Full Notes**](https://maowens.quarto.pub/10_10_25/)
+
+* **Data Update:** Incorporated Common Core spending data through 2018-19.
+* **Balancing:** Redefined `lead_5` to bin all earlier years; `lag_17` bins all later years. Exclude counties treated 2000+.
+
+### Oct 07: Debugging `pred_spend`
+[**View Full Notes**](https://maowens.quarto.pub/10_7_25/)
+
+* **Challenge:** Event studies by `pred_spend` went in opposite directions than expected.
+* **Action:** Step-by-step reconstruction (Simple event study $\to$ Baseline Quartile split $\to$ `pred_spend` construction).
 
 ---
 
 # September 2025
 
-### Sep 30: Reform Variable Diagnosis
+### Sep 30: Reform Variables
 [**View Full Notes**](https://maowens.quarto.pub/9_30_25/)
 
-::: {.callout-note appearance="minimal"}
-**Challenge:** Confusion regarding `pred_spend` and how to handle never-treated units.
-**Decision:** Build `pred_spend` *without* reforms to isolate the issue to either `pred_spend` or `reform_*` variables.
-:::
+* **Decision:** Build `pred_spend` *without* reforms to isolate variable issues.
 
-### Sep 26: Weekly Check-in
-[**View Full Notes**](https://maowens.quarto.pub/9_23_25-5bb5/)
-
-### Sep 23: Wisconsin Binning Issue
+### Sep 23: Wisconsin Binning Fix
 [**View Full Notes**](https://maowens.quarto.pub/9_23_25/)
 
-* **Challenge:** Identified and fixed a binning issue in estimation that was affecting Wisconsin's Jackknife output.
+* **Bug:** Coefficients for lead 16-19 were empty, but lead 20 was non-empty.
+* **Cause:** Binning issue in estimation. Fixed.
 
-### Sep 16: IV Estimates & Footnote 20
-[**View Full Notes**](https://maowens.quarto.pub/9_16_25/)
-
-* **Investigation:** Suspicious zero coefficients in IV estimate for Wisconsin.
-* **Correction:** `lag_20` binning correction needed (`rel_year >= 20 & ~missing(rel_year)`).
-
-### Sep 09: Moving Average Models
-[**View Full Notes**](https://maowens.quarto.pub/9_9_25/)
-
-* **Decision:** Selected the "strict" moving average model.
-* **Method:** Outlined estimation of JJP equation 4 for one state.
-
-### Sep 05: Standardization to JJP
-[**View Full Notes**](https://maowens.quarto.pub/952025/)
-
-* **Decision:** Standardized coding to JJP's Table D.
-* **Method:** Documented mismatches between Hanushek's dataset and JJP Table D.
-
-### Sep 02: First Stage Replication
+### Sep 02: Hanushek vs. JJP
 [**View Full Notes**](https://maowens.quarto.pub/jjp_first_stage/)
 
-* **Result:** Estimated Figure 1 using JJP Table D over Hanushek database. Results are consistent with prior estimates.
+* **Action:** Re-run First Stage Approach 1 using *only* JJP reform info (ignore Hanushek table for now) to ensure replication.
+
+---
+
+# August 2025
+
+### Aug 26: Data Cleaning
+* **Imputation:** Imputed 1986 enrollment using 1987 numbers for district 3416800.
+* **Zero Values:** For 1983 `enrollment==0`, replaced with '84 (or '82) values.
+
+### Aug 19: JJP Methodology Deep Dive
+**Topic:** Weighting and Rolling Windows.
+
+* **Difference:** JJP uses district-level; we use county-level.
+* **Variable Definitions:**
+    1.  Current year spending (weighted by 1972 pop).
+    2.  Log average PPE over 13-year rolling window (missing if <13 years data).
+    3.  Log average PPE over available data (filling missing years with 1967 value).
+
+### Aug 01: The PPE Formula
+**Topic:** Calculating Per Pupil Expenditures (PPE) for split tracts.
+
+
+
+::: {.callout-note appearance="minimal"}
+**Logic for Primary/Secondary Tracts:**
+1.  Get Primary PPE and Secondary PPE.
+2.  Get share of students in tract who are Primary-age vs Secondary-age.
+3.  **Formula:** `(PrimaryPPE * PrimaryShare) + (SecondaryPPE * SecondaryShare)`
+:::
+
+---
+
+# July 2025
+
+### July 29: Duplicate Tracts
+**Issue:** Tracts appearing multiple times (once for elementary, once for secondary).
+**Resolution:** Reshape to tract level with separate variables for elementary/secondary districts.
+
+### July 15: Geographic Challenges
+**Issue:** Difficulty mapping districts to counties via tracts.
+**Strategy:** If population weighting fails, default to centroids. Match failures (un-tracted areas) assigned to counties via GRF.
+
+### July 11: Project Kickoff
+**Goal:** Produce panel of per-pupil spending at the county level.
+**Rationale:** We only observe birth location at the county level.
