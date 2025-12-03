@@ -90,7 +90,7 @@ Access shared datasets, code repositories, and analysis files.
 
 View source code and contribute to this website on GitHub.
 
-[Open GitHub Repo](https://github.com/maowens-HI/research_hub){.card-link}
+[Open GitHub Repo](https://github.com/maowens-HI/school_finance){.card-link}
 :::
 
 :::
