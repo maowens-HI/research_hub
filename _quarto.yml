@@ -3,20 +3,39 @@ project:
   output-dir: docs
 
 website:
-  title: "research_hub"
+  title: "Research Hub"
+  description: "Advancing Sound Economic Policy for the 21st Century"
   navbar:
+    background: light
+    foreground: dark
+    logo: false
+    title: "Research Hub"
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
+      - href: about.qmd
+        text: About
+    right:
+      - icon: search
+        href: "#"
+  page-footer:
+    background: light
+    left: |
+      &copy; 2025 Research Hub. All rights reserved.
+    center: |
+      [Privacy](privacy.qmd) | [Terms](terms.qmd)
+    right: |
+      Built with [Quarto](https://quarto.org)
 
 format:
   html:
     theme:
-      - cosmo
-      - brand
+      light: cosmo
     css: styles.css
-    toc: true
+    toc: false
+    fontsize: 1rem
+    linestretch: 1.7
+    linkcolor: "#1E3A5F"
+    mainfont: "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
 
 editor: visual
-
