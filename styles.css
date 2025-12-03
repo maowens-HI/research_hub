@@ -1,1 +1,769 @@
-/* css styles */
+/* ==========================================================================
+   Research Hub - Custom Styles
+   Design System Implementation
+   ========================================================================== */
+
+/* ==========================================================================
+   CSS Custom Properties (Design Tokens)
+   ========================================================================== */
+
+:root {
+  /* Colors - Base */
+  --color-bg: #FAFAF8;
+  --color-surface: #F5F5F3;
+  --color-white: #FFFFFF;
+  --color-border: #E8E8E6;
+
+  /* Colors - Text */
+  --color-text: #2D3436;
+  --color-text-muted: #636E72;
+  --color-text-light: #9CA3AF;
+
+  /* Colors - Accent */
+  --color-accent: #1E3A5F;
+  --color-accent-hover: #152A45;
+  --color-accent-light: #E8EEF4;
+  --color-accent-teal: #0A7B7B;
+
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 48px;
+  --space-xxl: 80px;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-nav: 0 2px 8px rgba(0, 0, 0, 0.06);
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.2s ease;
+  --transition-slow: 0.3s ease;
+}
+
+/* ==========================================================================
+   Base Styles
+   ========================================================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-text);
+  margin-top: 0;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 1.875rem;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-lg);
+}
+
+h3 {
+  font-size: 1.25rem;
+  margin-bottom: var(--space-md);
+}
+
+p {
+  margin-bottom: var(--space-lg);
+  color: var(--color-text);
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-accent-hover);
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   Navigation (Quarto Navbar Override)
+   ========================================================================== */
+
+.navbar {
+  background-color: var(--color-white) !important;
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.75rem 0;
+  transition: box-shadow var(--transition-base);
+}
+
+.navbar.headroom--not-top {
+  box-shadow: var(--shadow-nav);
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--color-text) !important;
+  letter-spacing: -0.01em;
+}
+
+.navbar-nav .nav-link {
+  color: var(--color-text-muted) !important;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  padding: 0.5rem 1rem !important;
+  transition: color var(--transition-fast);
+  position: relative;
+}
+
+.navbar-nav .nav-link:hover {
+  color: var(--color-accent) !important;
+}
+
+.navbar-nav .nav-link.active {
+  color: var(--color-accent) !important;
+}
+
+.navbar-nav .nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 1rem;
+  right: 1rem;
+  height: 2px;
+  background-color: var(--color-accent);
+}
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+
+.hero {
+  background: linear-gradient(135deg, var(--color-bg) 0%, var(--color-accent-light) 100%);
+  padding: var(--space-xxl) var(--space-lg);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(30, 58, 95, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(30, 58, 95, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-headline {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin-bottom: var(--space-lg);
+}
+
+.hero-tagline {
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-xl);
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+.btn-primary,
+.cta-primary {
+  display: inline-block;
+  background-color: var(--color-accent);
+  color: var(--color-white) !important;
+  padding: 14px 32px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  letter-spacing: 0.03em;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-decoration: none !important;
+}
+
+.btn-primary:hover,
+.cta-primary:hover {
+  background-color: var(--color-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(30, 58, 95, 0.25);
+  color: var(--color-white) !important;
+}
+
+.btn-secondary,
+.cta-secondary {
+  display: inline-block;
+  background-color: transparent;
+  color: var(--color-accent) !important;
+  padding: 12px 28px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  letter-spacing: 0.03em;
+  border: 2px solid var(--color-accent);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-decoration: none !important;
+}
+
+.btn-secondary:hover,
+.cta-secondary:hover {
+  background-color: var(--color-accent);
+  color: var(--color-white) !important;
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-accent);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-ghost:hover {
+  text-decoration: underline;
+}
+
+.btn-ghost::after {
+  content: '→';
+  transition: transform var(--transition-fast);
+}
+
+.btn-ghost:hover::after {
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   Cards
+   ========================================================================== */
+
+.card,
+.research-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-base);
+}
+
+.card:hover,
+.research-card:hover {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
+
+.card-category {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+  margin-bottom: var(--space-sm);
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--color-text);
+  margin-bottom: var(--space-sm);
+}
+
+.card-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.card-title a:hover {
+  color: var(--color-accent);
+}
+
+.card-excerpt {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-md);
+}
+
+.card-meta {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--color-accent);
+  margin-top: var(--space-md);
+}
+
+.card-link:hover {
+  text-decoration: none;
+}
+
+.card-link::after {
+  content: '→';
+  transition: transform var(--transition-fast);
+}
+
+.card-link:hover::after {
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   Card Grid
+   ========================================================================== */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
+}
+
+@media (min-width: 992px) {
+  .card-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ==========================================================================
+   Sections
+   ========================================================================== */
+
+.section {
+  padding: var(--space-xxl) var(--space-lg);
+}
+
+.section-alt {
+  background-color: var(--color-surface);
+}
+
+.section-header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto var(--space-xl);
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--space-md);
+}
+
+.section-subtitle {
+  font-size: 1.125rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   Tags / Badges
+   ========================================================================== */
+
+.tag,
+.badge {
+  display: inline-block;
+  background-color: var(--color-accent-light);
+  color: var(--color-accent);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tag-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+/* ==========================================================================
+   Mission / About Block
+   ========================================================================== */
+
+.mission-block {
+  text-align: center;
+  padding: var(--space-xl) var(--space-lg);
+  max-width: 700px;
+  margin: 0 auto;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.mission-text {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: var(--color-text);
+  margin-bottom: var(--space-lg);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.quarto-footer,
+footer {
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-xl) var(--space-lg);
+}
+
+.quarto-footer a,
+footer a {
+  color: var(--color-text-muted);
+  transition: color var(--transition-fast);
+}
+
+.quarto-footer a:hover,
+footer a:hover {
+  color: var(--color-accent);
+}
+
+/* ==========================================================================
+   Content Pages
+   ========================================================================== */
+
+.content-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-lg);
+}
+
+.page-header {
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: var(--space-md);
+}
+
+.page-meta {
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+}
+
+/* ==========================================================================
+   Callouts (Quarto Override)
+   ========================================================================== */
+
+.callout {
+  border-radius: var(--radius-md);
+  border-left-width: 4px;
+  margin: var(--space-lg) 0;
+}
+
+.callout-note {
+  border-left-color: var(--color-accent);
+  background-color: var(--color-accent-light);
+}
+
+.callout-tip {
+  border-left-color: var(--color-accent-teal);
+  background-color: rgba(10, 123, 123, 0.08);
+}
+
+.callout-warning {
+  border-left-color: #D97706;
+  background-color: rgba(217, 119, 6, 0.08);
+}
+
+/* ==========================================================================
+   Tables
+   ========================================================================== */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-lg) 0;
+}
+
+th, td {
+  padding: var(--space-sm) var(--space-md);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+th {
+  font-weight: 600;
+  background-color: var(--color-surface);
+}
+
+tr:hover {
+  background-color: var(--color-surface);
+}
+
+/* ==========================================================================
+   Code Blocks
+   ========================================================================== */
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background-color: var(--color-surface);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+}
+
+pre {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  overflow-x: auto;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+}
+
+/* ==========================================================================
+   Utility Classes
+   ========================================================================== */
+
+.text-center {
+  text-align: center;
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+.mb-0 { margin-bottom: 0; }
+.mb-sm { margin-bottom: var(--space-sm); }
+.mb-md { margin-bottom: var(--space-md); }
+.mb-lg { margin-bottom: var(--space-lg); }
+.mb-xl { margin-bottom: var(--space-xl); }
+
+.mt-0 { margin-top: 0; }
+.mt-sm { margin-top: var(--space-sm); }
+.mt-md { margin-top: var(--space-md); }
+.mt-lg { margin-top: var(--space-lg); }
+.mt-xl { margin-top: var(--space-xl); }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ==========================================================================
+   Responsive Adjustments
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  :root {
+    --space-xxl: 48px;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: var(--space-xl) var(--space-md);
+  }
+
+  .hero-headline {
+    font-size: 2rem;
+  }
+
+  .hero-tagline {
+    font-size: 1.0625rem;
+  }
+
+  .section {
+    padding: var(--space-xl) var(--space-md);
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn-primary,
+  .cta-primary,
+  .btn-secondary,
+  .cta-secondary {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* ==========================================================================
+   Print Styles
+   ========================================================================== */
+
+@media print {
+  .navbar,
+  .quarto-footer,
+  footer {
+    display: none;
+  }
+
+  .hero {
+    background: none;
+    min-height: auto;
+    padding: var(--space-lg);
+  }
+
+  .card {
+    box-shadow: none;
+    border: 1px solid #ccc;
+    break-inside: avoid;
+  }
+}
+
+/* ==========================================================================
+   Quarto-Specific Overrides
+   ========================================================================== */
+
+/* Remove default Quarto title styling on homepage */
+.quarto-title-banner {
+  display: none;
+}
+
+#quarto-content {
+  padding-top: 0;
+}
+
+main.content {
+  padding: 0;
+}
+
+/* Override panel tabset styling */
+.panel-tabset .nav-tabs {
+  border-bottom: 2px solid var(--color-border);
+}
+
+.panel-tabset .nav-link {
+  color: var(--color-text-muted);
+  font-weight: 500;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+}
+
+.panel-tabset .nav-link:hover {
+  color: var(--color-accent);
+  border-color: transparent;
+}
+
+.panel-tabset .nav-link.active {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+  background: none;
+}
+
+/* TOC styling */
+.sidebar nav[role="doc-toc"] ul li a {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+.sidebar nav[role="doc-toc"] ul li a:hover,
+.sidebar nav[role="doc-toc"] ul li a.active {
+  color: var(--color-accent);
+}
