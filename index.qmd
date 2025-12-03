@@ -15,6 +15,18 @@ format:
 
 [Documenting progress, sharing findings, and tracking methodological decisions for our ongoing project collaboration.]{.hero-tagline}
 
+::: {.hero-features}
+::: {.hero-feature}
+**25+** Research Analyses
+:::
+::: {.hero-feature}
+**8 Months** Active Development
+:::
+::: {.hero-feature}
+**Live** Collaboration
+:::
+:::
+
 [View Recent Work](#latest-research){.cta-primary}
 
 :::
@@ -28,8 +40,10 @@ format:
 Recent analyses and code reviews documenting progress on the project.
 :::
 
-::: {.card-grid .card-grid-3}
+::: {.carousel-container}
+::: {.carousel-wrapper}
 
+::: {.carousel-slide}
 ::: {.research-card}
 [Working Paper]{.card-category}
 
@@ -41,7 +55,9 @@ Recent analyses and code reviews documenting progress on the project.
 
 [View Analysis](https://maowens.quarto.pub/jk_code_review/){.card-link}
 :::
+:::
 
+::: {.carousel-slide}
 ::: {.research-card}
 [Analysis]{.card-category}
 
@@ -53,7 +69,9 @@ Recent analyses and code reviews documenting progress on the project.
 
 [View Analysis](https://maowens.quarto.pub/jackknife/){.card-link}
 :::
+:::
 
+::: {.carousel-slide}
 ::: {.research-card}
 [Working Paper]{.card-category}
 
@@ -64,6 +82,58 @@ Recent analyses and code reviews documenting progress on the project.
 [November 2025]{.card-meta}
 
 [View Results](https://maowens.quarto.pub/district_and_top_100/){.card-link}
+:::
+:::
+
+::: {.carousel-slide}
+::: {.research-card}
+[Analysis]{.card-category}
+
+[Balanced Panel Results]{.card-title}
+
+[Sample balanced on non-missing spending from event times -5 to 17, analyzing the effects at district level with aggregation considerations.]{.card-excerpt}
+
+[November 2025]{.card-meta}
+
+[View Results](https://maowens.quarto.pub/balanced-panel-event-study-analysis/){.card-link}
+:::
+:::
+
+::: {.carousel-slide}
+::: {.research-card}
+[Robustness]{.card-category}
+
+[Sample Variations Study]{.card-title}
+
+[Comprehensive robustness checks across weighted/unweighted samples and various sample restrictions including tract area analysis.]{.card-excerpt}
+
+[November 2025]{.card-meta}
+
+[View Results](https://maowens.quarto.pub/11_7_25_wt/){.card-link}
+:::
+:::
+
+::: {.carousel-slide}
+::: {.research-card}
+[Methodology]{.card-category}
+
+[The "Mixed" County Problem]{.card-title}
+
+[Addressing counties with multiple non-tracted areas by combining into pseudo-areas and using residual county population for weighting.]{.card-excerpt}
+
+[October 2025]{.card-meta}
+
+[View Details](#oct-31-the-mixed-county-problem){.card-link}
+:::
+:::
+
+:::
+
+::: {.carousel-controls}
+<button class="carousel-btn carousel-prev" aria-label="Previous">‹</button>
+::: {.carousel-dots}
+:::
+<button class="carousel-btn carousel-next" aria-label="Next">›</button>
 :::
 
 :::
@@ -359,3 +429,137 @@ A chronological record of project milestones and findings.
 
 :::
 :::
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const wrapper = document.querySelector('.carousel-wrapper');
+  const slides = document.querySelectorAll('.carousel-slide');
+  const prevBtn = document.querySelector('.carousel-prev');
+  const nextBtn = document.querySelector('.carousel-next');
+  const dotsContainer = document.querySelector('.carousel-dots');
+
+  if (!wrapper || !slides.length) return;
+
+  let currentIndex = 0;
+  let slidesPerView = getSlidesPerView();
+  const totalSlides = slides.length;
+  const maxIndex = Math.max(0, totalSlides - slidesPerView);
+
+  // Create dots
+  for (let i = 0; i <= maxIndex; i++) {
+    const dot = document.createElement('button');
+    dot.classList.add('carousel-dot');
+    dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => goToSlide(i));
+    dotsContainer.appendChild(dot);
+  }
+
+  const dots = document.querySelectorAll('.carousel-dot');
+
+  function getSlidesPerView() {
+    if (window.innerWidth >= 992) return 3;
+    if (window.innerWidth >= 768) return 2;
+    return 1;
+  }
+
+  function updateCarousel() {
+    const slideWidth = 100 / slidesPerView;
+    wrapper.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+
+    // Update dots
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentIndex);
+    });
+
+    // Update button states
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = currentIndex >= maxIndex;
+  }
+
+  function goToSlide(index) {
+    currentIndex = Math.max(0, Math.min(index, maxIndex));
+    updateCarousel();
+  }
+
+  function nextSlide() {
+    if (currentIndex < maxIndex) {
+      currentIndex++;
+      updateCarousel();
+    }
+  }
+
+  function prevSlide() {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateCarousel();
+    }
+  }
+
+  prevBtn.addEventListener('click', prevSlide);
+  nextBtn.addEventListener('click', nextSlide);
+
+  // Handle window resize
+  let resizeTimer;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function() {
+      const newSlidesPerView = getSlidesPerView();
+      if (newSlidesPerView !== slidesPerView) {
+        slidesPerView = newSlidesPerView;
+        const newMaxIndex = Math.max(0, totalSlides - slidesPerView);
+
+        // Rebuild dots
+        dotsContainer.innerHTML = '';
+        for (let i = 0; i <= newMaxIndex; i++) {
+          const dot = document.createElement('button');
+          dot.classList.add('carousel-dot');
+          dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+          dot.addEventListener('click', () => goToSlide(i));
+          dotsContainer.appendChild(dot);
+        }
+
+        currentIndex = Math.min(currentIndex, newMaxIndex);
+        updateCarousel();
+      }
+    }, 250);
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowLeft') prevSlide();
+    if (e.key === 'ArrowRight') nextSlide();
+  });
+
+  // Initialize
+  updateCarousel();
+
+  // Optional: Auto-play
+  let autoplayInterval;
+  function startAutoplay() {
+    autoplayInterval = setInterval(() => {
+      if (currentIndex >= maxIndex) {
+        currentIndex = 0;
+      } else {
+        currentIndex++;
+      }
+      updateCarousel();
+    }, 5000);
+  }
+
+  function stopAutoplay() {
+    clearInterval(autoplayInterval);
+  }
+
+  // Start autoplay
+  startAutoplay();
+
+  // Pause on hover
+  wrapper.addEventListener('mouseenter', stopAutoplay);
+  wrapper.addEventListener('mouseleave', startAutoplay);
+
+  // Pause on button click
+  prevBtn.addEventListener('click', stopAutoplay);
+  nextBtn.addEventListener('click', stopAutoplay);
+});
+</script>

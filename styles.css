@@ -218,6 +218,48 @@ a:hover {
   line-height: 1.5;
 }
 
+.hero-features {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-xl);
+  flex-wrap: wrap;
+}
+
+.hero-feature {
+  text-align: center;
+  padding: var(--space-md) var(--space-lg);
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  min-width: 150px;
+  backdrop-filter: blur(10px);
+}
+
+.hero-feature strong {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  line-height: 1;
+  margin-bottom: var(--space-xs);
+}
+
+@media (max-width: 768px) {
+  .hero-features {
+    gap: var(--space-md);
+  }
+
+  .hero-feature {
+    min-width: 120px;
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  .hero-feature strong {
+    font-size: 1.5rem;
+  }
+}
+
 /* ==========================================================================
    Buttons
    ========================================================================== */
@@ -594,6 +636,102 @@ pre {
 pre code {
   background: none;
   padding: 0;
+}
+
+/* ==========================================================================
+   Carousel
+   ========================================================================== */
+
+.carousel-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.carousel-wrapper {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  box-sizing: border-box;
+  padding: 0 var(--space-md);
+}
+
+@media (min-width: 768px) {
+  .carousel-slide {
+    min-width: 50%;
+  }
+}
+
+@media (min-width: 992px) {
+  .carousel-slide {
+    min-width: 33.333%;
+  }
+}
+
+.carousel-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+}
+
+.carousel-btn {
+  background-color: var(--color-white);
+  border: 2px solid var(--color-accent);
+  color: var(--color-accent);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.carousel-btn:hover:not(:disabled) {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  transform: scale(1.05);
+}
+
+.carousel-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  border-color: var(--color-border);
+  color: var(--color-text-muted);
+}
+
+.carousel-dots {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.carousel-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--color-border);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  padding: 0;
+}
+
+.carousel-dot.active {
+  background-color: var(--color-accent);
+  transform: scale(1.2);
+}
+
+.carousel-dot:hover {
+  background-color: var(--color-accent-hover);
 }
 
 /* ==========================================================================
