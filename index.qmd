@@ -41,7 +41,7 @@ Recent analyses and code reviews documenting progress on the project.
 
 [December 2025]{.card-meta}
 
-[View Meeting Notes](meeting-dec-2025.qmd){.card-link}
+[View Meeting Notes](meeting-dec-05-2025.qmd){.card-link}
 :::
 :::
 
@@ -113,7 +113,7 @@ A chronological record of project milestones and findings.
 
 **Topic:** Comprehensive review of Figure 2 fixes and jackknife strategy.
 
-[View Full Meeting Notes](meeting-dec-2025.qmd){.btn-ghost}
+[View Full Meeting Notes](meeting-dec-05-2025.qmd){.btn-ghost}
 
 ---
 
@@ -135,7 +135,7 @@ A chronological record of project milestones and findings.
 4. *Repeat 1-3 with Jackknife.*
 
 ::: {.tag-group}
-[View Meeting Notes](meeting-dec-2025.qmd){.tag}
+[View Meeting Notes](meeting-dec-05-2025.qmd){.tag}
 [View Jackknife Code Review](https://maowens.quarto.pub/jk_code_review/){.tag}
 :::
 
