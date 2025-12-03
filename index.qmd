@@ -78,7 +78,7 @@ Recent analyses and code reviews documenting progress on the project.
 
 ::: {.section-header}
 ## Quick Access
-Links to our shared workspace and meeting notes.
+Links to useful things.
 :::
 
 ::: {.card-grid}
