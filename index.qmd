@@ -35,13 +35,27 @@ Recent analyses and code reviews documenting progress on the project.
 ::: {.research-card}
 [Notes]{.card-category}
 
-[Figure 2 Fixes & Jackknife Strategy]{.card-title}
+[December Meeting - Analysis Review]{.card-title}
 
-[Resolving the "Never Treated" interaction issue in regression analysis. Bug found and fixed: "High" variable was defined as missing for never-treated units.]{.card-excerpt}
+[Comprehensive review of Figure 2 fixes and jackknife strategy. Presented completed results and discussed next steps for robustness analysis.]{.card-excerpt}
 
 [December 2025]{.card-meta}
 
 [View Meeting Notes](meeting-dec-05-2025.qmd){.card-link}
+:::
+:::
+
+::: {.carousel-slide}
+::: {.research-card}
+[Analysis]{.card-category}
+
+[Dec 02: Figure 2 Fixes & Jackknife Strategy]{.card-title}
+
+[Resolving the "Never Treated" interaction issue. Bug fix: Define high=0 among NTs and remove interaction with year effects. Implementing jackknife iterations for robustness.]{.card-excerpt}
+
+[December 2025]{.card-meta}
+
+[View Jackknife Code Review](https://maowens.quarto.pub/jk_code_review/){.card-link}
 :::
 :::
 
