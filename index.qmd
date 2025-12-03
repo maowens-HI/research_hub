@@ -393,7 +393,7 @@ document.addEventListener('DOMContentLoaded', function() {
     dotsContainer.appendChild(dot);
   }
 
-  const dots = document.querySelectorAll('.carousel-dot');
+  let dots = document.querySelectorAll('.carousel-dot');
 
   function getSlidesPerView() {
     if (window.innerWidth >= 992) return 3;
@@ -457,6 +457,8 @@ document.addEventListener('DOMContentLoaded', function() {
           dotsContainer.appendChild(dot);
         }
 
+        // Re-query dots after rebuilding
+        dots = document.querySelectorAll('.carousel-dot');
         currentIndex = Math.min(currentIndex, newMaxIndex);
         updateCarousel();
       }
