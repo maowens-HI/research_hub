@@ -135,8 +135,7 @@ A chronological record of project milestones and findings.
 4. *Repeat 1-3 with Jackknife.*
 
 ::: {.tag-group}
-[View Meeting Notes](meeting-dec-05-2025.qmd){.tag}
-[View Jackknife Code Review](https://maowens.quarto.pub/jk_code_review/){.tag}
+[View Jackknife Code Review](https://maowens.quarto.pub/jk_code_review/){.btn-ghost}
 :::
 
 ---
