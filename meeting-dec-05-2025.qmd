@@ -1,5 +1,5 @@
 ---
-title: "December 5, 2025 Meeting"
+title: "Figure 2 Results: Fixes Applied & Jackknife Analysis"
 pagetitle: "December 5, 2025 Meeting | Research Hub"
 date: "December 5, 2025"
 format:
@@ -8,16 +8,6 @@ format:
     toc-location: left
     toc-depth: 3
 ---
-
-::: {.hero}
-::: {.hero-content}
-
-# December 5, 2025 Meeting {.hero-headline}
-
-[Figure 2 Results: Fixes Applied & Jackknife Analysis]{.hero-tagline}
-
-:::
-:::
 
 ::: {.section}
 ::: {.container}
