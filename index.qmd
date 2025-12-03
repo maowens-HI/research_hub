@@ -1,207 +1,147 @@
 ---
-title: "Research Notes Hub"
+title: "Research Hub"
+subtitle: "Project Documentation & Chronological Notes"
+date: last-modified
 format:
   html:
+    theme: cosmo
     toc: true
+    toc-depth: 2
     toc-location: left
+    toc-title: "Timeline"
     number-sections: false
     search: true
+    mainfont: "Segoe UI, sans-serif"
+    linkcolor: "#2780e3"
 editor: visual
 ---
 
-# Welcome to the Research Hub
+::: {.callout-tip icon="false"}
+## 🚀 Quick Access Resources
+Key links for weekly synchronization and data access.
 
-This site provides a chronological record of our research progress, including weekly meeting notes, analysis results, and key decisions. Use the table of contents to navigate to specific dates or the resources section for quick access to shared materials.
+-   **[📄 Weekly Meetings Google Doc](https://docs.google.com/document/d/12HWKK_0nlRcxNbcCX9QPQGAwK9ejVl5VxKu-PMaEjyg/edit?tab=t.0)**
+-   **[📂 Shared Code & Data (Google Drive)](https://drive.google.com/drive/folders/1ww0lXRawQ7TCRBm0FGwCJii-3QA9pc6t?usp=sharing)**
+:::
 
-------------------------------------------------------------------------
+# December 2025
 
-## Quick Resources
+### Dec 02: Jackknife Code Review
+**Focus:** Investigation of code building predicted-spending for Figure 2s.
 
--   [Weekly Meetings Google Doc](https://docs.google.com/document/d/12HWKK_0nlRcxNbcCX9QPQGAwK9ejVl5VxKu-PMaEjyg/edit?tab=t.0)
--   [Shared Code & Data](https://drive.google.com/drive/folders/1ww0lXRawQ7TCRBm0FGwCJii-3QA9pc6t?usp=sharing)
+> [**View Jackknife Code Review**](https://maowens.quarto.pub/jk_code_review/)
 
-------------------------------------------------------------------------
+---
 
-# Research Notes (Chronological)
+# November 2025
 
-## December 2025
+### Nov 25: Jackknife vs Non-Jackknife
+**Focus:** Comparison of jackknife and non-jackknife regression approaches.
 
-### 2 December 2025
+> [**View Analysis**](https://maowens.quarto.pub/jackknife/)
 
-**Topic:** Jackknife Code Review
+### Nov 17-21: District & Panel Analysis
+**Focus:** Expansion to district level and balanced panel checks.
 
-Investigation of code building predicted-spending for Figure 2s.
+* [District Level Results](https://maowens.quarto.pub/district_and_top_100/)
+* [Balanced Panel Results](https://maowens.quarto.pub/balanced-panel-event-study-analysis/)
 
-[Jackknife Review](https://maowens.quarto.pub/jk_code_review/)
+### Nov 06: Sample Variations (Fig 1 & 2)
+**Focus:** Robustness checks across weighted/unweighted and sample restrictions.
 
-------------------------------------------------------------------------
+::: {.panel-tabset}
 
-## November 2025
+## 📊 Summary Table
 
-### 25 November 2025
+| Figure | Sample Definition | Weighted | Link |
+|:---|:---|:---:|:---|
+| **Fig 1** | Includes counties w/ >2 non-tract areas | **Yes** | [View](https://maowens.quarto.pub/11_7_25_wt/) |
+| **Fig 1** | Includes counties w/ >2 non-tract areas | No | [View](https://maowens.quarto.pub/11_7_25_no_wt/) |
+| **Fig 1** | Excludes counties w/ >2 non-tract areas | **Yes** | [View](https://maowens.quarto.pub/11_7_25_wt_rest_tract/) |
+| **Fig 1** | Excludes counties w/ >2 non-tract areas | No | [View](https://maowens.quarto.pub/11_7_25_no_wt_rest_tract/) |
 
-**Topic:** Jackknife vs Non-Jackknife Regressions
+## 🌍 All Counties Sample
 
-Comparison of jackknife and non-jackknife regression approaches.
+*Includes all counties regardless of non-tract area count.*
 
-[Jackknife Analysis](https://maowens.quarto.pub/jackknife/)
+* **Figure 1s (Weighted):** [View Results](https://maowens.quarto.pub/11_4_25_wt/)
+* **Figure 1s (Unweighted):** [View Results](https://maowens.quarto.pub/11_4_25_no_wt/)
+* **Figure 2s (Weighted):** [View Results](https://maowens.quarto.pub/11_6_25_wt/)
+    * *Note: Jackknife regressions using baseline spending and family income.*
 
-### 17-21 November 2025
+## 🚫 Restricted Sample
 
-**Topic:** District and Panel Analysis
+*Excludes problematic counties (≥2 non-tract areas).*
 
--   [District Level Results](https://maowens.quarto.pub/district_and_top_100/)
--   [Balanced Panel Results](https://maowens.quarto.pub/balanced-panel-event-study-analysis/)
+* **Figure 1s (Weighted):** [View Results](https://maowens.quarto.pub/11_3_25_wt/)
+* **Figure 1s (Unweighted):** [View Results](https://maowens.quarto.pub/11_3_25_no_wt/)
 
-### 6 November 2025
+:::
 
-**Topic:** Figure 1 and Figure 2 Results with Sample Variations
+---
 
-#### Summary Table of Figure 1 Variations
+# October 2025
 
-| **Figure** | **Sample Definition** | **Weighted** | **Link** |
-|----------------|---------------------|----------------|-------------------|
-| Fig 1 | Includes counties with >2 non-tract areas | Yes | [link](https://maowens.quarto.pub/11_7_25_wt/) |
-| Fig 1 | Includes counties with >2 non-tract areas | No | [link](https://maowens.quarto.pub/11_7_25_no_wt/) |
-| Fig 1 | Excludes counties with >2 non-tract areas | Yes | [link](https://maowens.quarto.pub/11_7_25_wt_rest_tract/) |
-| Fig 1 | Excludes counties with >2 non-tract areas | No | [link](https://maowens.quarto.pub/11_7_25_no_wt_rest_tract/) |
+### Oct 24: Year Selection & Spending
+[**View Full Notes**](https://maowens.quarto.pub/10_24_25-b397/)
 
-#### All Counties Sample
+* **Findings:** Ruled out using only one of the earlier years.
+* **Decision:** Choice is 1971 on its own or average across several years.
+* **Next Steps:** Figure 2s with restricted set of counties; Indicator variable for missing vs non-missing baseline.
 
-**Figure 1s - Weighted**
-[View Results](https://maowens.quarto.pub/11_4_25_wt/)
-Weighted figures including all counties regardless of non-tract area count.
+### Oct 21: Pre-Quartile Splits
+[**View Full Notes**](https://maowens.quarto.pub/10_21_25-da7b/)
 
-**Figure 1s - Unweighted**
-[View Results](https://maowens.quarto.pub/11_4_25_no_wt/)
-Unweighted figures including all counties regardless of non-tract area count.
+* **Goals:**
+    1.  Compare individual pre-quartile splits (e.g., 1967 vs 1971).
+    2.  Compare single-year vs average pre-quartile splits.
 
-**Figure 2s - Weighted**
-[View Results](https://maowens.quarto.pub/11_6_25_wt/)
-Jackknife regressions using baseline spending and family income.
+### Oct 17 - Oct 03: Weekly Logs
+* **Oct 17:** [View Notes](https://maowens.quarto.pub/10_17_25/)
+* **Oct 13:** [View Notes](https://maowens.quarto.pub/10_13_25/)
+* **Oct 10:** [View Notes](https://maowens.quarto.pub/10_10_25/)
+* **Oct 07:** [View Notes](https://maowens.quarto.pub/10_7_25/)
+* **Oct 03:** [View Notes](https://maowens.quarto.pub/9_30_25-2f01/)
 
-#### Restricted Sample (Excludes Problematic Counties)
+---
 
-**Figure 1s - Weighted**
-[View Results](https://maowens.quarto.pub/11_3_25_wt/)
-Weighted figures excluding counties with ≥2 non-tract areas.
+# September 2025
 
-**Figure 1s - Unweighted**
-[View Results](https://maowens.quarto.pub/11_3_25_no_wt/)
-Unweighted figures excluding counties with ≥2 non-tract areas.
+### Sep 30: Reform Variable Diagnosis
+[**View Full Notes**](https://maowens.quarto.pub/9_30_25/)
 
-------------------------------------------------------------------------
+::: {.callout-note appearance="minimal"}
+**Challenge:** Confusion regarding `pred_spend` and how to handle never-treated units.
+**Decision:** Build `pred_spend` *without* reforms to isolate the issue to either `pred_spend` or `reform_*` variables.
+:::
 
-## October 2025
+### Sep 26: Weekly Check-in
+[**View Full Notes**](https://maowens.quarto.pub/9_23_25-5bb5/)
 
-### 24 October 2025
+### Sep 23: Wisconsin Binning Issue
+[**View Full Notes**](https://maowens.quarto.pub/9_23_25/)
 
-[View Notes](https://maowens.quarto.pub/10_24_25-b397/)
+* **Challenge:** Identified and fixed a binning issue in estimation that was affecting Wisconsin's Jackknife output.
 
--   **Findings**
-    -   Ruled out using only one of the earlier years
-    -   Our choice is 1971 on its own or average across several years
--   **Next Goals**
-    -   Figure 2s with restricted set of counties
-    -   Indicator variable for missing vs non-missing baseline spending
+### Sep 16: IV Estimates & Footnote 20
+[**View Full Notes**](https://maowens.quarto.pub/9_16_25/)
 
-### 21 October 2025
+* **Investigation:** Suspicious zero coefficients in IV estimate for Wisconsin.
+* **Correction:** `lag_20` binning correction needed (`rel_year >= 20 & ~missing(rel_year)`).
 
-[View Notes](https://maowens.quarto.pub/10_21_25-da7b/)
+### Sep 09: Moving Average Models
+[**View Full Notes**](https://maowens.quarto.pub/9_9_25/)
 
--   **Goals for Next Meeting**
-    1.  Compare individual pre-quartile splits: Check whether quartiles based on different single years (e.g., 1967 vs 1971) yield meaningfully different results
-    2.  Compare single-year vs average pre-quartile splits: See if defining quartiles from a multi-year average changes the overall patterns
+* **Decision:** Selected the "strict" moving average model.
+* **Method:** Outlined estimation of JJP equation 4 for one state.
 
-### 17 October 2025
+### Sep 05: Standardization to JJP
+[**View Full Notes**](https://maowens.quarto.pub/952025/)
 
-[View Notes](https://maowens.quarto.pub/10_17_25/)
+* **Decision:** Standardized coding to JJP's Table D.
+* **Method:** Documented mismatches between Hanushek's dataset and JJP Table D.
 
-### 13 October 2025
+### Sep 02: First Stage Replication
+[**View Full Notes**](https://maowens.quarto.pub/jjp_first_stage/)
 
-[View Notes](https://maowens.quarto.pub/10_13_25/)
-
-### 10 October 2025
-
-[View Notes](https://maowens.quarto.pub/10_10_25/)
-
-### 7 October 2025
-
-[View Notes](https://maowens.quarto.pub/10_7_25/)
-
-### 3 October 2025
-
-[View Notes](https://maowens.quarto.pub/9_30_25-2f01/)
-
-------------------------------------------------------------------------
-
-## September 2025
-
-### 30 September 2025
-
-[View Notes](https://maowens.quarto.pub/9_30_25/)
-
--   **Challenges**
-    -   Confusion with the variable `pred_spend`
-    -   Examined several Figure 2 event studies using different combination of reforms
-    -   Uncertain how never-treated units should be incorporated or if they should be given a `pred_spend`
--   **Decisions**
-    -   Build `pred_spend` without reforms to diagnose whether issue is with `pred_spend` or `reform_*` variables
-
-### 26 September 2025
-
-[View Notes](https://maowens.quarto.pub/9_23_25-5bb5/)
-
-### 23 September 2025
-
-[View Notes](https://maowens.quarto.pub/9_23_25/)
-
--   **Challenges**
-    -   Reviewed 9/16/25 notes featuring Wisconsin's jackknife regression output
-    -   Central problem: binning issue in estimation (now fixed)
-
-### 16 September 2025
-
-[View Notes](https://maowens.quarto.pub/9_16_25/)
-
--   **Methods / Models**
-    -   Investigated suspicious zero coefficients in IV estimate for Wisconsin
-    -   Walked through footnote 20 predicted spend code to ensure coefficients are added correctly
--   **Challenges**
-    -   Incorrect addition of predicted spending
-    -   Need to add main effects
-    -   Binning correction needed: `lag_20 = rel_year >= 20 & ~missing(rel_year)`
-
-### 9 September 2025
-
-[View Notes](https://maowens.quarto.pub/9_9_25/)
-
--   **Decisions Made**
-    -   Chose the "strict" moving average model
--   **Methods / Models**
-    -   Compared pros and cons of two moving average models
-    -   Outlined estimation of JJP equation 4 for one state
--   **Challenges**
-    -   Difficulties calculating predicted spending change
-
-### 5 September 2025
-
-[View Notes](https://maowens.quarto.pub/952025/)
-
--   **Decisions Made**
-    -   Standardized coding to JJP's Table D
--   **Methods / Models**
-    -   Documented mismatches between Hanushek's dataset and JJP Table D
-    -   Sketched estimation steps for Figure 2
-    -   Estimated Figure 1 including never-treated observations
-
-### 2 September 2025
-
-[View Notes](https://maowens.quarto.pub/jjp_first_stage/)
-
--   **Methods / Models**
-    -   Estimated Figure 1 using JJP Table D over Hanushek database
--   **Findings**
-    -   Results consistent with prior Figure 1 estimates
-
-------------------------------------------------------------------------
+* **Result:** Estimated Figure 1 using JJP Table D over Hanushek database. Results are consistent with prior estimates.
