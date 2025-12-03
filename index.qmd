@@ -15,18 +15,6 @@ format:
 
 [Documenting progress, sharing findings, and tracking methodological decisions for our ongoing project collaboration.]{.hero-tagline}
 
-::: {.hero-features}
-::: {.hero-feature}
-**25+** Research Analyses
-:::
-::: {.hero-feature}
-**8 Months** Active Development
-:::
-::: {.hero-feature}
-**Live** Collaboration
-:::
-:::
-
 [View Recent Work](#latest-research){.cta-primary}
 
 :::
