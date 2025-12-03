@@ -11,7 +11,7 @@ format:
 ::: {.hero}
 ::: {.hero-content}
 
-# Research Notes & Analysis {.hero-headline}
+# Research Hub {.hero-headline}
 
 []{.hero-tagline}
 
