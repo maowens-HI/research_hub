@@ -41,7 +41,7 @@ Recent analyses and code reviews documenting progress on the project.
 
 [December 2025]{.card-meta}
 
-[View Analysis](https://maowens.quarto.pub/jk_code_review/){.card-link}
+[View Meeting Notes](meeting-dec-05-2025.qmd){.card-link}
 :::
 :::
 
@@ -109,6 +109,14 @@ A chronological record of project milestones and findings.
 
 ### December 2025 {.mt-xl}
 
+#### Dec 05: December Meeting - Analysis Review
+
+**Topic:** Comprehensive review of Figure 2 fixes and jackknife strategy.
+
+[View Full Meeting Notes](meeting-dec-05-2025.qmd){.btn-ghost}
+
+---
+
 #### Dec 02: Figure 2 Fixes & Jackknife Strategy
 
 **Topic:** Resolving the "Never Treated" interaction issue.
@@ -126,7 +134,10 @@ A chronological record of project milestones and findings.
 3. Baseline + Income + Reform Types (No Jackknife)
 4. *Repeat 1-3 with Jackknife.*
 
-[View Jackknife Code Review](https://maowens.quarto.pub/jk_code_review/){.btn-ghost}
+::: {.tag-group}
+[View Meeting Notes](meeting-dec-05-2025.qmd){.tag}
+[View Jackknife Code Review](https://maowens.quarto.pub/jk_code_review/){.tag}
+:::
 
 ---
 
