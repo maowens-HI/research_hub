@@ -1,385 +1,545 @@
 ---
-title: "Research Hub"
-subtitle: "Project Documentation & Chronological Notes"
+title: "RESEARCH HUB"
+subtitle: "Project Documentation"
 date: last-modified
 format:
   html:
-    theme: litera
+    theme: darkly
     toc: true
     toc-depth: 2
     toc-location: left
-    toc-title: "Timeline"
+    toc-title: "NAV"
     number-sections: false
     search: true
-    mainfont: "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
-    monofont: "'JetBrains Mono', 'Fira Code', 'Roboto Mono', monospace"
+    mainfont: "'Space Grotesk', 'Inter', -apple-system, sans-serif"
+    monofont: "'JetBrains Mono', 'Fira Code', monospace"
     page-layout: full
     grid:
-      sidebar-width: 250px
-      body-width: 900px
+      sidebar-width: 200px
+      body-width: 1000px
 editor: visual
 ---
 
 ```{=html}
 <style>
-/* --- THE ECONOMIST "COOL" AESTHETIC CSS --- */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
-/* 1. Background & Base */
+/* --- MINIMAL SPACE-AGE AESTHETIC --- */
+
+:root {
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #12121a;
+  --text-primary: #e8e8e8;
+  --text-muted: #6b7280;
+  --accent: #00d4ff;
+  --accent-dim: rgba(0, 212, 255, 0.15);
+  --border: #1e1e2e;
+}
+
 body {
-  background-color: #f3f4f6; /* Light grey background - easier on eyes */
-  color: #1f2937;
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary);
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: 0.01em;
 }
 
-/* 2. The "Hero" Header */
+/* Header */
 .quarto-title-block {
-    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-    color: white;
-    padding: 3rem 2rem;
-    margin-bottom: 2rem;
-    border-radius: 0 0 12px 12px;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-}
-h1.title { color: white !important; font-weight: 700; letter-spacing: -0.025em; }
-p.subtitle { color: #cbd5e1 !important; font-family: var(--bs-body-font-family); opacity: 0.9; }
-
-/* 3. The "Entry Card" - The core sexiness */
-.entry-card {
-  background: white;
-  border-radius: 12px;
-  padding: 1.5rem;
-  margin-bottom: 2rem;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); /* Subtle shadow */
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.entry-card:hover {
-  transform: translateY(-2px); /* Slight lift on hover */
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-}
-
-/* 4. Typography Tweaks */
-h1, h2, h3 { font-weight: 700; letter-spacing: -0.02em; color: #111827; }
-h3 { font-size: 1.25rem; display: flex; align-items: center; gap: 10px; }
-
-/* Date styling - make it look like code */
-.date-tag {
-  font-family: var(--bs-code-font-family);
-  font-size: 0.85rem;
-  color: #64748b;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.5rem;
-  display: block;
-}
-
-/* 5. The "Action Buttons" for Resources */
-.resource-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
+  background: transparent;
+  border-bottom: 1px solid var(--border);
+  padding: 4rem 0 2rem 0;
   margin-bottom: 3rem;
 }
 
-.resource-btn {
+h1.title {
+  color: var(--text-primary) !important;
+  font-weight: 700;
+  font-size: 2.5rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+p.subtitle {
+  color: var(--text-muted) !important;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Navigation */
+.sidebar {
+  background: var(--bg-primary) !important;
+  border-right: 1px solid var(--border) !important;
+}
+
+.sidebar-item a {
+  color: var(--text-muted) !important;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.sidebar-item a:hover {
+  color: var(--accent) !important;
+}
+
+/* Content Area */
+#quarto-content {
+  background: var(--bg-primary);
+}
+
+.content {
+  max-width: 900px;
+}
+
+/* Section Headers (Months) */
+h1 {
+  color: var(--text-primary) !important;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 1rem 0;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+h1::before {
+  content: "//";
+  color: var(--accent);
+  margin-right: 1rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Entry Items */
+.entry {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.entry:hover {
+  background: linear-gradient(90deg, var(--accent-dim) 0%, transparent 50%);
+  margin-left: -1rem;
+  padding-left: 1rem;
+}
+
+.entry-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--accent);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.entry-title {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 1rem 1.5rem;
-  background: white;
-  border-left: 4px solid #3b82f6; /* Economist Blue */
-  border-radius: 8px;
+  gap: 1rem;
+}
+
+.entry-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* Tags */
+.tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid;
+  display: inline-block;
+}
+
+.tag-fix { border-color: #22c55e; color: #22c55e; }
+.tag-bug { border-color: #ef4444; color: #ef4444; }
+.tag-analysis { border-color: var(--accent); color: var(--accent); }
+.tag-decision { border-color: #a855f7; color: #a855f7; }
+.tag-data { border-color: #f59e0b; color: #f59e0b; }
+
+/* Links */
+a {
+  color: var(--text-primary);
   text-decoration: none;
-  color: #1e293b;
-  font-weight: 600;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid var(--border);
   transition: all 0.2s;
 }
-.resource-btn:hover { background: #f8fafc; color: #2563eb; text-decoration: none; }
 
-/* 6. Status Badges */
-.badge {
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
 }
-.badge-bug { background-color: #fee2e2; color: #991b1b; } /* Red */
-.badge-fix { background-color: #dcfce7; color: #166534; } /* Green */
-.badge-decision { background-color: #dbeafe; color: #1e40af; } /* Blue */
-.badge-analysis { background-color: #f3f4f6; color: #374151; border: 1px solid #d1d5db; } /* Grey */
 
-/* 7. Link Styling */
-a { text-decoration: none; font-weight: 500; }
-a:hover { text-decoration: underline; }
+.entry-link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.entry-link:hover {
+  color: var(--accent);
+}
+
+.entry-link::before {
+  content: ">";
+  color: var(--accent);
+}
+
+/* Resource Links */
+.resources {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem 0;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.resource-link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border: none;
+}
+
+.resource-link:hover {
+  color: var(--accent);
+  border: none;
+}
+
+.resource-link::before {
+  content: "[";
+  color: var(--accent);
+}
+
+.resource-link::after {
+  content: "]";
+  color: var(--accent);
+}
+
+/* Lists */
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+ul li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+ul li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+/* Blockquotes */
+blockquote {
+  border-left: 2px solid var(--accent);
+  margin: 1rem 0;
+  padding: 0.5rem 0 0.5rem 1.5rem;
+  background: transparent;
+}
+
+blockquote p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* Hide default quarto styling */
+.quarto-title-meta, .quarto-title-banner { display: none; }
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  margin: 1rem 0;
+}
+
+th {
+  text-align: left;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+td {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-muted);
+}
+
+/* Tab panels */
+.nav-tabs {
+  border: none;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.nav-tabs .nav-link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid var(--border);
+  padding: 0.5rem 1rem;
+}
+
+.nav-tabs .nav-link.active {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-dim);
+}
+
+.tab-content {
+  padding: 1rem 0;
+}
 
 </style>
 ```
 
-<div class="resource-grid">
-<a href="https://docs.google.com/document/d/12HWKK_0nlRcxNbcCX9QPQGAwK9ejVl5VxKu-PMaEjyg/edit?tab=t.0" class="resource-btn">
-<span>📝 Weekly Meeting Notes</span>
-<span>→</span>
-</a>
-<a href="https://drive.google.com/drive/folders/1ww0lXRawQ7TCRBm0FGwCJii-3QA9pc6t?usp=sharing" class="resource-btn">
-<span>📂 Code & Data Drive</span>
-<span>→</span>
-</a>
+<div class="resources">
+<a href="https://docs.google.com/document/d/12HWKK_0nlRcxNbcCX9QPQGAwK9ejVl5VxKu-PMaEjyg/edit?tab=t.0" class="resource-link">Meeting Notes</a>
+<a href="https://drive.google.com/drive/folders/1ww0lXRawQ7TCRBm0FGwCJii-3QA9pc6t?usp=sharing" class="resource-link">Code & Data</a>
 </div>
 
 # December 2025
 
-::: {.entry-card}
-<span class="date-tag">02 DEC 2025</span>
-
-### Figure 2 Fixes & Jackknife <span class="badge badge-fix">FIXED</span>
-
-**Topic:** Resolving the "Never Treated" interaction issue.
-
-> [**View Jackknife Code Review**](https://maowens.quarto.pub/jk_code_review/)
-
-**The Bug:** "High" variable was defined as missing for never-treated units, dropping them from interaction regressions.
-**The Fix:** Define `high=0` among NTs and remove interaction with year effects (let NTs dictate year effects).
-
-**Next Steps (Jackknife Iterations):**
-
-1.  Baseline spending only (No Jackknife)
-2.  Baseline + Income Quartiles (No Jackknife)
-3.  Baseline + Income + Reform Types (No Jackknife)
-4.  *Repeat 1-3 with Jackknife.*
-    :::
+<div class="entry">
+<div class="entry-date">02 Dec 2025</div>
+<div class="entry-title">Figure 2 Fixes & Jackknife <span class="tag tag-fix">Fixed</span></div>
+<div class="entry-desc">
+Resolving the "Never Treated" interaction issue. The bug: "High" variable was defined as missing for never-treated units, dropping them from interaction regressions. The fix: Define high=0 among NTs and remove interaction with year effects.
+</div>
+<a href="https://maowens.quarto.pub/jk_code_review/" class="entry-link">View Jackknife Code Review</a>
+</div>
 
 # November 2025
 
-::: {.entry-card}
-<span class="date-tag">25 NOV 2025</span>
+<div class="entry">
+<div class="entry-date">25 Nov 2025</div>
+<div class="entry-title">Robustness & JJP Comparison <span class="tag tag-analysis">Analysis</span></div>
+<div class="entry-desc">
+Decision: Run Fig 1 among bottom 10% baseline spending counties. JJP's Figure 1 uses PSID-linked districts (~10% of districts, selected for low income). JJP Appendix B2 shows smaller effects closer to our findings.
+</div>
+<a href="https://maowens.quarto.pub/jackknife/" class="entry-link">View Analysis</a>
+</div>
 
-### Robustness & JJP Comparison <span class="badge badge-analysis">ANALYSIS</span>
+<div class="entry">
+<div class="entry-date">17-21 Nov 2025</div>
+<div class="entry-title">District & Panel Analysis <span class="tag tag-analysis">Expansion</span></div>
+<div class="entry-desc">
+Hypothesis: Aggregating to county level smooths variation across districts, potentially leading to smaller effects than JJP. Sample balanced on non-missing lexp_ma_strict from event times -5 to 17.
+</div>
+<a href="https://maowens.quarto.pub/district_and_top_100/" class="entry-link">District Level Results</a>
+<a href="https://maowens.quarto.pub/balanced-panel-event-study-analysis/" class="entry-link">Balanced Panel Results</a>
+</div>
 
-> [**View Analysis**](https://maowens.quarto.pub/jackknife/)
-
-  * **Decision:** Run Fig 1 among bottom 10% baseline spending counties.
-  * **Context:** JJP's Figure 1 (large effect) uses PSID-linked districts (\~10% of districts, selected for low income). JJP Appendix B2 (all districts) shows smaller effects closer to our findings.
-    :::
-
-::: {.entry-card}
-<span class="date-tag">17-21 NOV 2025</span>
-
-### District & Panel Analysis <span class="badge badge-analysis">EXPANSION</span>
-
-  * [District Level Results](https://maowens.quarto.pub/district_and_top_100/)
-  * [Balanced Panel Results](https://maowens.quarto.pub/balanced-panel-event-study-analysis/)
-
-**Hypothesis:** Aggregating to county level smooths variation across districts, potentially leading to smaller effects than JJP.
-**Action:** Sample balanced on non-missing `lexp_ma_strict` from event times -5 to 17.
-:::
-
-::: {.entry-card}
-<span class="date-tag">06 NOV 2025</span>
-
-### Sample Variations <span class="badge badge-decision">ROBUSTNESS</span>
+<div class="entry">
+<div class="entry-date">06 Nov 2025</div>
+<div class="entry-title">Sample Variations <span class="tag tag-decision">Robustness</span></div>
+<div class="entry-desc">
 
 ::: {.panel-tabset}
 
-## 📊 Summary Table
+## Summary
 
-| Figure | Sample Definition | Weighted | Link |
-|:---|:---|:---:|:---|
-| **Fig 1** | Includes counties w/ \>2 non-tract areas | **Yes** | [View](https://maowens.quarto.pub/11_7_25_wt/) |
-| **Fig 1** | Includes counties w/ \>2 non-tract areas | No | [View](https://maowens.quarto.pub/11_7_25_no_wt/) |
-| **Fig 1** | Excludes counties w/ \>2 non-tract areas | **Yes** | [View](https://maowens.quarto.pub/11_7_25_wt_rest_tract/) |
-| **Fig 1** | Excludes counties w/ \>2 non-tract areas | No | [View](https://maowens.quarto.pub/11_7_25_no_wt_rest_tract/) |
+| Sample | Weighted | Link |
+|:---|:---:|:---|
+| Includes counties w/ >2 non-tract areas | Yes | [View](https://maowens.quarto.pub/11_7_25_wt/) |
+| Includes counties w/ >2 non-tract areas | No | [View](https://maowens.quarto.pub/11_7_25_no_wt/) |
+| Excludes counties w/ >2 non-tract areas | Yes | [View](https://maowens.quarto.pub/11_7_25_wt_rest_tract/) |
+| Excludes counties w/ >2 non-tract areas | No | [View](https://maowens.quarto.pub/11_7_25_no_wt_rest_tract/) |
 
-## 🌍 All Counties
+## All Counties
 
-  * **Figure 1s (Weighted):** [View Results](https://maowens.quarto.pub/11_4_25_wt/)
-  * **Figure 1s (Unweighted):** [View Results](https://maowens.quarto.pub/11_4_25_no_wt/)
-  * **Figure 2s (Weighted):** [View Results](https://maowens.quarto.pub/11_6_25_wt/)
+- Figure 1s Weighted: [View](https://maowens.quarto.pub/11_4_25_wt/)
+- Figure 1s Unweighted: [View](https://maowens.quarto.pub/11_4_25_no_wt/)
+- Figure 2s Weighted: [View](https://maowens.quarto.pub/11_6_25_wt/)
 
-## 🚫 Restricted Sample
+## Restricted
 
-*Excludes problematic counties (≥2 non-tract areas).*
-
-  * **Figure 1s (Weighted):** [View Results](https://maowens.quarto.pub/11_3_25_wt/)
-  * **Figure 1s (Unweighted):** [View Results](https://maowens.quarto.pub/11_3_25_no_wt/)
+- Figure 1s Weighted: [View](https://maowens.quarto.pub/11_3_25_wt/)
+- Figure 1s Unweighted: [View](https://maowens.quarto.pub/11_3_25_no_wt/)
 
 :::
-:::
+
+</div>
+</div>
 
 # October 2025
 
-::: {.entry-card}
-<span class="date-tag">31 OCT 2025</span>
+<div class="entry">
+<div class="entry-date">31 Oct 2025</div>
+<div class="entry-title">The Mixed County Problem <span class="tag tag-bug">Complex Data</span></div>
+<div class="entry-desc">
+Issue: Lack of school-age population data for non-tracted areas. If a county has >1 non-tracted area, weighting is impossible. Fix: Combine all non-tracted areas in a county into a single pseudo-area.
+</div>
+</div>
 
-### The "Mixed" County Problem <span class="badge badge-bug">COMPLEX DATA</span>
+<div class="entry">
+<div class="entry-date">28 Oct 2025</div>
+<div class="entry-title">Defining Good Counties <span class="tag tag-decision">Decision</span></div>
+<div class="entry-desc">
+A "Good County" is one where every linked tract/LEAID has non-missing spending data for every year from 1966-1971. Created indicator variables good_county_6671 to filter samples.
+</div>
+</div>
 
-**The Issue:** We lack school-age population data for non-tracted areas. If a county has \>1 non-tracted area, we cannot weight them relative to each other.
-<br>
-**The Fix:** Combine all non-tracted areas in a county into a single "pseudo-area." Average their PPE (unweighted), then weight this pseudo-area against the tracts using the residual county population.
-:::
+<div class="entry">
+<div class="entry-date">24 Oct 2025</div>
+<div class="entry-title">Baseline Year Selection</div>
+<div class="entry-desc">
+Findings: 1971 vs. 1966-70 average yields similar results. Decision: Use 1971 on its own or average across several years as robustness check.
+</div>
+<a href="https://maowens.quarto.pub/10_24_25-b397/" class="entry-link">View Notes</a>
+</div>
 
-::: {.entry-card}
-<span class="date-tag">28 OCT 2025</span>
+<div class="entry">
+<div class="entry-date">21 Oct 2025</div>
+<div class="entry-title">Pre-Quartile Splits</div>
+<div class="entry-desc">
+Goal: Compare individual pre-quartile splits (e.g., 1967 vs 1971) to ensure single-year spikes aren't driving results.
+</div>
+<a href="https://maowens.quarto.pub/10_21_25-da7b/" class="entry-link">View Notes</a>
+</div>
 
-### Defining "Good" Counties <span class="badge badge-decision">DECISION</span>
+<div class="entry">
+<div class="entry-date">17 Oct 2025</div>
+<div class="entry-title">Interpolation & Winsorizing <span class="tag tag-decision">Methodology</span></div>
+<div class="entry-desc">
+Method: Winsorize all spending values at 1st and 99th percentiles within year. Refinement: Interpolate at district level before tract-to-county processing.
+</div>
+<a href="https://maowens.quarto.pub/10_17_25/" class="entry-link">View Notes</a>
+</div>
 
-  * **Definition:** A "Good County" is one where every linked tract/LEAID has non-missing spending data for **every year from 1966-1971**.
-  * **Action:** Created indicator variables `good_county_6671` to filter samples.
-    :::
+<div class="entry">
+<div class="entry-date">11 Oct 2025</div>
+<div class="entry-title">Common Core & Balancing</div>
+<div class="entry-desc">
+Data Update: Incorporated Common Core spending data through 2018-19. Balancing: Redefined lead_5 to bin all earlier years; lag_17 bins all later years. Exclude counties treated 2000+.
+</div>
+<a href="https://maowens.quarto.pub/10_10_25/" class="entry-link">View Notes</a>
+</div>
 
-::: {.entry-card}
-\<span class="date-tag"\>24 OCT 2025\</span\>
-
-### Baseline Year Selection
-
-[**View Full Notes**](https://maowens.quarto.pub/10_24_25-b397/)
-
-  * **Findings:** 1971 vs. 1966-70 average yields similar results.
-  * **Decision:** Use 1971 on its own or average across several years (robustness check).
-    :::
-
-::: {.entry-card}
-\<span class="date-tag"\>21 OCT 2025\</span\>
-
-### Pre-Quartile Splits
-
-[**View Full Notes**](https://maowens.quarto.pub/10_21_25-da7b/)
-
-  * **Goal:** Compare individual pre-quartile splits (e.g., 1967 vs 1971) to ensure single-year spikes aren't driving results.
-    :::
-
-::: {.entry-card}
-<span class="date-tag">17 OCT 2025</span>
-
-### Interpolation & Winsorizing <span class="badge badge-decision">METHODOLOGY</span>
-
-[**View Full Notes**](https://maowens.quarto.pub/10_17_25/)
-
-  * **Method:** Winsorize all spending values at 1st and 99th percentiles (within year).
-  * **Refinement:** Interpolate at the *district* level before tract-to-county processing (previously done at tract level).
-    :::
-
-::: {.entry-card}
-\<span class="date-tag"\>11 OCT 2025\</span\>
-
-### Common Core & Balancing
-
-[**View Full Notes**](https://maowens.quarto.pub/10_10_25/)
-
-  * **Data Update:** Incorporated Common Core spending data through 2018-19.
-  * **Balancing:** Redefined `lead_5` to bin all earlier years; `lag_17` bins all later years. Exclude counties treated 2000+.
-    :::
-
-::: {.entry-card}
-<span class="date-tag">07 OCT 2025</span>
-
-### Debugging `pred_spend` <span class="badge badge-bug">DEBUG</span>
-
-[**View Full Notes**](https://maowens.quarto.pub/10_7_25/)
-
-  * **Challenge:** Event studies by `pred_spend` went in opposite directions than expected.
-  * **Action:** Step-by-step reconstruction (Simple event study $\to$ Baseline Quartile split $\to$ `pred_spend` construction).
-    :::
+<div class="entry">
+<div class="entry-date">07 Oct 2025</div>
+<div class="entry-title">Debugging pred_spend <span class="tag tag-bug">Debug</span></div>
+<div class="entry-desc">
+Challenge: Event studies by pred_spend went in opposite directions than expected. Action: Step-by-step reconstruction from simple event study to baseline quartile split to pred_spend construction.
+</div>
+<a href="https://maowens.quarto.pub/10_7_25/" class="entry-link">View Notes</a>
+</div>
 
 # September 2025
 
-::: {.entry-card}
-<span class="date-tag">30 SEP 2025</span>
+<div class="entry">
+<div class="entry-date">30 Sep 2025</div>
+<div class="entry-title">Reform Variables <span class="tag tag-decision">Decision</span></div>
+<div class="entry-desc">
+Decision: Build pred_spend without reforms to isolate variable issues.
+</div>
+<a href="https://maowens.quarto.pub/9_30_25/" class="entry-link">View Notes</a>
+</div>
 
-### Reform Variables <span class="badge badge-decision">DECISION</span>
+<div class="entry">
+<div class="entry-date">23 Sep 2025</div>
+<div class="entry-title">Wisconsin Binning Fix <span class="tag tag-fix">Fixed</span></div>
+<div class="entry-desc">
+Bug: Coefficients for lead 16-19 were empty, but lead 20 was non-empty. Cause: Binning issue in estimation.
+</div>
+<a href="https://maowens.quarto.pub/9_23_25/" class="entry-link">View Notes</a>
+</div>
 
-[**View Full Notes**](https://maowens.quarto.pub/9_30_25/)
-
-  * **Decision:** Build `pred_spend` *without* reforms to isolate variable issues.
-    :::
-
-::: {.entry-card}
-<span class="date-tag">23 SEP 2025</span>
-
-### Wisconsin Binning Fix <span class="badge badge-fix">FIXED</span>
-
-[**View Full Notes**](https://maowens.quarto.pub/9_23_25/)
-
-  * **Bug:** Coefficients for lead 16-19 were empty, but lead 20 was non-empty.
-  * **Cause:** Binning issue in estimation. Fixed.
-    :::
-
-::: {.entry-card}
-\<span class="date-tag"\>02 SEP 2025\</span\>
-
-### Hanushek vs. JJP
-
-[**View Full Notes**](https://maowens.quarto.pub/jjp_first_stage/)
-
-  * **Action:** Re-run First Stage Approach 1 using *only* JJP reform info (ignore Hanushek table for now) to ensure replication.
-    :::
+<div class="entry">
+<div class="entry-date">02 Sep 2025</div>
+<div class="entry-title">Hanushek vs. JJP</div>
+<div class="entry-desc">
+Action: Re-run First Stage Approach 1 using only JJP reform info to ensure replication.
+</div>
+<a href="https://maowens.quarto.pub/jjp_first_stage/" class="entry-link">View Notes</a>
+</div>
 
 # August 2025
 
-::: {.entry-card}
-<span class="date-tag">26 AUG 2025</span>
+<div class="entry">
+<div class="entry-date">26 Aug 2025</div>
+<div class="entry-title">Data Cleaning <span class="tag tag-data">Data</span></div>
+<div class="entry-desc">
+Imputation: Imputed 1986 enrollment using 1987 numbers for district 3416800. Zero Values: For 1983 enrollment==0, replaced with 1984 or 1982 values.
+</div>
+</div>
 
-### Data Cleaning <span class="badge badge-analysis">DATA</span>
+<div class="entry">
+<div class="entry-date">19 Aug 2025</div>
+<div class="entry-title">JJP Methodology Deep Dive</div>
+<div class="entry-desc">
+Difference: JJP uses district-level; we use county-level. Variable definitions include current year spending weighted by 1972 pop, log average PPE over 13-year rolling window, and log average PPE over available data.
+</div>
+</div>
 
-  * **Imputation:** Imputed 1986 enrollment using 1987 numbers for district 3416800.
-  * **Zero Values:** For 1983 `enrollment==0`, replaced with '84 (or '82) values.
-    :::
-
-::: {.entry-card}
-\<span class="date-tag"\>19 AUG 2025\</span\>
-
-### JJP Methodology Deep Dive
-
-  * **Difference:** JJP uses district-level; we use county-level.
-  * **Variable Definitions:**
-    1.  Current year spending (weighted by 1972 pop).
-    2.  Log average PPE over 13-year rolling window.
-    3.  Log average PPE over available data.
-        :::
-
-::: {.entry-card}
-<span class="date-tag">01 AUG 2025</span>
-
-### The PPE Formula <span class="badge badge-analysis">MATH</span>
-
-**Topic:** Calculating Per Pupil Expenditures (PPE) for split tracts.
-
-**Logic for Primary/Secondary Tracts:**
-
-1.  Get Primary PPE and Secondary PPE.
-2.  Get share of students in tract who are Primary-age vs Secondary-age.
-3.  **Formula:** `(PrimaryPPE * PrimaryShare) + (SecondaryPPE * SecondaryShare)`
-    :::
+<div class="entry">
+<div class="entry-date">01 Aug 2025</div>
+<div class="entry-title">The PPE Formula <span class="tag tag-analysis">Math</span></div>
+<div class="entry-desc">
+Calculating Per Pupil Expenditures for split tracts. Formula: (PrimaryPPE * PrimaryShare) + (SecondaryPPE * SecondaryShare)
+</div>
+</div>
 
 # July 2025
 
-::: {.entry-card}
-<span class="date-tag">29 JUL 2025</span>
+<div class="entry">
+<div class="entry-date">29 Jul 2025</div>
+<div class="entry-title">Duplicate Tracts <span class="tag tag-fix">Fixed</span></div>
+<div class="entry-desc">
+Issue: Tracts appearing multiple times for elementary and secondary. Resolution: Reshape to tract level with separate variables for elementary/secondary districts.
+</div>
+</div>
 
-### Duplicate Tracts <span class="badge badge-fix">FIXED</span>
+<div class="entry">
+<div class="entry-date">15 Jul 2025</div>
+<div class="entry-title">Geographic Challenges</div>
+<div class="entry-desc">
+Issue: Difficulty mapping districts to counties via tracts. Strategy: If population weighting fails, default to centroids. Match failures assigned to counties via GRF.
+</div>
+</div>
 
-**Issue:** Tracts appearing multiple times (once for elementary, once for secondary).
-**Resolution:** Reshape to tract level with separate variables for elementary/secondary districts.
-:::
-
-::: {.entry-card}
-\<span class="date-tag"\>15 JUL 2025\</span\>
-
-### Geographic Challenges
-
-**Issue:** Difficulty mapping districts to counties via tracts.
-**Strategy:** If population weighting fails, default to centroids. Match failures (un-tracted areas) assigned to counties via GRF.
-:::
-
-::: {.entry-card}
-\<span class="date-tag"\>11 JUL 2025\</span\>
-
-### Project Kickoff 🚀
-
-**Goal:** Produce panel of per-pupil spending at the county level.
-**Rationale:** We only observe birth location at the county level.
-:::
-
-
+<div class="entry">
+<div class="entry-date">11 Jul 2025</div>
+<div class="entry-title">Project Kickoff</div>
+<div class="entry-desc">
+Goal: Produce panel of per-pupil spending at the county level. Rationale: We only observe birth location at the county level.
+</div>
+</div>
