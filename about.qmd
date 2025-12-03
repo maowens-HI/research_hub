@@ -1,9 +1,45 @@
 ---
 title: "About"
+subtitle: "Project overview and team information"
 ---
 
-About this site
+## About This Project
 
-```{r}
-1 + 1
-```
+The Research Notes Hub serves as a centralized repository for our research team's weekly meeting notes, methodological discussions, and project documentation. This site is designed to:
+
+- **Document Progress**: Track weekly research activities and decisions
+- **Maintain Transparency**: Keep all team members informed of ongoing work
+- **Preserve Institutional Knowledge**: Create a searchable archive of methods, findings, and challenges
+- **Facilitate Collaboration**: Provide easy access to shared resources and outputs
+
+## Site Features
+
+This Quarto-based website includes:
+
+::: {.callout-note appearance="simple"}
+### Navigation
+
+- **Left Sidebar**: Table of contents for easy navigation within pages
+- **Top Navbar**: Quick access to main sections and search
+- **Search Functionality**: Full-text search across all pages
+:::
+
+::: {.callout-tip appearance="simple"}
+### Content Organization
+
+- **Collapsible Summaries**: Click to expand meeting summaries
+- **Tabbed Sections**: Toggle between related content (e.g., All Counties vs. Restricted Sample)
+- **Figure Reference Table**: Quick lookup for key outputs
+:::
+
+## Contact
+
+For questions about this research hub or to request access to resources, please contact the project team.
+
+---
+
+## Technical Details
+
+This site is built with [Quarto](https://quarto.org/) and hosted on GitHub Pages. The theme uses Bootstrap's Flatly for a clean, professional appearance suitable for academic and business contexts.
+
+**Last Updated**: December 2025

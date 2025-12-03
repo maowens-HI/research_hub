@@ -3,20 +3,50 @@ project:
   output-dir: docs
 
 website:
-  title: "research_hub"
+  title: "Research Notes Hub"
+  description: "A centralized hub for weekly meeting notes, research resources, and project documentation"
   navbar:
+    background: primary
+    search: true
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
+      - href: resources.qmd
+        text: Resources
+      - href: about.qmd
+        text: About
+    right:
+      - icon: github
+        href: https://github.com/maowens-HI/research_hub
+        aria-label: GitHub
+  sidebar:
+    style: floating
+    search: true
+    contents:
+      - section: "Navigation"
+        contents:
+          - index.qmd
+          - resources.qmd
+          - about.qmd
+  page-footer:
+    left: "Research Notes Hub"
+    center: |
+      Built with [Quarto](https://quarto.org/)
+    right: "Updated 2025"
+  reader-mode: true
 
 format:
   html:
-    theme:
-      - cosmo
-      - brand
+    theme: flatly
     css: styles.css
     toc: true
+    toc-location: left
+    toc-depth: 3
+    number-sections: false
+    smooth-scroll: true
+    code-fold: true
+    code-summary: "Show code"
+    link-external-icon: true
+    link-external-newwindow: true
 
 editor: visual
-

@@ -1,0 +1,111 @@
+---
+title: "Resources"
+subtitle: "Methods, data sources, and shared materials"
+---
+
+## External Resources
+
+::: {.callout-note appearance="simple"}
+### Primary Links
+
+| Resource | Description | Link |
+|:---------|:------------|:-----|
+| Weekly Meetings Doc | Collaborative meeting notes | [Google Doc](https://docs.google.com/document/d/12HWKK_0nlRcxNbcCX9QPQGAwK9ejVl5VxKu-PMaEjyg/edit?tab=t.0) |
+| Shared Code & Data | Project files and datasets | [Google Drive](https://drive.google.com/drive/folders/1ww0lXRawQ7TCRBm0FGwCJii-3QA9pc6t?usp=sharing) |
+
+: {.striped .hover}
+:::
+
+---
+
+## Key Methodological References
+
+### Figure 1 Outputs
+
+| Sample Definition | Weighted | Unweighted |
+|:------------------|:--------:|:----------:|
+| All counties (including >2 non-tract areas) | [View](https://maowens.quarto.pub/11_7_25_wt/) | [View](https://maowens.quarto.pub/11_7_25_no_wt/) |
+| Restricted counties (excluding >2 non-tract areas) | [View](https://maowens.quarto.pub/11_7_25_wt_rest_tract/) | [View](https://maowens.quarto.pub/11_7_25_no_wt_rest_tract/) |
+
+: Figure 1 variations by sample and weighting {.striped .hover}
+
+### Figure 2 Outputs
+
+| Description | Link |
+|:------------|:-----|
+| Jackknife regressions with baseline spending and family income (weighted) | [View](https://maowens.quarto.pub/11_6_25_wt/) |
+
+: Figure 2 outputs {.striped .hover}
+
+---
+
+## Analytical Documents
+
+### Jackknife Analysis
+
+| Document | Description | Link |
+|:---------|:------------|:-----|
+| Jackknife Code Review | Investigation of predicted-spending code for Figure 2s | [View](https://maowens.quarto.pub/jk_code_review/) |
+| Jackknife Regressions | Jackknife and non-jackknife regression results | [View](https://maowens.quarto.pub/jackknife/) |
+
+: {.striped .hover}
+
+### District and Panel Analysis
+
+| Document | Description | Link |
+|:---------|:------------|:-----|
+| District Level Results | Analysis at district level and top 100 | [View](https://maowens.quarto.pub/district_and_top_100/) |
+| Balanced Panel | Balanced panel event study analysis | [View](https://maowens.quarto.pub/balanced-panel-event-study-analysis/) |
+
+: {.striped .hover}
+
+---
+
+## Data Sources
+
+::: {.callout-tip}
+### Primary Data
+
+- **JJP Table D**: Primary source for standardized reform coding
+- **Hanushek Database**: Historical education spending data
+:::
+
+---
+
+## Methods Documentation
+
+### Key Variables
+
+| Variable | Description | Notes |
+|:---------|:------------|:------|
+| `pred_spend` | Predicted spending | Built without reforms for validation |
+| `reform_*` | Reform indicator variables | State-specific reform timing |
+| `rel_year` | Relative year | Years relative to reform timing |
+
+: Key variables used in analysis {.striped .hover}
+
+### Estimation Notes
+
+::: {.callout-warning}
+#### Binning Specification
+
+The correct binning specification is:
+
+```
+lag_20 = rel_year >= 20 & ~missing(rel_year)
+```
+:::
+
+---
+
+## Quick Reference
+
+### Sample Definitions
+
+- **All Counties**: Includes all counties regardless of non-tract area count
+- **Restricted Sample**: Excludes counties with >= 2 non-tract areas present
+
+### Weighting
+
+- **Weighted**: Population or enrollment weights applied
+- **Unweighted**: Raw estimates without adjustment
