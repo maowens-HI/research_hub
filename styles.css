@@ -170,11 +170,11 @@ a:hover {
 
 .hero {
   background: linear-gradient(135deg, var(--color-bg) 0%, var(--color-accent-light) 100%);
-  padding: var(--space-xxl) var(--space-lg);
+  padding: var(--space-xl) var(--space-lg);
   text-align: center;
   position: relative;
   overflow: hidden;
-  min-height: 70vh;
+  min-height: 35vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
