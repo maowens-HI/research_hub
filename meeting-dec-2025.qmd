@@ -1,7 +1,7 @@
 ---
-title: "December 2025 Meeting Notes"
-pagetitle: "December 2025 Meeting | Research Hub"
-date: "December 2, 2025"
+title: "December 5, 2025 Meeting"
+pagetitle: "December 5, 2025 Meeting | Research Hub"
+date: "December 5, 2025"
 format:
   html:
     toc: true
@@ -14,7 +14,7 @@ format:
 
 # December 5, 2025 Meeting {.hero-headline}
 
-[Figure 2 Analysis & Next Steps]{.hero-tagline}
+[Figure 2 Results: Fixes Applied & Jackknife Analysis]{.hero-tagline}
 
 :::
 :::
@@ -24,172 +24,293 @@ format:
 
 ## Meeting Overview
 
-**Date:** December 2, 2025
+**Date:** December 5, 2025
 
-**Topic:** Figure 2 Fixes and Jackknife Analysis Strategy
+**Topic:** Presentation of Figure 2 Results with Both Fixes Applied
 
-This meeting addressed critical issues discovered in the Figure 2 analysis related to never-treated units and established a comprehensive plan for robustness checks.
-
----
-
-## Figure 2 Fixes Identified
-
-### 1. Missing Data Issue {#missing-data}
-
-::: {.callout-warning appearance="minimal"}
-**Problem:** The "high" variable was undefined for never-treated units, causing them to be excluded from interacted regressions.
-
-**Impact:** Never-treated units were being dropped from the analysis when they should have been included as controls.
-
-**Solution:** Set `high=0` for never-treated units to ensure they are properly included in the regression analysis.
-:::
-
-**Technical Details:**
-
-- Never-treated units are critical controls in difference-in-differences analysis
-- The missing `high` variable created an unintended sample restriction
-- By defining `high=0` for these units, we retain them in the analysis while maintaining the interpretation of the treatment effect
-
-### 2. Interaction Term Issue {#interaction-term}
-
-::: {.callout-warning appearance="minimal"}
-**Problem:** Year effects were incorrectly interacted with "high", preventing never-treated units from influencing year effects for high-treated counties.
-
-**Impact:** The year fixed effects were being estimated separately for high and non-high groups, rather than being common across all units.
-
-**Solution:** Remove interactions between "high" and year effects to allow never-treated units to dictate year effects across all groups.
-:::
-
-**Technical Details:**
-
-- Year fixed effects should capture common time trends across all units
-- Interacting year effects with treatment status fragmented the control for time trends
-- Never-treated units provide crucial information about underlying time trends
-- The fix ensures that year effects are estimated using all available data
+This meeting presents the complete set of Figure 2 event study results following the fixes identified on December 2nd. All analyses include both corrections: (1) setting `high=0` for never-treated units, and (2) removing interactions between "high" and year effects.
 
 ---
 
-## Next Steps for Myles
+## Context: Fixes Applied
 
-### Jackknife Analysis Sequence
-
-The following sequence of analyses should be performed, applying both fixes identified above:
+All results presented below incorporate the two critical fixes identified on December 2:
 
 ::: {.callout-note appearance="minimal"}
-#### Analysis Workflow
+**Fix 1: Missing Data Issue**
+- Set `high=0` for never-treated units to include them in interacted regressions
 
-**Phase 1: No Jackknife**
-
-1. ✅ **Baseline spending only**
-   - Core specification without additional controls
-   - Establishes baseline treatment effect
-
-2. **Baseline spending + income quartiles**
-   - Tests whether effects vary by income level
-   - Adds heterogeneity dimension
-
-3. **Baseline spending + income quartiles + reform types**
-   - Full specification with all heterogeneity controls
-   - Most comprehensive model
-
-**Phase 2: Jackknife Robustness**
-
-4. **Baseline spending only, jackknife**
-   - Iteratively remove each state
-   - Tests sensitivity to influential states
-
-5. **Baseline spending + income quartiles, jackknife**
-   - Jackknife with income heterogeneity
-   - Ensures results aren't driven by specific states
-
-6. **Baseline spending + income quartiles + reform types, jackknife**
-   - Full jackknife with all controls
-   - Most rigorous robustness check
+**Fix 2: Interaction Term Issue**
+- Removed interactions between "high" and year effects
+- Never-treated units now properly influence year effects for all groups
 :::
-
-### Priority Order
-
-The analyses should be completed in the exact order listed above:
-
-| Step | Specification | Jackknife | Priority |
-|:----:|:-------------|:---------:|:--------:|
-| 1 | Baseline only | No | ✅ Complete |
-| 2 | Baseline + Income | No | **Next** |
-| 3 | Baseline + Income + Reforms | No | High |
-| 4 | Baseline only | Yes | High |
-| 5 | Baseline + Income | Yes | Medium |
-| 6 | Baseline + Income + Reforms | Yes | Medium |
 
 ---
 
-## Additional Investigation Required
+## Results: Six-Step Analysis Sequence
 
-### Discrepancy Analysis {#discrepancy}
+### Phase 1: No Jackknife Specifications
 
-::: {.callout-important appearance="minimal"}
-**Task:** Investigate discrepancies between balanced figures in section 5.2 and current regression results.
+#### Figure 2.1: Baseline Spending Only (No Jackknife) {#fig-2-1}
 
-**Context:**
-- Section 5.2 contains balanced panel figures (earlier analysis)
-- Current V0 Figure 2s now have both fixes applied
-- Need to understand why results differ between these two approaches
+**Specification:** Core event study with baseline spending quartiles only.
 
-**Questions to Address:**
-- What is driving the difference in results?
-- Is it the balancing requirement, the sample composition, or the specification?
-- Do the fixes resolve the discrepancies or are there additional issues?
-:::
+**Sample:** Full sample, no states excluded.
 
-### Investigation Steps
-
-1. **Compare Samples**
-   - Document which counties are included in balanced vs. unbalanced samples
-   - Calculate sample sizes and treatment timing distributions
-
-2. **Compare Specifications**
-   - Verify that both use the same regression specification (aside from balancing)
-   - Check if controls and fixed effects match
-
-3. **Decompose Differences**
-   - Run the V0 Figure 2 specification on the balanced sample
-   - Run the section 5.2 specification on the full sample
-   - Identify which component drives the discrepancy
-
-4. **Document Findings**
-   - Create a summary table comparing results across specifications
-   - Provide interpretation of what the differences mean for our conclusions
-
----
-
-## Key Takeaways
+![Event study estimates by baseline spending quartile](images/fig2_1_baseline_no_jk.png){#fig-2-1-plot}
 
 ::: {.callout-tip appearance="minimal"}
-### Summary of Actions
-
-1. **Immediate:** Both fixes (missing data and interaction term) must be applied to all Figure 2 analyses going forward
-
-2. **Short-term:** Complete the six-step analysis sequence outlined above
-
-3. **Medium-term:** Resolve the discrepancy between balanced and unbalanced results
-
-4. **Documentation:** Track results systematically to identify patterns across specifications
+**Key Findings:**
+- [Summary of treatment effects across quartiles]
+- [Pre-trends assessment]
+- [Magnitude of effects relative to baseline]
 :::
+
+---
+
+#### Figure 2.2: Baseline + Income Quartiles (No Jackknife) {#fig-2-2}
+
+**Specification:** Event study interacted with both baseline spending and income quartiles.
+
+**Sample:** Full sample, no states excluded.
+
+![Event study estimates by baseline spending and income quartiles](images/fig2_2_income_no_jk.png){#fig-2-2-plot}
+
+::: {.callout-tip appearance="minimal"}
+**Key Findings:**
+- [Heterogeneity by income level]
+- [Interaction between baseline spending and income]
+- [Comparison to baseline-only specification]
+:::
+
+---
+
+#### Figure 2.3: Baseline + Income + Reform Types (No Jackknife) {#fig-2-3}
+
+**Specification:** Full model with baseline spending, income quartiles, and reform type indicators.
+
+**Sample:** Full sample, no states excluded.
+
+![Event study estimates by baseline spending, income quartiles, and reform types](images/fig2_3_reforms_no_jk.png){#fig-2-3-plot}
+
+::: {.callout-tip appearance="minimal"}
+**Key Findings:**
+- [How effects vary by reform type]
+- [Robustness of income heterogeneity to reform controls]
+- [Which reform types show strongest effects]
+:::
+
+---
+
+### Phase 2: Jackknife Robustness Checks
+
+#### Figure 2.4: Baseline Spending Only (Jackknife) {#fig-2-4}
+
+**Specification:** Core event study with baseline spending quartiles, iteratively excluding each state.
+
+**Method:** Jackknife resampling - each line represents results with one state removed.
+
+![Jackknife event study estimates - baseline spending only](images/fig2_4_baseline_jk.png){#fig-2-4-plot}
+
+::: {.callout-tip appearance="minimal"}
+**Key Findings:**
+- [Stability of results across state exclusions]
+- [Identification of influential states (if any)]
+- [Range of effect estimates across jackknife iterations]
+- [Comparison to non-jackknife baseline]
+:::
+
+---
+
+#### Figure 2.5: Baseline + Income Quartiles (Jackknife) {#fig-2-5}
+
+**Specification:** Event study with baseline spending and income quartiles, iteratively excluding each state.
+
+**Method:** Jackknife resampling across full income heterogeneity specification.
+
+![Jackknife event study estimates - baseline spending and income quartiles](images/fig2_5_income_jk.png){#fig-2-5-plot}
+
+::: {.callout-tip appearance="minimal"}
+**Key Findings:**
+- [Robustness of income heterogeneity to state exclusions]
+- [Whether specific states drive the income gradient]
+- [Comparison to non-jackknife income specification]
+:::
+
+---
+
+#### Figure 2.6: Baseline + Income + Reform Types (Jackknife) {#fig-2-6}
+
+**Specification:** Full model with all controls, iteratively excluding each state.
+
+**Method:** Jackknife resampling across complete specification.
+
+![Jackknife event study estimates - full specification with reforms](images/fig2_6_reforms_jk.png){#fig-2-6-plot}
+
+::: {.callout-tip appearance="minimal"}
+**Key Findings:**
+- [Robustness of full model to state exclusions]
+- [Stability of reform type effects across jackknife iterations]
+- [Final assessment of result sensitivity]
+:::
+
+---
+
+## Cross-Specification Comparison
+
+### Summary Table
+
+| Figure | Controls | Jackknife | Primary Finding |
+|:-------|:---------|:---------:|:----------------|
+| 2.1 | Baseline only | No | [Effect size, significance] |
+| 2.2 | Baseline + Income | No | [Income heterogeneity pattern] |
+| 2.3 | Baseline + Income + Reforms | No | [Reform type patterns] |
+| 2.4 | Baseline only | Yes | [Robustness assessment] |
+| 2.5 | Baseline + Income | Yes | [Income heterogeneity robustness] |
+| 2.6 | Baseline + Income + Reforms | Yes | [Full model robustness] |
+
+### Key Takeaways Across All Specifications
+
+::: {.callout-important appearance="minimal"}
+**Patterns Observed:**
+
+1. **Effect Magnitude:** [How effects compare across specifications]
+
+2. **Income Heterogeneity:** [Whether low-income areas show larger effects]
+
+3. **Reform Type Variation:** [Which reform types are most effective]
+
+4. **Robustness:** [How stable effects are to state exclusions]
+
+5. **Pre-Trends:** [Assessment of parallel trends assumption]
+:::
+
+---
+
+## Discrepancy Investigation: Balanced vs. Unbalanced Results
+
+### Background
+
+Section 5.2 contains balanced panel figures (earlier analysis) which showed [describe pattern]. Current V0 Figure 2s with both fixes applied show [describe pattern]. This section investigates the source of these discrepancies.
+
+### Comparison Analysis
+
+#### Sample Composition
+
+**Balanced Sample (Section 5.2):**
+- Counties included: [N]
+- Balancing requirement: [description]
+- Treatment timing distribution: [summary]
+
+**Unbalanced Sample (Current V0 Fig 2):**
+- Counties included: [N]
+- No balancing restriction
+- Treatment timing distribution: [summary]
+
+#### Specification Comparison
+
+![Comparison of balanced vs. unbalanced sample results](images/balanced_vs_unbalanced.png){#fig-comparison}
+
+::: {.callout-note appearance="minimal"}
+**Sources of Discrepancy:**
+
+1. **Sample Size Effect:** [How many more counties in unbalanced sample]
+
+2. **Composition Effect:** [Which types of counties differ between samples]
+
+3. **Treatment Timing:** [How treatment timing differs]
+
+4. **Specification Differences:** [Any other spec differences beyond balancing]
+:::
+
+### Decomposition Analysis
+
+To isolate the source of discrepancies, we ran:
+
+1. **V0 Fig 2 specification on balanced sample**
+   - Result: [outcome]
+   - Interpretation: [what this tells us]
+
+2. **Section 5.2 specification on full sample**
+   - Result: [outcome]
+   - Interpretation: [what this tells us]
+
+::: {.callout-tip appearance="minimal"}
+**Conclusion:**
+
+The discrepancy is primarily driven by [sample composition / balancing requirement / specification difference]. The fixes [do / do not] resolve the discrepancy. [Additional interpretation of what this means for our understanding of the results].
+:::
+
+---
+
+## Implications & Next Steps
+
+### Main Conclusions
+
+1. **Fix Effectiveness:** Both fixes successfully [describe impact on results]
+
+2. **Robustness:** The jackknife analysis shows [degree of robustness/sensitivity]
+
+3. **Heterogeneity:** [Summary of income and reform type heterogeneity]
+
+4. **Balanced vs. Unbalanced:** [What we learned from the discrepancy investigation]
+
+### Recommendations
+
+::: {.callout-important appearance="minimal"}
+**Moving Forward:**
+
+1. [Recommendation based on results]
+2. [Additional analyses needed, if any]
+3. [Decisions about preferred specification]
+4. [Implications for paper narrative]
+:::
+
+---
+
+## Technical Notes
+
+### Data & Sample
+- **Dataset:** [description]
+- **Time Period:** [years]
+- **Unit of Analysis:** County level
+- **Sample Restrictions:** [any restrictions applied]
+
+### Estimation
+- **Method:** Two-way fixed effects event study
+- **Fixed Effects:** County and year
+- **Standard Errors:** Clustered at [level]
+- **Weights:** [weighted/unweighted]
+
+### Code & Replication
+- Analysis code: [location]
+- Figure generation: [location]
+- Data: [location]
 
 ---
 
 ## Related Resources
 
-- [Jackknife Code Review](https://maowens.quarto.pub/jk_code_review/) - Previous jackknife implementation and methodology
-- [December 2025 Timeline Entry](index.qmd#december-2025) - Summary of this meeting in the research timeline
+- [December 2025 Timeline Entry](index.qmd#december-2025) - Summary of fixes identified on Dec 2
+- [Jackknife Code Review](https://maowens.quarto.pub/jk_code_review/) - Jackknife methodology documentation
 
 ---
 
-## Next Meeting
+## Appendix: Figure Notes
 
-**Planned Topics:**
-- Review results from the six-step analysis sequence
-- Discuss findings from the discrepancy investigation
-- Determine next steps based on robustness check outcomes
+### Image Placeholder Information
+
+All figures above use placeholder paths in the `/images/` directory:
+
+- `fig2_1_baseline_no_jk.png` - Baseline only, no jackknife
+- `fig2_2_income_no_jk.png` - Baseline + income, no jackknife
+- `fig2_3_reforms_no_jk.png` - Full spec, no jackknife
+- `fig2_4_baseline_jk.png` - Baseline only, with jackknife
+- `fig2_5_income_jk.png` - Baseline + income, with jackknife
+- `fig2_6_reforms_jk.png` - Full spec, with jackknife
+- `balanced_vs_unbalanced.png` - Balanced vs unbalanced comparison
+
+To add actual figures, place PNG files in `/home/user/research_hub/images/` with these filenames.
 
 :::
 :::
