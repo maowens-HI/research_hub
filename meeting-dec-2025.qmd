@@ -1,0 +1,195 @@
+---
+title: "December 2025 Meeting Notes"
+pagetitle: "December 2025 Meeting | Research Hub"
+date: "December 2, 2025"
+format:
+  html:
+    toc: true
+    toc-location: left
+    toc-depth: 3
+---
+
+::: {.hero}
+::: {.hero-content}
+
+# December 5, 2025 Meeting {.hero-headline}
+
+[Figure 2 Analysis & Next Steps]{.hero-tagline}
+
+:::
+:::
+
+::: {.section}
+::: {.container}
+
+## Meeting Overview
+
+**Date:** December 2, 2025
+
+**Topic:** Figure 2 Fixes and Jackknife Analysis Strategy
+
+This meeting addressed critical issues discovered in the Figure 2 analysis related to never-treated units and established a comprehensive plan for robustness checks.
+
+---
+
+## Figure 2 Fixes Identified
+
+### 1. Missing Data Issue {#missing-data}
+
+::: {.callout-warning appearance="minimal"}
+**Problem:** The "high" variable was undefined for never-treated units, causing them to be excluded from interacted regressions.
+
+**Impact:** Never-treated units were being dropped from the analysis when they should have been included as controls.
+
+**Solution:** Set `high=0` for never-treated units to ensure they are properly included in the regression analysis.
+:::
+
+**Technical Details:**
+
+- Never-treated units are critical controls in difference-in-differences analysis
+- The missing `high` variable created an unintended sample restriction
+- By defining `high=0` for these units, we retain them in the analysis while maintaining the interpretation of the treatment effect
+
+### 2. Interaction Term Issue {#interaction-term}
+
+::: {.callout-warning appearance="minimal"}
+**Problem:** Year effects were incorrectly interacted with "high", preventing never-treated units from influencing year effects for high-treated counties.
+
+**Impact:** The year fixed effects were being estimated separately for high and non-high groups, rather than being common across all units.
+
+**Solution:** Remove interactions between "high" and year effects to allow never-treated units to dictate year effects across all groups.
+:::
+
+**Technical Details:**
+
+- Year fixed effects should capture common time trends across all units
+- Interacting year effects with treatment status fragmented the control for time trends
+- Never-treated units provide crucial information about underlying time trends
+- The fix ensures that year effects are estimated using all available data
+
+---
+
+## Next Steps for Myles
+
+### Jackknife Analysis Sequence
+
+The following sequence of analyses should be performed, applying both fixes identified above:
+
+::: {.callout-note appearance="minimal"}
+#### Analysis Workflow
+
+**Phase 1: No Jackknife**
+
+1. ✅ **Baseline spending only**
+   - Core specification without additional controls
+   - Establishes baseline treatment effect
+
+2. **Baseline spending + income quartiles**
+   - Tests whether effects vary by income level
+   - Adds heterogeneity dimension
+
+3. **Baseline spending + income quartiles + reform types**
+   - Full specification with all heterogeneity controls
+   - Most comprehensive model
+
+**Phase 2: Jackknife Robustness**
+
+4. **Baseline spending only, jackknife**
+   - Iteratively remove each state
+   - Tests sensitivity to influential states
+
+5. **Baseline spending + income quartiles, jackknife**
+   - Jackknife with income heterogeneity
+   - Ensures results aren't driven by specific states
+
+6. **Baseline spending + income quartiles + reform types, jackknife**
+   - Full jackknife with all controls
+   - Most rigorous robustness check
+:::
+
+### Priority Order
+
+The analyses should be completed in the exact order listed above:
+
+| Step | Specification | Jackknife | Priority |
+|:----:|:-------------|:---------:|:--------:|
+| 1 | Baseline only | No | ✅ Complete |
+| 2 | Baseline + Income | No | **Next** |
+| 3 | Baseline + Income + Reforms | No | High |
+| 4 | Baseline only | Yes | High |
+| 5 | Baseline + Income | Yes | Medium |
+| 6 | Baseline + Income + Reforms | Yes | Medium |
+
+---
+
+## Additional Investigation Required
+
+### Discrepancy Analysis {#discrepancy}
+
+::: {.callout-important appearance="minimal"}
+**Task:** Investigate discrepancies between balanced figures in section 5.2 and current regression results.
+
+**Context:**
+- Section 5.2 contains balanced panel figures (earlier analysis)
+- Current V0 Figure 2s now have both fixes applied
+- Need to understand why results differ between these two approaches
+
+**Questions to Address:**
+- What is driving the difference in results?
+- Is it the balancing requirement, the sample composition, or the specification?
+- Do the fixes resolve the discrepancies or are there additional issues?
+:::
+
+### Investigation Steps
+
+1. **Compare Samples**
+   - Document which counties are included in balanced vs. unbalanced samples
+   - Calculate sample sizes and treatment timing distributions
+
+2. **Compare Specifications**
+   - Verify that both use the same regression specification (aside from balancing)
+   - Check if controls and fixed effects match
+
+3. **Decompose Differences**
+   - Run the V0 Figure 2 specification on the balanced sample
+   - Run the section 5.2 specification on the full sample
+   - Identify which component drives the discrepancy
+
+4. **Document Findings**
+   - Create a summary table comparing results across specifications
+   - Provide interpretation of what the differences mean for our conclusions
+
+---
+
+## Key Takeaways
+
+::: {.callout-tip appearance="minimal"}
+### Summary of Actions
+
+1. **Immediate:** Both fixes (missing data and interaction term) must be applied to all Figure 2 analyses going forward
+
+2. **Short-term:** Complete the six-step analysis sequence outlined above
+
+3. **Medium-term:** Resolve the discrepancy between balanced and unbalanced results
+
+4. **Documentation:** Track results systematically to identify patterns across specifications
+:::
+
+---
+
+## Related Resources
+
+- [Jackknife Code Review](https://maowens.quarto.pub/jk_code_review/) - Previous jackknife implementation and methodology
+- [December 2025 Timeline Entry](index.qmd#december-2025) - Summary of this meeting in the research timeline
+
+---
+
+## Next Meeting
+
+**Planned Topics:**
+- Review results from the six-step analysis sequence
+- Discuss findings from the discrepancy investigation
+- Determine next steps based on robustness check outcomes
+
+:::
+:::
