@@ -44,6 +44,20 @@ Recent analyses and code reviews documenting progress on the project.
 ::: research-card
 [Analysis]{.card-category}
 
+[Dec 05: JK Instability - Classification Issues]{.card-title}
+
+[Investigation reveals Ohio and Texas counties misclassified in jackknife procedure due to below-average spending growth. 840 observations contaminate "high predicted" group, compressing event-study results.]{.card-excerpt}
+
+[December 2025]{.card-meta}
+
+[View JK Instability Analysis](jk-instability-dec-05-2025.qmd){.card-link}
+:::
+::::
+
+:::: carousel-slide
+::: research-card
+[Analysis]{.card-category}
+
 [Dec 02: Figure 2 Fixes & Jackknife Strategy]{.card-title}
 
 [Resolving the "Never Treated" interaction issue. Bug fix: Define high=0 among NTs and remove interaction with year effects. Implementing jackknife iterations for robustness.]{.card-excerpt}
@@ -126,6 +140,24 @@ A chronological record of project milestones and findings.
 **Topic:** Comprehensive review of Figure 2 fixes and jackknife strategy.
 
 [View Full Meeting Notes](meeting-dec-05-2025.qmd){.btn-ghost}
+
+------------------------------------------------------------------------
+
+#### Dec 05: JK Instability - Jackknife Classification Issues
+
+**Topic:** Investigation of jackknife classification instability in Approach II.
+
+::: {.callout-warning appearance="minimal"}
+**Key Finding:** Two states (Ohio and Texas) have below-average spending growth for their high-baseline-spending counties, causing them to be misclassified as "high predicted" in the jackknife procedure.
+
+**Impact:** 840 observations (11.9% of the "high" group) contaminate the jackknife results, compressing the event-study trends.
+
+**Root Cause:** Leave-one-state-out predictions diverge from actual outcomes when states are highly influential. Ohio pre_q 4 and Texas pre_q 3 counties are classified as "high predicted" based on other states' patterns despite their below-average performance.
+:::
+
+::: tag-group
+[View JK Instability Analysis](jk-instability-dec-05-2025.qmd){.btn-ghost}
+:::
 
 ------------------------------------------------------------------------
 
