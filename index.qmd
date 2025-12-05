@@ -1,10 +1,8 @@
 ---
-title: "Research Hub"
 pagetitle: "Research Hub"
 format:
   html:
     toc: false
-    title-block-banner: false
     page-layout: full
 ---
 

@@ -13,9 +13,6 @@ website:
         text: Home
       - href: github.qmd
         text: Github
-    right:
-      - icon: search
-        href: "#"
   page-footer:
     background: light
     left: |
