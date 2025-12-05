@@ -20,13 +20,6 @@ All analyses now incorporate two fixes:
 1. Setting `high = 0` for never-treated units  
 2. Removing interactions between `high` and the year effects
 
-Additional corrections:
-
-- Stabilized functions such as `xtile` and `sort/gsort` to eliminate run-to-run variation caused by tie-breaking.
-- Dropped all counties where `good_71 != 1` **before** assigning quartiles, rather than after. This prevents excluded counties from contaminating quartile definitions.
-
-We then re-generated Figure 1 and Figure 2 using the corrected data and checked for discrepancies between the two.
-
 ------------------------------------------------------------------------
 
 ## Results
@@ -90,20 +83,6 @@ We then re-generated Figure 1 and Figure 2 using the corrected data and checked 
 1. In the non-jackknife regressions, the high group is clearly above the low group.  
 2. In the jackknife version, this pattern reverses: the estimated effect for the high group often dips below the low group.
 :::
-
-------------------------------------------------------------------------
-
-## Discrepancy Investigation: Fig 1 and Fig 2 Results
-
-In theory we should be able to recreate figure 1 using the regression set up of figure 2. Here we test that.
-
-![Quartile 1-3 of 1971 Per Pupil Expenditure](images/12_5_25/){#fig-1-1-plot}
-
-![Quartile 4 of 1971 Per Pupil Expenditure](images/12_5_25/){#fig-1-2-plot}
-
-![Quartile 1-3 of 1971 Per Pupil Expenditure Using High Variable](images/12_5_25/){#fig-1-3-plot}
-
-![Quartile 4 of 1971 Per Pupil Expenditure Using High Variable](images/12_5_25/){#fig-1-4-plot}
 
 ------------------------------------------------------------------------
 

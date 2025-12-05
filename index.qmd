@@ -40,7 +40,7 @@ Recent notes.
 
 :::: carousel-slide
 ::: research-card
-[Analysis]{.card-category}
+[Notes]{.card-category}
 
 [Dec 05: Diagnosing JackKnife Instability]{.card-title}
 
@@ -54,7 +54,7 @@ Recent notes.
 
 :::: carousel-slide
 ::: research-card
-[Analysis]{.card-category}
+[Notes]{.card-category}
 
 [Dec 02: Figure 2 Fixes & Jackknife Strategy]{.card-title}
 
@@ -210,7 +210,7 @@ A chronological record of project milestones and findings.
 
 **Topic:** Robustness checks across weighted/unweighted and sample restrictions.
 
-::: panel-tabset
+
 ##### Summary Table
 
 | Figure | Sample Definition | Weighted | Link |
@@ -220,21 +220,6 @@ A chronological record of project milestones and findings.
 | **Fig 1** | Excludes counties w/ \>2 non-tract areas | **Yes** | [View](https://maowens.quarto.pub/11_7_25_wt_rest_tract/) |
 | **Fig 1** | Excludes counties w/ \>2 non-tract areas | No | [View](https://maowens.quarto.pub/11_7_25_no_wt_rest_tract/) |
 
-##### All Counties Sample
-
-*Includes all counties regardless of non-tract area count.*
-
--   **Figure 1s (Weighted):** [View Results](https://maowens.quarto.pub/11_4_25_wt/)
--   **Figure 1s (Unweighted):** [View Results](https://maowens.quarto.pub/11_4_25_no_wt/)
--   **Figure 2s (Weighted):** [View Results](https://maowens.quarto.pub/11_6_25_wt/)
-
-##### Restricted Sample
-
-*Excludes problematic counties (≥2 non-tract areas).*
-
--   **Figure 1s (Weighted):** [View Results](https://maowens.quarto.pub/11_3_25_wt/)
--   **Figure 1s (Unweighted):** [View Results](https://maowens.quarto.pub/11_3_25_no_wt/)
-:::
 
 ------------------------------------------------------------------------
 
