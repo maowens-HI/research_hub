@@ -17,7 +17,12 @@ format:
 
 **Topic:** Presentation of Figure 2 Results with Both Fixes Applied
 
-This document goes over the implementation of the figure 2 fixes identified on December 2nd. All analyses include both corrections: (1) setting `high=0` for never-treated units, and (2) removing interactions between "high" and year effects.
+This document goes over the implementation of the figure 2 fixes identified on December 2nd. All analyses include both corrections: 
+
+ 1. Setting `high=0` for never-treated units
+ 2. Removing interactions between "high" and year effects.
+
+2. We also wanted to look at discrepancies between figure 1 chars and charts we looked at tuesday which contained teh same smaple. What I can say right now is that we can produce the same chart as figure 1 if high contains thesame quartiels as q1-3 aka figure 1 . One thingt o recall is that while we can have versions fo figure 2 which only contain q1-q3 for high and exclude q4 this does not mean that the low group does not contain q1-q3 so it is not exactly the exact same smaple. Another thing that I clamped down on was unstable functions such as xtile(0 and gsort etc. If there were tires in thse fucntions it could aribitraily decide if a county for examplegets thrown into quartile 2 or 3. This could cause the same code to produce slightly different samples. 
 
 ------------------------------------------------------------------------
 
