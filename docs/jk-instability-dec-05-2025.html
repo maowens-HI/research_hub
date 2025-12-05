@@ -122,40 +122,17 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#jackknife-classification-instability-in-approach-ii" id="toc-jackknife-classification-instability-in-approach-ii" class="nav-link active" data-scroll-target="#jackknife-classification-instability-in-approach-ii">Jackknife Classification Instability in Approach II</a>
   <ul class="collapse">
   <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#initial-problem" id="toc-initial-problem" class="nav-link" data-scroll-target="#initial-problem">1. Initial Problem</a>
+  <li><a href="#conceptual-setup" id="toc-conceptual-setup" class="nav-link" data-scroll-target="#conceptual-setup">Conceptual Setup</a></li>
+  <li><a href="#two-ways-to-generate-predicted-spending" id="toc-two-ways-to-generate-predicted-spending" class="nav-link" data-scroll-target="#two-ways-to-generate-predicted-spending">Two Ways to Generate Predicted Spending</a>
   <ul class="collapse">
-  <li><a href="#observation" id="toc-observation" class="nav-link" data-scroll-target="#observation">Observation</a></li>
-  <li><a href="#quantification" id="toc-quantification" class="nav-link" data-scroll-target="#quantification">Quantification</a></li>
+  <li><a href="#standard-regression" id="toc-standard-regression" class="nav-link" data-scroll-target="#standard-regression">1. Standard Regression</a></li>
+  <li><a href="#jackknife-leave-one-state-out" id="toc-jackknife-leave-one-state-out" class="nav-link" data-scroll-target="#jackknife-leave-one-state-out">2. Jackknife (Leave-One-State-Out)</a></li>
   </ul></li>
-  <li><a href="#diagnosis" id="toc-diagnosis" class="nav-link" data-scroll-target="#diagnosis">2. Diagnosis</a>
+  <li><a href="#diagnosis" id="toc-diagnosis" class="nav-link" data-scroll-target="#diagnosis">3. Diagnosis</a>
   <ul class="collapse">
-  <li><a href="#step-1-identify-which-states-contributed-the-flipped-observations" id="toc-step-1-identify-which-states-contributed-the-flipped-observations" class="nav-link" data-scroll-target="#step-1-identify-which-states-contributed-the-flipped-observations">Step 1: Identify Which States Contributed the Flipped Observations</a></li>
-  <li><a href="#step-2-compare-leave-out-coefficients" id="toc-step-2-compare-leave-out-coefficients" class="nav-link" data-scroll-target="#step-2-compare-leave-out-coefficients">Step 2: Compare Leave-Out Coefficients</a></li>
-  <li><a href="#step-4-examine-actual-spending-trajectories" id="toc-step-4-examine-actual-spending-trajectories" class="nav-link" data-scroll-target="#step-4-examine-actual-spending-trajectories">Step 4: Examine Actual Spending Trajectories</a></li>
+  <li><a href="#coefficients" id="toc-coefficients" class="nav-link" data-scroll-target="#coefficients">Coefficients</a></li>
+  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation">Interpretation</a></li>
   </ul></li>
-  <li><a href="#root-cause-analysis" id="toc-root-cause-analysis" class="nav-link" data-scroll-target="#root-cause-analysis">3. Root Cause Analysis</a>
-  <ul class="collapse">
-  <li><a href="#the-mechanism" id="toc-the-mechanism" class="nav-link" data-scroll-target="#the-mechanism">The Mechanism</a></li>
-  <li><a href="#the-irony" id="toc-the-irony" class="nav-link" data-scroll-target="#the-irony">The Irony</a></li>
-  </ul></li>
-  <li><a href="#why-this-matters" id="toc-why-this-matters" class="nav-link" data-scroll-target="#why-this-matters">4. Why This Matters</a>
-  <ul class="collapse">
-  <li><a href="#contamination-of-the-high-group" id="toc-contamination-of-the-high-group" class="nav-link" data-scroll-target="#contamination-of-the-high-group">Contamination of the “High” Group</a></li>
-  <li><a href="#quantifying-the-contamination" id="toc-quantifying-the-contamination" class="nav-link" data-scroll-target="#quantifying-the-contamination">Quantifying the Contamination</a></li>
-  </ul></li>
-  <li><a href="#implications-and-options" id="toc-implications-and-options" class="nav-link" data-scroll-target="#implications-and-options">5. Implications and Options</a>
-  <ul class="collapse">
-  <li><a href="#is-this-a-bug" id="toc-is-this-a-bug" class="nav-link" data-scroll-target="#is-this-a-bug">Is This a Bug?</a></li>
-  <li><a href="#is-this-expected-behavior" id="toc-is-this-expected-behavior" class="nav-link" data-scroll-target="#is-this-expected-behavior">Is This Expected Behavior?</a></li>
-  <li><a href="#potential-solutions" id="toc-potential-solutions" class="nav-link" data-scroll-target="#potential-solutions">Potential Solutions</a></li>
-  </ul></li>
-  <li><a href="#technical-details" id="toc-technical-details" class="nav-link" data-scroll-target="#technical-details">6. Technical Details</a>
-  <ul class="collapse">
-  <li><a href="#files-examined" id="toc-files-examined" class="nav-link" data-scroll-target="#files-examined">Files Examined</a></li>
-  <li><a href="#key-variables" id="toc-key-variables" class="nav-link" data-scroll-target="#key-variables">Key Variables</a></li>
-  <li><a href="#prediction-formula-spec-a" id="toc-prediction-formula-spec-a" class="nav-link" data-scroll-target="#prediction-formula-spec-a">Prediction Formula (Spec A)</a></li>
-  </ul></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">7. Conclusion</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -196,14 +173,29 @@ ul.task-list li input[type="checkbox"] {
 <h1>Jackknife Classification Instability in Approach II</h1>
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>Investigation into why the jackknife event-study graph shows a compressed “high predicted” trend compared to the baseline revealed a fundamental issue: <strong>two states (Ohio and Texas)</strong> have below-average spending growth for their high-baseline-spending counties, causing them to be misclassified as “high predicted” in the jackknife procedure.</p>
-<hr>
+<p>This memo explains why the jackknife plots sometimes show the “high” group dipping below the “low” group. After applying the fixes Nick flagged on Tuesday, the updated charts look cleaner, but the same core issue remains: the jackknife estimates often compress the “high” group and, in several cases, push it below the “low” group.</p>
+<p>The main mechanism is straightforward. Some counties that are classified as <strong>low</strong> in the full-sample prediction model (because predicted spending &lt; 0) flip into the <strong>high</strong> category when their own state is excluded from the model during the jackknife procedure. This misclassification is likely not the only problem in the jackknife approach, but it appears to be a major contributor to the pattern we observe.</p>
+<p>A closer investigation shows that <strong>two states — Ohio and Texas</strong> — have below-average spending growth among counties that should be in the highest-baseline-spending group. When these states are left out in the jackknife step, their influence disappears, and counties that underperform in the full sample suddenly receive inflated predicted spending values. This pushes them incorrectly into the “high predicted” category.</p>
 </section>
-<section id="initial-problem" class="level2">
-<h2 class="anchored" data-anchor-id="initial-problem">1. Initial Problem</h2>
-<section id="observation" class="level3">
-<h3 class="anchored" data-anchor-id="observation">Observation</h3>
-<p>The baseline (full-sample) event-study showed clear separation between “high predicted” and “low predicted” spending groups. The jackknife version showed compressed, overlapping trends with the “high” group performing worse than expected.</p>
+<section id="conceptual-setup" class="level2">
+<h2 class="anchored" data-anchor-id="conceptual-setup">Conceptual Setup</h2>
+<p>The goal is simple:</p>
+<ol type="1">
+<li>Assign each county a predicted spending change.<br>
+</li>
+<li>Create a binary indicator equal to 1 if predicted spending &gt; 0 and 0 otherwise (for ever-treated counties).<br>
+</li>
+<li>Run an event-study regression using that binary variable.</li>
+</ol>
+<p>Under normal circumstances, this should yield the intuitive ordering: high above low.</p>
+</section>
+<section id="two-ways-to-generate-predicted-spending" class="level2">
+<h2 class="anchored" data-anchor-id="two-ways-to-generate-predicted-spending">Two Ways to Generate Predicted Spending</h2>
+<section id="standard-regression" class="level3">
+<h3 class="anchored" data-anchor-id="standard-regression">1. Standard Regression</h3>
+<p>To keep things simple, consider the specification that controls only for baseline 1971 spending quartile. In the baseline approach, we use the full sample and regress expenditure on quartile indicators. This produces predicted spending values, which we then use to define <code>high</code> (predicted &gt; 0). Running an event-study with this <code>high</code> variable delivers the expected pattern: <strong>high consistently exceeds low</strong>.</p>
+<section id="fig-2-1" class="level4">
+<h4 class="anchored" data-anchor-id="fig-2-1">Figure 2.1: Spending Only (No Jackknife)</h4>
 <div id="fig-2-1-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2-1-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -214,20 +206,35 @@ Figure&nbsp;1: Event study estimates by baseline spending quartile
 </figcaption>
 </figure>
 </div>
-<div id="fig-2-4-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
+</section>
+</section>
+<section id="jackknife-leave-one-state-out" class="level3">
+<h3 class="anchored" data-anchor-id="jackknife-leave-one-state-out">2. Jackknife (Leave-One-State-Out)</h3>
+<p>The jackknife repeats the same regression multiple times, each iteration excluding one state. For each iteration, we:</p>
+<ol type="1">
+<li>Re-estimate the model without state <em>s</em>.<br>
+</li>
+<li>Generate predicted spending for counties in the omitted state.<br>
+</li>
+<li>Assign those counties to high/low based on the jackknife prediction.<br>
+</li>
+<li>Move on to the next state.</li>
+</ol>
+<p>The advantage is that no single state can dominate the prediction model. The problem is that when we use these jackknife-based predictions to create the <code>high</code> variable for the second-stage event study, we sometimes obtain the reverse ordering: <strong>the low group sits above the high group</strong>.</p>
+<section id="fig-2-2" class="level4">
+<h4 class="anchored" data-anchor-id="fig-2-2">Figure 2.2: Spending + Income Quartiles (No Jackknife)</h4>
+<div id="fig-2-2-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-2-4-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/12_5_25/jackknife_spec_A_def_A_high_vs_low.png" class="img-fluid figure-img">
+<div aria-describedby="fig-2-2-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/12_5_25/baseline_spec_B_def_A_high_vs_low.png" class="img-fluid figure-img">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2-4-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: Jackknife event study estimates - baseline spending only
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2-2-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Event study estimates by baseline spending and income quartiles
 </figcaption>
 </figure>
 </div>
-</section>
-<section id="quantification" class="level3">
-<h3 class="anchored" data-anchor-id="quantification">Quantification</h3>
-<p>Tabulating <code>pre_q × high</code> (baseline spending quartile × high/low classification) revealed:</p>
+<p>Ordinarily I would assume this pattern reflects a coding mistake, because mechanically the high group should exceed the low group. But after checking the underlying data more closely, that explanation doesn’t hold.</p>
+<p>Tabulating <code>pre_q × high</code> (baseline spending quartile × high/low classification) shows the issue clearly:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -270,211 +277,38 @@ Figure&nbsp;2: Jackknife event study estimates - baseline spending only
 </tr>
 </tbody>
 </table>
-<p><strong>Finding:</strong> 840 observations from pre_q 3/4 (high-baseline-spending counties) flipped from “low” to “high” in the jackknife—counties that theoretically should have <em>lower</em> predicted spending increases.</p>
+<p><strong>Finding:</strong> 840 counties from pre_q 3 and pre_q 4 (the highest-baseline-spending groups) switch from “low” to “high” under the jackknife. These are units that should theoretically have <em>lower</em> predicted spending changes, not higher.</p>
 <hr>
+</section>
 </section>
 </section>
 <section id="diagnosis" class="level2">
-<h2 class="anchored" data-anchor-id="diagnosis">2. Diagnosis</h2>
-<section id="step-1-identify-which-states-contributed-the-flipped-observations" class="level3">
-<h3 class="anchored" data-anchor-id="step-1-identify-which-states-contributed-the-flipped-observations">Step 1: Identify Which States Contributed the Flipped Observations</h3>
-<p>Tabulate <code>state_fips × high</code> for pre_q ≥ 3 counties in both baseline and jackknife datasets.</p>
-<p><strong>Result:</strong> All 840 flipped observations came from exactly <strong>two states</strong>: - Ohio (FIPS 39): 336 observations - Texas (FIPS 48): 504 observations</p>
-<p>No other state had any pre_q 3/4 counties flip classification.</p>
+<h2 class="anchored" data-anchor-id="diagnosis">3. Diagnosis</h2>
+<p>To understand the flips, we compare the coefficients that form predicted spending in the full sample versus the jackknife runs for Ohio and Texas. Predicted spending equals the main effect plus the quartile adjustment relative to quartile 1 (<code>main + ppe</code>). Here, <code>ppe3</code> and <code>ppe4</code> refer to the coefficients on <code>lag_*#pre_q3</code> and <code>lag_*#pre_q4</code>.</p>
+<section id="coefficients" class="level3">
+<h3 class="anchored" data-anchor-id="coefficients">Coefficients</h3>
+<p><strong>Full Sample</strong> - main = 0.0208505<br>
+- ppe3 = −0.0227245<br>
+- ppe4 = −0.0299217</p>
+<p><strong>Ohio Omitted</strong> - main = 0.0138311<br>
+- ppe3 = −0.0193518<br>
+- ppe4 = −0.0120878</p>
+<p><strong>Texas Omitted</strong> - main = 0.0248799<br>
+- ppe3 = −0.0052331<br>
+- ppe4 = −0.0299885</p>
 </section>
-<section id="step-2-compare-leave-out-coefficients" class="level3">
-<h3 class="anchored" data-anchor-id="step-2-compare-leave-out-coefficients">Step 2: Compare Leave-Out Coefficients</h3>
-<p>I pulled the key coefficients from three event-study models, using lag 4 as the reference event-time. The main coefficient is the lag-4 effect for Q1 (the baseline quartile). The ppe3 and ppe4 coefficients show how much the lag-4 effect differs for counties in quartiles 3 and 4 compared to Q1. In other words, they tell us how baseline spending quartile shifts the 13-year average log-expenditure response at event-time 4.</p>
-<pre><code>Full Sample:   main = 0.0179   ppe3 = -0.0199   ppe4 = -0.0298
-Ohio:    main = 0.0124   ppe3 = -0.0157   ppe4 = -0.0112
-Texas:   main = 0.0217   ppe3 = -0.0075   ppe4 = -0.0303</code></pre>
-<p><strong>Computed Predictions:</strong></p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Model</th>
-<th>pred(q=3)</th>
-<th>pred(q=4)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Full Sample</td>
-<td>-0.0020</td>
-<td>-0.0119</td>
-</tr>
-<tr class="even">
-<td>Ohio</td>
-<td>-0.0033</td>
-<td><strong>+0.0012</strong></td>
-</tr>
-<tr class="odd">
-<td>Texas</td>
-<td><strong>+0.0142</strong></td>
-<td>-0.0086</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Finding:</strong> - When Ohio is excluded, <code>ppe4</code> jumps from -0.030 to -0.011 (Δ = +0.019), pushing Ohio’s pre_q 4 predictions above zero - When Texas is excluded, <code>ppe3</code> jumps from -0.020 to -0.008 (Δ = +0.012), pushing Texas’s pre_q 3 predictions above zero</p>
-</section>
-<section id="step-4-examine-actual-spending-trajectories" class="level3">
-<h3 class="anchored" data-anchor-id="step-4-examine-actual-spending-trajectories">Step 4: Examine Actual Spending Trajectories</h3>
-<p>Collapsed mean <code>lexp_ma_strict</code> by state group (Ohio/Texas/Other) for pre_q ≥ 3 counties over relative years 2-7 (the averaging window).</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>State Group</th>
-<th>t=2</th>
-<th>t=7</th>
-<th>Change</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Ohio</td>
-<td>2.001</td>
-<td>2.122</td>
-<td>+0.120</td>
-</tr>
-<tr class="even">
-<td>Other States</td>
-<td>1.875</td>
-<td>2.012</td>
-<td><strong>+0.137</strong></td>
-</tr>
-<tr class="odd">
-<td>Texas</td>
-<td>1.622</td>
-<td>1.735</td>
-<td>+0.113</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Finding:</strong> Ohio and Texas pre_q 3/4 counties have <strong>flatter spending growth</strong> than other states: - Ohio: 1.7 percentage points less growth than national average - Texas: 2.4 percentage points less growth than national average</p>
-<hr>
-</section>
-</section>
-<section id="root-cause-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="root-cause-analysis">3. Root Cause Analysis</h2>
-<section id="the-mechanism" class="level3">
-<h3 class="anchored" data-anchor-id="the-mechanism">The Mechanism</h3>
-<ol type="1">
-<li><p><strong>In the full sample:</strong> Ohio and Texas pre_q 3/4 counties drag down the <code>ppe3</code> and <code>ppe4</code> interaction coefficients because their spending growth is below the national average for those quartiles.</p></li>
-<li><p><strong>In the jackknife:</strong> Each state’s counties receive predictions from a model that <em>excludes</em> that state:</p>
+<section id="interpretation" class="level3">
+<h3 class="anchored" data-anchor-id="interpretation">Interpretation</h3>
 <ul>
-<li>Ohio counties get predictions from the “leave-Ohio” model</li>
-<li>Texas counties get predictions from the “leave-Texas” model</li>
-</ul></li>
-<li><p><strong>The perverse result:</strong> When Ohio/Texas are excluded from estimation, the remaining states’ pre_q 3/4 spending growth looks <em>better</em> (because the below-average performers are removed). This makes the interaction coefficients less negative, pushing predictions above zero.</p></li>
-<li><p><strong>Classification flip:</strong> Ohio’s pre_q 4 counties and Texas’s pre_q 3 counties cross the <code>pred_spend &gt; 0</code> threshold and are classified as “high predicted.”</p></li>
-</ol>
-</section>
-<section id="the-irony" class="level3">
-<h3 class="anchored" data-anchor-id="the-irony">The Irony</h3>
-<p>Counties are classified as “high predicted” precisely <em>because</em> their own below-average performance is removed from the model that predicts them. The jackknife correctly uses out-of-sample predictions, but those predictions reflect what happened in <em>other</em> states—not what actually happened in Ohio/Texas.</p>
-<hr>
-</section>
-</section>
-<section id="why-this-matters" class="level2">
-<h2 class="anchored" data-anchor-id="why-this-matters">4. Why This Matters</h2>
-<section id="contamination-of-the-high-group" class="level3">
-<h3 class="anchored" data-anchor-id="contamination-of-the-high-group">Contamination of the “High” Group</h3>
-<p>The “high predicted” group in the jackknife now contains: - Counties that genuinely had high predicted spending increases (correct) - Ohio pre_q 4 and Texas pre_q 3 counties that actually had <em>below-average</em> spending growth (contamination)</p>
-<p>This contamination drags down the “high” group’s average trajectory, compressing the difference between high and low groups in the event-study plot.</p>
-</section>
-<section id="quantifying-the-contamination" class="level3">
-<h3 class="anchored" data-anchor-id="quantifying-the-contamination">Quantifying the Contamination</h3>
-<ul>
-<li>Total “high” in jackknife: 7,056 observations</li>
-<li>Contaminated observations: 840 (Ohio pre_q 4 + Texas pre_q 3)</li>
-<li>Contamination rate: <strong>11.9%</strong> of the “high” group</li>
+<li><p>When <strong>Ohio</strong> is excluded, <code>ppe4</code> rises from −0.0299217 to −0.0120878 (<strong>+0.0178339</strong>).<br>
+This boosts quartile-4 predicted spending enough to flip <strong>336</strong> quartile-4 counties into the high group.</p></li>
+<li><p>When <strong>Texas</strong> is excluded, <code>ppe3</code> rises from −0.0227245 to −0.0052331 (<strong>~+0.0174914</strong>).<br>
+This raises quartile-3 predicted spending, flipping <strong>504</strong> quartile-3 counties into the high group.</p></li>
 </ul>
-<hr>
-</section>
-</section>
-<section id="implications-and-options" class="level2">
-<h2 class="anchored" data-anchor-id="implications-and-options">5. Implications and Options</h2>
-<section id="is-this-a-bug" class="level3">
-<h3 class="anchored" data-anchor-id="is-this-a-bug">Is This a Bug?</h3>
-<p><strong>No.</strong> The code correctly implements leave-one-state-out predictions. Each state’s counties receive predictions from a model excluding that state. The predictions are stored and assigned correctly.</p>
-</section>
-<section id="is-this-expected-behavior" class="level3">
-<h3 class="anchored" data-anchor-id="is-this-expected-behavior">Is This Expected Behavior?</h3>
-<p><strong>Technically yes, but problematically so.</strong> The jackknife is designed to create out-of-sample predictions to avoid overfitting. However, when individual states are highly influential (as Ohio and Texas are for pre_q 3/4), the leave-out predictions can diverge substantially from actual outcomes.</p>
-</section>
-<section id="potential-solutions" class="level3">
-<h3 class="anchored" data-anchor-id="potential-solutions">Potential Solutions</h3>
-<ol type="1">
-<li><strong>Use Definition B (quartile-based) instead of Definition A (threshold-based)</strong>
-<ul>
-<li>Less sensitive to small coefficient changes crossing zero</li>
-<li>But the Ohio/Texas swap pattern suggests quartile rankings may also be unstable</li>
-</ul></li>
-<li><strong>Examine robustness to excluding Ohio and Texas entirely</strong>
-<ul>
-<li>Run analysis without these influential states</li>
-<li>Compare results to full-sample and jackknife versions</li>
-</ul></li>
-<li><strong>Use state-level clustering in the threshold</strong>
-<ul>
-<li>Instead of national <code>pred_spend &gt; 0</code>, use within-state classifications</li>
-<li>Ensures each state’s counties are compared to similar counties</li>
-</ul></li>
-<li><strong>Report both baseline and jackknife results</strong>
-<ul>
-<li>Acknowledge the instability as a limitation</li>
-<li>Jackknife may be overly conservative due to this contamination</li>
-</ul></li>
-<li><strong>Investigate why Ohio and Texas are different</strong>
-<ul>
-<li>Are there policy or demographic factors explaining their below-average growth?</li>
-<li>Could inform the heterogeneity analysis itself</li>
-</ul></li>
-</ol>
-<hr>
-</section>
-</section>
-<section id="technical-details" class="level2">
-<h2 class="anchored" data-anchor-id="technical-details">6. Technical Details</h2>
-<section id="files-examined" class="level3">
-<h3 class="anchored" data-anchor-id="files-examined">Files Examined</h3>
-<ul>
-<li><code>08_jackknife_approach_ii.do</code> (main analysis file)</li>
-<li><code>baseline_reg_A.dta</code> (baseline predictions)</li>
-<li><code>jk_reg_A.dta</code> (jackknife predictions)</li>
-<li><code>model_baseline_A.ster</code> (full-sample estimates)</li>
-<li><code>jackknife_A_state_39.ster</code> (leave-Ohio estimates)</li>
-<li><code>jackknife_A_state_48.ster</code> (leave-Texas estimates)</li>
-</ul>
-</section>
-<section id="key-variables" class="level3">
-<h3 class="anchored" data-anchor-id="key-variables">Key Variables</h3>
-<ul>
-<li><code>pre_q</code>: Baseline spending quartile (1971)</li>
-<li><code>pred_spend</code>: Predicted spending increase (average of lags 2-7)</li>
-<li><code>pred_q</code>: National quartile of predicted spending</li>
-<li><code>high_def_A</code>: Binary classification (pred_spend &gt; 0)</li>
-<li><code>lexp_ma_strict</code>: Log per-pupil expenditure (13-year rolling mean)</li>
-</ul>
-</section>
-<section id="prediction-formula-spec-a" class="level3">
-<h3 class="anchored" data-anchor-id="prediction-formula-spec-a">Prediction Formula (Spec A)</h3>
-<pre><code>pred_spend = avg_main                    if pre_q == 1
-pred_spend = avg_main + avg_ppe_2        if pre_q == 2
-pred_spend = avg_main + avg_ppe_3        if pre_q == 3
-pred_spend = avg_main + avg_ppe_4        if pre_q == 4
-
-where avg_* = mean of coefficients across lags 2-7</code></pre>
-<hr>
-</section>
-</section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">7. Conclusion</h2>
-<p>The jackknife classification instability is driven by two influential states (Ohio and Texas) whose pre_q 3/4 counties have below-average spending growth. The leave-one-state-out methodology causes these counties to be classified as “high predicted” based on other states’ patterns, contaminating the high group with counties that actually underperformed.</p>
-<p>This represents a limitation of the Approach II methodology when applied to samples with influential outlier states, rather than a coding error. The finding suggests caution in interpreting the jackknife heterogeneity results and motivates robustness checks excluding or separately examining Ohio and Texas.</p>
-<hr>
+<p>Together, these shifts generate <strong>840</strong> additional “high predicted” classifications that only appear under the jackknife. This inflates the size of the high group with counties that actually exhibit weak spending growth, which pulls down the average effect for the high group and produces the inversion seen in the jackknife plots.</p>
 
 
+</section>
 </section>
 </section>
 

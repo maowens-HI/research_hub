@@ -153,33 +153,25 @@ ul.task-list li input[type="checkbox"] {
 <div class="container">
 <section id="meeting-overview" class="level2">
 <h2 class="anchored" data-anchor-id="meeting-overview">Meeting Overview</h2>
-<p><strong>Date:</strong> December 5, 2025</p>
-<p><strong>Topic:</strong> Presentation of Figure 2 Results with Both Fixes Applied</p>
-<p>This document goes over the implementation of the figure 2 fixes identified on December 2nd. All analyses include both corrections: (1) setting <code>high=0</code> for never-treated units, and (2) removing interactions between “high” and year effects.</p>
+<p>This document explains the fixes implemented for the Jackknife Figure 2 issues identified on December 2nd. The core problem was that although all counties received a predicted spending value, only ever-treated counties were assigned a value for the binary indicator <code>high</code>. Never-treated counties were assigned missing values, which caused them to be dropped from regressions even though they should have remained in the sample.</p>
+<p>All analyses now incorporate two fixes:</p>
+<ol type="1">
+<li>Setting <code>high = 0</code> for never-treated units<br>
+</li>
+<li>Removing interactions between <code>high</code> and the year effects</li>
+</ol>
+<p>Additional corrections:</p>
+<ul>
+<li>Stabilized functions such as <code>xtile</code> and <code>sort/gsort</code> to eliminate run-to-run variation caused by tie-breaking.</li>
+<li>Dropped all counties where <code>good_71 != 1</code> <strong>before</strong> assigning quartiles, rather than after. This prevents excluded counties from contaminating quartile definitions.</li>
+</ul>
+<p>We then re-generated Figure 1 and Figure 2 using the corrected data and checked for discrepancies between the two.</p>
 <hr>
 </section>
-<section id="context-fixes-applied" class="level2">
-<h2 class="anchored" data-anchor-id="context-fixes-applied">Context: Fixes Applied</h2>
-<p>All results presented below incorporate the two fixes identified on December 2:</p>
-<div class="callout callout-style-simple callout-note no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p><strong>Problem: Never-treateds</strong> - Never-treated counties had missing values for <code>high</code> which led them to eb dropped from the regression despite the logic to include them.</p>
-<p><strong>Fix 1: Missing Data Issue</strong> - Set <code>high=0</code> for never-treated units to include them in interacted regressions</p>
-<p><strong>Fix 2: Interaction Term Issue</strong> - Removed interactions between “high” and year effects - Never-treated units now properly influence year effects for all groups</p>
-</div>
-</div>
-</div>
-<hr>
-</section>
-<section id="results-six-step-analysis-sequence" class="level2">
-<h2 class="anchored" data-anchor-id="results-six-step-analysis-sequence">Results: Six-Step Analysis Sequence</h2>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results">Results</h2>
 <section id="fig-2-1" class="level4">
-<h4 class="anchored" data-anchor-id="fig-2-1">Figure 2.1: Baseline Spending Only (No Jackknife)</h4>
-<p><strong>Specification:</strong> Core event study with <code>baseline spending</code> quartiles only.</p>
+<h4 class="anchored" data-anchor-id="fig-2-1">Figure 2.1: Spending Only (No Jackknife)</h4>
 <div id="fig-2-1-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2-1-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -193,8 +185,7 @@ Figure&nbsp;1: Event study estimates by baseline spending quartile
 <hr>
 </section>
 <section id="fig-2-2" class="level4">
-<h4 class="anchored" data-anchor-id="fig-2-2">Figure 2.2: Baseline + Income Quartiles (No Jackknife)</h4>
-<p><strong>Specification:</strong> Event study interacted with both <code>baseline spending</code> and <code>income</code> quartiles.</p>
+<h4 class="anchored" data-anchor-id="fig-2-2">Figure 2.2: Spending + Income Quartiles (No Jackknife)</h4>
 <div id="fig-2-2-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2-2-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -208,8 +199,7 @@ Figure&nbsp;2: Event study estimates by baseline spending and income quartiles
 <hr>
 </section>
 <section id="fig-2-3" class="level4">
-<h4 class="anchored" data-anchor-id="fig-2-3">Figure 2.3: Baseline + Income + Reform Types (No Jackknife)</h4>
-<p><strong>Specification:</strong> Full model with <code>baseline spending</code>, <code>income quartiles</code>, and <code>reform type</code> indicators.</p>
+<h4 class="anchored" data-anchor-id="fig-2-3">Figure 2.3: Spending + Income + Reform Types (No Jackknife)</h4>
 <div id="fig-2-3-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2-3-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -225,8 +215,7 @@ Figure&nbsp;3: Event study estimates by baseline spending, income quartiles, and
 <section id="phase-2-jackknife-robustness-checks" class="level3">
 <h3 class="anchored" data-anchor-id="phase-2-jackknife-robustness-checks">Phase 2: Jackknife Robustness Checks</h3>
 <section id="fig-2-4" class="level4">
-<h4 class="anchored" data-anchor-id="fig-2-4">Figure 2.4: Baseline Spending Only (Jackknife)</h4>
-<p><strong>Specification:</strong> Jackknife with <code>baseline spending quartiles</code>, iteratively excluding each state.</p>
+<h4 class="anchored" data-anchor-id="fig-2-4">Figure 2.4: Spending Only (Jackknife)</h4>
 <div id="fig-2-4-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2-4-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -237,21 +226,10 @@ Figure&nbsp;4: Jackknife event study estimates - baseline spending only
 </figcaption>
 </figure>
 </div>
-<div class="callout callout-style-simple callout-tip no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p><strong>Key Findings:</strong> - [Stability of results across state exclusions] - [Identification of influential states (if any)] - [Range of effect estimates across jackknife iterations] - [Comparison to non-jackknife baseline]</p>
-</div>
-</div>
-</div>
 <hr>
 </section>
 <section id="fig-2-5" class="level4">
-<h4 class="anchored" data-anchor-id="fig-2-5">Figure 2.5: Baseline + Income Quartiles (Jackknife)</h4>
-<p><strong>Specification:</strong> Jackknife with baseline <code>spending</code> and <code>income</code> quartiles, iteratively excluding each state.</p>
+<h4 class="anchored" data-anchor-id="fig-2-5">Figure 2.5: Spending + Income Quartiles (Jackknife)</h4>
 <div id="fig-2-5-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2-5-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -265,12 +243,11 @@ Figure&nbsp;5: Jackknife event study estimates - baseline spending and income qu
 <hr>
 </section>
 <section id="fig-2-6" class="level4">
-<h4 class="anchored" data-anchor-id="fig-2-6">Figure 2.6: Baseline + Income + Reform Types (Jackknife)</h4>
-<p><strong>Specification:</strong> Jackknife with all controls (<code>spending</code>, <code>income</code>, <code>reforms</code>), iteratively excluding each state.</p>
+<h4 class="anchored" data-anchor-id="fig-2-6">Figure 2.6: Spending + Income + Reform Types (Jackknife)</h4>
 <div id="fig-2-6-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2-6-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/fig2_6_reforms_jk.png" class="img-fluid figure-img">
+<img src="images/12_5_25/jackknife_spec_C_def_A_high_vs_low.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2-6-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;6: Jackknife event study estimates - full specification with reforms
@@ -335,10 +312,11 @@ Figure&nbsp;6: Jackknife event study estimates - full specification with reforms
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p><strong>Patterns Observed:</strong></p>
+<p><strong>Patterns Observed</strong></p>
 <ol type="1">
-<li><p><strong>Effect Magnitude:</strong> [How effects compare across specifications]</p></li>
-<li><p><strong>Heterogeneity:</strong> [Whether low-income areas show larger effects]</p></li>
+<li>In the non-jackknife regressions, the high group is clearly above the low group.<br>
+</li>
+<li>In the jackknife version, this pattern reverses: the estimated effect for the high group often dips below the low group.</li>
 </ol>
 </div>
 </div>
@@ -346,109 +324,50 @@ Figure&nbsp;6: Jackknife event study estimates - full specification with reforms
 <hr>
 </section>
 </section>
-<section id="discrepancy-investigation-balanced-vs.-unbalanced-results" class="level2">
-<h2 class="anchored" data-anchor-id="discrepancy-investigation-balanced-vs.-unbalanced-results">Discrepancy Investigation: Balanced vs.&nbsp;Unbalanced Results</h2>
-<section id="background" class="level3">
-<h3 class="anchored" data-anchor-id="background">Background</h3>
-<p>Section 5.2 contains balanced panel figures (earlier analysis) which showed [describe pattern]. Figure 2s examined on December 02 show [describe pattern]. This section investigates the source of these discrepancies.</p>
-</section>
-<section id="comparison-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="comparison-analysis">Comparison Analysis</h3>
-<section id="sample-composition" class="level4">
-<h4 class="anchored" data-anchor-id="sample-composition">Sample Composition</h4>
-<p><strong>Fig 1 Sample (Section 5.2):</strong> - Counties included: [N] - Balancing requirement: [description] - Treatment timing distribution: [summary]</p>
-<p><strong>Fig 2 Sample (Current V0 Fig 2):</strong> - Counties included: [N] - No balancing restriction - Treatment timing distribution: [summary]</p>
-</section>
-<section id="specification-comparison" class="level4">
-<h4 class="anchored" data-anchor-id="specification-comparison">Specification Comparison</h4>
-<div id="fig-comparison" class="quarto-float quarto-figure quarto-figure-center anchored">
+<section id="discrepancy-investigation-fig-1-and-fig-2-results" class="level2">
+<h2 class="anchored" data-anchor-id="discrepancy-investigation-fig-1-and-fig-2-results">Discrepancy Investigation: Fig 1 and Fig 2 Results</h2>
+<p>In theory we should be able to recreate figure 1 using the regression set up of figure 2. Here we test that.</p>
+<div id="fig-1-1-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/balanced_vs_unbalanced.png" class="img-fluid figure-img">
+<div aria-describedby="fig-1-1-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/12_5_25/.png" class="img-fluid figure-img">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7: Comparison of balanced vs.&nbsp;unbalanced sample results
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-1-1-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: Quartile 1-3 of 1971 Per Pupil Expenditure
 </figcaption>
 </figure>
 </div>
-<div class="callout callout-style-simple callout-note no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<div id="fig-1-2-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-1-2-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/12_5_25/.png" class="img-fluid figure-img">
 </div>
-<div class="callout-body-container">
-<p><strong>Sources of Discrepancy:</strong></p>
-<ol type="1">
-<li><p><strong>Sample Size Effect:</strong> [How many more counties in unbalanced sample]</p></li>
-<li><p><strong>Composition Effect:</strong> [Which types of counties differ between samples]</p></li>
-<li><p><strong>Treatment Timing:</strong> [How treatment timing differs]</p></li>
-<li><p><strong>Specification Differences:</strong> [Any other spec differences beyond balancing]</p></li>
-</ol>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-1-2-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: Quartile 4 of 1971 Per Pupil Expenditure
+</figcaption>
+</figure>
 </div>
+<div id="fig-1-3-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-1-3-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/12_5_25/.png" class="img-fluid figure-img">
 </div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-1-3-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9: Quartile 1-3 of 1971 Per Pupil Expenditure Using High Variable
+</figcaption>
+</figure>
 </div>
-</section>
-</section>
-<section id="decomposition-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="decomposition-analysis">Decomposition Analysis</h3>
-<p>To isolate the source of discrepancies, we ran:</p>
-<ol type="1">
-<li><strong>V0 Fig 2 specification on balanced sample</strong>
-<ul>
-<li>Result: [outcome]</li>
-<li>Interpretation: [what this tells us]</li>
-</ul></li>
-<li><strong>Section 5.2 specification on full sample</strong>
-<ul>
-<li>Result: [outcome]</li>
-<li>Interpretation: [what this tells us]</li>
-</ul></li>
-</ol>
-<div class="callout callout-style-simple callout-tip no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<div id="fig-1-4-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-1-4-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/12_5_25/.png" class="img-fluid figure-img">
 </div>
-<div class="callout-body-container">
-<p><strong>Conclusion:</strong></p>
-<p>The discrepancy is primarily driven by [sample composition / balancing requirement / specification difference]. The fixes [do / do not] resolve the discrepancy. [Additional interpretation of what this means for our understanding of the results].</p>
-</div>
-</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-1-4-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10: Quartile 4 of 1971 Per Pupil Expenditure Using High Variable
+</figcaption>
+</figure>
 </div>
 <hr>
-</section>
-</section>
-<section id="implications-next-steps" class="level2">
-<h2 class="anchored" data-anchor-id="implications-next-steps">Implications &amp; Next Steps</h2>
-<section id="main-conclusions" class="level3">
-<h3 class="anchored" data-anchor-id="main-conclusions">Main Conclusions</h3>
-<ol type="1">
-<li><p><strong>Fix Effectiveness:</strong> Both fixes successfully [describe impact on results]</p></li>
-<li><p><strong>Robustness:</strong> The jackknife analysis shows [degree of robustness/sensitivity]</p></li>
-<li><p><strong>Heterogeneity:</strong> [Summary of income and reform type heterogeneity]</p></li>
-<li><p><strong>Balanced vs.&nbsp;Unbalanced:</strong> [What we learned from the discrepancy investigation]</p></li>
-</ol>
-</section>
-<section id="recommendations" class="level3">
-<h3 class="anchored" data-anchor-id="recommendations">Recommendations</h3>
-<div class="callout callout-style-simple callout-important no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p><strong>Moving Forward:</strong></p>
-<ol type="1">
-<li>[Recommendation based on results]</li>
-<li>[Additional analyses needed, if any]</li>
-<li>[Decisions about preferred specification]</li>
-<li>[Implications for paper narrative]</li>
-</ol>
-</div>
-</div>
-</div>
-<hr>
-</section>
 </section>
 </div>
 </section>

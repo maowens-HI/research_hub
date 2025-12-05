@@ -13,54 +13,37 @@ format:
 ::::::::: container
 ## Meeting Overview
 
-**Date:** December 5, 2025
+This document explains the fixes implemented for the Jackknife Figure 2 issues identified on December 2nd. The core problem was that although all counties received a predicted spending value, only ever-treated counties were assigned a value for the binary indicator `high`. Never-treated counties were assigned missing values, which caused them to be dropped from regressions even though they should have remained in the sample.
 
-**Topic:** Presentation of Figure 2 Results with Both Fixes Applied
+All analyses now incorporate two fixes:
 
-This document goes over the implementation of the figure 2 fixes identified on December 2nd. All analyses include both corrections: 
+1. Setting `high = 0` for never-treated units  
+2. Removing interactions between `high` and the year effects
 
- 1. Setting `high=0` for never-treated units
- 2. Removing interactions between "high" and year effects.
+Additional corrections:
 
-2. We also wanted to look at discrepancies between figure 1 chars and charts we looked at tuesday which contained teh same smaple. What I can say right now is that we can produce the same chart as figure 1 if high contains thesame quartiels as q1-3 aka figure 1 . One thingt o recall is that while we can have versions fo figure 2 which only contain q1-q3 for high and exclude q4 this does not mean that the low group does not contain q1-q3 so it is not exactly the exact same smaple. Another thing that I clamped down on was unstable functions such as xtile(0 and gsort etc. If there were tires in thse fucntions it could aribitraily decide if a county for examplegets thrown into quartile 2 or 3. This could cause the same code to produce slightly different samples. 
+- Stabilized functions such as `xtile` and `sort/gsort` to eliminate run-to-run variation caused by tie-breaking.
+- Dropped all counties where `good_71 != 1` **before** assigning quartiles, rather than after. This prevents excluded counties from contaminating quartile definitions.
 
-------------------------------------------------------------------------
-
-## Context: Fixes Applied
-
-All results presented below incorporate the two fixes identified on December 2:
-
-::: {.callout-note appearance="minimal"}
-**Problem: Never-treateds** - Never-treated counties had missing values for `high` which led them to eb dropped from the regression despite the logic to include them.
-
-**Fix 1: Missing Data Issue** - Set `high=0` for never-treated units to include them in interacted regressions
-
-**Fix 2: Interaction Term Issue** - Removed interactions between "high" and year effects - Never-treated units now properly influence year effects for all groups
-:::
+We then re-generated Figure 1 and Figure 2 using the corrected data and checked for discrepancies between the two.
 
 ------------------------------------------------------------------------
 
-## Results: Six-Step Analysis Sequence
+## Results
 
-#### Figure 2.1: Baseline Spending Only (No Jackknife) {#fig-2-1}
-
-**Specification:** Core event study with `baseline spending` quartiles only.
+#### Figure 2.1: Spending Only (No Jackknife) {#fig-2-1}
 
 ![Event study estimates by baseline spending quartile](images/12_5_25/baseline_spec_A_def_A_high_vs_low.png){#fig-2-1-plot}
 
 ------------------------------------------------------------------------
 
-#### Figure 2.2: Baseline + Income Quartiles (No Jackknife) {#fig-2-2}
-
-**Specification:** Event study interacted with both `baseline spending` and `income` quartiles.
+#### Figure 2.2: Spending + Income Quartiles (No Jackknife) {#fig-2-2}
 
 ![Event study estimates by baseline spending and income quartiles](images/12_5_25/baseline_spec_B_def_A_high_vs_low.png){#fig-2-2-plot}
 
 ------------------------------------------------------------------------
 
-#### Figure 2.3: Baseline + Income + Reform Types (No Jackknife) {#fig-2-3}
-
-**Specification:** Full model with `baseline spending`, `income quartiles`, and `reform type` indicators.
+#### Figure 2.3: Spending + Income + Reform Types (No Jackknife) {#fig-2-3}
 
 ![Event study estimates by baseline spending, income quartiles, and reform types](images/12_5_25/baseline_spec_C_def_A_high_vs_low.png){#fig-2-3-plot}
 
@@ -68,31 +51,21 @@ All results presented below incorporate the two fixes identified on December 2:
 
 ### Phase 2: Jackknife Robustness Checks
 
-#### Figure 2.4: Baseline Spending Only (Jackknife) {#fig-2-4}
-
-**Specification:** Jackknife with `baseline spending quartiles`, iteratively excluding each state.
+#### Figure 2.4:  Spending Only (Jackknife) {#fig-2-4}
 
 ![Jackknife event study estimates - baseline spending only](images/12_5_25/jackknife_spec_A_def_A_high_vs_low.png){#fig-2-4-plot}
 
-::: {.callout-tip appearance="minimal"}
-**Key Findings:** - \[Stability of results across state exclusions\] - \[Identification of influential states (if any)\] - \[Range of effect estimates across jackknife iterations\] - \[Comparison to non-jackknife baseline\]
-:::
-
 ------------------------------------------------------------------------
 
-#### Figure 2.5: Baseline + Income Quartiles (Jackknife) {#fig-2-5}
-
-**Specification:** Jackknife with baseline `spending` and `income` quartiles, iteratively excluding each state.
+#### Figure 2.5: Spending + Income Quartiles (Jackknife) {#fig-2-5}
 
 ![Jackknife event study estimates - baseline spending and income quartiles](images/12_5_25/jackknife_spec_B_def_A_high_vs_low.png){#fig-2-5-plot}
 
 ------------------------------------------------------------------------
 
-#### Figure 2.6: Baseline + Income + Reform Types (Jackknife) {#fig-2-6}
+#### Figure 2.6: Spending + Income + Reform Types (Jackknife) {#fig-2-6}
 
-**Specification:** Jackknife with all controls (`spending`, `income`, `reforms`), iteratively excluding each state.
-
-![Jackknife event study estimates - full specification with reforms](images/fig2_6_reforms_jk.png){#fig-2-6-plot}
+![Jackknife event study estimates - full specification with reforms](images/12_5_25/jackknife_spec_C_def_A_high_vs_low.png){#fig-2-6-plot}
 
 ------------------------------------------------------------------------
 
@@ -112,87 +85,27 @@ All results presented below incorporate the two fixes identified on December 2:
 ### Key Takeaways
 
 ::: {.callout-important appearance="minimal"}
-**Patterns Observed:**
+**Patterns Observed**
 
-1.  **Effect Magnitude:** \[How effects compare across specifications\]
-
-2.  **Heterogeneity:** \[Whether low-income areas show larger effects\]
+1. In the non-jackknife regressions, the high group is clearly above the low group.  
+2. In the jackknife version, this pattern reverses: the estimated effect for the high group often dips below the low group.
 :::
 
 ------------------------------------------------------------------------
 
-## Discrepancy Investigation: Balanced vs. Unbalanced Results
+## Discrepancy Investigation: Fig 1 and Fig 2 Results
 
-### Background
+In theory we should be able to recreate figure 1 using the regression set up of figure 2. Here we test that.
 
-Section 5.2 contains balanced panel figures (earlier analysis) which showed \[describe pattern\]. Figure 2s examined on December 02 show \[describe pattern\]. This section investigates the source of these discrepancies.
+![Quartile 1-3 of 1971 Per Pupil Expenditure](images/12_5_25/){#fig-1-1-plot}
 
-### Comparison Analysis
+![Quartile 4 of 1971 Per Pupil Expenditure](images/12_5_25/){#fig-1-2-plot}
 
-#### Sample Composition
+![Quartile 1-3 of 1971 Per Pupil Expenditure Using High Variable](images/12_5_25/){#fig-1-3-plot}
 
-**Fig 1 Sample (Section 5.2):** - Counties included: \[N\] - Balancing requirement: \[description\] - Treatment timing distribution: \[summary\]
-
-**Fig 2 Sample (Current V0 Fig 2):** - Counties included: \[N\] - No balancing restriction - Treatment timing distribution: \[summary\]
-
-#### Specification Comparison
-
-![Comparison of balanced vs. unbalanced sample results](images/balanced_vs_unbalanced.png){#fig-comparison}
-
-::: {.callout-note appearance="minimal"}
-**Sources of Discrepancy:**
-
-1.  **Sample Size Effect:** \[How many more counties in unbalanced sample\]
-
-2.  **Composition Effect:** \[Which types of counties differ between samples\]
-
-3.  **Treatment Timing:** \[How treatment timing differs\]
-
-4.  **Specification Differences:** \[Any other spec differences beyond balancing\]
-:::
-
-### Decomposition Analysis
-
-To isolate the source of discrepancies, we ran:
-
-1.  **V0 Fig 2 specification on balanced sample**
-    -   Result: \[outcome\]
-    -   Interpretation: \[what this tells us\]
-2.  **Section 5.2 specification on full sample**
-    -   Result: \[outcome\]
-    -   Interpretation: \[what this tells us\]
-
-::: {.callout-tip appearance="minimal"}
-**Conclusion:**
-
-The discrepancy is primarily driven by \[sample composition / balancing requirement / specification difference\]. The fixes \[do / do not\] resolve the discrepancy. \[Additional interpretation of what this means for our understanding of the results\].
-:::
+![Quartile 4 of 1971 Per Pupil Expenditure Using High Variable](images/12_5_25/){#fig-1-4-plot}
 
 ------------------------------------------------------------------------
 
-## Implications & Next Steps
-
-### Main Conclusions
-
-1.  **Fix Effectiveness:** Both fixes successfully \[describe impact on results\]
-
-2.  **Robustness:** The jackknife analysis shows \[degree of robustness/sensitivity\]
-
-3.  **Heterogeneity:** \[Summary of income and reform type heterogeneity\]
-
-4.  **Balanced vs. Unbalanced:** \[What we learned from the discrepancy investigation\]
-
-### Recommendations
-
-::: {.callout-important appearance="minimal"}
-**Moving Forward:**
-
-1.  \[Recommendation based on results\]
-2.  \[Additional analyses needed, if any\]
-3.  \[Decisions about preferred specification\]
-4.  \[Implications for paper narrative\]
-:::
-
-------------------------------------------------------------------------
 :::::::::
 ::::::::::

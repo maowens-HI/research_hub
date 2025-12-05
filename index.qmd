@@ -1,6 +1,6 @@
 ---
 title: "Research Hub"
-pagetitle: "Research Hub | Advancing Sound Economic Policy"
+pagetitle: "Research Hub"
 format:
   html:
     toc: false
@@ -21,7 +21,7 @@ format:
 ::: section-header
 ## This Month {#latest-research}
 
-Recent analyses and code reviews documenting progress on the project.
+Recent notes.
 :::
 
 :::::::::: carousel-container
@@ -30,9 +30,9 @@ Recent analyses and code reviews documenting progress on the project.
 ::: research-card
 [Notes]{.card-category}
 
-[December Meeting - Analysis Review]{.card-title}
+[December 05: Latest Figure 1 & Figure 2]{.card-title}
 
-[Comprehensive review of Figure 2 fixes and jackknife strategy. Presented completed results and discussed next steps for robustness analysis.]{.card-excerpt}
+[Latest Figure 1 & 2 plus some notes on fixes.]{.card-excerpt}
 
 [December 2025]{.card-meta}
 
@@ -44,9 +44,9 @@ Recent analyses and code reviews documenting progress on the project.
 ::: research-card
 [Analysis]{.card-category}
 
-[Dec 05: JK Instability - Classification Issues]{.card-title}
+[Dec 05: Diagnosing JackKnife Instability]{.card-title}
 
-[Investigation reveals Ohio and Texas counties misclassified in jackknife procedure due to below-average spending growth. 840 observations contaminate "high predicted" group, compressing event-study results.]{.card-excerpt}
+[Diagnosing the source of inverted high and low in Figure 2]{.card-excerpt}
 
 [December 2025]{.card-meta}
 
@@ -60,7 +60,7 @@ Recent analyses and code reviews documenting progress on the project.
 
 [Dec 02: Figure 2 Fixes & Jackknife Strategy]{.card-title}
 
-[Resolving the "Never Treated" interaction issue. Bug fix: Define high=0 among NTs and remove interaction with year effects. Implementing jackknife iterations for robustness.]{.card-excerpt}
+[Resolving the "Never Treated" interaction issue..]{.card-excerpt}
 
 [December 2025]{.card-meta}
 
@@ -99,25 +99,25 @@ Links to useful things.
 
 :::::: card-grid
 ::: card
-### Weekly Meetings
+### Google Doc
 
-Meeting notes and agenda for PI check-ins and project updates.
+Meeting notes.
 
 [Open Google Doc](https://docs.google.com/document/d/12HWKK_0nlRcxNbcCX9QPQGAwK9ejVl5VxKu-PMaEjyg/edit?tab=t.0){.card-link}
 :::
 
 ::: card
-### Shared Data & Code
+### Google Drive
 
-Access shared datasets, code repositories, and analysis files.
+This is where any data to download will be located.
 
 [Open Google Drive](https://drive.google.com/drive/folders/1ww0lXRawQ7TCRBm0FGwCJii-3QA9pc6t?usp=sharing){.card-link}
 :::
 
 ::: card
-### Website Repository
+### Repository
 
-View source code and contribute to this website on GitHub.
+This is where you can check out the latest code.
 
 [Open GitHub Repo](https://github.com/maowens-HI/school_finance){.card-link}
 :::
@@ -137,7 +137,7 @@ A chronological record of project milestones and findings.
 
 #### Dec 05: December Meeting - Analysis Review
 
-**Topic:** Comprehensive review of Figure 2 fixes and jackknife strategy.
+**Topic:** Latest Figure 1 & 2 plus some notes on fixes.
 
 [View Full Meeting Notes](meeting-dec-05-2025.qmd){.btn-ghost}
 
@@ -148,11 +148,9 @@ A chronological record of project milestones and findings.
 **Topic:** Investigation of jackknife classification instability in Approach II.
 
 ::: {.callout-warning appearance="minimal"}
-**Key Finding:** Two states (Ohio and Texas) have below-average spending growth for their high-baseline-spending counties, causing them to be misclassified as "high predicted" in the jackknife procedure.
+**Key Finding:** Two states (Ohio and Texas) have below-average spending growth for their high-baseline-spending counties. When these states are left out in the jackknife step, their influence disappears, and counties that underperform in the full sample suddenly receive inflated predicted spending values. This pushes them incorrectly into the “high predicted” category
 
 **Impact:** 840 observations (11.9% of the "high" group) contaminate the jackknife results, compressing the event-study trends.
-
-**Root Cause:** Leave-one-state-out predictions diverge from actual outcomes when states are highly influential. Ohio pre_q 4 and Texas pre_q 3 counties are classified as "high predicted" based on other states' patterns despite their below-average performance.
 :::
 
 ::: tag-group

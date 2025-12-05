@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Research Hub | Advancing Sound Economic Policy – Research Hub</title>
+<title>Research Hub</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -147,15 +147,15 @@ ul.task-list li input[type="checkbox"] {
 <div class="container">
 <section id="latest-research" class="level2 section-header">
 <h2 class="anchored" data-anchor-id="latest-research">This Month</h2>
-<p>Recent analyses and code reviews documenting progress on the project.</p>
+<p>Recent notes.</p>
 </section>
 <div class="carousel-container">
 <div class="carousel-wrapper">
 <div class="carousel-slide">
 <div class="research-card">
 <p><span class="card-category">Notes</span></p>
-<p><span class="card-title">December Meeting - Analysis Review</span></p>
-<p><span class="card-excerpt">Comprehensive review of Figure 2 fixes and jackknife strategy. Presented completed results and discussed next steps for robustness analysis.</span></p>
+<p><span class="card-title">December 05: Latest Figure 1 &amp; Figure 2</span></p>
+<p><span class="card-excerpt">Latest Figure 1 &amp; 2 plus some notes on fixes.</span></p>
 <p><span class="card-meta">December 2025</span></p>
 <p><a href="./meeting-dec-05-2025.html" class="card-link">View Meeting Notes</a></p>
 </div>
@@ -163,8 +163,8 @@ ul.task-list li input[type="checkbox"] {
 <div class="carousel-slide">
 <div class="research-card">
 <p><span class="card-category">Analysis</span></p>
-<p><span class="card-title">Dec 05: JK Instability - Classification Issues</span></p>
-<p><span class="card-excerpt">Investigation reveals Ohio and Texas counties misclassified in jackknife procedure due to below-average spending growth. 840 observations contaminate “high predicted” group, compressing event-study results.</span></p>
+<p><span class="card-title">Dec 05: Diagnosing JackKnife Instability</span></p>
+<p><span class="card-excerpt">Diagnosing the source of inverted high and low in Figure 2</span></p>
 <p><span class="card-meta">December 2025</span></p>
 <p><a href="./jk-instability-dec-05-2025.html" class="card-link">View JK Instability Analysis</a></p>
 </div>
@@ -173,7 +173,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="research-card">
 <p><span class="card-category">Analysis</span></p>
 <p><span class="card-title">Dec 02: Figure 2 Fixes &amp; Jackknife Strategy</span></p>
-<p><span class="card-excerpt">Resolving the “Never Treated” interaction issue. Bug fix: Define high=0 among NTs and remove interaction with year effects. Implementing jackknife iterations for robustness.</span></p>
+<p><span class="card-excerpt">Resolving the “Never Treated” interaction issue..</span></p>
 <p><span class="card-meta">December 2025</span></p>
 <p><a href="https://maowens.quarto.pub/jk_code_review/" class="card-link">View Jackknife Code Review</a></p>
 </div>
@@ -200,19 +200,19 @@ ul.task-list li input[type="checkbox"] {
 <p>Links to useful things.</p>
 </section>
 <div class="card-grid">
-<section id="weekly-meetings" class="level3 card">
-<h3 class="anchored" data-anchor-id="weekly-meetings">Weekly Meetings</h3>
-<p>Meeting notes and agenda for PI check-ins and project updates.</p>
+<section id="google-doc" class="level3 card">
+<h3 class="anchored" data-anchor-id="google-doc">Google Doc</h3>
+<p>Meeting notes.</p>
 <p><a href="https://docs.google.com/document/d/12HWKK_0nlRcxNbcCX9QPQGAwK9ejVl5VxKu-PMaEjyg/edit?tab=t.0" class="card-link">Open Google Doc</a></p>
 </section>
-<section id="shared-data-code" class="level3 card">
-<h3 class="anchored" data-anchor-id="shared-data-code">Shared Data &amp; Code</h3>
-<p>Access shared datasets, code repositories, and analysis files.</p>
+<section id="google-drive" class="level3 card">
+<h3 class="anchored" data-anchor-id="google-drive">Google Drive</h3>
+<p>This is where any data to download will be located.</p>
 <p><a href="https://drive.google.com/drive/folders/1ww0lXRawQ7TCRBm0FGwCJii-3QA9pc6t?usp=sharing" class="card-link">Open Google Drive</a></p>
 </section>
-<section id="website-repository" class="level3 card">
-<h3 class="anchored" data-anchor-id="website-repository">Website Repository</h3>
-<p>View source code and contribute to this website on GitHub.</p>
+<section id="repository" class="level3 card">
+<h3 class="anchored" data-anchor-id="repository">Repository</h3>
+<p>This is where you can check out the latest code.</p>
 <p><a href="https://github.com/maowens-HI/school_finance" class="card-link">Open GitHub Repo</a></p>
 </section>
 </div>
@@ -227,7 +227,7 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="mt-xl anchored" data-anchor-id="december-2025">December 2025</h3>
 <section id="dec-05-december-meeting---analysis-review" class="level4">
 <h4 class="anchored" data-anchor-id="dec-05-december-meeting---analysis-review">Dec 05: December Meeting - Analysis Review</h4>
-<p><strong>Topic:</strong> Comprehensive review of Figure 2 fixes and jackknife strategy.</p>
+<p><strong>Topic:</strong> Latest Figure 1 &amp; 2 plus some notes on fixes.</p>
 <p><a href="./meeting-dec-05-2025.html" class="btn-ghost">View Full Meeting Notes</a></p>
 <hr>
 </section>
@@ -240,9 +240,8 @@ ul.task-list li input[type="checkbox"] {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p><strong>Key Finding:</strong> Two states (Ohio and Texas) have below-average spending growth for their high-baseline-spending counties, causing them to be misclassified as “high predicted” in the jackknife procedure.</p>
+<p><strong>Key Finding:</strong> Two states (Ohio and Texas) have below-average spending growth for their high-baseline-spending counties. When these states are left out in the jackknife step, their influence disappears, and counties that underperform in the full sample suddenly receive inflated predicted spending values. This pushes them incorrectly into the “high predicted” category</p>
 <p><strong>Impact:</strong> 840 observations (11.9% of the “high” group) contaminate the jackknife results, compressing the event-study trends.</p>
-<p><strong>Root Cause:</strong> Leave-one-state-out predictions diverge from actual outcomes when states are highly influential. Ohio pre_q 4 and Texas pre_q 3 counties are classified as “high predicted” based on other states’ patterns despite their below-average performance.</p>
 </div>
 </div>
 </div>
