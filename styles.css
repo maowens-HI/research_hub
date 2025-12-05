@@ -170,11 +170,11 @@ a:hover {
 
 .hero {
   background: linear-gradient(135deg, #F0F4F8 0%, #E8EFF6 50%, #E0EAF4 100%);
-  padding: var(--space-xl) var(--space-lg);
+  padding: var(--space-xxl) var(--space-lg);
   text-align: center;
   position: relative;
   overflow: hidden;
-  min-height: 35vh;
+  min-height: 40vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -225,6 +225,15 @@ a:hover {
   letter-spacing: -0.02em;
   color: var(--color-text);
   margin-bottom: var(--space-lg);
+  text-align: center;
+}
+
+.version-tag {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #DC2626;
+  vertical-align: super;
+  margin-left: 0.25rem;
 }
 
 .hero-tagline {

@@ -8,7 +8,7 @@ format:
 
 :::: hero
 ::: hero-content
-# Research Hub {.hero-headline}
+# Research Hub [2.0]{.version-tag} {.hero-headline}
 
 [View Recent Work](#latest-research){.cta-primary}
 :::
