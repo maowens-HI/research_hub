@@ -42,7 +42,7 @@ All analyses now incorporate two fixes:
 
 ------------------------------------------------------------------------
 
-### Phase 2: Jackknife Robustness Checks
+### Phase 2: Jackknife
 
 #### Figure 2.4:  Spending Only (Jackknife) {#fig-2-4}
 
