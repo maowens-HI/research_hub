@@ -28,7 +28,7 @@ Recent notes.
 ::: research-card
 [Notes]{.card-category}
 
-[December 09: Baseline vs Jackknife Event Study Results]{.card-title}
+[December 09: Baseline vs Jackknife Event Study Results (Latest Figure 2)]{.card-title}
 
 [Comparing full-sample and leave-one-state-out jackknife predictions]{.card-excerpt}
 
@@ -42,7 +42,7 @@ Recent notes.
 ::: research-card
 [Notes]{.card-category}
 
-[December 05: Never-Treated Jackknife Fixes: Latest Figure 2]{.card-title}
+[December 05: Never-Treated Jackknife Fixes]{.card-title}
 
 [Latest Figure 2]{.card-excerpt}
 
@@ -147,7 +147,7 @@ A chronological record of project milestones and findings.
 
 ### December 2025 {.mt-xl}
 
-#### Dec 09: Baseline vs Jackknife Event Study Results
+#### Dec 09: Baseline vs Jackknife Event Study Results (Latest Figure 2s)
 
 **Topic:** Comparing baseline (no jackknife) and jackknife approaches across three specifications.
 
@@ -167,7 +167,7 @@ Each specification includes both full-sample estimates (baseline) and leave-one-
 
 #### Dec 05: Never-Treated Jackknife Fixes
 
-**Topic:** Latest Figure 2 plus some notes on fixes.
+**Topic:** Updated Figure 2 plus some notes on fixes.
 
 [View Full Meeting Notes](meeting-dec-05-2025.qmd){.btn-ghost}
 
