@@ -1,5 +1,166 @@
 [
   {
+    "objectID": "terms.html",
+    "href": "terms.html",
+    "title": "Terms of Use",
+    "section": "",
+    "text": "Last updated: December 3, 2025\n\n\n\nThis website is maintained as part of academic research at the Hoover Institution, Stanford University. The content is provided for informational and educational purposes.\n\n\n\nThe research notes, analyses, and code reviews presented on this site represent work in progress. Findings and methodologies may be updated as research continues.\n\n\n\nLinks to external resources (Google Drive, Google Docs, GitHub repositories) are provided for collaborators and interested researchers. Access to some resources may be restricted.\n\n\n\nAll original content on this site, unless otherwise noted, is the intellectual property of the research team. Code repositories may have their own licensing terms specified in their respective repositories.\n\n\n\nThe content is provided “as is” without warranty of any kind, express or implied. We make no guarantees about the accuracy, reliability, or completeness of the information presented.\n\n\n\nWe reserve the right to modify these terms at any time. Changes will be posted on this page with an updated revision date.\n\n\n\nFor questions about these terms or the research presented on this site:\nMyles Owens Hoover Institution, Stanford University Email: maowens@stanford.edu"
+  },
+  {
+    "objectID": "terms.html#academic-use",
+    "href": "terms.html#academic-use",
+    "title": "Terms of Use",
+    "section": "",
+    "text": "This website is maintained as part of academic research at the Hoover Institution, Stanford University. The content is provided for informational and educational purposes."
+  },
+  {
+    "objectID": "terms.html#research-content",
+    "href": "terms.html#research-content",
+    "title": "Terms of Use",
+    "section": "",
+    "text": "The research notes, analyses, and code reviews presented on this site represent work in progress. Findings and methodologies may be updated as research continues."
+  },
+  {
+    "objectID": "terms.html#external-resources",
+    "href": "terms.html#external-resources",
+    "title": "Terms of Use",
+    "section": "",
+    "text": "Links to external resources (Google Drive, Google Docs, GitHub repositories) are provided for collaborators and interested researchers. Access to some resources may be restricted."
+  },
+  {
+    "objectID": "terms.html#intellectual-property",
+    "href": "terms.html#intellectual-property",
+    "title": "Terms of Use",
+    "section": "",
+    "text": "All original content on this site, unless otherwise noted, is the intellectual property of the research team. Code repositories may have their own licensing terms specified in their respective repositories."
+  },
+  {
+    "objectID": "terms.html#no-warranties",
+    "href": "terms.html#no-warranties",
+    "title": "Terms of Use",
+    "section": "",
+    "text": "The content is provided “as is” without warranty of any kind, express or implied. We make no guarantees about the accuracy, reliability, or completeness of the information presented."
+  },
+  {
+    "objectID": "terms.html#changes-to-terms",
+    "href": "terms.html#changes-to-terms",
+    "title": "Terms of Use",
+    "section": "",
+    "text": "We reserve the right to modify these terms at any time. Changes will be posted on this page with an updated revision date."
+  },
+  {
+    "objectID": "terms.html#contact",
+    "href": "terms.html#contact",
+    "title": "Terms of Use",
+    "section": "",
+    "text": "For questions about these terms or the research presented on this site:\nMyles Owens Hoover Institution, Stanford University Email: maowens@stanford.edu"
+  },
+  {
+    "objectID": "privacy.html",
+    "href": "privacy.html",
+    "title": "Privacy Policy",
+    "section": "",
+    "text": "Last updated: December 3, 2025\n\n\n\nThis Research Hub website is a personal academic project website. We do not collect, store, or process any personal information from visitors.\n\n\n\n\nWe do not use cookies\nWe do not track visitors\nWe do not collect email addresses or contact information\nWe do not use analytics services\n\n\n\n\nThis website contains links to external resources including:\n\nGoogle Drive\nGoogle Docs\nGitHub repositories\nQuarto publishing platform\n\nThese external services have their own privacy policies. We recommend reviewing their policies if you choose to visit those sites.\n\n\n\nWe may update this privacy policy from time to time. Any changes will be posted on this page with an updated revision date.\n\n\n\nIf you have questions about this privacy policy, please contact:\nMyles Owens Email: maowens@stanford.edu"
+  },
+  {
+    "objectID": "privacy.html#overview",
+    "href": "privacy.html#overview",
+    "title": "Privacy Policy",
+    "section": "",
+    "text": "This Research Hub website is a personal academic project website. We do not collect, store, or process any personal information from visitors."
+  },
+  {
+    "objectID": "privacy.html#information-we-dont-collect",
+    "href": "privacy.html#information-we-dont-collect",
+    "title": "Privacy Policy",
+    "section": "",
+    "text": "We do not use cookies\nWe do not track visitors\nWe do not collect email addresses or contact information\nWe do not use analytics services"
+  },
+  {
+    "objectID": "privacy.html#external-links",
+    "href": "privacy.html#external-links",
+    "title": "Privacy Policy",
+    "section": "",
+    "text": "This website contains links to external resources including:\n\nGoogle Drive\nGoogle Docs\nGitHub repositories\nQuarto publishing platform\n\nThese external services have their own privacy policies. We recommend reviewing their policies if you choose to visit those sites."
+  },
+  {
+    "objectID": "privacy.html#changes-to-this-policy",
+    "href": "privacy.html#changes-to-this-policy",
+    "title": "Privacy Policy",
+    "section": "",
+    "text": "We may update this privacy policy from time to time. Any changes will be posted on this page with an updated revision date."
+  },
+  {
+    "objectID": "privacy.html#contact",
+    "href": "privacy.html#contact",
+    "title": "Privacy Policy",
+    "section": "",
+    "text": "If you have questions about this privacy policy, please contact:\nMyles Owens Email: maowens@stanford.edu"
+  },
+  {
+    "objectID": "meeting-dec-09-2025.html",
+    "href": "meeting-dec-09-2025.html",
+    "title": "December 9, 2025 Meeting",
+    "section": "",
+    "text": "This document presents the latest event study results comparing baseline (no jackknife) and jackknife approaches across three specifications:\n\nSpecification A: Baseline spending only\nSpecification B: Baseline spending + Income quartiles\nSpecification C: Baseline spending + Income quartiles + Reform types\n\nEach specification is shown with both the full-sample estimates (baseline) and leave-one-state-out jackknife predictions.\n\n\n\n\nThese figures show event study estimates using the full sample to classify counties into high vs. low predicted spending groups.\n\n\n\n\n\n\n\n\nFigure 1: Event study estimates by baseline spending quartile (no jackknife)\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Event study estimates by baseline spending and income quartiles (no jackknife)\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: Event study estimates by baseline spending, income quartiles, and reform types (no jackknife)\n\n\n\n\n\n\n\n\nThese figures use leave-one-state-out predictions to classify counties. For each state, we estimate the model excluding that state’s data, then predict spending increases for counties in the excluded state.\n\n\n\n\n\n\n\n\nFigure 4: Jackknife event study estimates - baseline spending only\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 5: Jackknife event study estimates - baseline spending and income quartiles\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 6: Jackknife event study estimates - full specification with reforms"
+  },
+  {
+    "objectID": "meeting-dec-09-2025.html#meeting-overview",
+    "href": "meeting-dec-09-2025.html#meeting-overview",
+    "title": "December 9, 2025 Meeting",
+    "section": "",
+    "text": "This document presents the latest event study results comparing baseline (no jackknife) and jackknife approaches across three specifications:\n\nSpecification A: Baseline spending only\nSpecification B: Baseline spending + Income quartiles\nSpecification C: Baseline spending + Income quartiles + Reform types\n\nEach specification is shown with both the full-sample estimates (baseline) and leave-one-state-out jackknife predictions."
+  },
+  {
+    "objectID": "meeting-dec-09-2025.html#baseline-estimates-no-jackknife",
+    "href": "meeting-dec-09-2025.html#baseline-estimates-no-jackknife",
+    "title": "December 9, 2025 Meeting",
+    "section": "",
+    "text": "These figures show event study estimates using the full sample to classify counties into high vs. low predicted spending groups.\n\n\n\n\n\n\n\n\nFigure 1: Event study estimates by baseline spending quartile (no jackknife)\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Event study estimates by baseline spending and income quartiles (no jackknife)\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: Event study estimates by baseline spending, income quartiles, and reform types (no jackknife)"
+  },
+  {
+    "objectID": "meeting-dec-09-2025.html#jackknife-estimates",
+    "href": "meeting-dec-09-2025.html#jackknife-estimates",
+    "title": "December 9, 2025 Meeting",
+    "section": "",
+    "text": "These figures use leave-one-state-out predictions to classify counties. For each state, we estimate the model excluding that state’s data, then predict spending increases for counties in the excluded state.\n\n\n\n\n\n\n\n\nFigure 4: Jackknife event study estimates - baseline spending only\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 5: Jackknife event study estimates - baseline spending and income quartiles\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 6: Jackknife event study estimates - full specification with reforms"
+  },
+  {
+    "objectID": "jk-instability-dec-05-2025.html",
+    "href": "jk-instability-dec-05-2025.html",
+    "title": "JK Instability",
+    "section": "",
+    "text": "This memo explains why the jackknife plots sometimes show the “high” group dipping below the “low” group. After applying the fixes Nick flagged on Tuesday, the updated charts look cleaner, but the same core issue remains: the jackknife estimates often compress the “high” group and, in several cases, push it below the “low” group.\nThe main mechanism is straightforward. Some counties that are classified as low in the full-sample prediction model (because predicted spending &lt; 0) flip into the high category when their own state is excluded from the model during the jackknife procedure. This misclassification is likely not the only problem in the jackknife approach, but it appears to be a major contributor to the pattern we observe.\nA closer investigation shows that two states — Ohio and Texas — have below-average spending growth among counties that should be in the highest-baseline-spending group. When these states are left out in the jackknife step, their influence disappears, and counties that underperform in the full sample suddenly receive inflated predicted spending values. This pushes them incorrectly into the “high predicted” category.\n\n\n\nThe goal is simple:\n\nAssign each county a predicted spending change.\n\nCreate a binary indicator equal to 1 if predicted spending &gt; 0 and 0 otherwise (for ever-treated counties).\n\nRun an event-study regression using that binary variable.\n\nUnder normal circumstances, this should yield the intuitive ordering: high above low.\n\n\n\n\n\nTo keep things simple, consider the specification that controls only for baseline 1971 spending quartile. In the baseline approach, we use the full sample and regress expenditure on quartile indicators. This produces predicted spending values, which we then use to define high (predicted &gt; 0). Running an event-study with this high variable delivers the expected pattern: high consistently exceeds low.\n\n\n\n\n\n\n\n\nFigure 1: Event study estimates by baseline spending quartile\n\n\n\n\n\n\n\nThe jackknife repeats the same regression multiple times, each iteration excluding one state. For each iteration, we:\n\nRe-estimate the model without state s.\n\nGenerate predicted spending for counties in the omitted state.\n\nAssign those counties to high/low based on the jackknife prediction.\n\nMove on to the next state.\n\nThe advantage is that no single state can dominate the prediction model. The problem is that when we use these jackknife-based predictions to create the high variable for the second-stage event study, we sometimes obtain the reverse ordering: the low group sits above the high group.\n\n\n\n\n\n\n\n\nFigure 2: Event study estimates by baseline spending and income quartiles\n\n\n\nOrdinarily I would assume this pattern reflects a coding mistake, because mechanically the high group should exceed the low group. But after checking the underlying data more closely, that explanation doesn’t hold.\nTabulating pre_q × high (baseline spending quartile × high/low classification) shows the issue clearly:\n\n\n\nQuartile\nRegular High\nJackknife High\nDifference\n\n\n\n\npre_q 1\n3,080\n3,080\n0\n\n\npre_q 2\n3,136\n3,136\n0\n\n\npre_q 3\n0\n504\n+504\n\n\npre_q 4\n0\n336\n+336\n\n\nTotal\n6,216\n7,056\n+840\n\n\n\nFinding: 840 counties from pre_q 3 and pre_q 4 (the highest-baseline-spending groups) switch from “low” to “high” under the jackknife. These are units that should theoretically have lower predicted spending changes, not higher.\n\n\n\n\n\n\nTo understand the flips, we compare the coefficients that form predicted spending in the full sample versus the jackknife runs for Ohio and Texas. Predicted spending equals the main effect plus the quartile adjustment relative to quartile 1 (main + ppe). Here, ppe3 and ppe4 refer to the coefficients on lag_*#pre_q3 and lag_*#pre_q4.\n\n\nFull Sample - main = 0.0208505\n- ppe3 = −0.0227245\n- ppe4 = −0.0299217\nOhio Omitted - main = 0.0138311\n- ppe3 = −0.0193518\n- ppe4 = −0.0120878\nTexas Omitted - main = 0.0248799\n- ppe3 = −0.0052331\n- ppe4 = −0.0299885\n\n\n\n\nWhen Ohio is excluded, ppe4 rises from −0.0299217 to −0.0120878 (+0.0178339).\nThis boosts quartile-4 predicted spending enough to flip 336 quartile-4 counties into the high group.\nWhen Texas is excluded, ppe3 rises from −0.0227245 to −0.0052331 (~+0.0174914).\nThis raises quartile-3 predicted spending, flipping 504 quartile-3 counties into the high group.\n\nTogether, these shifts generate 840 additional “high predicted” classifications that only appear under the jackknife. This inflates the size of the high group with counties that actually exhibit weak spending growth, which pulls down the average effect for the high group and produces the inversion seen in the jackknife plots."
+  },
+  {
+    "objectID": "jk-instability-dec-05-2025.html#overview",
+    "href": "jk-instability-dec-05-2025.html#overview",
+    "title": "JK Instability",
+    "section": "",
+    "text": "This memo explains why the jackknife plots sometimes show the “high” group dipping below the “low” group. After applying the fixes Nick flagged on Tuesday, the updated charts look cleaner, but the same core issue remains: the jackknife estimates often compress the “high” group and, in several cases, push it below the “low” group.\nThe main mechanism is straightforward. Some counties that are classified as low in the full-sample prediction model (because predicted spending &lt; 0) flip into the high category when their own state is excluded from the model during the jackknife procedure. This misclassification is likely not the only problem in the jackknife approach, but it appears to be a major contributor to the pattern we observe.\nA closer investigation shows that two states — Ohio and Texas — have below-average spending growth among counties that should be in the highest-baseline-spending group. When these states are left out in the jackknife step, their influence disappears, and counties that underperform in the full sample suddenly receive inflated predicted spending values. This pushes them incorrectly into the “high predicted” category."
+  },
+  {
+    "objectID": "jk-instability-dec-05-2025.html#conceptual-setup",
+    "href": "jk-instability-dec-05-2025.html#conceptual-setup",
+    "title": "JK Instability",
+    "section": "",
+    "text": "The goal is simple:\n\nAssign each county a predicted spending change.\n\nCreate a binary indicator equal to 1 if predicted spending &gt; 0 and 0 otherwise (for ever-treated counties).\n\nRun an event-study regression using that binary variable.\n\nUnder normal circumstances, this should yield the intuitive ordering: high above low."
+  },
+  {
+    "objectID": "jk-instability-dec-05-2025.html#two-ways-to-generate-predicted-spending",
+    "href": "jk-instability-dec-05-2025.html#two-ways-to-generate-predicted-spending",
+    "title": "JK Instability",
+    "section": "",
+    "text": "To keep things simple, consider the specification that controls only for baseline 1971 spending quartile. In the baseline approach, we use the full sample and regress expenditure on quartile indicators. This produces predicted spending values, which we then use to define high (predicted &gt; 0). Running an event-study with this high variable delivers the expected pattern: high consistently exceeds low.\n\n\n\n\n\n\n\n\nFigure 1: Event study estimates by baseline spending quartile\n\n\n\n\n\n\n\nThe jackknife repeats the same regression multiple times, each iteration excluding one state. For each iteration, we:\n\nRe-estimate the model without state s.\n\nGenerate predicted spending for counties in the omitted state.\n\nAssign those counties to high/low based on the jackknife prediction.\n\nMove on to the next state.\n\nThe advantage is that no single state can dominate the prediction model. The problem is that when we use these jackknife-based predictions to create the high variable for the second-stage event study, we sometimes obtain the reverse ordering: the low group sits above the high group.\n\n\n\n\n\n\n\n\nFigure 2: Event study estimates by baseline spending and income quartiles\n\n\n\nOrdinarily I would assume this pattern reflects a coding mistake, because mechanically the high group should exceed the low group. But after checking the underlying data more closely, that explanation doesn’t hold.\nTabulating pre_q × high (baseline spending quartile × high/low classification) shows the issue clearly:\n\n\n\nQuartile\nRegular High\nJackknife High\nDifference\n\n\n\n\npre_q 1\n3,080\n3,080\n0\n\n\npre_q 2\n3,136\n3,136\n0\n\n\npre_q 3\n0\n504\n+504\n\n\npre_q 4\n0\n336\n+336\n\n\nTotal\n6,216\n7,056\n+840\n\n\n\nFinding: 840 counties from pre_q 3 and pre_q 4 (the highest-baseline-spending groups) switch from “low” to “high” under the jackknife. These are units that should theoretically have lower predicted spending changes, not higher."
+  },
+  {
+    "objectID": "jk-instability-dec-05-2025.html#diagnosis",
+    "href": "jk-instability-dec-05-2025.html#diagnosis",
+    "title": "JK Instability",
+    "section": "",
+    "text": "To understand the flips, we compare the coefficients that form predicted spending in the full sample versus the jackknife runs for Ohio and Texas. Predicted spending equals the main effect plus the quartile adjustment relative to quartile 1 (main + ppe). Here, ppe3 and ppe4 refer to the coefficients on lag_*#pre_q3 and lag_*#pre_q4.\n\n\nFull Sample - main = 0.0208505\n- ppe3 = −0.0227245\n- ppe4 = −0.0299217\nOhio Omitted - main = 0.0138311\n- ppe3 = −0.0193518\n- ppe4 = −0.0120878\nTexas Omitted - main = 0.0248799\n- ppe3 = −0.0052331\n- ppe4 = −0.0299885\n\n\n\n\nWhen Ohio is excluded, ppe4 rises from −0.0299217 to −0.0120878 (+0.0178339).\nThis boosts quartile-4 predicted spending enough to flip 336 quartile-4 counties into the high group.\nWhen Texas is excluded, ppe3 rises from −0.0227245 to −0.0052331 (~+0.0174914).\nThis raises quartile-3 predicted spending, flipping 504 quartile-3 counties into the high group.\n\nTogether, these shifts generate 840 additional “high predicted” classifications that only appear under the jackknife. This inflates the size of the high group with counties that actually exhibit weak spending growth, which pulls down the average effect for the high group and produces the inversion seen in the jackknife plots."
+  },
+  {
     "objectID": "STYLE_BRIEF.html",
     "href": "STYLE_BRIEF.html",
     "title": "Research Hub: Style & Layout Brief",
@@ -112,46 +273,32 @@
     "text": "When someone lands on this site, they should immediately sense:\n\nAuthority — This is a serious institution with serious research\nClarity — The content is accessible, well-organized, easy to navigate\nModernity — Contemporary design sensibility, not a dusty academic relic\nTrust — Clean, professional presentation signals credibility\nFocus — The research is the star; design supports, never distracts\n\nThe design should age gracefully. In 5 years, it should still feel current—because it relies on timeless principles (clarity, whitespace, strong typography) rather than trendy effects.\n\nDocument Version: 1.0 Created: December 2025"
   },
   {
-    "objectID": "privacy.html",
-    "href": "privacy.html",
-    "title": "Privacy Policy",
+    "objectID": "meeting-dec-05-2025.html",
+    "href": "meeting-dec-05-2025.html",
+    "title": "Never-Treated Jackknife Fixes",
     "section": "",
-    "text": "Last updated: December 3, 2025\n\n\n\nThis Research Hub website is a personal academic project website. We do not collect, store, or process any personal information from visitors.\n\n\n\n\nWe do not use cookies\nWe do not track visitors\nWe do not collect email addresses or contact information\nWe do not use analytics services\n\n\n\n\nThis website contains links to external resources including:\n\nGoogle Drive\nGoogle Docs\nGitHub repositories\nQuarto publishing platform\n\nThese external services have their own privacy policies. We recommend reviewing their policies if you choose to visit those sites.\n\n\n\nWe may update this privacy policy from time to time. Any changes will be posted on this page with an updated revision date.\n\n\n\nIf you have questions about this privacy policy, please contact:\nMyles Owens Email: maowens@stanford.edu"
+    "text": "This document explains the fixes implemented for the Jackknife Figure 2 issues identified on December 2nd. The core problem was that although all counties received a predicted spending value, only ever-treated counties were assigned a value for the binary indicator high. Never-treated counties were assigned missing values, which caused them to be dropped from regressions even though they should have remained in the sample.\nAll analyses now incorporate two fixes:\n\nSetting high = 0 for never-treated units\n\nRemoving interactions between high and the year effects\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: Event study estimates by baseline spending quartile\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Event study estimates by baseline spending and income quartiles\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: Event study estimates by baseline spending, income quartiles, and reform types\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 4: Jackknife event study estimates - baseline spending only\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 5: Jackknife event study estimates - baseline spending and income quartiles\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 6: Jackknife event study estimates - full specification with reforms\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure\nControls\nJackknife\n\n\n\n\n2.1\nBaseline only\nNo\n\n\n2.2\nBaseline + Income\nNo\n\n\n2.3\nBaseline + Income + Reforms\nNo\n\n\n2.4\nBaseline only\nYes\n\n\n2.5\nBaseline + Income\nYes\n\n\n2.6\nBaseline + Income + Reforms\nYes\n\n\n\n\n\n\n\n\n\n\n\n\nPatterns Observed\n\nIn the non-jackknife regressions, the high group is clearly above the low group.\n\nIn the jackknife version, this pattern reverses: the estimated effect for the high group often dips below the low group."
   },
   {
-    "objectID": "privacy.html#overview",
-    "href": "privacy.html#overview",
-    "title": "Privacy Policy",
+    "objectID": "meeting-dec-05-2025.html#meeting-overview",
+    "href": "meeting-dec-05-2025.html#meeting-overview",
+    "title": "Never-Treated Jackknife Fixes",
     "section": "",
-    "text": "This Research Hub website is a personal academic project website. We do not collect, store, or process any personal information from visitors."
+    "text": "This document explains the fixes implemented for the Jackknife Figure 2 issues identified on December 2nd. The core problem was that although all counties received a predicted spending value, only ever-treated counties were assigned a value for the binary indicator high. Never-treated counties were assigned missing values, which caused them to be dropped from regressions even though they should have remained in the sample.\nAll analyses now incorporate two fixes:\n\nSetting high = 0 for never-treated units\n\nRemoving interactions between high and the year effects"
   },
   {
-    "objectID": "privacy.html#information-we-dont-collect",
-    "href": "privacy.html#information-we-dont-collect",
-    "title": "Privacy Policy",
+    "objectID": "meeting-dec-05-2025.html#results",
+    "href": "meeting-dec-05-2025.html#results",
+    "title": "Never-Treated Jackknife Fixes",
     "section": "",
-    "text": "We do not use cookies\nWe do not track visitors\nWe do not collect email addresses or contact information\nWe do not use analytics services"
+    "text": "Figure 1: Event study estimates by baseline spending quartile\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Event study estimates by baseline spending and income quartiles\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: Event study estimates by baseline spending, income quartiles, and reform types\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 4: Jackknife event study estimates - baseline spending only\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 5: Jackknife event study estimates - baseline spending and income quartiles\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 6: Jackknife event study estimates - full specification with reforms"
   },
   {
-    "objectID": "privacy.html#external-links",
-    "href": "privacy.html#external-links",
-    "title": "Privacy Policy",
+    "objectID": "meeting-dec-05-2025.html#cross-specification-comparison",
+    "href": "meeting-dec-05-2025.html#cross-specification-comparison",
+    "title": "Never-Treated Jackknife Fixes",
     "section": "",
-    "text": "This website contains links to external resources including:\n\nGoogle Drive\nGoogle Docs\nGitHub repositories\nQuarto publishing platform\n\nThese external services have their own privacy policies. We recommend reviewing their policies if you choose to visit those sites."
-  },
-  {
-    "objectID": "privacy.html#changes-to-this-policy",
-    "href": "privacy.html#changes-to-this-policy",
-    "title": "Privacy Policy",
-    "section": "",
-    "text": "We may update this privacy policy from time to time. Any changes will be posted on this page with an updated revision date."
-  },
-  {
-    "objectID": "privacy.html#contact",
-    "href": "privacy.html#contact",
-    "title": "Privacy Policy",
-    "section": "",
-    "text": "If you have questions about this privacy policy, please contact:\nMyles Owens Email: maowens@stanford.edu"
+    "text": "Figure\nControls\nJackknife\n\n\n\n\n2.1\nBaseline only\nNo\n\n\n2.2\nBaseline + Income\nNo\n\n\n2.3\nBaseline + Income + Reforms\nNo\n\n\n2.4\nBaseline only\nYes\n\n\n2.5\nBaseline + Income\nYes\n\n\n2.6\nBaseline + Income + Reforms\nYes\n\n\n\n\n\n\n\n\n\n\n\n\nPatterns Observed\n\nIn the non-jackknife regressions, the high group is clearly above the low group.\n\nIn the jackknife version, this pattern reverses: the estimated effect for the high group often dips below the low group."
   },
   {
     "objectID": "claude.html",
@@ -222,34 +369,6 @@
     "title": "Research Hub - Project Documentation",
     "section": "",
     "text": "Quarto Documentation\nQuarto Websites Guide\nR Documentation"
-  },
-  {
-    "objectID": "meeting-dec-05-2025.html",
-    "href": "meeting-dec-05-2025.html",
-    "title": "Never-Treated Jackknife Fixes",
-    "section": "",
-    "text": "This document explains the fixes implemented for the Jackknife Figure 2 issues identified on December 2nd. The core problem was that although all counties received a predicted spending value, only ever-treated counties were assigned a value for the binary indicator high. Never-treated counties were assigned missing values, which caused them to be dropped from regressions even though they should have remained in the sample.\nAll analyses now incorporate two fixes:\n\nSetting high = 0 for never-treated units\n\nRemoving interactions between high and the year effects\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: Event study estimates by baseline spending quartile\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Event study estimates by baseline spending and income quartiles\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: Event study estimates by baseline spending, income quartiles, and reform types\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 4: Jackknife event study estimates - baseline spending only\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 5: Jackknife event study estimates - baseline spending and income quartiles\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 6: Jackknife event study estimates - full specification with reforms\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure\nControls\nJackknife\n\n\n\n\n2.1\nBaseline only\nNo\n\n\n2.2\nBaseline + Income\nNo\n\n\n2.3\nBaseline + Income + Reforms\nNo\n\n\n2.4\nBaseline only\nYes\n\n\n2.5\nBaseline + Income\nYes\n\n\n2.6\nBaseline + Income + Reforms\nYes\n\n\n\n\n\n\n\n\n\n\n\n\nPatterns Observed\n\nIn the non-jackknife regressions, the high group is clearly above the low group.\n\nIn the jackknife version, this pattern reverses: the estimated effect for the high group often dips below the low group."
-  },
-  {
-    "objectID": "meeting-dec-05-2025.html#meeting-overview",
-    "href": "meeting-dec-05-2025.html#meeting-overview",
-    "title": "Never-Treated Jackknife Fixes",
-    "section": "",
-    "text": "This document explains the fixes implemented for the Jackknife Figure 2 issues identified on December 2nd. The core problem was that although all counties received a predicted spending value, only ever-treated counties were assigned a value for the binary indicator high. Never-treated counties were assigned missing values, which caused them to be dropped from regressions even though they should have remained in the sample.\nAll analyses now incorporate two fixes:\n\nSetting high = 0 for never-treated units\n\nRemoving interactions between high and the year effects"
-  },
-  {
-    "objectID": "meeting-dec-05-2025.html#results",
-    "href": "meeting-dec-05-2025.html#results",
-    "title": "Never-Treated Jackknife Fixes",
-    "section": "",
-    "text": "Figure 1: Event study estimates by baseline spending quartile\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Event study estimates by baseline spending and income quartiles\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: Event study estimates by baseline spending, income quartiles, and reform types\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 4: Jackknife event study estimates - baseline spending only\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 5: Jackknife event study estimates - baseline spending and income quartiles\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 6: Jackknife event study estimates - full specification with reforms"
-  },
-  {
-    "objectID": "meeting-dec-05-2025.html#cross-specification-comparison",
-    "href": "meeting-dec-05-2025.html#cross-specification-comparison",
-    "title": "Never-Treated Jackknife Fixes",
-    "section": "",
-    "text": "Figure\nControls\nJackknife\n\n\n\n\n2.1\nBaseline only\nNo\n\n\n2.2\nBaseline + Income\nNo\n\n\n2.3\nBaseline + Income + Reforms\nNo\n\n\n2.4\nBaseline only\nYes\n\n\n2.5\nBaseline + Income\nYes\n\n\n2.6\nBaseline + Income + Reforms\nYes\n\n\n\n\n\n\n\n\n\n\n\n\nPatterns Observed\n\nIn the non-jackknife regressions, the high group is clearly above the low group.\n\nIn the jackknife version, this pattern reverses: the estimated effect for the high group often dips below the low group."
   },
   {
     "objectID": "github.html",
@@ -336,34 +455,6 @@
     "text": "For detailed documentation:\n\nSee CLAUDE.md for comprehensive AI assistant guide and coding conventions\nReview individual .do file headers for specific implementation details\n\nOriginal paper and data sources:\n\nJJP (2016) Online Appendix: Detailed data description and reform coding\nNCES Common Core of Data: https://nces.ed.gov/ccd/\nFRED CPI-U Data: https://fred.stlouisfed.org/\nICPSR GRF 1969: Study #03515 (Geographic Reference Files)"
   },
   {
-    "objectID": "meeting-dec-09-2025.html",
-    "href": "meeting-dec-09-2025.html",
-    "title": "December 9, 2025 Meeting",
-    "section": "",
-    "text": "This document presents the latest event study results comparing baseline (no jackknife) and jackknife approaches across three specifications:\n\nSpecification A: Baseline spending only\nSpecification B: Baseline spending + Income quartiles\nSpecification C: Baseline spending + Income quartiles + Reform types\n\nEach specification is shown with both the full-sample estimates (baseline) and leave-one-state-out jackknife predictions.\n\n\n\n\nThese figures show event study estimates using the full sample to classify counties into high vs. low predicted spending groups.\n\n\n\n\n\n\n\n\nFigure 1: Event study estimates by baseline spending quartile (no jackknife)\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Event study estimates by baseline spending and income quartiles (no jackknife)\n\n\n\n\n\n\n\n\n\nSpecification: Controls for baseline 1971 spending quartile and 1970 county median family income quartile.\nPattern: Similar divergence between high and low groups, with slightly attenuated effects compared to Specification A.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: Event study estimates by baseline spending, income quartiles, and reform types (no jackknife)\n\n\n\n\n\n\n\n\nThese figures use leave-one-state-out predictions to classify counties. For each state, we estimate the model excluding that state’s data, then predict spending increases for counties in the excluded state.\n\n\n\n\n\n\n\n\nFigure 4: Jackknife event study estimates - baseline spending only\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 5: Jackknife event study estimates - baseline spending and income quartiles\n\n\n\n\n\n\n\n\n\nIssue: Similar compression of the high group relative to baseline estimates.\nPattern: Adding income controls does not resolve the instability introduced by the jackknife procedure.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 6: Jackknife event study estimates - full specification with reforms"
-  },
-  {
-    "objectID": "meeting-dec-09-2025.html#meeting-overview",
-    "href": "meeting-dec-09-2025.html#meeting-overview",
-    "title": "December 9, 2025 Meeting",
-    "section": "",
-    "text": "This document presents the latest event study results comparing baseline (no jackknife) and jackknife approaches across three specifications:\n\nSpecification A: Baseline spending only\nSpecification B: Baseline spending + Income quartiles\nSpecification C: Baseline spending + Income quartiles + Reform types\n\nEach specification is shown with both the full-sample estimates (baseline) and leave-one-state-out jackknife predictions."
-  },
-  {
-    "objectID": "meeting-dec-09-2025.html#baseline-estimates-no-jackknife",
-    "href": "meeting-dec-09-2025.html#baseline-estimates-no-jackknife",
-    "title": "December 9, 2025 Meeting",
-    "section": "",
-    "text": "These figures show event study estimates using the full sample to classify counties into high vs. low predicted spending groups.\n\n\n\n\n\n\n\n\nFigure 1: Event study estimates by baseline spending quartile (no jackknife)\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Event study estimates by baseline spending and income quartiles (no jackknife)\n\n\n\n\n\n\n\n\n\nSpecification: Controls for baseline 1971 spending quartile and 1970 county median family income quartile.\nPattern: Similar divergence between high and low groups, with slightly attenuated effects compared to Specification A.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: Event study estimates by baseline spending, income quartiles, and reform types (no jackknife)"
-  },
-  {
-    "objectID": "meeting-dec-09-2025.html#jackknife-estimates",
-    "href": "meeting-dec-09-2025.html#jackknife-estimates",
-    "title": "December 9, 2025 Meeting",
-    "section": "",
-    "text": "These figures use leave-one-state-out predictions to classify counties. For each state, we estimate the model excluding that state’s data, then predict spending increases for counties in the excluded state.\n\n\n\n\n\n\n\n\nFigure 4: Jackknife event study estimates - baseline spending only\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 5: Jackknife event study estimates - baseline spending and income quartiles\n\n\n\n\n\n\n\n\n\nIssue: Similar compression of the high group relative to baseline estimates.\nPattern: Adding income controls does not resolve the instability introduced by the jackknife procedure.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 6: Jackknife event study estimates - full specification with reforms"
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Research Hub 2.0",
@@ -390,96 +481,5 @@
     "title": "Research Hub 2.0",
     "section": "Research Timeline",
     "text": "Research Timeline\nA chronological record of project milestones and findings.\n\n\nDecember 2025\n\nDec 09: Baseline vs Jackknife Event Study Results (Latest Figure 2s)\nTopic: Comparing baseline (no jackknife) and jackknife approaches across three specifications.\n\n\n\n\n\n\nSpecifications Tested:\n\nSpecification A: Baseline spending only\nSpecification B: Baseline spending + Income quartiles\nSpecification C: Baseline spending + Income quartiles + Reform types\n\nEach specification includes both full-sample estimates (baseline) and leave-one-state-out jackknife predictions.\n\n\n\nView Full Meeting Notes\n\n\n\nDec 05: Never-Treated Jackknife Fixes\nTopic: Updated Figure 2 plus some notes on fixes.\nView Full Meeting Notes\n\n\n\nDec 05: JK Instability - Jackknife Classification Issues\nTopic: Investigation of jackknife classification instability in Approach II.\n\n\n\n\n\n\nKey Finding: Two states (Ohio and Texas) have below-average spending growth for their high-baseline-spending counties. When these states are left out in the jackknife step, their influence disappears, and counties that underperform in the full sample suddenly receive inflated predicted spending values. This pushes them incorrectly into the “high predicted” category\nImpact: 840 observations (11.9% of the “high” group) contaminate the jackknife results, compressing the event-study trends.\n\n\n\n\nView JK Instability Analysis\n\n\n\n\nDec 02: Figure 2 Fixes & Jackknife Strategy\nTopic: Resolving the “Never Treated” interaction issue.\n\n\n\n\n\n\nBug Found: “High” variable was defined as missing for never-treated units, dropping them from interaction regressions.\nFix: Define high=0 among NTs and remove interaction with year effects (let NTs dictate year effects).\n\n\n\nNext Steps (Jackknife Iterations):\n\nBaseline spending only (No Jackknife)\nBaseline + Income Quartiles (No Jackknife)\nBaseline + Income + Reform Types (No Jackknife)\nRepeat 1-3 with Jackknife.\n\n\nView Jackknife Code Review\n\n\n\n\n\nNovember 2025\n\nNov 25: Robustness & JJP Comparison\nTopic: Jackknife vs Non-Jackknife and Sample Selection Bias.\n\nDecision: Run Fig 1 among bottom 10% baseline spending counties.\nContext (JJP Comparison): JJP’s Figure 1 (large effect) uses PSID-linked districts (~10% of districts, selected for low income). JJP Appendix B2 (all districts) shows smaller effects closer to our findings.\n\nView Analysis\n\n\n\nNov 17-21: District & Panel Analysis\nTopic: District level expansion and balancing checks.\n\nBalance Exercise: Sample balanced on non-missing lexp_ma_strict from event times -5 to 17.\nHypothesis: Aggregating to county level smooths variation across districts, potentially leading to smaller effects than JJP.\n\n\nDistrict Level Results Balanced Panel Results\n\n\n\n\nNov 06: Sample Variations (Fig 1 & 2)\nTopic: Robustness checks across weighted/unweighted and sample restrictions.\n\nSummary Table\n\n\n\nFigure\nSample Definition\nWeighted\nLink\n\n\n\n\nFig 1\nIncludes counties w/ &gt;2 non-tract areas\nYes\nView\n\n\nFig 1\nIncludes counties w/ &gt;2 non-tract areas\nNo\nView\n\n\nFig 1\nExcludes counties w/ &gt;2 non-tract areas\nYes\nView\n\n\nFig 1\nExcludes counties w/ &gt;2 non-tract areas\nNo\nView\n\n\n\n\n\n\n\n\nOctober 2025\n\nOct 31: The “Mixed” County Problem\nTopic: Handling counties with multiple non-tracted areas.\n\n\n\n\n\n\nThe Issue: We lack school-age population data for non-tracted areas. If a county has &gt;1 non-tracted area, we cannot weight them relative to each other.\nThe Fix: Combine all non-tracted areas in a county into a single “pseudo-area.” Average their PPE (unweighted), then weight this pseudo-area against the tracts using the residual county population.\n\n\n\n\n\n\nOct 28: Defining “Good” Counties\nTopic: Creating a clean baseline dataset.\n\nDefinition: A “Good County” is one where every linked tract/LEAID has non-missing spending data for every year from 1966-1971.\nAction: Created indicator variables good_county_6671 to filter samples.\n\n\n\n\nOct 24: Baseline Year Selection\n\nFindings: 1971 vs. 1966-70 average yields similar results.\nDecision: Use 1971 on its own or average across several years (robustness check).\n\nView Full Notes\n\n\n\nOct 21: Pre-Quartile Splits\n\nGoal: Compare individual pre-quartile splits (e.g., 1967 vs 1971) to ensure single-year spikes aren’t driving results.\n\nView Full Notes\n\n\n\nOct 17: Interpolation & Winsorizing\n\nMethod: Winsorize all spending values at 1st and 99th percentiles (within year).\nRefinement: Interpolate at the district level before tract-to-county processing (previously done at tract level).\n\nView Full Notes\n\n\n\nOct 11: Common Core & Balancing\n\nData Update: Incorporated Common Core spending data through 2018-19.\nBalancing: Redefined lead_5 to bin all earlier years; lag_17 bins all later years. Exclude counties treated 2000+.\n\nView Full Notes\n\n\n\nOct 07: Debugging pred_spend\n\nChallenge: Event studies by pred_spend went in opposite directions than expected.\nAction: Step-by-step reconstruction (Simple event study → Baseline Quartile split → pred_spend construction).\n\nView Full Notes\n\n\n\n\nSeptember 2025\n\nSep 30: Reform Variables\n\nDecision: Build pred_spend without reforms to isolate variable issues.\n\nView Full Notes\n\n\n\nSep 23: Wisconsin Binning Fix\n\nBug: Coefficients for lead 16-19 were empty, but lead 20 was non-empty.\nCause: Binning issue in estimation. Fixed.\n\nView Full Notes\n\n\n\nSep 02: Hanushek vs. JJP\n\nAction: Re-run First Stage Approach 1 using only JJP reform info (ignore Hanushek table for now) to ensure replication.\n\nView Full Notes\n\n\n\n\nAugust 2025\n\nAug 26: Data Cleaning\n\nImputation: Imputed 1986 enrollment using 1987 numbers for district 3416800.\nZero Values: For 1983 enrollment==0, replaced with ’84 (or ’82) values.\n\n\n\n\nAug 19: JJP Methodology Deep Dive\nTopic: Weighting and Rolling Windows.\n\nDifference: JJP uses district-level; we use county-level.\nVariable Definitions:\n\nCurrent year spending (weighted by 1972 pop).\nLog average PPE over 13-year rolling window (missing if &lt;13 years data).\nLog average PPE over available data (filling missing years with 1967 value).\n\n\n\n\n\nAug 01: The PPE Formula\nTopic: Calculating Per Pupil Expenditures (PPE) for split tracts.\n\n\n\n\n\n\nLogic for Primary/Secondary Tracts:\n\nGet Primary PPE and Secondary PPE.\nGet share of students in tract who are Primary-age vs Secondary-age.\nFormula: (PrimaryPPE * PrimaryShare) + (SecondaryPPE * SecondaryShare)\n\n\n\n\n\n\n\n\nJuly 2025\n\nJuly 29: Duplicate Tracts\n\nIssue: Tracts appearing multiple times (once for elementary, once for secondary).\nResolution: Reshape to tract level with separate variables for elementary/secondary districts.\n\n\n\n\nJuly 15: Geographic Challenges\n\nIssue: Difficulty mapping districts to counties via tracts.\nStrategy: If population weighting fails, default to centroids. Match failures (un-tracted areas) assigned to counties via GRF.\n\n\n\n\nJuly 11: Project Kickoff\n\nGoal: Produce panel of per-pupil spending at the county level.\nRationale: We only observe birth location at the county level."
-  },
-  {
-    "objectID": "terms.html",
-    "href": "terms.html",
-    "title": "Terms of Use",
-    "section": "",
-    "text": "Last updated: December 3, 2025\n\n\n\nThis website is maintained as part of academic research at the Hoover Institution, Stanford University. The content is provided for informational and educational purposes.\n\n\n\nThe research notes, analyses, and code reviews presented on this site represent work in progress. Findings and methodologies may be updated as research continues.\n\n\n\nLinks to external resources (Google Drive, Google Docs, GitHub repositories) are provided for collaborators and interested researchers. Access to some resources may be restricted.\n\n\n\nAll original content on this site, unless otherwise noted, is the intellectual property of the research team. Code repositories may have their own licensing terms specified in their respective repositories.\n\n\n\nThe content is provided “as is” without warranty of any kind, express or implied. We make no guarantees about the accuracy, reliability, or completeness of the information presented.\n\n\n\nWe reserve the right to modify these terms at any time. Changes will be posted on this page with an updated revision date.\n\n\n\nFor questions about these terms or the research presented on this site:\nMyles Owens Hoover Institution, Stanford University Email: maowens@stanford.edu"
-  },
-  {
-    "objectID": "terms.html#academic-use",
-    "href": "terms.html#academic-use",
-    "title": "Terms of Use",
-    "section": "",
-    "text": "This website is maintained as part of academic research at the Hoover Institution, Stanford University. The content is provided for informational and educational purposes."
-  },
-  {
-    "objectID": "terms.html#research-content",
-    "href": "terms.html#research-content",
-    "title": "Terms of Use",
-    "section": "",
-    "text": "The research notes, analyses, and code reviews presented on this site represent work in progress. Findings and methodologies may be updated as research continues."
-  },
-  {
-    "objectID": "terms.html#external-resources",
-    "href": "terms.html#external-resources",
-    "title": "Terms of Use",
-    "section": "",
-    "text": "Links to external resources (Google Drive, Google Docs, GitHub repositories) are provided for collaborators and interested researchers. Access to some resources may be restricted."
-  },
-  {
-    "objectID": "terms.html#intellectual-property",
-    "href": "terms.html#intellectual-property",
-    "title": "Terms of Use",
-    "section": "",
-    "text": "All original content on this site, unless otherwise noted, is the intellectual property of the research team. Code repositories may have their own licensing terms specified in their respective repositories."
-  },
-  {
-    "objectID": "terms.html#no-warranties",
-    "href": "terms.html#no-warranties",
-    "title": "Terms of Use",
-    "section": "",
-    "text": "The content is provided “as is” without warranty of any kind, express or implied. We make no guarantees about the accuracy, reliability, or completeness of the information presented."
-  },
-  {
-    "objectID": "terms.html#changes-to-terms",
-    "href": "terms.html#changes-to-terms",
-    "title": "Terms of Use",
-    "section": "",
-    "text": "We reserve the right to modify these terms at any time. Changes will be posted on this page with an updated revision date."
-  },
-  {
-    "objectID": "terms.html#contact",
-    "href": "terms.html#contact",
-    "title": "Terms of Use",
-    "section": "",
-    "text": "For questions about these terms or the research presented on this site:\nMyles Owens Hoover Institution, Stanford University Email: maowens@stanford.edu"
-  },
-  {
-    "objectID": "jk-instability-dec-05-2025.html",
-    "href": "jk-instability-dec-05-2025.html",
-    "title": "JK Instability",
-    "section": "",
-    "text": "This memo explains why the jackknife plots sometimes show the “high” group dipping below the “low” group. After applying the fixes Nick flagged on Tuesday, the updated charts look cleaner, but the same core issue remains: the jackknife estimates often compress the “high” group and, in several cases, push it below the “low” group.\nThe main mechanism is straightforward. Some counties that are classified as low in the full-sample prediction model (because predicted spending &lt; 0) flip into the high category when their own state is excluded from the model during the jackknife procedure. This misclassification is likely not the only problem in the jackknife approach, but it appears to be a major contributor to the pattern we observe.\nA closer investigation shows that two states — Ohio and Texas — have below-average spending growth among counties that should be in the highest-baseline-spending group. When these states are left out in the jackknife step, their influence disappears, and counties that underperform in the full sample suddenly receive inflated predicted spending values. This pushes them incorrectly into the “high predicted” category.\n\n\n\nThe goal is simple:\n\nAssign each county a predicted spending change.\n\nCreate a binary indicator equal to 1 if predicted spending &gt; 0 and 0 otherwise (for ever-treated counties).\n\nRun an event-study regression using that binary variable.\n\nUnder normal circumstances, this should yield the intuitive ordering: high above low.\n\n\n\n\n\nTo keep things simple, consider the specification that controls only for baseline 1971 spending quartile. In the baseline approach, we use the full sample and regress expenditure on quartile indicators. This produces predicted spending values, which we then use to define high (predicted &gt; 0). Running an event-study with this high variable delivers the expected pattern: high consistently exceeds low.\n\n\n\n\n\n\n\n\nFigure 1: Event study estimates by baseline spending quartile\n\n\n\n\n\n\n\nThe jackknife repeats the same regression multiple times, each iteration excluding one state. For each iteration, we:\n\nRe-estimate the model without state s.\n\nGenerate predicted spending for counties in the omitted state.\n\nAssign those counties to high/low based on the jackknife prediction.\n\nMove on to the next state.\n\nThe advantage is that no single state can dominate the prediction model. The problem is that when we use these jackknife-based predictions to create the high variable for the second-stage event study, we sometimes obtain the reverse ordering: the low group sits above the high group.\n\n\n\n\n\n\n\n\nFigure 2: Event study estimates by baseline spending and income quartiles\n\n\n\nOrdinarily I would assume this pattern reflects a coding mistake, because mechanically the high group should exceed the low group. But after checking the underlying data more closely, that explanation doesn’t hold.\nTabulating pre_q × high (baseline spending quartile × high/low classification) shows the issue clearly:\n\n\n\nQuartile\nRegular High\nJackknife High\nDifference\n\n\n\n\npre_q 1\n3,080\n3,080\n0\n\n\npre_q 2\n3,136\n3,136\n0\n\n\npre_q 3\n0\n504\n+504\n\n\npre_q 4\n0\n336\n+336\n\n\nTotal\n6,216\n7,056\n+840\n\n\n\nFinding: 840 counties from pre_q 3 and pre_q 4 (the highest-baseline-spending groups) switch from “low” to “high” under the jackknife. These are units that should theoretically have lower predicted spending changes, not higher.\n\n\n\n\n\n\nTo understand the flips, we compare the coefficients that form predicted spending in the full sample versus the jackknife runs for Ohio and Texas. Predicted spending equals the main effect plus the quartile adjustment relative to quartile 1 (main + ppe). Here, ppe3 and ppe4 refer to the coefficients on lag_*#pre_q3 and lag_*#pre_q4.\n\n\nFull Sample - main = 0.0208505\n- ppe3 = −0.0227245\n- ppe4 = −0.0299217\nOhio Omitted - main = 0.0138311\n- ppe3 = −0.0193518\n- ppe4 = −0.0120878\nTexas Omitted - main = 0.0248799\n- ppe3 = −0.0052331\n- ppe4 = −0.0299885\n\n\n\n\nWhen Ohio is excluded, ppe4 rises from −0.0299217 to −0.0120878 (+0.0178339).\nThis boosts quartile-4 predicted spending enough to flip 336 quartile-4 counties into the high group.\nWhen Texas is excluded, ppe3 rises from −0.0227245 to −0.0052331 (~+0.0174914).\nThis raises quartile-3 predicted spending, flipping 504 quartile-3 counties into the high group.\n\nTogether, these shifts generate 840 additional “high predicted” classifications that only appear under the jackknife. This inflates the size of the high group with counties that actually exhibit weak spending growth, which pulls down the average effect for the high group and produces the inversion seen in the jackknife plots."
-  },
-  {
-    "objectID": "jk-instability-dec-05-2025.html#overview",
-    "href": "jk-instability-dec-05-2025.html#overview",
-    "title": "JK Instability",
-    "section": "",
-    "text": "This memo explains why the jackknife plots sometimes show the “high” group dipping below the “low” group. After applying the fixes Nick flagged on Tuesday, the updated charts look cleaner, but the same core issue remains: the jackknife estimates often compress the “high” group and, in several cases, push it below the “low” group.\nThe main mechanism is straightforward. Some counties that are classified as low in the full-sample prediction model (because predicted spending &lt; 0) flip into the high category when their own state is excluded from the model during the jackknife procedure. This misclassification is likely not the only problem in the jackknife approach, but it appears to be a major contributor to the pattern we observe.\nA closer investigation shows that two states — Ohio and Texas — have below-average spending growth among counties that should be in the highest-baseline-spending group. When these states are left out in the jackknife step, their influence disappears, and counties that underperform in the full sample suddenly receive inflated predicted spending values. This pushes them incorrectly into the “high predicted” category."
-  },
-  {
-    "objectID": "jk-instability-dec-05-2025.html#conceptual-setup",
-    "href": "jk-instability-dec-05-2025.html#conceptual-setup",
-    "title": "JK Instability",
-    "section": "",
-    "text": "The goal is simple:\n\nAssign each county a predicted spending change.\n\nCreate a binary indicator equal to 1 if predicted spending &gt; 0 and 0 otherwise (for ever-treated counties).\n\nRun an event-study regression using that binary variable.\n\nUnder normal circumstances, this should yield the intuitive ordering: high above low."
-  },
-  {
-    "objectID": "jk-instability-dec-05-2025.html#two-ways-to-generate-predicted-spending",
-    "href": "jk-instability-dec-05-2025.html#two-ways-to-generate-predicted-spending",
-    "title": "JK Instability",
-    "section": "",
-    "text": "To keep things simple, consider the specification that controls only for baseline 1971 spending quartile. In the baseline approach, we use the full sample and regress expenditure on quartile indicators. This produces predicted spending values, which we then use to define high (predicted &gt; 0). Running an event-study with this high variable delivers the expected pattern: high consistently exceeds low.\n\n\n\n\n\n\n\n\nFigure 1: Event study estimates by baseline spending quartile\n\n\n\n\n\n\n\nThe jackknife repeats the same regression multiple times, each iteration excluding one state. For each iteration, we:\n\nRe-estimate the model without state s.\n\nGenerate predicted spending for counties in the omitted state.\n\nAssign those counties to high/low based on the jackknife prediction.\n\nMove on to the next state.\n\nThe advantage is that no single state can dominate the prediction model. The problem is that when we use these jackknife-based predictions to create the high variable for the second-stage event study, we sometimes obtain the reverse ordering: the low group sits above the high group.\n\n\n\n\n\n\n\n\nFigure 2: Event study estimates by baseline spending and income quartiles\n\n\n\nOrdinarily I would assume this pattern reflects a coding mistake, because mechanically the high group should exceed the low group. But after checking the underlying data more closely, that explanation doesn’t hold.\nTabulating pre_q × high (baseline spending quartile × high/low classification) shows the issue clearly:\n\n\n\nQuartile\nRegular High\nJackknife High\nDifference\n\n\n\n\npre_q 1\n3,080\n3,080\n0\n\n\npre_q 2\n3,136\n3,136\n0\n\n\npre_q 3\n0\n504\n+504\n\n\npre_q 4\n0\n336\n+336\n\n\nTotal\n6,216\n7,056\n+840\n\n\n\nFinding: 840 counties from pre_q 3 and pre_q 4 (the highest-baseline-spending groups) switch from “low” to “high” under the jackknife. These are units that should theoretically have lower predicted spending changes, not higher."
-  },
-  {
-    "objectID": "jk-instability-dec-05-2025.html#diagnosis",
-    "href": "jk-instability-dec-05-2025.html#diagnosis",
-    "title": "JK Instability",
-    "section": "",
-    "text": "To understand the flips, we compare the coefficients that form predicted spending in the full sample versus the jackknife runs for Ohio and Texas. Predicted spending equals the main effect plus the quartile adjustment relative to quartile 1 (main + ppe). Here, ppe3 and ppe4 refer to the coefficients on lag_*#pre_q3 and lag_*#pre_q4.\n\n\nFull Sample - main = 0.0208505\n- ppe3 = −0.0227245\n- ppe4 = −0.0299217\nOhio Omitted - main = 0.0138311\n- ppe3 = −0.0193518\n- ppe4 = −0.0120878\nTexas Omitted - main = 0.0248799\n- ppe3 = −0.0052331\n- ppe4 = −0.0299885\n\n\n\n\nWhen Ohio is excluded, ppe4 rises from −0.0299217 to −0.0120878 (+0.0178339).\nThis boosts quartile-4 predicted spending enough to flip 336 quartile-4 counties into the high group.\nWhen Texas is excluded, ppe3 rises from −0.0227245 to −0.0052331 (~+0.0174914).\nThis raises quartile-3 predicted spending, flipping 504 quartile-3 counties into the high group.\n\nTogether, these shifts generate 840 additional “high predicted” classifications that only appear under the jackknife. This inflates the size of the high group with counties that actually exhibit weak spending growth, which pulls down the average effect for the high group and produces the inversion seen in the jackknife plots."
   }
 ]
