@@ -66,12 +66,6 @@ These figures use leave-one-state-out predictions to classify counties. For each
 
 ![Jackknife event study estimates - baseline spending and income quartiles](images/12_9_25/jackknife_spec_B_def_A_high_vs_low.png){#fig-2-2-plot}
 
-::: {.callout-warning appearance="minimal"}
-**Issue**: Similar compression of the high group relative to baseline estimates.
-
-**Pattern**: Adding income controls does not resolve the instability introduced by the jackknife procedure.
-:::
-
 ------------------------------------------------------------------------
 
 ### Figure 2.6: Spending + Income + Reform Types (Jackknife) {#fig-2-3}
