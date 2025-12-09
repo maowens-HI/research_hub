@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2025-12-09">
 
-<title>Terms of Use | Research Hub</title>
+<title>December 9, 2025 Meeting | Research Hub</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -71,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -106,16 +107,19 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Terms of Use</h1>
+<h1 class="title">December 9, 2025 Meeting</h1>
 </div>
 
 
@@ -123,6 +127,12 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 9, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -132,41 +142,135 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="content-page">
-<section id="terms-of-use" class="level1 page-title page-header">
-<h1 class="page-title">Terms of Use</h1>
-<p>Last updated: December 3, 2025</p>
+<section>
+<div class="container">
+<section id="meeting-overview" class="level2">
+<h2 class="anchored" data-anchor-id="meeting-overview">Meeting Overview</h2>
+<p>This document presents the latest event study results comparing baseline (no jackknife) and jackknife approaches across three specifications:</p>
+<ul>
+<li><strong>Specification A</strong>: Baseline spending only</li>
+<li><strong>Specification B</strong>: Baseline spending + Income quartiles</li>
+<li><strong>Specification C</strong>: Baseline spending + Income quartiles + Reform types</li>
+</ul>
+<p>Each specification is shown with both the full-sample estimates (baseline) and leave-one-state-out jackknife predictions.</p>
+<hr>
 </section>
-<section id="academic-use" class="level2">
-<h2 class="anchored" data-anchor-id="academic-use">Academic Use</h2>
-<p>This website is maintained as part of academic research at the Hoover Institution, Stanford University. The content is provided for informational and educational purposes.</p>
+<section id="baseline-estimates-no-jackknife" class="level2">
+<h2 class="anchored" data-anchor-id="baseline-estimates-no-jackknife">✦ Baseline Estimates (No Jackknife)</h2>
+<p>These figures show event study estimates using the full sample to classify counties into high vs.&nbsp;low predicted spending groups.</p>
+<section id="fig-1-1" class="level3">
+<h3 class="anchored" data-anchor-id="fig-1-1">Figure 2.1: Spending Only</h3>
+<div id="fig-1-1-plot" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-1-1-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/12_9_25/baseline_spec_A_def_A_high_vs_low.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-1-1-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Event study estimates by baseline spending quartile (no jackknife)
+</figcaption>
+</figure>
+</div>
+<hr>
 </section>
-<section id="research-content" class="level2">
-<h2 class="anchored" data-anchor-id="research-content">Research Content</h2>
-<p>The research notes, analyses, and code reviews presented on this site represent work in progress. Findings and methodologies may be updated as research continues.</p>
+<section id="fig-1-2" class="level3">
+<h3 class="anchored" data-anchor-id="fig-1-2">Figure 2.2: Spending + Income Quartiles</h3>
+<div id="fig-1-2-plot" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-1-2-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/12_9_25/baseline_spec_B_def_A_high_vs_low.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-1-2-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Event study estimates by baseline spending and income quartiles (no jackknife)
+</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Specification</strong>: Controls for baseline 1971 spending quartile and 1970 county median family income quartile.</p>
+<p><strong>Pattern</strong>: Similar divergence between high and low groups, with slightly attenuated effects compared to Specification A.</p>
+</div>
+</div>
+</div>
+<hr>
 </section>
-<section id="external-resources" class="level2">
-<h2 class="anchored" data-anchor-id="external-resources">External Resources</h2>
-<p>Links to external resources (Google Drive, Google Docs, GitHub repositories) are provided for collaborators and interested researchers. Access to some resources may be restricted.</p>
+<section id="fig-1-3" class="level3">
+<h3 class="anchored" data-anchor-id="fig-1-3">Figure 2.3: Spending + Income + Reform Types</h3>
+<div id="fig-1-3-plot" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-1-3-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/12_9_25/baseline_spec_C_def_A_high_vs_low.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-1-3-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Event study estimates by baseline spending, income quartiles, and reform types (no jackknife)
+</figcaption>
+</figure>
+</div>
+<hr>
 </section>
-<section id="intellectual-property" class="level2">
-<h2 class="anchored" data-anchor-id="intellectual-property">Intellectual Property</h2>
-<p>All original content on this site, unless otherwise noted, is the intellectual property of the research team. Code repositories may have their own licensing terms specified in their respective repositories.</p>
 </section>
-<section id="no-warranties" class="level2">
-<h2 class="anchored" data-anchor-id="no-warranties">No Warranties</h2>
-<p>The content is provided “as is” without warranty of any kind, express or implied. We make no guarantees about the accuracy, reliability, or completeness of the information presented.</p>
+<section id="jackknife-estimates" class="level2">
+<h2 class="anchored" data-anchor-id="jackknife-estimates">✦ Jackknife Estimates</h2>
+<p>These figures use leave-one-state-out predictions to classify counties. For each state, we estimate the model excluding that state’s data, then predict spending increases for counties in the excluded state.</p>
+<section id="fig-2-1" class="level3">
+<h3 class="anchored" data-anchor-id="fig-2-1">Figure 2.4: Spending Only (Jackknife)</h3>
+<div id="fig-2-1-plot" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2-1-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/12_9_25/jackknife_spec_A_def_A_high_vs_low.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2-1-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Jackknife event study estimates - baseline spending only
+</figcaption>
+</figure>
+</div>
+<hr>
 </section>
-<section id="changes-to-terms" class="level2">
-<h2 class="anchored" data-anchor-id="changes-to-terms">Changes to Terms</h2>
-<p>We reserve the right to modify these terms at any time. Changes will be posted on this page with an updated revision date.</p>
+<section id="fig-2-2" class="level3">
+<h3 class="anchored" data-anchor-id="fig-2-2">Figure 2.5: Spending + Income Quartiles (Jackknife)</h3>
+<div id="fig-2-2-plot" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2-2-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/12_9_25/jackknife_spec_B_def_A_high_vs_low.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2-2-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Jackknife event study estimates - baseline spending and income quartiles
+</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-simple callout-warning no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Issue</strong>: Similar compression of the high group relative to baseline estimates.</p>
+<p><strong>Pattern</strong>: Adding income controls does not resolve the instability introduced by the jackknife procedure.</p>
+</div>
+</div>
+</div>
+<hr>
 </section>
-<section id="contact" class="level2">
-<h2 class="anchored" data-anchor-id="contact">Contact</h2>
-<p>For questions about these terms or the research presented on this site:</p>
-<p><strong>Myles Owens</strong> Hoover Institution, Stanford University Email: maowens@stanford.edu</p>
+<section id="fig-2-3" class="level3">
+<h3 class="anchored" data-anchor-id="fig-2-3">Figure 2.6: Spending + Income + Reform Types (Jackknife)</h3>
+<div id="fig-2-3-plot" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2-3-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/12_9_25/jackknife_spec_C_def_A_high_vs_low.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2-3-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: Jackknife event study estimates - full specification with reforms
+</figcaption>
+</figure>
+</div>
+<hr>
+</section>
 </section>
 </div>
+</section>
 
 
 
