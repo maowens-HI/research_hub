@@ -1,0 +1,85 @@
+---
+title: "December 9, 2025 Meeting"
+pagetitle: "December 9, 2025 Meeting | Research Hub"
+date: "December 9, 2025"
+format:
+  html:
+    toc: true
+    toc-location: left
+    toc-depth: 3
+---
+
+:::::::::: section
+::::::::: container
+## Meeting Overview
+
+This document presents the latest event study results comparing baseline (no jackknife) and jackknife approaches across three specifications:
+
+- **Specification A**: Baseline spending only
+- **Specification B**: Baseline spending + Income quartiles
+- **Specification C**: Baseline spending + Income quartiles + Reform types
+
+Each specification is shown with both the full-sample estimates (baseline) and leave-one-state-out jackknife predictions.
+
+------------------------------------------------------------------------
+
+## ✦ Baseline Estimates (No Jackknife)
+
+These figures show event study estimates using the full sample to classify counties into high vs. low predicted spending groups.
+
+### Figure 2.1: Spending Only {#fig-1-1}
+
+![Event study estimates by baseline spending quartile (no jackknife)](images/12_9_25/baseline_spec_A_def_A_high_vs_low.png){#fig-1-1-plot}
+
+------------------------------------------------------------------------
+
+### Figure 2.2: Spending + Income Quartiles {#fig-1-2}
+
+![Event study estimates by baseline spending and income quartiles (no jackknife)](images/12_9_25/baseline_spec_B_def_A_high_vs_low.png){#fig-1-2-plot}
+
+::: {.callout-note appearance="minimal"}
+**Specification**: Controls for baseline 1971 spending quartile and 1970 county median family income quartile.
+
+**Pattern**: Similar divergence between high and low groups, with slightly attenuated effects compared to Specification A.
+:::
+
+------------------------------------------------------------------------
+
+### Figure 2.3: Spending + Income + Reform Types {#fig-1-3}
+
+![Event study estimates by baseline spending, income quartiles, and reform types (no jackknife)](images/12_9_25/baseline_spec_C_def_A_high_vs_low.png){#fig-1-3-plot}
+
+------------------------------------------------------------------------
+
+## ✦ Jackknife Estimates
+
+These figures use leave-one-state-out predictions to classify counties. For each state, we estimate the model excluding that state's data, then predict spending increases for counties in the excluded state.
+
+### Figure 2.4: Spending Only (Jackknife) {#fig-2-1}
+
+![Jackknife event study estimates - baseline spending only](images/12_9_25/jackknife_spec_A_def_A_high_vs_low.png){#fig-2-1-plot}
+
+
+------------------------------------------------------------------------
+
+### Figure 2.5: Spending + Income Quartiles (Jackknife) {#fig-2-2}
+
+![Jackknife event study estimates - baseline spending and income quartiles](images/12_9_25/jackknife_spec_B_def_A_high_vs_low.png){#fig-2-2-plot}
+
+::: {.callout-warning appearance="minimal"}
+**Issue**: Similar compression of the high group relative to baseline estimates.
+
+**Pattern**: Adding income controls does not resolve the instability introduced by the jackknife procedure.
+:::
+
+------------------------------------------------------------------------
+
+### Figure 2.6: Spending + Income + Reform Types (Jackknife) {#fig-2-3}
+
+![Jackknife event study estimates - full specification with reforms](images/12_9_25/jackknife_spec_C_def_A_high_vs_low.png){#fig-2-3-plot}
+
+------------------------------------------------------------------------
+
+
+:::::::::
+::::::::::
