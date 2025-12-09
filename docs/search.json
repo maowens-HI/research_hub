@@ -1,215 +1,5 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Research Hub 2.0",
-    "section": "",
-    "text": "View Recent Work"
-  },
-  {
-    "objectID": "index.html#latest-research",
-    "href": "index.html#latest-research",
-    "title": "Research Hub 2.0",
-    "section": "This Month",
-    "text": "This Month\nRecent notes."
-  },
-  {
-    "objectID": "index.html#quick-access",
-    "href": "index.html#quick-access",
-    "title": "Research Hub 2.0",
-    "section": "Quick Access",
-    "text": "Quick Access\nLinks to useful things."
-  },
-  {
-    "objectID": "index.html#research-timeline",
-    "href": "index.html#research-timeline",
-    "title": "Research Hub 2.0",
-    "section": "Research Timeline",
-    "text": "Research Timeline\nA chronological record of project milestones and findings.\n\n\nDecember 2025\n\nDec 05: December Meeting - Analysis Review\nTopic: Latest Figure 1 & 2 plus some notes on fixes.\nView Full Meeting Notes\n\n\n\nDec 05: JK Instability - Jackknife Classification Issues\nTopic: Investigation of jackknife classification instability in Approach II.\n\n\n\n\n\n\nKey Finding: Two states (Ohio and Texas) have below-average spending growth for their high-baseline-spending counties. When these states are left out in the jackknife step, their influence disappears, and counties that underperform in the full sample suddenly receive inflated predicted spending values. This pushes them incorrectly into the “high predicted” category\nImpact: 840 observations (11.9% of the “high” group) contaminate the jackknife results, compressing the event-study trends.\n\n\n\n\nView JK Instability Analysis\n\n\n\n\nDec 02: Figure 2 Fixes & Jackknife Strategy\nTopic: Resolving the “Never Treated” interaction issue.\n\n\n\n\n\n\nBug Found: “High” variable was defined as missing for never-treated units, dropping them from interaction regressions.\nFix: Define high=0 among NTs and remove interaction with year effects (let NTs dictate year effects).\n\n\n\nNext Steps (Jackknife Iterations):\n\nBaseline spending only (No Jackknife)\nBaseline + Income Quartiles (No Jackknife)\nBaseline + Income + Reform Types (No Jackknife)\nRepeat 1-3 with Jackknife.\n\n\nView Jackknife Code Review\n\n\n\n\n\nNovember 2025\n\nNov 25: Robustness & JJP Comparison\nTopic: Jackknife vs Non-Jackknife and Sample Selection Bias.\n\nDecision: Run Fig 1 among bottom 10% baseline spending counties.\nContext (JJP Comparison): JJP’s Figure 1 (large effect) uses PSID-linked districts (~10% of districts, selected for low income). JJP Appendix B2 (all districts) shows smaller effects closer to our findings.\n\nView Analysis\n\n\n\nNov 17-21: District & Panel Analysis\nTopic: District level expansion and balancing checks.\n\nBalance Exercise: Sample balanced on non-missing lexp_ma_strict from event times -5 to 17.\nHypothesis: Aggregating to county level smooths variation across districts, potentially leading to smaller effects than JJP.\n\n\nDistrict Level Results Balanced Panel Results\n\n\n\n\nNov 06: Sample Variations (Fig 1 & 2)\nTopic: Robustness checks across weighted/unweighted and sample restrictions.\n\nSummary TableAll Counties SampleRestricted Sample\n\n\n\n\n\nFigure\nSample Definition\nWeighted\nLink\n\n\n\n\nFig 1\nIncludes counties w/ &gt;2 non-tract areas\nYes\nView\n\n\nFig 1\nIncludes counties w/ &gt;2 non-tract areas\nNo\nView\n\n\nFig 1\nExcludes counties w/ &gt;2 non-tract areas\nYes\nView\n\n\nFig 1\nExcludes counties w/ &gt;2 non-tract areas\nNo\nView\n\n\n\n\n\nIncludes all counties regardless of non-tract area count.\n\nFigure 1s (Weighted): View Results\nFigure 1s (Unweighted): View Results\nFigure 2s (Weighted): View Results\n\n\n\nExcludes problematic counties (≥2 non-tract areas).\n\nFigure 1s (Weighted): View Results\nFigure 1s (Unweighted): View Results\n\n\n\n\n\n\n\n\nOctober 2025\n\nOct 31: The “Mixed” County Problem\nTopic: Handling counties with multiple non-tracted areas.\n\n\n\n\n\n\nThe Issue: We lack school-age population data for non-tracted areas. If a county has &gt;1 non-tracted area, we cannot weight them relative to each other.\nThe Fix: Combine all non-tracted areas in a county into a single “pseudo-area.” Average their PPE (unweighted), then weight this pseudo-area against the tracts using the residual county population.\n\n\n\n\n\n\nOct 28: Defining “Good” Counties\nTopic: Creating a clean baseline dataset.\n\nDefinition: A “Good County” is one where every linked tract/LEAID has non-missing spending data for every year from 1966-1971.\nAction: Created indicator variables good_county_6671 to filter samples.\n\n\n\n\nOct 24: Baseline Year Selection\n\nFindings: 1971 vs. 1966-70 average yields similar results.\nDecision: Use 1971 on its own or average across several years (robustness check).\n\nView Full Notes\n\n\n\nOct 21: Pre-Quartile Splits\n\nGoal: Compare individual pre-quartile splits (e.g., 1967 vs 1971) to ensure single-year spikes aren’t driving results.\n\nView Full Notes\n\n\n\nOct 17: Interpolation & Winsorizing\n\nMethod: Winsorize all spending values at 1st and 99th percentiles (within year).\nRefinement: Interpolate at the district level before tract-to-county processing (previously done at tract level).\n\nView Full Notes\n\n\n\nOct 11: Common Core & Balancing\n\nData Update: Incorporated Common Core spending data through 2018-19.\nBalancing: Redefined lead_5 to bin all earlier years; lag_17 bins all later years. Exclude counties treated 2000+.\n\nView Full Notes\n\n\n\nOct 07: Debugging pred_spend\n\nChallenge: Event studies by pred_spend went in opposite directions than expected.\nAction: Step-by-step reconstruction (Simple event study → Baseline Quartile split → pred_spend construction).\n\nView Full Notes\n\n\n\n\nSeptember 2025\n\nSep 30: Reform Variables\n\nDecision: Build pred_spend without reforms to isolate variable issues.\n\nView Full Notes\n\n\n\nSep 23: Wisconsin Binning Fix\n\nBug: Coefficients for lead 16-19 were empty, but lead 20 was non-empty.\nCause: Binning issue in estimation. Fixed.\n\nView Full Notes\n\n\n\nSep 02: Hanushek vs. JJP\n\nAction: Re-run First Stage Approach 1 using only JJP reform info (ignore Hanushek table for now) to ensure replication.\n\nView Full Notes\n\n\n\n\nAugust 2025\n\nAug 26: Data Cleaning\n\nImputation: Imputed 1986 enrollment using 1987 numbers for district 3416800.\nZero Values: For 1983 enrollment==0, replaced with ’84 (or ’82) values.\n\n\n\n\nAug 19: JJP Methodology Deep Dive\nTopic: Weighting and Rolling Windows.\n\nDifference: JJP uses district-level; we use county-level.\nVariable Definitions:\n\nCurrent year spending (weighted by 1972 pop).\nLog average PPE over 13-year rolling window (missing if &lt;13 years data).\nLog average PPE over available data (filling missing years with 1967 value).\n\n\n\n\n\nAug 01: The PPE Formula\nTopic: Calculating Per Pupil Expenditures (PPE) for split tracts.\n\n\n\n\n\n\nLogic for Primary/Secondary Tracts:\n\nGet Primary PPE and Secondary PPE.\nGet share of students in tract who are Primary-age vs Secondary-age.\nFormula: (PrimaryPPE * PrimaryShare) + (SecondaryPPE * SecondaryShare)\n\n\n\n\n\n\n\n\nJuly 2025\n\nJuly 29: Duplicate Tracts\n\nIssue: Tracts appearing multiple times (once for elementary, once for secondary).\nResolution: Reshape to tract level with separate variables for elementary/secondary districts.\n\n\n\n\nJuly 15: Geographic Challenges\n\nIssue: Difficulty mapping districts to counties via tracts.\nStrategy: If population weighting fails, default to centroids. Match failures (un-tracted areas) assigned to counties via GRF.\n\n\n\n\nJuly 11: Project Kickoff\n\nGoal: Produce panel of per-pupil spending at the county level.\nRationale: We only observe birth location at the county level."
-  },
-  {
-    "objectID": "terms.html",
-    "href": "terms.html",
-    "title": "Terms of Use",
-    "section": "",
-    "text": "Last updated: December 3, 2025\n\n\n\nThis website is maintained as part of academic research at the Hoover Institution, Stanford University. The content is provided for informational and educational purposes.\n\n\n\nThe research notes, analyses, and code reviews presented on this site represent work in progress. Findings and methodologies may be updated as research continues.\n\n\n\nLinks to external resources (Google Drive, Google Docs, GitHub repositories) are provided for collaborators and interested researchers. Access to some resources may be restricted.\n\n\n\nAll original content on this site, unless otherwise noted, is the intellectual property of the research team. Code repositories may have their own licensing terms specified in their respective repositories.\n\n\n\nThe content is provided “as is” without warranty of any kind, express or implied. We make no guarantees about the accuracy, reliability, or completeness of the information presented.\n\n\n\nWe reserve the right to modify these terms at any time. Changes will be posted on this page with an updated revision date.\n\n\n\nFor questions about these terms or the research presented on this site:\nMyles Owens Hoover Institution, Stanford University Email: maowens@stanford.edu"
-  },
-  {
-    "objectID": "terms.html#academic-use",
-    "href": "terms.html#academic-use",
-    "title": "Terms of Use",
-    "section": "",
-    "text": "This website is maintained as part of academic research at the Hoover Institution, Stanford University. The content is provided for informational and educational purposes."
-  },
-  {
-    "objectID": "terms.html#research-content",
-    "href": "terms.html#research-content",
-    "title": "Terms of Use",
-    "section": "",
-    "text": "The research notes, analyses, and code reviews presented on this site represent work in progress. Findings and methodologies may be updated as research continues."
-  },
-  {
-    "objectID": "terms.html#external-resources",
-    "href": "terms.html#external-resources",
-    "title": "Terms of Use",
-    "section": "",
-    "text": "Links to external resources (Google Drive, Google Docs, GitHub repositories) are provided for collaborators and interested researchers. Access to some resources may be restricted."
-  },
-  {
-    "objectID": "terms.html#intellectual-property",
-    "href": "terms.html#intellectual-property",
-    "title": "Terms of Use",
-    "section": "",
-    "text": "All original content on this site, unless otherwise noted, is the intellectual property of the research team. Code repositories may have their own licensing terms specified in their respective repositories."
-  },
-  {
-    "objectID": "terms.html#no-warranties",
-    "href": "terms.html#no-warranties",
-    "title": "Terms of Use",
-    "section": "",
-    "text": "The content is provided “as is” without warranty of any kind, express or implied. We make no guarantees about the accuracy, reliability, or completeness of the information presented."
-  },
-  {
-    "objectID": "terms.html#changes-to-terms",
-    "href": "terms.html#changes-to-terms",
-    "title": "Terms of Use",
-    "section": "",
-    "text": "We reserve the right to modify these terms at any time. Changes will be posted on this page with an updated revision date."
-  },
-  {
-    "objectID": "terms.html#contact",
-    "href": "terms.html#contact",
-    "title": "Terms of Use",
-    "section": "",
-    "text": "For questions about these terms or the research presented on this site:\nMyles Owens Hoover Institution, Stanford University Email: maowens@stanford.edu"
-  },
-  {
-    "objectID": "privacy.html",
-    "href": "privacy.html",
-    "title": "Privacy Policy",
-    "section": "",
-    "text": "Last updated: December 3, 2025\n\n\n\nThis Research Hub website is a personal academic project website. We do not collect, store, or process any personal information from visitors.\n\n\n\n\nWe do not use cookies\nWe do not track visitors\nWe do not collect email addresses or contact information\nWe do not use analytics services\n\n\n\n\nThis website contains links to external resources including:\n\nGoogle Drive\nGoogle Docs\nGitHub repositories\nQuarto publishing platform\n\nThese external services have their own privacy policies. We recommend reviewing their policies if you choose to visit those sites.\n\n\n\nWe may update this privacy policy from time to time. Any changes will be posted on this page with an updated revision date.\n\n\n\nIf you have questions about this privacy policy, please contact:\nMyles Owens Email: maowens@stanford.edu"
-  },
-  {
-    "objectID": "privacy.html#overview",
-    "href": "privacy.html#overview",
-    "title": "Privacy Policy",
-    "section": "",
-    "text": "This Research Hub website is a personal academic project website. We do not collect, store, or process any personal information from visitors."
-  },
-  {
-    "objectID": "privacy.html#information-we-dont-collect",
-    "href": "privacy.html#information-we-dont-collect",
-    "title": "Privacy Policy",
-    "section": "",
-    "text": "We do not use cookies\nWe do not track visitors\nWe do not collect email addresses or contact information\nWe do not use analytics services"
-  },
-  {
-    "objectID": "privacy.html#external-links",
-    "href": "privacy.html#external-links",
-    "title": "Privacy Policy",
-    "section": "",
-    "text": "This website contains links to external resources including:\n\nGoogle Drive\nGoogle Docs\nGitHub repositories\nQuarto publishing platform\n\nThese external services have their own privacy policies. We recommend reviewing their policies if you choose to visit those sites."
-  },
-  {
-    "objectID": "privacy.html#changes-to-this-policy",
-    "href": "privacy.html#changes-to-this-policy",
-    "title": "Privacy Policy",
-    "section": "",
-    "text": "We may update this privacy policy from time to time. Any changes will be posted on this page with an updated revision date."
-  },
-  {
-    "objectID": "privacy.html#contact",
-    "href": "privacy.html#contact",
-    "title": "Privacy Policy",
-    "section": "",
-    "text": "If you have questions about this privacy policy, please contact:\nMyles Owens Email: maowens@stanford.edu"
-  },
-  {
-    "objectID": "github.html",
-    "href": "github.html",
-    "title": "Github",
-    "section": "",
-    "text": "Partial replication and extension of Jackson, Johnson, and Persico (2016)\n\n\nView on GitHub\n\n\n\nThis repository supports a partial replication and extension of “The Effects of School Spending on Educational and Economic Outcomes: Evidence from School Finance Reforms” by C. Kirabo Jackson, Rucker C. Johnson, and Claudia Persico (2016, QJE). The original study examines how increases in school spending, driven by exogenous timing of court-ordered School Finance Reforms (SFRs), affect long-run educational attainment and adult labor market outcomes, particularly among children from low-income families.\nOur work reconstructs the district-level finance panel (F-33 and INDFIN) used in the paper and extends it to county geographies to enable compatibility with proprietary Census data. This involves reprocessing the 1969 GRF (Geographic Reference File) to link school districts with Census tracts and counties, addressing non-tract areas, and implementing aggregation logic for counties with both tract and non-tract zones.\n\n\n\nThe original JJP (2016) paper and its Online Appendix describe the following key data and methods:\nData Sources:\n\nINDFIN Historical Database (FY 1967,1969–1991) — standardized local government finances including school districts\nCommon Core of Data (CCD) NCES F-33 Finance Survey (post-1992 annual continuation)\n1969–70 School District Geographic Reference File (GRF) for linking Census tracts to pre-reform district geographies\n\nIdentification Strategy:\n\nCourt-ordered School Finance Reforms (SFRs) serve as exogenous shocks\nThe number of years of exposure to initial SFR is the treatment variable\nEvent-study and 2SLS models estimate causal impacts on spending and individual outcomes\nData on court rulings comes from a preceding NBER working paper: https://www.nber.org/papers/w20118\n\nOur Specific Aims:\n\nDevelop crosswalks linking F-33 (District) ↔︎ INDFIN (District) ↔︎ Tract (GRF) ↔︎ County (GRF) identifiers\nReconstruct consistent annual per-pupil spending at the county level\nUse this data to estimate event studies akin to figure 1 JJP 2016\nExtend the analysis with jackknife regressions to identify which counties experienced the largest spending increases from school finance reforms akin to figure 2 in JJP 2016\n\n\n\n\nschool_finance/\n├── README.md                          # Project documentation\n├── CLAUDE.md                          # AI assistant guide\n├── run.do                             # Master pipeline runner\n└── code/                              # All Stata scripts\n    ├── 01_build_district_panel.do     # Build district panels & ID crosswalks\n    ├── 02_build_tract_panel.do        # Build tract panel from GRF\n    ├── 03_adjust_inflation.do         # Adjust tract spending for inflation\n    ├── 04_tag_county_quality.do       # Tag counties as good/bad (baseline data)\n    ├── 05_create_county_panel.do      # Interpolate districts & create county panel\n    ├── 06_A_county_balanced_figure1.do    # County-level balanced panel Figure 1\n    ├── 06_B_district_balanced_figure1.do  # District-level balanced panel Figure 1\n    ├── 07_jackknife.do                # Full jackknife analysis\n    └── experimental_archive/          # Archived experimental analysis files\nPipeline Organization:\n\nCore Pipeline (01-05): Sequential data construction and preparation\n\n01: Build district panels & ID crosswalks\n02: Build tract panel from GRF\n03: Adjust tract spending for inflation\n04: Tag county quality (baseline data completeness)\n05: Interpolate districts & create county panel\n\nAnalysis Scripts (06-07): Main event-study specifications and robustness checks\n\n06_A: County-level balanced panel analysis (Figure 1 replication)\n06_B: District-level balanced panel analysis (Figure 1 replication)\n07: Full jackknife analysis\n\nExperimental Archive: Historical analysis files, robustness checks, and alternative specifications\n\n\n\n\n\n\nIn Stata run.do, define the project path:\nglobal SchoolSpending \"[your file path]\"\n\n\n\nExecute the master runner script:\ndo run.do\nOr run the core pipeline scripts individually in order:\ndo code/01_build_district_panel.do\ndo code/02_build_tract_panel.do\ndo code/03_adjust_inflation.do\ndo code/04_tag_county_quality.do\ndo code/05_create_county_panel.do\n\n\n\nExecute main analysis scripts:\ndo code/06_A_county_balanced_figure1.do\ndo code/06_B_district_balanced_figure1.do\ndo code/07_jackknife.do\nOr explore archived experimental specifications in code/experimental_archive/\n\n\n\n\nUnderstanding the ID systems is critical for working with this codebase:\n\n\n\n\n\n\n\n\n\n\nIdentifier\nFormat\nLength\nDescription\nExample\n\n\n\n\nLEAID\nSSDDDDD\n7 chars\nNCES Local Education Agency ID\n0100005\n\n\nGOVID\nSS5CCCDDD\n9 chars\nGovernment ID (State+Type+County+District)\n015000100\n\n\ntract70\nSSCCCBTCTSC\n11 chars\n1970 Census tract code\n01001000100\n\n\ncounty\nSSCCC\n5 chars\nState FIPS + County FIPS\n01001\n\n\n\nWhere: SS = State FIPS, CCC = County FIPS, DDDDD = District code, BTCTSC = Basic Tract + Tract Suffix Code\n\n\n\nCoverage:\n\nTime Period: 1967, 1969-2019 (F-33 and INDFIN harmonization)\nGeographic Units: 1970 Census tract definitions\nSample Restrictions: Counties with complete baseline data (1967, 1970-1972) for quality analysis\n\nKey Variables:\n\nSpending: pp_exp (nominal), pp_exp_real (2000 dollars), lexp_ma_strict (log spending with 13-year rolling mean)\nPopulation: school_age_pop (used for weighting in aggregation)\nTreatment: reform_year (year of court-ordered SFR), relative_year (years since reform)\nQuality Flags: good_govid, good_tract, good_county (baseline data completeness)\nBaseline Quartiles: pre_q1969, pre_q1970, pre_q1971 (pre-reform spending distribution)\n\nSpatial Matching:\n\nUses 1970 tract definitions from 1969-70 GRF\nUntracted areas assigned residual county characteristics\nSingle LEAID assigned per tract based on population weights\nCounties collapsed from tracts using school-age population weights\n\nRequired Software:\n\nStata (tested with Stata 16+)\nRequired Stata packages: winsor2, rangestat, eststo/esttab, fred (for CPI data)\nInstall packages via: ssc install [package_name]\n\n\n\n\nThe pipeline follows a sequential process:\nPhase I: Data Construction\n\n01_build_district_panel.do - Builds district-year panels from F-33 and INDFIN, creates canonical LEAID ↔︎ GOVID crosswalks\n02_build_tract_panel.do - Parses 1969 GRF to link districts to Census tracts, assigns single LEAID per tract\n03_adjust_inflation.do - Adjusts tract-level spending for inflation using FRED CPI-U data\n04_tag_county_quality.do - Tags counties as “good” or “bad” based on baseline year data completeness (1967, 1970-1972)\n05_create_county_panel.do - Interpolates district panel, re-assigns to tracts, imports enrollment data, collapses to county-year panel\n\nPhase II: Main Analysis\n\n06_A_county_balanced_figure1.do - County-level event-study analysis (Figure 1 replication)\n\nCreates balanced panel with complete event windows (-5 to +17 years)\nRuns weighted event-study regressions by baseline spending quartile\nProduces Figure 1 style plots showing dynamic treatment effects\n\n06_B_district_balanced_figure1.do - District-level event-study analysis (Figure 1 replication)\n\nDistrict-level counterpart to county analysis\nUses district panel instead of county aggregation\n\n\nPhase III: Jackknife\n\n07_jackknife_heterogeneity.do - Leave-one-state-out jackknife to identify treatment effect heterogeneity\n\nPurpose: Identifies which counties experienced larger spending increases from reforms\nMethod: For each state, estimates treatment effects excluding that state’s data, then predicts spending increases for excluded state\nPanel: Uses balanced panel (complete -5 to +17 event windows)\nOutputs:\n\nHigh vs low predicted spending group comparisons\nQuartile analysis showing differential treatment effects\n\n\n\nPhase IV: Archived Experiments\n\nexperimental_archive/ contains historical robustness checks, alternative specifications, and exploratory analyses\n\n\n\n\nIntermediate Datasets:\n\ndistricts_panel_canon.dta - District-year panel with quality flags (from 01)\ntracts_panel_canon.dta - Tract-year panel with assigned LEAIDs (from 02)\ntracts_panel_real.dta - Inflation-adjusted tract panel (from 03)\ncounty_clean.dta - County quality flags (from 04)\n\nFinal Analysis Datasets:\n\ninterp_d.dta - County-year panel (1967, 1969-2019) with:\n\nPer-pupil spending (nominal and real 2000 dollars)\nSchool-age population weights\nReform exposure variables\nBaseline spending quartiles\nQuality flags for balanced event-study samples\n\njjp_interp.dta / jjp_balance.dta - Processed panels for Figure 1 analysis (from 06_A/06_B)\njjp_interp_jk.dta / jjp_balance_jk.dta - Processed panels for jackknife analysis (from 07)\npred_spend_ppe_all_jk.dta - Jackknife predicted spending classifications with:\n\nPredicted spending increase for each county (leave-one-state-out)\nHigh/low treatment group indicators\nQuartile classifications\nBaseline spending and income quartiles\n\n\nAnalysis Outputs:\n\nEvent-study regression estimates\nEvent-study plots showing dynamic treatment effects\nHeterogeneity analysis plots:\n\nHigh vs low predicted spending group comparisons\nFour-quartile differential treatment effects\nCombined plots showing treatment effect variation\n\n\n\n\n\nIf referencing the original study:\n\nJackson, C. K., Johnson, R. C., & Persico, C. (2016). The Effects of School Spending on Educational and Economic Outcomes: Evidence from School Finance Reforms. The Quarterly Journal of Economics, 131(1), 157–218.\n\n\n\n\nResearch Analyst: Myles Owens\nAffiliation: Hoover Institution, Stanford University\nEmail: myles.owens@stanford.edu\nGitHub: maowens-HI/school_finance\n\n\n\nFor detailed documentation:\n\nSee CLAUDE.md for comprehensive AI assistant guide and coding conventions\nReview individual .do file headers for specific implementation details\n\nOriginal paper and data sources:\n\nJJP (2016) Online Appendix: Detailed data description and reform coding\nNCES Common Core of Data: https://nces.ed.gov/ccd/\nFRED CPI-U Data: https://fred.stlouisfed.org/\nICPSR GRF 1969: Study #03515 (Geographic Reference Files)"
-  },
-  {
-    "objectID": "github.html#overview",
-    "href": "github.html#overview",
-    "title": "Github",
-    "section": "",
-    "text": "This repository supports a partial replication and extension of “The Effects of School Spending on Educational and Economic Outcomes: Evidence from School Finance Reforms” by C. Kirabo Jackson, Rucker C. Johnson, and Claudia Persico (2016, QJE). The original study examines how increases in school spending, driven by exogenous timing of court-ordered School Finance Reforms (SFRs), affect long-run educational attainment and adult labor market outcomes, particularly among children from low-income families.\nOur work reconstructs the district-level finance panel (F-33 and INDFIN) used in the paper and extends it to county geographies to enable compatibility with proprietary Census data. This involves reprocessing the 1969 GRF (Geographic Reference File) to link school districts with Census tracts and counties, addressing non-tract areas, and implementing aggregation logic for counties with both tract and non-tract zones."
-  },
-  {
-    "objectID": "github.html#relation-to-the-original-paper",
-    "href": "github.html#relation-to-the-original-paper",
-    "title": "Github",
-    "section": "",
-    "text": "The original JJP (2016) paper and its Online Appendix describe the following key data and methods:\nData Sources:\n\nINDFIN Historical Database (FY 1967,1969–1991) — standardized local government finances including school districts\nCommon Core of Data (CCD) NCES F-33 Finance Survey (post-1992 annual continuation)\n1969–70 School District Geographic Reference File (GRF) for linking Census tracts to pre-reform district geographies\n\nIdentification Strategy:\n\nCourt-ordered School Finance Reforms (SFRs) serve as exogenous shocks\nThe number of years of exposure to initial SFR is the treatment variable\nEvent-study and 2SLS models estimate causal impacts on spending and individual outcomes\nData on court rulings comes from a preceding NBER working paper: https://www.nber.org/papers/w20118\n\nOur Specific Aims:\n\nDevelop crosswalks linking F-33 (District) ↔︎ INDFIN (District) ↔︎ Tract (GRF) ↔︎ County (GRF) identifiers\nReconstruct consistent annual per-pupil spending at the county level\nUse this data to estimate event studies akin to figure 1 JJP 2016\nExtend the analysis with jackknife regressions to identify which counties experienced the largest spending increases from school finance reforms akin to figure 2 in JJP 2016"
-  },
-  {
-    "objectID": "github.html#repository-structure",
-    "href": "github.html#repository-structure",
-    "title": "Github",
-    "section": "",
-    "text": "school_finance/\n├── README.md                          # Project documentation\n├── CLAUDE.md                          # AI assistant guide\n├── run.do                             # Master pipeline runner\n└── code/                              # All Stata scripts\n    ├── 01_build_district_panel.do     # Build district panels & ID crosswalks\n    ├── 02_build_tract_panel.do        # Build tract panel from GRF\n    ├── 03_adjust_inflation.do         # Adjust tract spending for inflation\n    ├── 04_tag_county_quality.do       # Tag counties as good/bad (baseline data)\n    ├── 05_create_county_panel.do      # Interpolate districts & create county panel\n    ├── 06_A_county_balanced_figure1.do    # County-level balanced panel Figure 1\n    ├── 06_B_district_balanced_figure1.do  # District-level balanced panel Figure 1\n    ├── 07_jackknife.do                # Full jackknife analysis\n    └── experimental_archive/          # Archived experimental analysis files\nPipeline Organization:\n\nCore Pipeline (01-05): Sequential data construction and preparation\n\n01: Build district panels & ID crosswalks\n02: Build tract panel from GRF\n03: Adjust tract spending for inflation\n04: Tag county quality (baseline data completeness)\n05: Interpolate districts & create county panel\n\nAnalysis Scripts (06-07): Main event-study specifications and robustness checks\n\n06_A: County-level balanced panel analysis (Figure 1 replication)\n06_B: District-level balanced panel analysis (Figure 1 replication)\n07: Full jackknife analysis\n\nExperimental Archive: Historical analysis files, robustness checks, and alternative specifications"
-  },
-  {
-    "objectID": "github.html#how-to-reproduce",
-    "href": "github.html#how-to-reproduce",
-    "title": "Github",
-    "section": "",
-    "text": "In Stata run.do, define the project path:\nglobal SchoolSpending \"[your file path]\"\n\n\n\nExecute the master runner script:\ndo run.do\nOr run the core pipeline scripts individually in order:\ndo code/01_build_district_panel.do\ndo code/02_build_tract_panel.do\ndo code/03_adjust_inflation.do\ndo code/04_tag_county_quality.do\ndo code/05_create_county_panel.do\n\n\n\nExecute main analysis scripts:\ndo code/06_A_county_balanced_figure1.do\ndo code/06_B_district_balanced_figure1.do\ndo code/07_jackknife.do\nOr explore archived experimental specifications in code/experimental_archive/"
-  },
-  {
-    "objectID": "github.html#key-geographic-identifiers",
-    "href": "github.html#key-geographic-identifiers",
-    "title": "Github",
-    "section": "",
-    "text": "Understanding the ID systems is critical for working with this codebase:\n\n\n\n\n\n\n\n\n\n\nIdentifier\nFormat\nLength\nDescription\nExample\n\n\n\n\nLEAID\nSSDDDDD\n7 chars\nNCES Local Education Agency ID\n0100005\n\n\nGOVID\nSS5CCCDDD\n9 chars\nGovernment ID (State+Type+County+District)\n015000100\n\n\ntract70\nSSCCCBTCTSC\n11 chars\n1970 Census tract code\n01001000100\n\n\ncounty\nSSCCC\n5 chars\nState FIPS + County FIPS\n01001\n\n\n\nWhere: SS = State FIPS, CCC = County FIPS, DDDDD = District code, BTCTSC = Basic Tract + Tract Suffix Code"
-  },
-  {
-    "objectID": "github.html#data-notes",
-    "href": "github.html#data-notes",
-    "title": "Github",
-    "section": "",
-    "text": "Coverage:\n\nTime Period: 1967, 1969-2019 (F-33 and INDFIN harmonization)\nGeographic Units: 1970 Census tract definitions\nSample Restrictions: Counties with complete baseline data (1967, 1970-1972) for quality analysis\n\nKey Variables:\n\nSpending: pp_exp (nominal), pp_exp_real (2000 dollars), lexp_ma_strict (log spending with 13-year rolling mean)\nPopulation: school_age_pop (used for weighting in aggregation)\nTreatment: reform_year (year of court-ordered SFR), relative_year (years since reform)\nQuality Flags: good_govid, good_tract, good_county (baseline data completeness)\nBaseline Quartiles: pre_q1969, pre_q1970, pre_q1971 (pre-reform spending distribution)\n\nSpatial Matching:\n\nUses 1970 tract definitions from 1969-70 GRF\nUntracted areas assigned residual county characteristics\nSingle LEAID assigned per tract based on population weights\nCounties collapsed from tracts using school-age population weights\n\nRequired Software:\n\nStata (tested with Stata 16+)\nRequired Stata packages: winsor2, rangestat, eststo/esttab, fred (for CPI data)\nInstall packages via: ssc install [package_name]"
-  },
-  {
-    "objectID": "github.html#data-flow-pipeline",
-    "href": "github.html#data-flow-pipeline",
-    "title": "Github",
-    "section": "",
-    "text": "The pipeline follows a sequential process:\nPhase I: Data Construction\n\n01_build_district_panel.do - Builds district-year panels from F-33 and INDFIN, creates canonical LEAID ↔︎ GOVID crosswalks\n02_build_tract_panel.do - Parses 1969 GRF to link districts to Census tracts, assigns single LEAID per tract\n03_adjust_inflation.do - Adjusts tract-level spending for inflation using FRED CPI-U data\n04_tag_county_quality.do - Tags counties as “good” or “bad” based on baseline year data completeness (1967, 1970-1972)\n05_create_county_panel.do - Interpolates district panel, re-assigns to tracts, imports enrollment data, collapses to county-year panel\n\nPhase II: Main Analysis\n\n06_A_county_balanced_figure1.do - County-level event-study analysis (Figure 1 replication)\n\nCreates balanced panel with complete event windows (-5 to +17 years)\nRuns weighted event-study regressions by baseline spending quartile\nProduces Figure 1 style plots showing dynamic treatment effects\n\n06_B_district_balanced_figure1.do - District-level event-study analysis (Figure 1 replication)\n\nDistrict-level counterpart to county analysis\nUses district panel instead of county aggregation\n\n\nPhase III: Jackknife\n\n07_jackknife_heterogeneity.do - Leave-one-state-out jackknife to identify treatment effect heterogeneity\n\nPurpose: Identifies which counties experienced larger spending increases from reforms\nMethod: For each state, estimates treatment effects excluding that state’s data, then predicts spending increases for excluded state\nPanel: Uses balanced panel (complete -5 to +17 event windows)\nOutputs:\n\nHigh vs low predicted spending group comparisons\nQuartile analysis showing differential treatment effects\n\n\n\nPhase IV: Archived Experiments\n\nexperimental_archive/ contains historical robustness checks, alternative specifications, and exploratory analyses"
-  },
-  {
-    "objectID": "github.html#key-outputs",
-    "href": "github.html#key-outputs",
-    "title": "Github",
-    "section": "",
-    "text": "Intermediate Datasets:\n\ndistricts_panel_canon.dta - District-year panel with quality flags (from 01)\ntracts_panel_canon.dta - Tract-year panel with assigned LEAIDs (from 02)\ntracts_panel_real.dta - Inflation-adjusted tract panel (from 03)\ncounty_clean.dta - County quality flags (from 04)\n\nFinal Analysis Datasets:\n\ninterp_d.dta - County-year panel (1967, 1969-2019) with:\n\nPer-pupil spending (nominal and real 2000 dollars)\nSchool-age population weights\nReform exposure variables\nBaseline spending quartiles\nQuality flags for balanced event-study samples\n\njjp_interp.dta / jjp_balance.dta - Processed panels for Figure 1 analysis (from 06_A/06_B)\njjp_interp_jk.dta / jjp_balance_jk.dta - Processed panels for jackknife analysis (from 07)\npred_spend_ppe_all_jk.dta - Jackknife predicted spending classifications with:\n\nPredicted spending increase for each county (leave-one-state-out)\nHigh/low treatment group indicators\nQuartile classifications\nBaseline spending and income quartiles\n\n\nAnalysis Outputs:\n\nEvent-study regression estimates\nEvent-study plots showing dynamic treatment effects\nHeterogeneity analysis plots:\n\nHigh vs low predicted spending group comparisons\nFour-quartile differential treatment effects\nCombined plots showing treatment effect variation"
-  },
-  {
-    "objectID": "github.html#citation",
-    "href": "github.html#citation",
-    "title": "Github",
-    "section": "",
-    "text": "If referencing the original study:\n\nJackson, C. K., Johnson, R. C., & Persico, C. (2016). The Effects of School Spending on Educational and Economic Outcomes: Evidence from School Finance Reforms. The Quarterly Journal of Economics, 131(1), 157–218."
-  },
-  {
-    "objectID": "github.html#contact",
-    "href": "github.html#contact",
-    "title": "Github",
-    "section": "",
-    "text": "Research Analyst: Myles Owens\nAffiliation: Hoover Institution, Stanford University\nEmail: myles.owens@stanford.edu\nGitHub: maowens-HI/school_finance"
-  },
-  {
-    "objectID": "github.html#additional-resources",
-    "href": "github.html#additional-resources",
-    "title": "Github",
-    "section": "",
-    "text": "For detailed documentation:\n\nSee CLAUDE.md for comprehensive AI assistant guide and coding conventions\nReview individual .do file headers for specific implementation details\n\nOriginal paper and data sources:\n\nJJP (2016) Online Appendix: Detailed data description and reform coding\nNCES Common Core of Data: https://nces.ed.gov/ccd/\nFRED CPI-U Data: https://fred.stlouisfed.org/\nICPSR GRF 1969: Study #03515 (Geographic Reference Files)"
-  },
-  {
     "objectID": "STYLE_BRIEF.html",
     "href": "STYLE_BRIEF.html",
     "title": "Research Hub: Style & Layout Brief",
@@ -322,53 +112,46 @@
     "text": "When someone lands on this site, they should immediately sense:\n\nAuthority — This is a serious institution with serious research\nClarity — The content is accessible, well-organized, easy to navigate\nModernity — Contemporary design sensibility, not a dusty academic relic\nTrust — Clean, professional presentation signals credibility\nFocus — The research is the star; design supports, never distracts\n\nThe design should age gracefully. In 5 years, it should still feel current—because it relies on timeless principles (clarity, whitespace, strong typography) rather than trendy effects.\n\nDocument Version: 1.0 Created: December 2025"
   },
   {
-    "objectID": "meeting-dec-05-2025.html",
-    "href": "meeting-dec-05-2025.html",
-    "title": "Never-Treated Jackknife Fixes",
+    "objectID": "privacy.html",
+    "href": "privacy.html",
+    "title": "Privacy Policy",
     "section": "",
-    "text": "This document explains the fixes implemented for the Jackknife Figure 2 issues identified on December 2nd. The core problem was that although all counties received a predicted spending value, only ever-treated counties were assigned a value for the binary indicator high. Never-treated counties were assigned missing values, which caused them to be dropped from regressions even though they should have remained in the sample.\nAll analyses now incorporate two fixes:\n\nSetting high = 0 for never-treated units\n\nRemoving interactions between high and the year effects\n\nAdditional corrections:\n\nStabilized functions such as xtile and sort/gsort to eliminate run-to-run variation caused by tie-breaking.\nDropped all counties where good_71 != 1 before assigning quartiles, rather than after. This prevents excluded counties from contaminating quartile definitions.\n\nWe then re-generated Figure 1 and Figure 2 using the corrected data and checked for discrepancies between the two.\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: Event study estimates by baseline spending quartile\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Event study estimates by baseline spending and income quartiles\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: Event study estimates by baseline spending, income quartiles, and reform types\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 4: Jackknife event study estimates - baseline spending only\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 5: Jackknife event study estimates - baseline spending and income quartiles\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 6: Jackknife event study estimates - full specification with reforms\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure\nControls\nJackknife\n\n\n\n\n2.1\nBaseline only\nNo\n\n\n2.2\nBaseline + Income\nNo\n\n\n2.3\nBaseline + Income + Reforms\nNo\n\n\n2.4\nBaseline only\nYes\n\n\n2.5\nBaseline + Income\nYes\n\n\n2.6\nBaseline + Income + Reforms\nYes\n\n\n\n\n\n\n\n\n\n\n\n\nPatterns Observed\n\nIn the non-jackknife regressions, the high group is clearly above the low group.\n\nIn the jackknife version, this pattern reverses: the estimated effect for the high group often dips below the low group.\n\n\n\n\n\n\n\n\n\nIn theory we should be able to recreate figure 1 using the regression set up of figure 2. Here we test that.\n\n\n\n\n\n\nFigure 7: Quartile 1-3 of 1971 Per Pupil Expenditure\n\n\n\n\n\n\n\n\n\nFigure 8: Quartile 4 of 1971 Per Pupil Expenditure\n\n\n\n\n\n\n\n\n\nFigure 9: Quartile 1-3 of 1971 Per Pupil Expenditure Using High Variable\n\n\n\n\n\n\n\n\n\nFigure 10: Quartile 4 of 1971 Per Pupil Expenditure Using High Variable"
+    "text": "Last updated: December 3, 2025\n\n\n\nThis Research Hub website is a personal academic project website. We do not collect, store, or process any personal information from visitors.\n\n\n\n\nWe do not use cookies\nWe do not track visitors\nWe do not collect email addresses or contact information\nWe do not use analytics services\n\n\n\n\nThis website contains links to external resources including:\n\nGoogle Drive\nGoogle Docs\nGitHub repositories\nQuarto publishing platform\n\nThese external services have their own privacy policies. We recommend reviewing their policies if you choose to visit those sites.\n\n\n\nWe may update this privacy policy from time to time. Any changes will be posted on this page with an updated revision date.\n\n\n\nIf you have questions about this privacy policy, please contact:\nMyles Owens Email: maowens@stanford.edu"
   },
   {
-    "objectID": "meeting-dec-05-2025.html#meeting-overview",
-    "href": "meeting-dec-05-2025.html#meeting-overview",
-    "title": "Never-Treated Jackknife Fixes",
+    "objectID": "privacy.html#overview",
+    "href": "privacy.html#overview",
+    "title": "Privacy Policy",
     "section": "",
-    "text": "This document explains the fixes implemented for the Jackknife Figure 2 issues identified on December 2nd. The core problem was that although all counties received a predicted spending value, only ever-treated counties were assigned a value for the binary indicator high. Never-treated counties were assigned missing values, which caused them to be dropped from regressions even though they should have remained in the sample.\nAll analyses now incorporate two fixes:\n\nSetting high = 0 for never-treated units\n\nRemoving interactions between high and the year effects\n\nAdditional corrections:\n\nStabilized functions such as xtile and sort/gsort to eliminate run-to-run variation caused by tie-breaking.\nDropped all counties where good_71 != 1 before assigning quartiles, rather than after. This prevents excluded counties from contaminating quartile definitions.\n\nWe then re-generated Figure 1 and Figure 2 using the corrected data and checked for discrepancies between the two."
+    "text": "This Research Hub website is a personal academic project website. We do not collect, store, or process any personal information from visitors."
   },
   {
-    "objectID": "meeting-dec-05-2025.html#context-fixes-applied",
-    "href": "meeting-dec-05-2025.html#context-fixes-applied",
-    "title": "Never-Treated Jackknife Fixes",
+    "objectID": "privacy.html#information-we-dont-collect",
+    "href": "privacy.html#information-we-dont-collect",
+    "title": "Privacy Policy",
     "section": "",
-    "text": "All results presented below incorporate the two fixes identified on December 2:\n\n\n\n\n\n\nProblem: Never-treateds - Never-treated counties had missing values for high which led them to eb dropped from the regression despite the logic to include them.\nFix 1: Missing Data Issue - Set high=0 for never-treated units to include them in interacted regressions\nFix 2: Interaction Term Issue - Removed interactions between “high” and year effects - Never-treated units now properly influence year effects for all groups"
+    "text": "We do not use cookies\nWe do not track visitors\nWe do not collect email addresses or contact information\nWe do not use analytics services"
   },
   {
-    "objectID": "meeting-dec-05-2025.html#results-six-step-analysis-sequence",
-    "href": "meeting-dec-05-2025.html#results-six-step-analysis-sequence",
-    "title": "Never-Treated Jackknife Fixes",
+    "objectID": "privacy.html#external-links",
+    "href": "privacy.html#external-links",
+    "title": "Privacy Policy",
     "section": "",
-    "text": "Specification: Core event study with baseline spending quartiles only.\n\n\n\n\n\n\nFigure 1: Event study estimates by baseline spending quartile\n\n\n\n\n\n\n\nSpecification: Event study interacted with both baseline spending and income quartiles.\n\n\n\n\n\n\nFigure 2: Event study estimates by baseline spending and income quartiles\n\n\n\n\n\n\n\nSpecification: Full model with baseline spending, income quartiles, and reform type indicators.\n\n\n\n\n\n\nFigure 3: Event study estimates by baseline spending, income quartiles, and reform types\n\n\n\n\n\n\n\n\n\nSpecification: Jackknife with baseline spending quartiles, iteratively excluding each state.\n\n\n\n\n\n\nFigure 4: Jackknife event study estimates - baseline spending only\n\n\n\n\n\n\n\n\n\nKey Findings: - [Stability of results across state exclusions] - [Identification of influential states (if any)] - [Range of effect estimates across jackknife iterations] - [Comparison to non-jackknife baseline]\n\n\n\n\n\n\n\nSpecification: Jackknife with baseline spending and income quartiles, iteratively excluding each state.\n\n\n\n\n\n\nFigure 5: Jackknife event study estimates - baseline spending and income quartiles\n\n\n\n\n\n\n\nSpecification: Jackknife with all controls (spending, income, reforms), iteratively excluding each state.\n\n\n\n\n\n\nFigure 6: Jackknife event study estimates - full specification with reforms"
+    "text": "This website contains links to external resources including:\n\nGoogle Drive\nGoogle Docs\nGitHub repositories\nQuarto publishing platform\n\nThese external services have their own privacy policies. We recommend reviewing their policies if you choose to visit those sites."
   },
   {
-    "objectID": "meeting-dec-05-2025.html#cross-specification-comparison",
-    "href": "meeting-dec-05-2025.html#cross-specification-comparison",
-    "title": "Never-Treated Jackknife Fixes",
+    "objectID": "privacy.html#changes-to-this-policy",
+    "href": "privacy.html#changes-to-this-policy",
+    "title": "Privacy Policy",
     "section": "",
-    "text": "Figure\nControls\nJackknife\n\n\n\n\n2.1\nBaseline only\nNo\n\n\n2.2\nBaseline + Income\nNo\n\n\n2.3\nBaseline + Income + Reforms\nNo\n\n\n2.4\nBaseline only\nYes\n\n\n2.5\nBaseline + Income\nYes\n\n\n2.6\nBaseline + Income + Reforms\nYes\n\n\n\n\n\n\n\n\n\n\n\n\nPatterns Observed\n\nIn the non-jackknife regressions, the high group is clearly above the low group.\n\nIn the jackknife version, this pattern reverses: the estimated effect for the high group often dips below the low group."
+    "text": "We may update this privacy policy from time to time. Any changes will be posted on this page with an updated revision date."
   },
   {
-    "objectID": "meeting-dec-05-2025.html#discrepancy-investigation-balanced-vs.-unbalanced-results",
-    "href": "meeting-dec-05-2025.html#discrepancy-investigation-balanced-vs.-unbalanced-results",
-    "title": "Never-Treated Jackknife Fixes",
+    "objectID": "privacy.html#contact",
+    "href": "privacy.html#contact",
+    "title": "Privacy Policy",
     "section": "",
-    "text": "Section 5.2 contains balanced panel figures (earlier analysis) which showed [describe pattern]. Figure 2s examined on December 02 show [describe pattern]. This section investigates the source of these discrepancies.\n\n\n\n\n\nFig 1 Sample (Section 5.2): - Counties included: [N] - Balancing requirement: [description] - Treatment timing distribution: [summary]\nFig 2 Sample (Current V0 Fig 2): - Counties included: [N] - No balancing restriction - Treatment timing distribution: [summary]\n\n\n\n\n\n\n\n\n\nFigure 7: Comparison of balanced vs. unbalanced sample results\n\n\n\n\n\n\n\n\n\nSources of Discrepancy:\n\nSample Size Effect: [How many more counties in unbalanced sample]\nComposition Effect: [Which types of counties differ between samples]\nTreatment Timing: [How treatment timing differs]\nSpecification Differences: [Any other spec differences beyond balancing]\n\n\n\n\n\n\n\n\nTo isolate the source of discrepancies, we ran:\n\nV0 Fig 2 specification on balanced sample\n\nResult: [outcome]\nInterpretation: [what this tells us]\n\nSection 5.2 specification on full sample\n\nResult: [outcome]\nInterpretation: [what this tells us]\n\n\n\n\n\n\n\n\nConclusion:\nThe discrepancy is primarily driven by [sample composition / balancing requirement / specification difference]. The fixes [do / do not] resolve the discrepancy. [Additional interpretation of what this means for our understanding of the results]."
-  },
-  {
-    "objectID": "meeting-dec-05-2025.html#implications-next-steps",
-    "href": "meeting-dec-05-2025.html#implications-next-steps",
-    "title": "Never-Treated Jackknife Fixes",
-    "section": "",
-    "text": "Fix Effectiveness: Both fixes successfully [describe impact on results]\nRobustness: The jackknife analysis shows [degree of robustness/sensitivity]\nHeterogeneity: [Summary of income and reform type heterogeneity]\nBalanced vs. Unbalanced: [What we learned from the discrepancy investigation]\n\n\n\n\n\n\n\n\n\n\nMoving Forward:\n\n[Recommendation based on results]\n[Additional analyses needed, if any]\n[Decisions about preferred specification]\n[Implications for paper narrative]"
+    "text": "If you have questions about this privacy policy, please contact:\nMyles Owens Email: maowens@stanford.edu"
   },
   {
     "objectID": "claude.html",
@@ -441,6 +224,230 @@
     "text": "Quarto Documentation\nQuarto Websites Guide\nR Documentation"
   },
   {
+    "objectID": "meeting-dec-05-2025.html",
+    "href": "meeting-dec-05-2025.html",
+    "title": "Never-Treated Jackknife Fixes",
+    "section": "",
+    "text": "This document explains the fixes implemented for the Jackknife Figure 2 issues identified on December 2nd. The core problem was that although all counties received a predicted spending value, only ever-treated counties were assigned a value for the binary indicator high. Never-treated counties were assigned missing values, which caused them to be dropped from regressions even though they should have remained in the sample.\nAll analyses now incorporate two fixes:\n\nSetting high = 0 for never-treated units\n\nRemoving interactions between high and the year effects\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: Event study estimates by baseline spending quartile\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Event study estimates by baseline spending and income quartiles\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: Event study estimates by baseline spending, income quartiles, and reform types\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 4: Jackknife event study estimates - baseline spending only\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 5: Jackknife event study estimates - baseline spending and income quartiles\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 6: Jackknife event study estimates - full specification with reforms\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure\nControls\nJackknife\n\n\n\n\n2.1\nBaseline only\nNo\n\n\n2.2\nBaseline + Income\nNo\n\n\n2.3\nBaseline + Income + Reforms\nNo\n\n\n2.4\nBaseline only\nYes\n\n\n2.5\nBaseline + Income\nYes\n\n\n2.6\nBaseline + Income + Reforms\nYes\n\n\n\n\n\n\n\n\n\n\n\n\nPatterns Observed\n\nIn the non-jackknife regressions, the high group is clearly above the low group.\n\nIn the jackknife version, this pattern reverses: the estimated effect for the high group often dips below the low group."
+  },
+  {
+    "objectID": "meeting-dec-05-2025.html#meeting-overview",
+    "href": "meeting-dec-05-2025.html#meeting-overview",
+    "title": "Never-Treated Jackknife Fixes",
+    "section": "",
+    "text": "This document explains the fixes implemented for the Jackknife Figure 2 issues identified on December 2nd. The core problem was that although all counties received a predicted spending value, only ever-treated counties were assigned a value for the binary indicator high. Never-treated counties were assigned missing values, which caused them to be dropped from regressions even though they should have remained in the sample.\nAll analyses now incorporate two fixes:\n\nSetting high = 0 for never-treated units\n\nRemoving interactions between high and the year effects"
+  },
+  {
+    "objectID": "meeting-dec-05-2025.html#results",
+    "href": "meeting-dec-05-2025.html#results",
+    "title": "Never-Treated Jackknife Fixes",
+    "section": "",
+    "text": "Figure 1: Event study estimates by baseline spending quartile\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Event study estimates by baseline spending and income quartiles\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: Event study estimates by baseline spending, income quartiles, and reform types\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 4: Jackknife event study estimates - baseline spending only\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 5: Jackknife event study estimates - baseline spending and income quartiles\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 6: Jackknife event study estimates - full specification with reforms"
+  },
+  {
+    "objectID": "meeting-dec-05-2025.html#cross-specification-comparison",
+    "href": "meeting-dec-05-2025.html#cross-specification-comparison",
+    "title": "Never-Treated Jackknife Fixes",
+    "section": "",
+    "text": "Figure\nControls\nJackknife\n\n\n\n\n2.1\nBaseline only\nNo\n\n\n2.2\nBaseline + Income\nNo\n\n\n2.3\nBaseline + Income + Reforms\nNo\n\n\n2.4\nBaseline only\nYes\n\n\n2.5\nBaseline + Income\nYes\n\n\n2.6\nBaseline + Income + Reforms\nYes\n\n\n\n\n\n\n\n\n\n\n\n\nPatterns Observed\n\nIn the non-jackknife regressions, the high group is clearly above the low group.\n\nIn the jackknife version, this pattern reverses: the estimated effect for the high group often dips below the low group."
+  },
+  {
+    "objectID": "github.html",
+    "href": "github.html",
+    "title": "Github",
+    "section": "",
+    "text": "Partial replication and extension of Jackson, Johnson, and Persico (2016)\n\n\nView on GitHub\n\n\n\nThis repository supports a partial replication and extension of “The Effects of School Spending on Educational and Economic Outcomes: Evidence from School Finance Reforms” by C. Kirabo Jackson, Rucker C. Johnson, and Claudia Persico (2016, QJE). The original study examines how increases in school spending, driven by exogenous timing of court-ordered School Finance Reforms (SFRs), affect long-run educational attainment and adult labor market outcomes, particularly among children from low-income families.\nOur work reconstructs the district-level finance panel (F-33 and INDFIN) used in the paper and extends it to county geographies to enable compatibility with proprietary Census data. This involves reprocessing the 1969 GRF (Geographic Reference File) to link school districts with Census tracts and counties, addressing non-tract areas, and implementing aggregation logic for counties with both tract and non-tract zones.\n\n\n\nThe original JJP (2016) paper and its Online Appendix describe the following key data and methods:\nData Sources:\n\nINDFIN Historical Database (FY 1967,1969–1991) — standardized local government finances including school districts\nCommon Core of Data (CCD) NCES F-33 Finance Survey (post-1992 annual continuation)\n1969–70 School District Geographic Reference File (GRF) for linking Census tracts to pre-reform district geographies\n\nIdentification Strategy:\n\nCourt-ordered School Finance Reforms (SFRs) serve as exogenous shocks\nThe number of years of exposure to initial SFR is the treatment variable\nEvent-study and 2SLS models estimate causal impacts on spending and individual outcomes\nData on court rulings comes from a preceding NBER working paper: https://www.nber.org/papers/w20118\n\nOur Specific Aims:\n\nDevelop crosswalks linking F-33 (District) ↔︎ INDFIN (District) ↔︎ Tract (GRF) ↔︎ County (GRF) identifiers\nReconstruct consistent annual per-pupil spending at the county level\nUse this data to estimate event studies akin to figure 1 JJP 2016\nExtend the analysis with jackknife regressions to identify which counties experienced the largest spending increases from school finance reforms akin to figure 2 in JJP 2016\n\n\n\n\nschool_finance/\n├── README.md                          # Project documentation\n├── CLAUDE.md                          # AI assistant guide\n├── run.do                             # Master pipeline runner\n└── code/                              # All Stata scripts\n    ├── 01_build_district_panel.do     # Build district panels & ID crosswalks\n    ├── 02_build_tract_panel.do        # Build tract panel from GRF\n    ├── 03_adjust_inflation.do         # Adjust tract spending for inflation\n    ├── 04_tag_county_quality.do       # Tag counties as good/bad (baseline data)\n    ├── 05_create_county_panel.do      # Interpolate districts & create county panel\n    ├── 06_A_county_balanced_figure1.do    # County-level balanced panel Figure 1\n    ├── 06_B_district_balanced_figure1.do  # District-level balanced panel Figure 1\n    ├── 07_jackknife.do                # Full jackknife analysis\n    └── experimental_archive/          # Archived experimental analysis files\nPipeline Organization:\n\nCore Pipeline (01-05): Sequential data construction and preparation\n\n01: Build district panels & ID crosswalks\n02: Build tract panel from GRF\n03: Adjust tract spending for inflation\n04: Tag county quality (baseline data completeness)\n05: Interpolate districts & create county panel\n\nAnalysis Scripts (06-07): Main event-study specifications and robustness checks\n\n06_A: County-level balanced panel analysis (Figure 1 replication)\n06_B: District-level balanced panel analysis (Figure 1 replication)\n07: Full jackknife analysis\n\nExperimental Archive: Historical analysis files, robustness checks, and alternative specifications\n\n\n\n\n\n\nIn Stata run.do, define the project path:\nglobal SchoolSpending \"[your file path]\"\n\n\n\nExecute the master runner script:\ndo run.do\nOr run the core pipeline scripts individually in order:\ndo code/01_build_district_panel.do\ndo code/02_build_tract_panel.do\ndo code/03_adjust_inflation.do\ndo code/04_tag_county_quality.do\ndo code/05_create_county_panel.do\n\n\n\nExecute main analysis scripts:\ndo code/06_A_county_balanced_figure1.do\ndo code/06_B_district_balanced_figure1.do\ndo code/07_jackknife.do\nOr explore archived experimental specifications in code/experimental_archive/\n\n\n\n\nUnderstanding the ID systems is critical for working with this codebase:\n\n\n\n\n\n\n\n\n\n\nIdentifier\nFormat\nLength\nDescription\nExample\n\n\n\n\nLEAID\nSSDDDDD\n7 chars\nNCES Local Education Agency ID\n0100005\n\n\nGOVID\nSS5CCCDDD\n9 chars\nGovernment ID (State+Type+County+District)\n015000100\n\n\ntract70\nSSCCCBTCTSC\n11 chars\n1970 Census tract code\n01001000100\n\n\ncounty\nSSCCC\n5 chars\nState FIPS + County FIPS\n01001\n\n\n\nWhere: SS = State FIPS, CCC = County FIPS, DDDDD = District code, BTCTSC = Basic Tract + Tract Suffix Code\n\n\n\nCoverage:\n\nTime Period: 1967, 1969-2019 (F-33 and INDFIN harmonization)\nGeographic Units: 1970 Census tract definitions\nSample Restrictions: Counties with complete baseline data (1967, 1970-1972) for quality analysis\n\nKey Variables:\n\nSpending: pp_exp (nominal), pp_exp_real (2000 dollars), lexp_ma_strict (log spending with 13-year rolling mean)\nPopulation: school_age_pop (used for weighting in aggregation)\nTreatment: reform_year (year of court-ordered SFR), relative_year (years since reform)\nQuality Flags: good_govid, good_tract, good_county (baseline data completeness)\nBaseline Quartiles: pre_q1969, pre_q1970, pre_q1971 (pre-reform spending distribution)\n\nSpatial Matching:\n\nUses 1970 tract definitions from 1969-70 GRF\nUntracted areas assigned residual county characteristics\nSingle LEAID assigned per tract based on population weights\nCounties collapsed from tracts using school-age population weights\n\nRequired Software:\n\nStata (tested with Stata 16+)\nRequired Stata packages: winsor2, rangestat, eststo/esttab, fred (for CPI data)\nInstall packages via: ssc install [package_name]\n\n\n\n\nThe pipeline follows a sequential process:\nPhase I: Data Construction\n\n01_build_district_panel.do - Builds district-year panels from F-33 and INDFIN, creates canonical LEAID ↔︎ GOVID crosswalks\n02_build_tract_panel.do - Parses 1969 GRF to link districts to Census tracts, assigns single LEAID per tract\n03_adjust_inflation.do - Adjusts tract-level spending for inflation using FRED CPI-U data\n04_tag_county_quality.do - Tags counties as “good” or “bad” based on baseline year data completeness (1967, 1970-1972)\n05_create_county_panel.do - Interpolates district panel, re-assigns to tracts, imports enrollment data, collapses to county-year panel\n\nPhase II: Main Analysis\n\n06_A_county_balanced_figure1.do - County-level event-study analysis (Figure 1 replication)\n\nCreates balanced panel with complete event windows (-5 to +17 years)\nRuns weighted event-study regressions by baseline spending quartile\nProduces Figure 1 style plots showing dynamic treatment effects\n\n06_B_district_balanced_figure1.do - District-level event-study analysis (Figure 1 replication)\n\nDistrict-level counterpart to county analysis\nUses district panel instead of county aggregation\n\n\nPhase III: Jackknife\n\n07_jackknife_heterogeneity.do - Leave-one-state-out jackknife to identify treatment effect heterogeneity\n\nPurpose: Identifies which counties experienced larger spending increases from reforms\nMethod: For each state, estimates treatment effects excluding that state’s data, then predicts spending increases for excluded state\nPanel: Uses balanced panel (complete -5 to +17 event windows)\nOutputs:\n\nHigh vs low predicted spending group comparisons\nQuartile analysis showing differential treatment effects\n\n\n\nPhase IV: Archived Experiments\n\nexperimental_archive/ contains historical robustness checks, alternative specifications, and exploratory analyses\n\n\n\n\nIntermediate Datasets:\n\ndistricts_panel_canon.dta - District-year panel with quality flags (from 01)\ntracts_panel_canon.dta - Tract-year panel with assigned LEAIDs (from 02)\ntracts_panel_real.dta - Inflation-adjusted tract panel (from 03)\ncounty_clean.dta - County quality flags (from 04)\n\nFinal Analysis Datasets:\n\ninterp_d.dta - County-year panel (1967, 1969-2019) with:\n\nPer-pupil spending (nominal and real 2000 dollars)\nSchool-age population weights\nReform exposure variables\nBaseline spending quartiles\nQuality flags for balanced event-study samples\n\njjp_interp.dta / jjp_balance.dta - Processed panels for Figure 1 analysis (from 06_A/06_B)\njjp_interp_jk.dta / jjp_balance_jk.dta - Processed panels for jackknife analysis (from 07)\npred_spend_ppe_all_jk.dta - Jackknife predicted spending classifications with:\n\nPredicted spending increase for each county (leave-one-state-out)\nHigh/low treatment group indicators\nQuartile classifications\nBaseline spending and income quartiles\n\n\nAnalysis Outputs:\n\nEvent-study regression estimates\nEvent-study plots showing dynamic treatment effects\nHeterogeneity analysis plots:\n\nHigh vs low predicted spending group comparisons\nFour-quartile differential treatment effects\nCombined plots showing treatment effect variation\n\n\n\n\n\nIf referencing the original study:\n\nJackson, C. K., Johnson, R. C., & Persico, C. (2016). The Effects of School Spending on Educational and Economic Outcomes: Evidence from School Finance Reforms. The Quarterly Journal of Economics, 131(1), 157–218.\n\n\n\n\nResearch Analyst: Myles Owens\nAffiliation: Hoover Institution, Stanford University\nEmail: myles.owens@stanford.edu\nGitHub: maowens-HI/school_finance\n\n\n\nFor detailed documentation:\n\nSee CLAUDE.md for comprehensive AI assistant guide and coding conventions\nReview individual .do file headers for specific implementation details\n\nOriginal paper and data sources:\n\nJJP (2016) Online Appendix: Detailed data description and reform coding\nNCES Common Core of Data: https://nces.ed.gov/ccd/\nFRED CPI-U Data: https://fred.stlouisfed.org/\nICPSR GRF 1969: Study #03515 (Geographic Reference Files)"
+  },
+  {
+    "objectID": "github.html#overview",
+    "href": "github.html#overview",
+    "title": "Github",
+    "section": "",
+    "text": "This repository supports a partial replication and extension of “The Effects of School Spending on Educational and Economic Outcomes: Evidence from School Finance Reforms” by C. Kirabo Jackson, Rucker C. Johnson, and Claudia Persico (2016, QJE). The original study examines how increases in school spending, driven by exogenous timing of court-ordered School Finance Reforms (SFRs), affect long-run educational attainment and adult labor market outcomes, particularly among children from low-income families.\nOur work reconstructs the district-level finance panel (F-33 and INDFIN) used in the paper and extends it to county geographies to enable compatibility with proprietary Census data. This involves reprocessing the 1969 GRF (Geographic Reference File) to link school districts with Census tracts and counties, addressing non-tract areas, and implementing aggregation logic for counties with both tract and non-tract zones."
+  },
+  {
+    "objectID": "github.html#relation-to-the-original-paper",
+    "href": "github.html#relation-to-the-original-paper",
+    "title": "Github",
+    "section": "",
+    "text": "The original JJP (2016) paper and its Online Appendix describe the following key data and methods:\nData Sources:\n\nINDFIN Historical Database (FY 1967,1969–1991) — standardized local government finances including school districts\nCommon Core of Data (CCD) NCES F-33 Finance Survey (post-1992 annual continuation)\n1969–70 School District Geographic Reference File (GRF) for linking Census tracts to pre-reform district geographies\n\nIdentification Strategy:\n\nCourt-ordered School Finance Reforms (SFRs) serve as exogenous shocks\nThe number of years of exposure to initial SFR is the treatment variable\nEvent-study and 2SLS models estimate causal impacts on spending and individual outcomes\nData on court rulings comes from a preceding NBER working paper: https://www.nber.org/papers/w20118\n\nOur Specific Aims:\n\nDevelop crosswalks linking F-33 (District) ↔︎ INDFIN (District) ↔︎ Tract (GRF) ↔︎ County (GRF) identifiers\nReconstruct consistent annual per-pupil spending at the county level\nUse this data to estimate event studies akin to figure 1 JJP 2016\nExtend the analysis with jackknife regressions to identify which counties experienced the largest spending increases from school finance reforms akin to figure 2 in JJP 2016"
+  },
+  {
+    "objectID": "github.html#repository-structure",
+    "href": "github.html#repository-structure",
+    "title": "Github",
+    "section": "",
+    "text": "school_finance/\n├── README.md                          # Project documentation\n├── CLAUDE.md                          # AI assistant guide\n├── run.do                             # Master pipeline runner\n└── code/                              # All Stata scripts\n    ├── 01_build_district_panel.do     # Build district panels & ID crosswalks\n    ├── 02_build_tract_panel.do        # Build tract panel from GRF\n    ├── 03_adjust_inflation.do         # Adjust tract spending for inflation\n    ├── 04_tag_county_quality.do       # Tag counties as good/bad (baseline data)\n    ├── 05_create_county_panel.do      # Interpolate districts & create county panel\n    ├── 06_A_county_balanced_figure1.do    # County-level balanced panel Figure 1\n    ├── 06_B_district_balanced_figure1.do  # District-level balanced panel Figure 1\n    ├── 07_jackknife.do                # Full jackknife analysis\n    └── experimental_archive/          # Archived experimental analysis files\nPipeline Organization:\n\nCore Pipeline (01-05): Sequential data construction and preparation\n\n01: Build district panels & ID crosswalks\n02: Build tract panel from GRF\n03: Adjust tract spending for inflation\n04: Tag county quality (baseline data completeness)\n05: Interpolate districts & create county panel\n\nAnalysis Scripts (06-07): Main event-study specifications and robustness checks\n\n06_A: County-level balanced panel analysis (Figure 1 replication)\n06_B: District-level balanced panel analysis (Figure 1 replication)\n07: Full jackknife analysis\n\nExperimental Archive: Historical analysis files, robustness checks, and alternative specifications"
+  },
+  {
+    "objectID": "github.html#how-to-reproduce",
+    "href": "github.html#how-to-reproduce",
+    "title": "Github",
+    "section": "",
+    "text": "In Stata run.do, define the project path:\nglobal SchoolSpending \"[your file path]\"\n\n\n\nExecute the master runner script:\ndo run.do\nOr run the core pipeline scripts individually in order:\ndo code/01_build_district_panel.do\ndo code/02_build_tract_panel.do\ndo code/03_adjust_inflation.do\ndo code/04_tag_county_quality.do\ndo code/05_create_county_panel.do\n\n\n\nExecute main analysis scripts:\ndo code/06_A_county_balanced_figure1.do\ndo code/06_B_district_balanced_figure1.do\ndo code/07_jackknife.do\nOr explore archived experimental specifications in code/experimental_archive/"
+  },
+  {
+    "objectID": "github.html#key-geographic-identifiers",
+    "href": "github.html#key-geographic-identifiers",
+    "title": "Github",
+    "section": "",
+    "text": "Understanding the ID systems is critical for working with this codebase:\n\n\n\n\n\n\n\n\n\n\nIdentifier\nFormat\nLength\nDescription\nExample\n\n\n\n\nLEAID\nSSDDDDD\n7 chars\nNCES Local Education Agency ID\n0100005\n\n\nGOVID\nSS5CCCDDD\n9 chars\nGovernment ID (State+Type+County+District)\n015000100\n\n\ntract70\nSSCCCBTCTSC\n11 chars\n1970 Census tract code\n01001000100\n\n\ncounty\nSSCCC\n5 chars\nState FIPS + County FIPS\n01001\n\n\n\nWhere: SS = State FIPS, CCC = County FIPS, DDDDD = District code, BTCTSC = Basic Tract + Tract Suffix Code"
+  },
+  {
+    "objectID": "github.html#data-notes",
+    "href": "github.html#data-notes",
+    "title": "Github",
+    "section": "",
+    "text": "Coverage:\n\nTime Period: 1967, 1969-2019 (F-33 and INDFIN harmonization)\nGeographic Units: 1970 Census tract definitions\nSample Restrictions: Counties with complete baseline data (1967, 1970-1972) for quality analysis\n\nKey Variables:\n\nSpending: pp_exp (nominal), pp_exp_real (2000 dollars), lexp_ma_strict (log spending with 13-year rolling mean)\nPopulation: school_age_pop (used for weighting in aggregation)\nTreatment: reform_year (year of court-ordered SFR), relative_year (years since reform)\nQuality Flags: good_govid, good_tract, good_county (baseline data completeness)\nBaseline Quartiles: pre_q1969, pre_q1970, pre_q1971 (pre-reform spending distribution)\n\nSpatial Matching:\n\nUses 1970 tract definitions from 1969-70 GRF\nUntracted areas assigned residual county characteristics\nSingle LEAID assigned per tract based on population weights\nCounties collapsed from tracts using school-age population weights\n\nRequired Software:\n\nStata (tested with Stata 16+)\nRequired Stata packages: winsor2, rangestat, eststo/esttab, fred (for CPI data)\nInstall packages via: ssc install [package_name]"
+  },
+  {
+    "objectID": "github.html#data-flow-pipeline",
+    "href": "github.html#data-flow-pipeline",
+    "title": "Github",
+    "section": "",
+    "text": "The pipeline follows a sequential process:\nPhase I: Data Construction\n\n01_build_district_panel.do - Builds district-year panels from F-33 and INDFIN, creates canonical LEAID ↔︎ GOVID crosswalks\n02_build_tract_panel.do - Parses 1969 GRF to link districts to Census tracts, assigns single LEAID per tract\n03_adjust_inflation.do - Adjusts tract-level spending for inflation using FRED CPI-U data\n04_tag_county_quality.do - Tags counties as “good” or “bad” based on baseline year data completeness (1967, 1970-1972)\n05_create_county_panel.do - Interpolates district panel, re-assigns to tracts, imports enrollment data, collapses to county-year panel\n\nPhase II: Main Analysis\n\n06_A_county_balanced_figure1.do - County-level event-study analysis (Figure 1 replication)\n\nCreates balanced panel with complete event windows (-5 to +17 years)\nRuns weighted event-study regressions by baseline spending quartile\nProduces Figure 1 style plots showing dynamic treatment effects\n\n06_B_district_balanced_figure1.do - District-level event-study analysis (Figure 1 replication)\n\nDistrict-level counterpart to county analysis\nUses district panel instead of county aggregation\n\n\nPhase III: Jackknife\n\n07_jackknife_heterogeneity.do - Leave-one-state-out jackknife to identify treatment effect heterogeneity\n\nPurpose: Identifies which counties experienced larger spending increases from reforms\nMethod: For each state, estimates treatment effects excluding that state’s data, then predicts spending increases for excluded state\nPanel: Uses balanced panel (complete -5 to +17 event windows)\nOutputs:\n\nHigh vs low predicted spending group comparisons\nQuartile analysis showing differential treatment effects\n\n\n\nPhase IV: Archived Experiments\n\nexperimental_archive/ contains historical robustness checks, alternative specifications, and exploratory analyses"
+  },
+  {
+    "objectID": "github.html#key-outputs",
+    "href": "github.html#key-outputs",
+    "title": "Github",
+    "section": "",
+    "text": "Intermediate Datasets:\n\ndistricts_panel_canon.dta - District-year panel with quality flags (from 01)\ntracts_panel_canon.dta - Tract-year panel with assigned LEAIDs (from 02)\ntracts_panel_real.dta - Inflation-adjusted tract panel (from 03)\ncounty_clean.dta - County quality flags (from 04)\n\nFinal Analysis Datasets:\n\ninterp_d.dta - County-year panel (1967, 1969-2019) with:\n\nPer-pupil spending (nominal and real 2000 dollars)\nSchool-age population weights\nReform exposure variables\nBaseline spending quartiles\nQuality flags for balanced event-study samples\n\njjp_interp.dta / jjp_balance.dta - Processed panels for Figure 1 analysis (from 06_A/06_B)\njjp_interp_jk.dta / jjp_balance_jk.dta - Processed panels for jackknife analysis (from 07)\npred_spend_ppe_all_jk.dta - Jackknife predicted spending classifications with:\n\nPredicted spending increase for each county (leave-one-state-out)\nHigh/low treatment group indicators\nQuartile classifications\nBaseline spending and income quartiles\n\n\nAnalysis Outputs:\n\nEvent-study regression estimates\nEvent-study plots showing dynamic treatment effects\nHeterogeneity analysis plots:\n\nHigh vs low predicted spending group comparisons\nFour-quartile differential treatment effects\nCombined plots showing treatment effect variation"
+  },
+  {
+    "objectID": "github.html#citation",
+    "href": "github.html#citation",
+    "title": "Github",
+    "section": "",
+    "text": "If referencing the original study:\n\nJackson, C. K., Johnson, R. C., & Persico, C. (2016). The Effects of School Spending on Educational and Economic Outcomes: Evidence from School Finance Reforms. The Quarterly Journal of Economics, 131(1), 157–218."
+  },
+  {
+    "objectID": "github.html#contact",
+    "href": "github.html#contact",
+    "title": "Github",
+    "section": "",
+    "text": "Research Analyst: Myles Owens\nAffiliation: Hoover Institution, Stanford University\nEmail: myles.owens@stanford.edu\nGitHub: maowens-HI/school_finance"
+  },
+  {
+    "objectID": "github.html#additional-resources",
+    "href": "github.html#additional-resources",
+    "title": "Github",
+    "section": "",
+    "text": "For detailed documentation:\n\nSee CLAUDE.md for comprehensive AI assistant guide and coding conventions\nReview individual .do file headers for specific implementation details\n\nOriginal paper and data sources:\n\nJJP (2016) Online Appendix: Detailed data description and reform coding\nNCES Common Core of Data: https://nces.ed.gov/ccd/\nFRED CPI-U Data: https://fred.stlouisfed.org/\nICPSR GRF 1969: Study #03515 (Geographic Reference Files)"
+  },
+  {
+    "objectID": "meeting-dec-09-2025.html",
+    "href": "meeting-dec-09-2025.html",
+    "title": "December 9, 2025 Meeting",
+    "section": "",
+    "text": "This document presents the latest event study results comparing baseline (no jackknife) and jackknife approaches across three specifications:\n\nSpecification A: Baseline spending only\nSpecification B: Baseline spending + Income quartiles\nSpecification C: Baseline spending + Income quartiles + Reform types\n\nEach specification is shown with both the full-sample estimates (baseline) and leave-one-state-out jackknife predictions.\n\n\n\n\nThese figures show event study estimates using the full sample to classify counties into high vs. low predicted spending groups.\n\n\n\n\n\n\n\n\nFigure 1: Event study estimates by baseline spending quartile (no jackknife)\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Event study estimates by baseline spending and income quartiles (no jackknife)\n\n\n\n\n\n\n\n\n\nSpecification: Controls for baseline 1971 spending quartile and 1970 county median family income quartile.\nPattern: Similar divergence between high and low groups, with slightly attenuated effects compared to Specification A.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: Event study estimates by baseline spending, income quartiles, and reform types (no jackknife)\n\n\n\n\n\n\n\n\nThese figures use leave-one-state-out predictions to classify counties. For each state, we estimate the model excluding that state’s data, then predict spending increases for counties in the excluded state.\n\n\n\n\n\n\n\n\nFigure 4: Jackknife event study estimates - baseline spending only\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 5: Jackknife event study estimates - baseline spending and income quartiles\n\n\n\n\n\n\n\n\n\nIssue: Similar compression of the high group relative to baseline estimates.\nPattern: Adding income controls does not resolve the instability introduced by the jackknife procedure.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 6: Jackknife event study estimates - full specification with reforms"
+  },
+  {
+    "objectID": "meeting-dec-09-2025.html#meeting-overview",
+    "href": "meeting-dec-09-2025.html#meeting-overview",
+    "title": "December 9, 2025 Meeting",
+    "section": "",
+    "text": "This document presents the latest event study results comparing baseline (no jackknife) and jackknife approaches across three specifications:\n\nSpecification A: Baseline spending only\nSpecification B: Baseline spending + Income quartiles\nSpecification C: Baseline spending + Income quartiles + Reform types\n\nEach specification is shown with both the full-sample estimates (baseline) and leave-one-state-out jackknife predictions."
+  },
+  {
+    "objectID": "meeting-dec-09-2025.html#baseline-estimates-no-jackknife",
+    "href": "meeting-dec-09-2025.html#baseline-estimates-no-jackknife",
+    "title": "December 9, 2025 Meeting",
+    "section": "",
+    "text": "These figures show event study estimates using the full sample to classify counties into high vs. low predicted spending groups.\n\n\n\n\n\n\n\n\nFigure 1: Event study estimates by baseline spending quartile (no jackknife)\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Event study estimates by baseline spending and income quartiles (no jackknife)\n\n\n\n\n\n\n\n\n\nSpecification: Controls for baseline 1971 spending quartile and 1970 county median family income quartile.\nPattern: Similar divergence between high and low groups, with slightly attenuated effects compared to Specification A.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: Event study estimates by baseline spending, income quartiles, and reform types (no jackknife)"
+  },
+  {
+    "objectID": "meeting-dec-09-2025.html#jackknife-estimates",
+    "href": "meeting-dec-09-2025.html#jackknife-estimates",
+    "title": "December 9, 2025 Meeting",
+    "section": "",
+    "text": "These figures use leave-one-state-out predictions to classify counties. For each state, we estimate the model excluding that state’s data, then predict spending increases for counties in the excluded state.\n\n\n\n\n\n\n\n\nFigure 4: Jackknife event study estimates - baseline spending only\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 5: Jackknife event study estimates - baseline spending and income quartiles\n\n\n\n\n\n\n\n\n\nIssue: Similar compression of the high group relative to baseline estimates.\nPattern: Adding income controls does not resolve the instability introduced by the jackknife procedure.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 6: Jackknife event study estimates - full specification with reforms"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Research Hub 2.0",
+    "section": "",
+    "text": "View Recent Work"
+  },
+  {
+    "objectID": "index.html#latest-research",
+    "href": "index.html#latest-research",
+    "title": "Research Hub 2.0",
+    "section": "This Month",
+    "text": "This Month\nRecent notes."
+  },
+  {
+    "objectID": "index.html#quick-access",
+    "href": "index.html#quick-access",
+    "title": "Research Hub 2.0",
+    "section": "Quick Access",
+    "text": "Quick Access\nLinks to useful things."
+  },
+  {
+    "objectID": "index.html#research-timeline",
+    "href": "index.html#research-timeline",
+    "title": "Research Hub 2.0",
+    "section": "Research Timeline",
+    "text": "Research Timeline\nA chronological record of project milestones and findings.\n\n\nDecember 2025\n\nDec 09: Baseline vs Jackknife Event Study Results (Latest Figure 2s)\nTopic: Comparing baseline (no jackknife) and jackknife approaches across three specifications.\n\n\n\n\n\n\nSpecifications Tested:\n\nSpecification A: Baseline spending only\nSpecification B: Baseline spending + Income quartiles\nSpecification C: Baseline spending + Income quartiles + Reform types\n\nEach specification includes both full-sample estimates (baseline) and leave-one-state-out jackknife predictions.\n\n\n\nView Full Meeting Notes\n\n\n\nDec 05: Never-Treated Jackknife Fixes\nTopic: Updated Figure 2 plus some notes on fixes.\nView Full Meeting Notes\n\n\n\nDec 05: JK Instability - Jackknife Classification Issues\nTopic: Investigation of jackknife classification instability in Approach II.\n\n\n\n\n\n\nKey Finding: Two states (Ohio and Texas) have below-average spending growth for their high-baseline-spending counties. When these states are left out in the jackknife step, their influence disappears, and counties that underperform in the full sample suddenly receive inflated predicted spending values. This pushes them incorrectly into the “high predicted” category\nImpact: 840 observations (11.9% of the “high” group) contaminate the jackknife results, compressing the event-study trends.\n\n\n\n\nView JK Instability Analysis\n\n\n\n\nDec 02: Figure 2 Fixes & Jackknife Strategy\nTopic: Resolving the “Never Treated” interaction issue.\n\n\n\n\n\n\nBug Found: “High” variable was defined as missing for never-treated units, dropping them from interaction regressions.\nFix: Define high=0 among NTs and remove interaction with year effects (let NTs dictate year effects).\n\n\n\nNext Steps (Jackknife Iterations):\n\nBaseline spending only (No Jackknife)\nBaseline + Income Quartiles (No Jackknife)\nBaseline + Income + Reform Types (No Jackknife)\nRepeat 1-3 with Jackknife.\n\n\nView Jackknife Code Review\n\n\n\n\n\nNovember 2025\n\nNov 25: Robustness & JJP Comparison\nTopic: Jackknife vs Non-Jackknife and Sample Selection Bias.\n\nDecision: Run Fig 1 among bottom 10% baseline spending counties.\nContext (JJP Comparison): JJP’s Figure 1 (large effect) uses PSID-linked districts (~10% of districts, selected for low income). JJP Appendix B2 (all districts) shows smaller effects closer to our findings.\n\nView Analysis\n\n\n\nNov 17-21: District & Panel Analysis\nTopic: District level expansion and balancing checks.\n\nBalance Exercise: Sample balanced on non-missing lexp_ma_strict from event times -5 to 17.\nHypothesis: Aggregating to county level smooths variation across districts, potentially leading to smaller effects than JJP.\n\n\nDistrict Level Results Balanced Panel Results\n\n\n\n\nNov 06: Sample Variations (Fig 1 & 2)\nTopic: Robustness checks across weighted/unweighted and sample restrictions.\n\nSummary Table\n\n\n\nFigure\nSample Definition\nWeighted\nLink\n\n\n\n\nFig 1\nIncludes counties w/ &gt;2 non-tract areas\nYes\nView\n\n\nFig 1\nIncludes counties w/ &gt;2 non-tract areas\nNo\nView\n\n\nFig 1\nExcludes counties w/ &gt;2 non-tract areas\nYes\nView\n\n\nFig 1\nExcludes counties w/ &gt;2 non-tract areas\nNo\nView\n\n\n\n\n\n\n\n\nOctober 2025\n\nOct 31: The “Mixed” County Problem\nTopic: Handling counties with multiple non-tracted areas.\n\n\n\n\n\n\nThe Issue: We lack school-age population data for non-tracted areas. If a county has &gt;1 non-tracted area, we cannot weight them relative to each other.\nThe Fix: Combine all non-tracted areas in a county into a single “pseudo-area.” Average their PPE (unweighted), then weight this pseudo-area against the tracts using the residual county population.\n\n\n\n\n\n\nOct 28: Defining “Good” Counties\nTopic: Creating a clean baseline dataset.\n\nDefinition: A “Good County” is one where every linked tract/LEAID has non-missing spending data for every year from 1966-1971.\nAction: Created indicator variables good_county_6671 to filter samples.\n\n\n\n\nOct 24: Baseline Year Selection\n\nFindings: 1971 vs. 1966-70 average yields similar results.\nDecision: Use 1971 on its own or average across several years (robustness check).\n\nView Full Notes\n\n\n\nOct 21: Pre-Quartile Splits\n\nGoal: Compare individual pre-quartile splits (e.g., 1967 vs 1971) to ensure single-year spikes aren’t driving results.\n\nView Full Notes\n\n\n\nOct 17: Interpolation & Winsorizing\n\nMethod: Winsorize all spending values at 1st and 99th percentiles (within year).\nRefinement: Interpolate at the district level before tract-to-county processing (previously done at tract level).\n\nView Full Notes\n\n\n\nOct 11: Common Core & Balancing\n\nData Update: Incorporated Common Core spending data through 2018-19.\nBalancing: Redefined lead_5 to bin all earlier years; lag_17 bins all later years. Exclude counties treated 2000+.\n\nView Full Notes\n\n\n\nOct 07: Debugging pred_spend\n\nChallenge: Event studies by pred_spend went in opposite directions than expected.\nAction: Step-by-step reconstruction (Simple event study → Baseline Quartile split → pred_spend construction).\n\nView Full Notes\n\n\n\n\nSeptember 2025\n\nSep 30: Reform Variables\n\nDecision: Build pred_spend without reforms to isolate variable issues.\n\nView Full Notes\n\n\n\nSep 23: Wisconsin Binning Fix\n\nBug: Coefficients for lead 16-19 were empty, but lead 20 was non-empty.\nCause: Binning issue in estimation. Fixed.\n\nView Full Notes\n\n\n\nSep 02: Hanushek vs. JJP\n\nAction: Re-run First Stage Approach 1 using only JJP reform info (ignore Hanushek table for now) to ensure replication.\n\nView Full Notes\n\n\n\n\nAugust 2025\n\nAug 26: Data Cleaning\n\nImputation: Imputed 1986 enrollment using 1987 numbers for district 3416800.\nZero Values: For 1983 enrollment==0, replaced with ’84 (or ’82) values.\n\n\n\n\nAug 19: JJP Methodology Deep Dive\nTopic: Weighting and Rolling Windows.\n\nDifference: JJP uses district-level; we use county-level.\nVariable Definitions:\n\nCurrent year spending (weighted by 1972 pop).\nLog average PPE over 13-year rolling window (missing if &lt;13 years data).\nLog average PPE over available data (filling missing years with 1967 value).\n\n\n\n\n\nAug 01: The PPE Formula\nTopic: Calculating Per Pupil Expenditures (PPE) for split tracts.\n\n\n\n\n\n\nLogic for Primary/Secondary Tracts:\n\nGet Primary PPE and Secondary PPE.\nGet share of students in tract who are Primary-age vs Secondary-age.\nFormula: (PrimaryPPE * PrimaryShare) + (SecondaryPPE * SecondaryShare)\n\n\n\n\n\n\n\n\nJuly 2025\n\nJuly 29: Duplicate Tracts\n\nIssue: Tracts appearing multiple times (once for elementary, once for secondary).\nResolution: Reshape to tract level with separate variables for elementary/secondary districts.\n\n\n\n\nJuly 15: Geographic Challenges\n\nIssue: Difficulty mapping districts to counties via tracts.\nStrategy: If population weighting fails, default to centroids. Match failures (un-tracted areas) assigned to counties via GRF.\n\n\n\n\nJuly 11: Project Kickoff\n\nGoal: Produce panel of per-pupil spending at the county level.\nRationale: We only observe birth location at the county level."
+  },
+  {
+    "objectID": "terms.html",
+    "href": "terms.html",
+    "title": "Terms of Use",
+    "section": "",
+    "text": "Last updated: December 3, 2025\n\n\n\nThis website is maintained as part of academic research at the Hoover Institution, Stanford University. The content is provided for informational and educational purposes.\n\n\n\nThe research notes, analyses, and code reviews presented on this site represent work in progress. Findings and methodologies may be updated as research continues.\n\n\n\nLinks to external resources (Google Drive, Google Docs, GitHub repositories) are provided for collaborators and interested researchers. Access to some resources may be restricted.\n\n\n\nAll original content on this site, unless otherwise noted, is the intellectual property of the research team. Code repositories may have their own licensing terms specified in their respective repositories.\n\n\n\nThe content is provided “as is” without warranty of any kind, express or implied. We make no guarantees about the accuracy, reliability, or completeness of the information presented.\n\n\n\nWe reserve the right to modify these terms at any time. Changes will be posted on this page with an updated revision date.\n\n\n\nFor questions about these terms or the research presented on this site:\nMyles Owens Hoover Institution, Stanford University Email: maowens@stanford.edu"
+  },
+  {
+    "objectID": "terms.html#academic-use",
+    "href": "terms.html#academic-use",
+    "title": "Terms of Use",
+    "section": "",
+    "text": "This website is maintained as part of academic research at the Hoover Institution, Stanford University. The content is provided for informational and educational purposes."
+  },
+  {
+    "objectID": "terms.html#research-content",
+    "href": "terms.html#research-content",
+    "title": "Terms of Use",
+    "section": "",
+    "text": "The research notes, analyses, and code reviews presented on this site represent work in progress. Findings and methodologies may be updated as research continues."
+  },
+  {
+    "objectID": "terms.html#external-resources",
+    "href": "terms.html#external-resources",
+    "title": "Terms of Use",
+    "section": "",
+    "text": "Links to external resources (Google Drive, Google Docs, GitHub repositories) are provided for collaborators and interested researchers. Access to some resources may be restricted."
+  },
+  {
+    "objectID": "terms.html#intellectual-property",
+    "href": "terms.html#intellectual-property",
+    "title": "Terms of Use",
+    "section": "",
+    "text": "All original content on this site, unless otherwise noted, is the intellectual property of the research team. Code repositories may have their own licensing terms specified in their respective repositories."
+  },
+  {
+    "objectID": "terms.html#no-warranties",
+    "href": "terms.html#no-warranties",
+    "title": "Terms of Use",
+    "section": "",
+    "text": "The content is provided “as is” without warranty of any kind, express or implied. We make no guarantees about the accuracy, reliability, or completeness of the information presented."
+  },
+  {
+    "objectID": "terms.html#changes-to-terms",
+    "href": "terms.html#changes-to-terms",
+    "title": "Terms of Use",
+    "section": "",
+    "text": "We reserve the right to modify these terms at any time. Changes will be posted on this page with an updated revision date."
+  },
+  {
+    "objectID": "terms.html#contact",
+    "href": "terms.html#contact",
+    "title": "Terms of Use",
+    "section": "",
+    "text": "For questions about these terms or the research presented on this site:\nMyles Owens Hoover Institution, Stanford University Email: maowens@stanford.edu"
+  },
+  {
     "objectID": "jk-instability-dec-05-2025.html",
     "href": "jk-instability-dec-05-2025.html",
     "title": "JK Instability",
@@ -455,76 +462,6 @@
     "text": "This memo explains why the jackknife plots sometimes show the “high” group dipping below the “low” group. After applying the fixes Nick flagged on Tuesday, the updated charts look cleaner, but the same core issue remains: the jackknife estimates often compress the “high” group and, in several cases, push it below the “low” group.\nThe main mechanism is straightforward. Some counties that are classified as low in the full-sample prediction model (because predicted spending &lt; 0) flip into the high category when their own state is excluded from the model during the jackknife procedure. This misclassification is likely not the only problem in the jackknife approach, but it appears to be a major contributor to the pattern we observe.\nA closer investigation shows that two states — Ohio and Texas — have below-average spending growth among counties that should be in the highest-baseline-spending group. When these states are left out in the jackknife step, their influence disappears, and counties that underperform in the full sample suddenly receive inflated predicted spending values. This pushes them incorrectly into the “high predicted” category."
   },
   {
-    "objectID": "jk-instability-dec-05-2025.html#initial-problem",
-    "href": "jk-instability-dec-05-2025.html#initial-problem",
-    "title": "JK Instability",
-    "section": "",
-    "text": "The baseline (full-sample) event-study showed clear separation between “high predicted” and “low predicted” spending groups. The jackknife version showed compressed, overlapping trends with the “high” group performing worse than expected.\n\n\n\n\n\n\nFigure 1: Event study estimates by baseline spending quartile\n\n\n\n\n\n\n\n\n\nFigure 2: Jackknife event study estimates - baseline spending only\n\n\n\n\n\n\nTabulating pre_q × high (baseline spending quartile × high/low classification) revealed:\n\n\n\nQuartile\nRegular High\nJackknife High\nDifference\n\n\n\n\npre_q 1\n3,080\n3,080\n0\n\n\npre_q 2\n3,136\n3,136\n0\n\n\npre_q 3\n0\n504\n+504\n\n\npre_q 4\n0\n336\n+336\n\n\nTotal\n6,216\n7,056\n+840\n\n\n\nFinding: 840 observations from pre_q 3/4 (high-baseline-spending counties) flipped from “low” to “high” in the jackknife—counties that theoretically should have lower predicted spending increases."
-  },
-  {
-    "objectID": "jk-instability-dec-05-2025.html#diagnostic-approach",
-    "href": "jk-instability-dec-05-2025.html#diagnostic-approach",
-    "title": "JK Instability",
-    "section": "",
-    "text": "Tabulated state_fips × high for pre_q ≥ 3 counties in both baseline and jackknife datasets.\nResult: All 840 flipped observations came from exactly two states: - Ohio (FIPS 39): 336 observations - Texas (FIPS 48): 504 observations\nNo other state had any pre_q 3/4 counties flip classification.\n\n\n\nTabulated pre_q × pred_q (baseline quartile × predicted quartile) for Ohio and Texas separately.\nOhio:\n\n\n\npre_q\npred_q (national)\nCount\nhigh_def_A\n\n\n\n\n3\n1 (lowest)\n392\n0\n\n\n4\n2\n336\n1\n\n\n\nTexas:\n\n\n\npre_q\npred_q (national)\nCount\nhigh_def_A\n\n\n\n\n3\n3\n504\n1\n\n\n4\n1 (lowest)\n280\n0\n\n\n\nFinding: Ohio and Texas exhibit opposite coefficient orderings: - Ohio: pre_q 4 predicted higher than pre_q 3 - Texas: pre_q 3 predicted higher than pre_q 4\nThe 840 flipped observations are: - 336 Ohio pre_q 4 counties - 504 Texas pre_q 3 counties\n\n\n\nExtracted key coefficients from three models using lag 4 as representative:\nFull Sample:   main = 0.0179   ppe3 = -0.0199   ppe4 = -0.0298\nLeave-Ohio:    main = 0.0124   ppe3 = -0.0157   ppe4 = -0.0112\nLeave-Texas:   main = 0.0217   ppe3 = -0.0075   ppe4 = -0.0303\nComputed Predictions:\n\n\n\nModel\npred(q=3)\npred(q=4)\n\n\n\n\nFull Sample\n-0.0020\n-0.0119\n\n\nLeave-Ohio\n-0.0033\n+0.0012\n\n\nLeave-Texas\n+0.0142\n-0.0086\n\n\n\nFinding: - When Ohio is excluded, ppe4 jumps from -0.030 to -0.011 (Δ = +0.019), pushing Ohio’s pre_q 4 predictions above zero - When Texas is excluded, ppe3 jumps from -0.020 to -0.008 (Δ = +0.012), pushing Texas’s pre_q 3 predictions above zero\n\n\n\nCollapsed mean lexp_ma_strict by state group (Ohio/Texas/Other) for pre_q ≥ 3 counties over relative years 2-7 (the averaging window).\n\n\n\nState Group\nt=2\nt=7\nChange\n\n\n\n\nOhio\n2.001\n2.122\n+0.120\n\n\nOther States\n1.875\n2.012\n+0.137\n\n\nTexas\n1.622\n1.735\n+0.113\n\n\n\nFinding: Ohio and Texas pre_q 3/4 counties have flatter spending growth than other states: - Ohio: 1.7 percentage points less growth than national average - Texas: 2.4 percentage points less growth than national average"
-  },
-  {
-    "objectID": "jk-instability-dec-05-2025.html#root-cause-analysis",
-    "href": "jk-instability-dec-05-2025.html#root-cause-analysis",
-    "title": "JK Instability",
-    "section": "",
-    "text": "In the full sample: Ohio and Texas pre_q 3/4 counties drag down the ppe3 and ppe4 interaction coefficients because their spending growth is below the national average for those quartiles.\nIn the jackknife: Each state’s counties receive predictions from a model that excludes that state:\n\nOhio counties get predictions from the “leave-Ohio” model\nTexas counties get predictions from the “leave-Texas” model\n\nThe perverse result: When Ohio/Texas are excluded from estimation, the remaining states’ pre_q 3/4 spending growth looks better (because the below-average performers are removed). This makes the interaction coefficients less negative, pushing predictions above zero.\nClassification flip: Ohio’s pre_q 4 counties and Texas’s pre_q 3 counties cross the pred_spend &gt; 0 threshold and are classified as “high predicted.”\n\n\n\n\nCounties are classified as “high predicted” precisely because their own below-average performance is removed from the model that predicts them. The jackknife correctly uses out-of-sample predictions, but those predictions reflect what happened in other states—not what actually happened in Ohio/Texas."
-  },
-  {
-    "objectID": "jk-instability-dec-05-2025.html#why-this-matters",
-    "href": "jk-instability-dec-05-2025.html#why-this-matters",
-    "title": "JK Instability",
-    "section": "",
-    "text": "The “high predicted” group in the jackknife now contains: - Counties that genuinely had high predicted spending increases (correct) - Ohio pre_q 4 and Texas pre_q 3 counties that actually had below-average spending growth (contamination)\nThis contamination drags down the “high” group’s average trajectory, compressing the difference between high and low groups in the event-study plot.\n\n\n\n\nTotal “high” in jackknife: 7,056 observations\nContaminated observations: 840 (Ohio pre_q 4 + Texas pre_q 3)\nContamination rate: 11.9% of the “high” group"
-  },
-  {
-    "objectID": "jk-instability-dec-05-2025.html#implications-and-options",
-    "href": "jk-instability-dec-05-2025.html#implications-and-options",
-    "title": "JK Instability",
-    "section": "",
-    "text": "No. The code correctly implements leave-one-state-out predictions. Each state’s counties receive predictions from a model excluding that state. The predictions are stored and assigned correctly.\n\n\n\nTechnically yes, but problematically so. The jackknife is designed to create out-of-sample predictions to avoid overfitting. However, when individual states are highly influential (as Ohio and Texas are for pre_q 3/4), the leave-out predictions can diverge substantially from actual outcomes.\n\n\n\n\nUse Definition B (quartile-based) instead of Definition A (threshold-based)\n\nLess sensitive to small coefficient changes crossing zero\nBut the Ohio/Texas swap pattern suggests quartile rankings may also be unstable\n\nExamine robustness to excluding Ohio and Texas entirely\n\nRun analysis without these influential states\nCompare results to full-sample and jackknife versions\n\nUse state-level clustering in the threshold\n\nInstead of national pred_spend &gt; 0, use within-state classifications\nEnsures each state’s counties are compared to similar counties\n\nReport both baseline and jackknife results\n\nAcknowledge the instability as a limitation\nJackknife may be overly conservative due to this contamination\n\nInvestigate why Ohio and Texas are different\n\nAre there policy or demographic factors explaining their below-average growth?\nCould inform the heterogeneity analysis itself"
-  },
-  {
-    "objectID": "jk-instability-dec-05-2025.html#technical-details",
-    "href": "jk-instability-dec-05-2025.html#technical-details",
-    "title": "JK Instability",
-    "section": "",
-    "text": "08_jackknife_approach_ii.do (main analysis file)\nbaseline_reg_A.dta (baseline predictions)\njk_reg_A.dta (jackknife predictions)\nmodel_baseline_A.ster (full-sample estimates)\njackknife_A_state_39.ster (leave-Ohio estimates)\njackknife_A_state_48.ster (leave-Texas estimates)\n\n\n\n\n\npre_q: Baseline spending quartile (1971)\npred_spend: Predicted spending increase (average of lags 2-7)\npred_q: National quartile of predicted spending\nhigh_def_A: Binary classification (pred_spend &gt; 0)\nlexp_ma_strict: Log per-pupil expenditure (13-year rolling mean)\n\n\n\n\npred_spend = avg_main                    if pre_q == 1\npred_spend = avg_main + avg_ppe_2        if pre_q == 2\npred_spend = avg_main + avg_ppe_3        if pre_q == 3\npred_spend = avg_main + avg_ppe_4        if pre_q == 4\n\nwhere avg_* = mean of coefficients across lags 2-7"
-  },
-  {
-    "objectID": "jk-instability-dec-05-2025.html#conclusion",
-    "href": "jk-instability-dec-05-2025.html#conclusion",
-    "title": "JK Instability",
-    "section": "",
-    "text": "The jackknife classification instability is driven by two influential states (Ohio and Texas) whose pre_q 3/4 counties have below-average spending growth. The leave-one-state-out methodology causes these counties to be classified as “high predicted” based on other states’ patterns, contaminating the high group with counties that actually underperformed.\nThis represents a limitation of the Approach II methodology when applied to samples with influential outlier states, rather than a coding error. The finding suggests caution in interpreting the jackknife heterogeneity results and motivates robustness checks excluding or separately examining Ohio and Texas."
-  },
-  {
-    "objectID": "jk-instability-dec-05-2025.html#diagnosis",
-    "href": "jk-instability-dec-05-2025.html#diagnosis",
-    "title": "JK Instability",
-    "section": "",
-    "text": "To understand the flips, we compare the coefficients that form predicted spending in the full sample versus the jackknife runs for Ohio and Texas. Predicted spending equals the main effect plus the quartile adjustment relative to quartile 1 (main + ppe). Here, ppe3 and ppe4 refer to the coefficients on lag_*#pre_q3 and lag_*#pre_q4.\n\n\nFull Sample - main = 0.0208505\n- ppe3 = −0.0227245\n- ppe4 = −0.0299217\nOhio Omitted - main = 0.0138311\n- ppe3 = −0.0193518\n- ppe4 = −0.0120878\nTexas Omitted - main = 0.0248799\n- ppe3 = −0.0052331\n- ppe4 = −0.0299885\n\n\n\n\nWhen Ohio is excluded, ppe4 rises from −0.0299217 to −0.0120878 (+0.0178339).\nThis boosts quartile-4 predicted spending enough to flip 336 quartile-4 counties into the high group.\nWhen Texas is excluded, ppe3 rises from −0.0227245 to −0.0052331 (~+0.0174914).\nThis raises quartile-3 predicted spending, flipping 504 quartile-3 counties into the high group.\n\nTogether, these shifts generate 840 additional “high predicted” classifications that only appear under the jackknife. This inflates the size of the high group with counties that actually exhibit weak spending growth, which pulls down the average effect for the high group and produces the inversion seen in the jackknife plots."
-  },
-  {
-    "objectID": "meeting-dec-05-2025.html#results",
-    "href": "meeting-dec-05-2025.html#results",
-    "title": "Never-Treated Jackknife Fixes",
-    "section": "",
-    "text": "Figure 1: Event study estimates by baseline spending quartile\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Event study estimates by baseline spending and income quartiles\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: Event study estimates by baseline spending, income quartiles, and reform types\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 4: Jackknife event study estimates - baseline spending only\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 5: Jackknife event study estimates - baseline spending and income quartiles\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 6: Jackknife event study estimates - full specification with reforms"
-  },
-  {
-    "objectID": "meeting-dec-05-2025.html#discrepancy-investigation-fig-1-and-fig-2-results",
-    "href": "meeting-dec-05-2025.html#discrepancy-investigation-fig-1-and-fig-2-results",
-    "title": "Never-Treated Jackknife Fixes",
-    "section": "",
-    "text": "In theory we should be able to recreate figure 1 using the regression set up of figure 2. Here we test that.\n\n\n\n\n\n\nFigure 7: Quartile 1-3 of 1971 Per Pupil Expenditure\n\n\n\n\n\n\n\n\n\nFigure 8: Quartile 4 of 1971 Per Pupil Expenditure\n\n\n\n\n\n\n\n\n\nFigure 9: Quartile 1-3 of 1971 Per Pupil Expenditure Using High Variable\n\n\n\n\n\n\n\n\n\nFigure 10: Quartile 4 of 1971 Per Pupil Expenditure Using High Variable"
-  },
-  {
     "objectID": "jk-instability-dec-05-2025.html#conceptual-setup",
     "href": "jk-instability-dec-05-2025.html#conceptual-setup",
     "title": "JK Instability",
@@ -537,5 +474,12 @@
     "title": "JK Instability",
     "section": "",
     "text": "To keep things simple, consider the specification that controls only for baseline 1971 spending quartile. In the baseline approach, we use the full sample and regress expenditure on quartile indicators. This produces predicted spending values, which we then use to define high (predicted &gt; 0). Running an event-study with this high variable delivers the expected pattern: high consistently exceeds low.\n\n\n\n\n\n\n\n\nFigure 1: Event study estimates by baseline spending quartile\n\n\n\n\n\n\n\nThe jackknife repeats the same regression multiple times, each iteration excluding one state. For each iteration, we:\n\nRe-estimate the model without state s.\n\nGenerate predicted spending for counties in the omitted state.\n\nAssign those counties to high/low based on the jackknife prediction.\n\nMove on to the next state.\n\nThe advantage is that no single state can dominate the prediction model. The problem is that when we use these jackknife-based predictions to create the high variable for the second-stage event study, we sometimes obtain the reverse ordering: the low group sits above the high group.\n\n\n\n\n\n\n\n\nFigure 2: Event study estimates by baseline spending and income quartiles\n\n\n\nOrdinarily I would assume this pattern reflects a coding mistake, because mechanically the high group should exceed the low group. But after checking the underlying data more closely, that explanation doesn’t hold.\nTabulating pre_q × high (baseline spending quartile × high/low classification) shows the issue clearly:\n\n\n\nQuartile\nRegular High\nJackknife High\nDifference\n\n\n\n\npre_q 1\n3,080\n3,080\n0\n\n\npre_q 2\n3,136\n3,136\n0\n\n\npre_q 3\n0\n504\n+504\n\n\npre_q 4\n0\n336\n+336\n\n\nTotal\n6,216\n7,056\n+840\n\n\n\nFinding: 840 counties from pre_q 3 and pre_q 4 (the highest-baseline-spending groups) switch from “low” to “high” under the jackknife. These are units that should theoretically have lower predicted spending changes, not higher."
+  },
+  {
+    "objectID": "jk-instability-dec-05-2025.html#diagnosis",
+    "href": "jk-instability-dec-05-2025.html#diagnosis",
+    "title": "JK Instability",
+    "section": "",
+    "text": "To understand the flips, we compare the coefficients that form predicted spending in the full sample versus the jackknife runs for Ohio and Texas. Predicted spending equals the main effect plus the quartile adjustment relative to quartile 1 (main + ppe). Here, ppe3 and ppe4 refer to the coefficients on lag_*#pre_q3 and lag_*#pre_q4.\n\n\nFull Sample - main = 0.0208505\n- ppe3 = −0.0227245\n- ppe4 = −0.0299217\nOhio Omitted - main = 0.0138311\n- ppe3 = −0.0193518\n- ppe4 = −0.0120878\nTexas Omitted - main = 0.0248799\n- ppe3 = −0.0052331\n- ppe4 = −0.0299885\n\n\n\n\nWhen Ohio is excluded, ppe4 rises from −0.0299217 to −0.0120878 (+0.0178339).\nThis boosts quartile-4 predicted spending enough to flip 336 quartile-4 counties into the high group.\nWhen Texas is excluded, ppe3 rises from −0.0227245 to −0.0052331 (~+0.0174914).\nThis raises quartile-3 predicted spending, flipping 504 quartile-3 counties into the high group.\n\nTogether, these shifts generate 840 additional “high predicted” classifications that only appear under the jackknife. This inflates the size of the high group with counties that actually exhibit weak spending growth, which pulls down the average effect for the high group and produces the inversion seen in the jackknife plots."
   }
 ]

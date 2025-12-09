@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.42">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="dcterms.date" content="2025-12-05">
 
-<title>December 5, 2025 Meeting | Research Hub – Research Hub</title>
+<title>December 5, 2025 Meeting | Research Hub</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -36,10 +36,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-937d584fb5d552ffcd9025614ad707e2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -84,7 +84,7 @@ ul.task-list li input[type="checkbox"] {
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -99,7 +99,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
+          <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -112,7 +112,7 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -153,18 +153,13 @@ ul.task-list li input[type="checkbox"] {
 </li>
 <li>Removing interactions between <code>high</code> and the year effects</li>
 </ol>
-<p>Additional corrections:</p>
-<ul>
-<li>Stabilized functions such as <code>xtile</code> and <code>sort/gsort</code> to eliminate run-to-run variation caused by tie-breaking.</li>
-<li>Dropped all counties where <code>good_71 != 1</code> <strong>before</strong> assigning quartiles, rather than after. This prevents excluded counties from contaminating quartile definitions.</li>
-</ul>
 <hr>
 </section>
 <section id="results" class="level2">
 <h2 class="anchored" data-anchor-id="results">Results</h2>
 <section id="fig-2-1" class="level4">
 <h4 class="anchored" data-anchor-id="fig-2-1">Figure 2.1: Spending Only (No Jackknife)</h4>
-<div id="fig-2-1-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-2-1-plot" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2-1-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/12_5_25/baseline_spec_A_def_A_high_vs_low.png" class="img-fluid figure-img">
@@ -178,7 +173,7 @@ Figure&nbsp;1: Event study estimates by baseline spending quartile
 </section>
 <section id="fig-2-2" class="level4">
 <h4 class="anchored" data-anchor-id="fig-2-2">Figure 2.2: Spending + Income Quartiles (No Jackknife)</h4>
-<div id="fig-2-2-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-2-2-plot" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2-2-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/12_5_25/baseline_spec_B_def_A_high_vs_low.png" class="img-fluid figure-img">
@@ -192,7 +187,7 @@ Figure&nbsp;2: Event study estimates by baseline spending and income quartiles
 </section>
 <section id="fig-2-3" class="level4">
 <h4 class="anchored" data-anchor-id="fig-2-3">Figure 2.3: Spending + Income + Reform Types (No Jackknife)</h4>
-<div id="fig-2-3-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-2-3-plot" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2-3-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/12_5_25/baseline_spec_C_def_A_high_vs_low.png" class="img-fluid figure-img">
@@ -208,7 +203,7 @@ Figure&nbsp;3: Event study estimates by baseline spending, income quartiles, and
 <h3 class="anchored" data-anchor-id="phase-2-jackknife">Phase 2: Jackknife</h3>
 <section id="fig-2-4" class="level4">
 <h4 class="anchored" data-anchor-id="fig-2-4">Figure 2.4: Spending Only (Jackknife)</h4>
-<div id="fig-2-4-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-2-4-plot" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2-4-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/12_5_25/jackknife_spec_A_def_A_high_vs_low.png" class="img-fluid figure-img">
@@ -222,7 +217,7 @@ Figure&nbsp;4: Jackknife event study estimates - baseline spending only
 </section>
 <section id="fig-2-5" class="level4">
 <h4 class="anchored" data-anchor-id="fig-2-5">Figure 2.5: Spending + Income Quartiles (Jackknife)</h4>
-<div id="fig-2-5-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-2-5-plot" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2-5-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/12_5_25/jackknife_spec_B_def_A_high_vs_low.png" class="img-fluid figure-img">
@@ -236,7 +231,7 @@ Figure&nbsp;5: Jackknife event study estimates - baseline spending and income qu
 </section>
 <section id="fig-2-6" class="level4">
 <h4 class="anchored" data-anchor-id="fig-2-6">Figure 2.6: Spending + Income + Reform Types (Jackknife)</h4>
-<div id="fig-2-6-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-2-6-plot" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2-6-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/12_5_25/jackknife_spec_C_def_A_high_vs_low.png" class="img-fluid figure-img">
@@ -254,7 +249,7 @@ Figure&nbsp;6: Jackknife event study estimates - full specification with reforms
 <h2 class="anchored" data-anchor-id="cross-specification-comparison">Cross-Specification Comparison</h2>
 <section id="summary-table" class="level3">
 <h3 class="anchored" data-anchor-id="summary-table">Summary Table</h3>
-<table class="caption-top table">
+<table class="table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Figure</th>
@@ -357,7 +352,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -389,45 +395,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -462,11 +430,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
+      return note.innerHTML;
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -514,6 +478,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
+      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
