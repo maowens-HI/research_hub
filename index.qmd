@@ -28,6 +28,20 @@ Recent notes.
 ::: research-card
 [Notes]{.card-category}
 
+[December 12: Good vs Bad Counties and Quartile-Specific Figure 2]{.card-title}
+
+[Comparing good vs all counties and event study estimates by quartile]{.card-excerpt}
+
+[December 2025]{.card-meta}
+
+[View Meeting Notes](meeting-dec-12-2025.qmd){.card-link}
+:::
+::::
+
+:::: carousel-slide
+::: research-card
+[Notes]{.card-category}
+
 [December 09: Baseline vs Jackknife Event Study Results (Latest Figure 2)]{.card-title}
 
 [Comparing full-sample and leave-one-state-out jackknife predictions]{.card-excerpt}
@@ -146,6 +160,26 @@ A chronological record of project milestones and findings.
 ------------------------------------------------------------------------
 
 ### December 2025 {.mt-xl}
+
+#### Dec 12: Good vs Bad Counties and Quartile-Specific Figure 2
+
+**Topic:** Comparing good vs all counties for Fig 1 and event study estimates by quartile for Fig 2.
+
+::: {.callout-note appearance="minimal"}
+**Analysis Components:**
+
+- **Good vs All Counties**: Fig 1 estimates using 1971 baseline spending quartiles comparing good counties only versus all counties
+- **Summary Statistics**: Comparison of baseline spending, income, region, and population between good and bad counties
+- **Quartile-Specific Figure 2**: Six specifications showing event study estimates with four lines (one per quartile of predicted spending)
+  - Specification A: Baseline spending only
+  - Specification B: Baseline spending + Income quartiles
+  - Specification C: Baseline spending + Income quartiles + Reform types
+  - Each specification shown with both No Jackknife and Jackknife approaches
+:::
+
+[View Full Meeting Notes](meeting-dec-12-2025.qmd){.btn-ghost}
+
+------------------------------------------------------------------------
 
 #### Dec 09: Baseline vs Jackknife Event Study Results (Latest Figure 2s)
 
