@@ -32,15 +32,15 @@ This document presents two main analyses:
 
 ------------------------------------------------------------------------
 
-### Figure 1.3: All Counties (4 Quartiles) {#fig-1-3}
+### Figure 1.3: Good and Bad Counties (4 Quartiles) {#fig-1-3}
 
-![Event study estimates using 1971 baseline spending quartiles - all counties](images/12_12_25/bad_county_4.png){#fig-1-3-plot}
+![Event study estimates using 1971 baseline spending quartiles - good and bad counties](images/12_12_25/bad_county_4.png){#fig-1-3-plot}
 
 ------------------------------------------------------------------------
 
-### Figure 1.4: All Counties (Bottom Quartile) {#fig-1-4}
+### Figure 1.4: Good and Bad Counties (Bottom Quartile) {#fig-1-4}
 
-![Event study estimates for bottom quartile - all counties](images/12_12_25/bad_county_btm.png){#fig-1-4-plot}
+![Event study estimates for bottom quartile - good and bad counties](images/12_12_25/bad_county_btm.png){#fig-1-4-plot}
 
 ------------------------------------------------------------------------
 

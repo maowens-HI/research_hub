@@ -30,7 +30,7 @@ Recent notes.
 
 [December 12: Good vs Bad Counties and Quartile-Specific Figure 2]{.card-title}
 
-[Comparing good vs all counties and event study estimates by quartile]{.card-excerpt}
+[Comparing good counties only versus good and bad counties with quartile estimates]{.card-excerpt}
 
 [December 2025]{.card-meta}
 
@@ -163,12 +163,12 @@ A chronological record of project milestones and findings.
 
 #### Dec 12: Good vs Bad Counties and Quartile-Specific Figure 2
 
-**Topic:** Comparing good vs all counties for Fig 1 and event study estimates by quartile for Fig 2.
+**Topic:** Comparing good counties only versus good and bad counties for Fig 1 and event study estimates by quartile for Fig 2.
 
 ::: {.callout-note appearance="minimal"}
 **Analysis Components:**
 
-- **Good vs All Counties**: Fig 1 estimates using 1971 baseline spending quartiles comparing good counties only versus all counties
+- **Good vs Good and Bad Counties**: Fig 1 estimates using 1971 baseline spending quartiles comparing good counties only versus good and bad counties
 - **Summary Statistics**: Comparison of baseline spending, income, region, and population between good and bad counties
 - **Quartile-Specific Figure 2**: Six specifications showing event study estimates with four lines (one per quartile of predicted spending)
   - Specification A: Baseline spending only
