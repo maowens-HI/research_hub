@@ -17,7 +17,7 @@ This document presents the latest event study results comparing baseline (no jac
 
 - **Specification A**: Baseline spending only
 - **Specification B**: Baseline spending + Income quartiles
-- **Specification C**: Baseline spending + Income quartiles + Reform types
+- **Specification C**: Baseline spending + Income quartiles * Reform types
 
 Each specification is shown with both the full-sample estimates (baseline) and leave-one-state-out jackknife predictions.
 
@@ -39,7 +39,7 @@ These figures show event study estimates using the full sample to classify count
 
 ------------------------------------------------------------------------
 
-### Figure 2.3: Spending + Income + Reform Types {#fig-1-3}
+### Figure 2.3: Spending + Income * Reform Types {#fig-1-3}
 
 ![Event study estimates by baseline spending, income quartiles, and reform types (no jackknife)](images/12_9_25/baseline_spec_C_def_A_high_vs_low.png){#fig-1-3-plot}
 
@@ -62,7 +62,7 @@ These figures use leave-one-state-out predictions to classify counties. For each
 
 ------------------------------------------------------------------------
 
-### Figure 2.6: Spending + Income + Reform Types (Jackknife) {#fig-2-3}
+### Figure 2.6: Spending + Income * Reform Types (Jackknife) {#fig-2-3}
 
 ![Jackknife event study estimates - full specification with reforms](images/12_9_25/jackknife_spec_C_def_A_high_vs_low.png){#fig-2-3-plot}
 
