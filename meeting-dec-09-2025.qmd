@@ -37,12 +37,6 @@ These figures show event study estimates using the full sample to classify count
 
 ![Event study estimates by baseline spending and income quartiles (no jackknife)](images/12_9_25/baseline_spec_B_def_A_high_vs_low.png){#fig-1-2-plot}
 
-::: {.callout-note appearance="minimal"}
-**Specification**: Controls for baseline 1971 spending quartile and 1970 county median family income quartile.
-
-**Pattern**: Similar divergence between high and low groups, with slightly attenuated effects compared to Specification A.
-:::
-
 ------------------------------------------------------------------------
 
 ### Figure 2.3: Spending + Income + Reform Types {#fig-1-3}
