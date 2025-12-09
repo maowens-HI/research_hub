@@ -89,6 +89,40 @@ format:
 
 Add CSS rules to `styles.css` for custom styling.
 
+## Writing Style Guidelines
+
+When creating or editing content for this research hub:
+
+### Formatting Rules
+- Never use bold formatting (asterisks) in headers or labels
+- Do not use bold for emphasis in callout boxes
+- Keep text clean and concise without flowery language
+- Avoid unnecessary formatting symbols in headers and subheadings
+
+### Examples
+
+Good:
+```markdown
+Topic: Analysis of spending patterns
+
+::: {.callout-note}
+The Issue: Data is missing for some counties.
+:::
+
+- Finding: Results show significant effects.
+```
+
+Bad:
+```markdown
+**Topic:** Analysis of spending patterns
+
+::: {.callout-note}
+**The Issue:** Data is missing for some counties.
+:::
+
+- **Finding:** Results show significant effects.
+```
+
 ## Git Workflow
 
 - Development branches follow the pattern: `claude/*-[session-id]`

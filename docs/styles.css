@@ -945,6 +945,24 @@ pre code {
   display: none;
 }
 
+/* Style title block header for content pages */
+#title-block-header {
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+#title-block-header .title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: var(--space-md);
+}
+
+.quarto-title-meta {
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+}
+
 #quarto-content {
   padding-top: 0;
 }

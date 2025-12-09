@@ -9,8 +9,6 @@ format:
     toc-depth: 3
 ---
 
-:::::::::: section
-::::::::: container
 ## Meeting Overview
 
 This document presents the latest event study results comparing baseline (no jackknife) and jackknife approaches across three specifications:
@@ -250,7 +248,3 @@ state_fips |         0          1 |     Total
 ```
 
 ------------------------------------------------------------------------
-
-
-:::::::::
-::::::::::
