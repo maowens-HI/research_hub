@@ -23,7 +23,7 @@ Each specification is shown with both the full-sample estimates (baseline) and l
 
 ------------------------------------------------------------------------
 
-## ✦ Baseline Estimates (No Jackknife)
+## Baseline Estimates (No Jackknife)
 
 These figures show event study estimates using the full sample to classify counties into high vs. low predicted spending groups.
 
@@ -45,7 +45,7 @@ These figures show event study estimates using the full sample to classify count
 
 ------------------------------------------------------------------------
 
-## ✦ Jackknife Estimates
+## Jackknife Estimates
 
 These figures use leave-one-state-out predictions to classify counties. For each state, we estimate the model excluding that state's data, then predict spending increases for counties in the excluded state.
 
