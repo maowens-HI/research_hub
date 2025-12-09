@@ -13,8 +13,8 @@ format:
 
 This document presents two main analyses:
 
-1. **Good vs Bad Counties**: Comparison of Fig 1 estimates using only good counties versus all counties, plus summary statistics comparing good and bad counties
-2. **Figure 2 Specifications**: Event study results across six specifications (three controls × two approaches) showing quartile-specific estimates
+1. Good vs Bad Counties: Comparison of Fig 1 estimates using only good counties versus all counties, plus summary statistics comparing good and bad counties
+2. Figure 2 Specifications: Event study results across six specifications (three controls × two approaches) showing quartile-specific estimates
 
 ------------------------------------------------------------------------
 
@@ -56,7 +56,7 @@ Summary statistics for good and bad counties using 1971 baseline data (one obser
 | Population | [TBD] | [TBD] |
 
 ::: {.callout-note}
-**Good counties** are defined as counties where every linked tract/LEAID has non-missing spending data for every year from 1966-1971.
+Good counties are defined as counties where every linked tract/LEAID has non-missing spending data for every year from 1966-1971.
 :::
 
 ------------------------------------------------------------------------
