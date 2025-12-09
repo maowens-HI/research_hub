@@ -79,7 +79,7 @@ These figures show event study estimates with four lines, one for each quartile 
 
 ------------------------------------------------------------------------
 
-#### Figure 2.3: Spending + Income * Reform Types (No Jackknife) {#fig-2-3}
+#### Figure 2.3: Spending + Income + Reform Types (No Jackknife) {#fig-2-3}
 
 ![Event study by baseline spending, income quartiles, and reform types - no jackknife](images/12_12_25/base_q_C_quartiles_separate.png){#fig-2-3-plot}
 
@@ -99,7 +99,7 @@ These figures show event study estimates with four lines, one for each quartile 
 
 ------------------------------------------------------------------------
 
-#### Figure 2.6: Spending + Income * Reform Types (Jackknife) {#fig-2-6}
+#### Figure 2.6: Spending + Income + Reform Types (Jackknife) {#fig-2-6}
 
 ![Jackknife event study by baseline spending, income quartiles, and reform types](images/12_12_25/jk_q_C_quartiles_.png){#fig-2-6-plot}
 
