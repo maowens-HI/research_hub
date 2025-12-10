@@ -25,7 +25,7 @@ This document presents two main analyses:
 
 ![](images/12_12_25/good_county_4.png){#fig-1-1-plot}
 
-::: callout-note
+::: {.callout-tip appearance="minimal"}
 Good counties are defined as counties where every linked tract/LEAID has non-missing spending data for the year 1971.
 :::
 
@@ -47,7 +47,7 @@ Good counties are defined as counties where every linked tract/LEAID has non-mis
 
 ![](images/12_12_25/bad_county_btm.png){#fig-1-4-plot}
 
-::: callout-note
+::: {.callout-tip appearance="minimal"}
 Overall it seems that including bad counties reduces the magnitude of our point estimates slightly.
 :::
 
@@ -79,9 +79,9 @@ good_71     |      Freq.     Percent        Cum.
 
 ```
 
-::: callout-note
+::: {.callout-tip appearance="minimal"}
 
-If we just restrict based on 1971 alone the percent of bad counties is quite small (2.36%). For context, bad counties for 1970 and 1966 (the first year) make up **67.41%** and **67.71%** of observations respectively. 
+If we just restrict based on 1971 alone the percent of bad counties is quite small (2.36%). For context, bad counties for 1970 and 1966 (the first year) make up **67.41%** and **67.71%** of observations respectively.
 :::
 
 ```stata
@@ -98,7 +98,7 @@ good_county           |
 
 ```
 
-::: callout-note
+::: {.callout-tip appearance="minimal"}
 The bad counties have slightly bigger expenditure and have a much larger population on average.
 :::
 
