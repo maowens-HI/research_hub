@@ -147,18 +147,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#meeting-overview" id="toc-meeting-overview" class="nav-link active" data-scroll-target="#meeting-overview">Meeting Overview</a></li>
-  <li><a href="#good-vs-bad-counties-analysis" id="toc-good-vs-bad-counties-analysis" class="nav-link" data-scroll-target="#good-vs-bad-counties-analysis">Good vs Bad Counties Analysis</a>
-  <ul class="collapse">
-  <li><a href="#fig-1-1" id="toc-fig-1-1" class="nav-link" data-scroll-target="#fig-1-1">Figure 1.1: Good Counties Only, Q4</a></li>
-  <li><a href="#fig-1-2" id="toc-fig-1-2" class="nav-link" data-scroll-target="#fig-1-2">Figure 1.2: Good Counties Only, Q1-3</a></li>
-  <li><a href="#fig-1-3" id="toc-fig-1-3" class="nav-link" data-scroll-target="#fig-1-3">Figure 1.3: Good and Bad Counties, Q4</a></li>
-  <li><a href="#fig-1-4" id="toc-fig-1-4" class="nav-link" data-scroll-target="#fig-1-4">Figure 1.4: Good and Bad Counties, Q 1-3</a></li>
-  <li><a href="#summary-statistics-good-vs-bad-counties" id="toc-summary-statistics-good-vs-bad-counties" class="nav-link" data-scroll-target="#summary-statistics-good-vs-bad-counties">Summary Statistics: Good vs Bad Counties</a></li>
-  </ul></li>
   <li><a href="#figure-2-event-study-estimates-by-quartile" id="toc-figure-2-event-study-estimates-by-quartile" class="nav-link" data-scroll-target="#figure-2-event-study-estimates-by-quartile">Figure 2: Event Study Estimates by Quartile</a>
   <ul class="collapse">
   <li><a href="#no-jackknife-estimates" id="toc-no-jackknife-estimates" class="nav-link" data-scroll-target="#no-jackknife-estimates">No Jackknife Estimates</a></li>
   <li><a href="#jackknife-estimates" id="toc-jackknife-estimates" class="nav-link" data-scroll-target="#jackknife-estimates">Jackknife Estimates</a></li>
+  </ul></li>
+  <li><a href="#good-vs-bad-counties-analysis" id="toc-good-vs-bad-counties-analysis" class="nav-link" data-scroll-target="#good-vs-bad-counties-analysis">Good vs Bad Counties Analysis</a>
+  <ul class="collapse">
+  <li><a href="#figure-1.1-good-counties-only-q4" id="toc-figure-1.1-good-counties-only-q4" class="nav-link" data-scroll-target="#figure-1.1-good-counties-only-q4">Figure 1.1: Good Counties Only, Q4</a></li>
+  <li><a href="#figure-1.2-good-counties-only-q1-3" id="toc-figure-1.2-good-counties-only-q1-3" class="nav-link" data-scroll-target="#figure-1.2-good-counties-only-q1-3">Figure 1.2: Good Counties Only, Q1-3</a></li>
+  <li><a href="#figure-1.3-good-and-bad-counties-q4" id="toc-figure-1.3-good-and-bad-counties-q4" class="nav-link" data-scroll-target="#figure-1.3-good-and-bad-counties-q4">Figure 1.3: Good and Bad Counties, Q4</a></li>
+  <li><a href="#figure-1.4-good-and-bad-counties-q-1-3" id="toc-figure-1.4-good-and-bad-counties-q-1-3" class="nav-link" data-scroll-target="#figure-1.4-good-and-bad-counties-q-1-3">Figure 1.4: Good and Bad Counties, Q 1-3</a></li>
+  <li><a href="#summary-statistics-good-vs-bad-counties" id="toc-summary-statistics-good-vs-bad-counties" class="nav-link" data-scroll-target="#summary-statistics-good-vs-bad-counties">Summary Statistics: Good vs Bad Counties</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -199,25 +199,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="meeting-overview">Meeting Overview</h2>
 <p>This document presents two main analyses:</p>
 <ol type="1">
-<li>Good vs Bad Counties: Comparison of Fig 1 estimates using only good counties versus both good and bad counties, plus summary statistics.</li>
-<li>Figure 2 Specifications: Event study results across all six specifications showing quartile-specific estimates</li>
+<li>Figure 2 results across all six specifications based on four quartiles of predicted spending.</li>
+<li>Comparison of Fig 1 estimates using only good counties versus both good and bad counties, plus summary statistics.</li>
 </ol>
 <hr>
 </section>
+<section id="figure-2-event-study-estimates-by-quartile" class="level2">
+<h2 class="anchored" data-anchor-id="figure-2-event-study-estimates-by-quartile">Figure 2: Event Study Estimates by Quartile</h2>
+<p>These figures show event study estimates with four lines, one for each quartile of predicted spending. Results are presented across three specifications and two approaches (no jackknife vs jackknife).</p>
+<section id="no-jackknife-estimates" class="level3">
+<h3 class="anchored" data-anchor-id="no-jackknife-estimates">No Jackknife Estimates</h3>
+<section id="figure-2.1-spending-only-no-jackknife" class="level4">
+<h4 class="anchored" data-anchor-id="figure-2.1-spending-only-no-jackknife">Figure 2.1: Spending Only (No Jackknife)</h4>
+<p><img src="images/12_12_25/base_q_A_quartiles_separate.png" class="img-fluid"></p>
+<hr>
+</section>
+<section id="figure-2.2-spending-income-quartiles-no-jackknife" class="level4">
+<h4 class="anchored" data-anchor-id="figure-2.2-spending-income-quartiles-no-jackknife">Figure 2.2: Spending + Income Quartiles (No Jackknife)</h4>
+<p><img src="images/12_12_25/base_q_B_quartiles_separate.png" class="img-fluid"></p>
+<hr>
+</section>
+<section id="figure-2.3-spending-income-reform-types-no-jackknife" class="level4">
+<h4 class="anchored" data-anchor-id="figure-2.3-spending-income-reform-types-no-jackknife">Figure 2.3: Spending + Income * Reform Types (No Jackknife)</h4>
+<p><img src="images/12_12_25/base_q_C_quartiles_separate.png" class="img-fluid"></p>
+<hr>
+</section>
+</section>
+<section id="jackknife-estimates" class="level3">
+<h3 class="anchored" data-anchor-id="jackknife-estimates">Jackknife Estimates</h3>
+<section id="figure-2.4-spending-only-jackknife" class="level4">
+<h4 class="anchored" data-anchor-id="figure-2.4-spending-only-jackknife">Figure 2.4: Spending Only (Jackknife)</h4>
+<p><img src="images/12_12_25/jk_q_A_quartiles_.png" class="img-fluid"></p>
+<hr>
+</section>
+<section id="figure-2.5-spending-income-quartiles-jackknife" class="level4">
+<h4 class="anchored" data-anchor-id="figure-2.5-spending-income-quartiles-jackknife">Figure 2.5: Spending + Income Quartiles (Jackknife)</h4>
+<p><img src="images/12_12_25/jk_q_B_quartiles_.png" class="img-fluid"></p>
+<hr>
+</section>
+<section id="figure-2.6-spending-income-reform-types-jackknife" class="level4">
+<h4 class="anchored" data-anchor-id="figure-2.6-spending-income-reform-types-jackknife">Figure 2.6: Spending + Income * Reform Types (Jackknife)</h4>
+<p><img src="images/12_12_25/jk_q_C_quartiles_.png" class="img-fluid"></p>
+<hr>
+<hr>
+</section>
+</section>
+</section>
 <section id="good-vs-bad-counties-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="good-vs-bad-counties-analysis">Good vs Bad Counties Analysis</h2>
-<section id="fig-1-1" class="level3">
-<h3 class="anchored" data-anchor-id="fig-1-1">Figure 1.1: Good Counties Only, Q4</h3>
-<div id="fig-1-1-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-1-1-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/12_12_25/good_county_4.png" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-1-1-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Event study estimates using 1971 baseline spending quartiles - good counties only
-</figcaption>
-</figure>
-</div>
+<section id="figure-1.1-good-counties-only-q4" class="level3">
+<h3 class="anchored" data-anchor-id="figure-1.1-good-counties-only-q4">Figure 1.1: Good Counties Only, Q4</h3>
+<p><img src="images/12_12_25/good_county_4.png" class="img-fluid"></p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -233,46 +265,19 @@ Note
 </div>
 <hr>
 </section>
-<section id="fig-1-2" class="level3">
-<h3 class="anchored" data-anchor-id="fig-1-2">Figure 1.2: Good Counties Only, Q1-3</h3>
-<div id="fig-1-2-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-1-2-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/12_12_25/good_county_btm.png" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-1-2-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: Event study estimates for bottom quartile - good counties only
-</figcaption>
-</figure>
-</div>
+<section id="figure-1.2-good-counties-only-q1-3" class="level3">
+<h3 class="anchored" data-anchor-id="figure-1.2-good-counties-only-q1-3">Figure 1.2: Good Counties Only, Q1-3</h3>
+<p><img src="images/12_12_25/good_county_btm.png" class="img-fluid"></p>
 <hr>
 </section>
-<section id="fig-1-3" class="level3">
-<h3 class="anchored" data-anchor-id="fig-1-3">Figure 1.3: Good and Bad Counties, Q4</h3>
-<div id="fig-1-3-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-1-3-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/12_12_25/bad_county_4.png" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-1-3-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: Event study estimates using 1971 baseline spending quartiles - good and bad counties
-</figcaption>
-</figure>
-</div>
+<section id="figure-1.3-good-and-bad-counties-q4" class="level3">
+<h3 class="anchored" data-anchor-id="figure-1.3-good-and-bad-counties-q4">Figure 1.3: Good and Bad Counties, Q4</h3>
+<p><img src="images/12_12_25/bad_county_4.png" class="img-fluid"></p>
 <hr>
 </section>
-<section id="fig-1-4" class="level3">
-<h3 class="anchored" data-anchor-id="fig-1-4">Figure 1.4: Good and Bad Counties, Q 1-3</h3>
-<div id="fig-1-4-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-1-4-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/12_12_25/bad_county_btm.png" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-1-4-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4: Event study estimates for bottom quartile - good and bad counties
-</figcaption>
-</figure>
-</div>
+<section id="figure-1.4-good-and-bad-counties-q-1-3" class="level3">
+<h3 class="anchored" data-anchor-id="figure-1.4-good-and-bad-counties-q-1-3">Figure 1.4: Good and Bad Counties, Q 1-3</h3>
+<p><img src="images/12_12_25/bad_county_btm.png" class="img-fluid"></p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -385,103 +390,8 @@ Note
 <span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>50         |    1         7    |      8      Vermont</span>
 <span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>-----------+-------------------+---------------------------------------</span>
 <span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>Total      |   36     1,489    |  1,525</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<hr>
-</section>
-</section>
-<section id="figure-2-event-study-estimates-by-quartile" class="level2">
-<h2 class="anchored" data-anchor-id="figure-2-event-study-estimates-by-quartile">Figure 2: Event Study Estimates by Quartile</h2>
-<p>These figures show event study estimates with four lines, one for each quartile of predicted spending. Results are presented across three specifications and two approaches (no jackknife vs jackknife).</p>
-<section id="no-jackknife-estimates" class="level3">
-<h3 class="anchored" data-anchor-id="no-jackknife-estimates">No Jackknife Estimates</h3>
-<section id="fig-2-1" class="level4">
-<h4 class="anchored" data-anchor-id="fig-2-1">Figure 2.1: Spending Only (No Jackknife)</h4>
-<div id="fig-2-1-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-2-1-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/12_12_25/base_q_A_quartiles_separate.png" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2-1-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5: Event study by baseline spending quartile - no jackknife
-</figcaption>
-</figure>
-</div>
-<hr>
-</section>
-<section id="fig-2-2" class="level4">
-<h4 class="anchored" data-anchor-id="fig-2-2">Figure 2.2: Spending + Income Quartiles (No Jackknife)</h4>
-<div id="fig-2-2-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-2-2-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/12_12_25/base_q_B_quartiles_separate.png" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2-2-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6: Event study by baseline spending and income quartiles - no jackknife
-</figcaption>
-</figure>
-</div>
-<hr>
-</section>
-<section id="fig-2-3" class="level4">
-<h4 class="anchored" data-anchor-id="fig-2-3">Figure 2.3: Spending + Income * Reform Types (No Jackknife)</h4>
-<div id="fig-2-3-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-2-3-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/12_12_25/base_q_C_quartiles_separate.png" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2-3-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7: Event study by baseline spending, income quartiles, and reform types - no jackknife
-</figcaption>
-</figure>
-</div>
-<hr>
-</section>
-</section>
-<section id="jackknife-estimates" class="level3">
-<h3 class="anchored" data-anchor-id="jackknife-estimates">Jackknife Estimates</h3>
-<section id="fig-2-4" class="level4">
-<h4 class="anchored" data-anchor-id="fig-2-4">Figure 2.4: Spending Only (Jackknife)</h4>
-<div id="fig-2-4-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-2-4-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/12_12_25/jk_q_A_quartiles_.png" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2-4-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8: Jackknife event study by baseline spending quartile
-</figcaption>
-</figure>
-</div>
-<hr>
-</section>
-<section id="fig-2-5" class="level4">
-<h4 class="anchored" data-anchor-id="fig-2-5">Figure 2.5: Spending + Income Quartiles (Jackknife)</h4>
-<div id="fig-2-5-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-2-5-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/12_12_25/jk_q_B_quartiles_.png" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2-5-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9: Jackknife event study by baseline spending and income quartiles
-</figcaption>
-</figure>
-</div>
-<hr>
-</section>
-<section id="fig-2-6" class="level4">
-<h4 class="anchored" data-anchor-id="fig-2-6">Figure 2.6: Spending + Income * Reform Types (Jackknife)</h4>
-<div id="fig-2-6-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-2-6-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/12_12_25/jk_q_C_quartiles_.png" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2-6-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;10: Jackknife event study by baseline spending, income quartiles, and reform types
-</figcaption>
-</figure>
-</div>
-<hr>
 
 
-</section>
 </section>
 </section>
 

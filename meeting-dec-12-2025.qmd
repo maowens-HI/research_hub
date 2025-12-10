@@ -13,41 +13,87 @@ format:
 
 This document presents two main analyses:
 
-1.  Good vs Bad Counties: Comparison of Fig 1 estimates using only good counties versus both good and bad counties, plus summary statistics.
-2.  Figure 2 Specifications: Event study results across all six specifications showing quartile-specific estimates
+1.  Figure 2 results across all six specifications based on four quartiles of predicted spending. 
+2.  Comparison of Fig 1 estimates using only good counties versus both good and bad counties, plus summary statistics.
+
+------------------------------------------------------------------------
+
+## Figure 2: Event Study Estimates by Quartile
+
+These figures show event study estimates with four lines, one for each quartile of predicted spending. Results are presented across three specifications and two approaches (no jackknife vs jackknife).
+
+### No Jackknife Estimates
+
+#### Figure 2.1: Spending Only (No Jackknife)
+
+![](images/12_12_25/base_q_A_quartiles_separate.png)
+
+------------------------------------------------------------------------
+
+#### Figure 2.2: Spending + Income Quartiles (No Jackknife)
+
+![](images/12_12_25/base_q_B_quartiles_separate.png)
+
+------------------------------------------------------------------------
+
+#### Figure 2.3: Spending + Income * Reform Types (No Jackknife)
+
+![](images/12_12_25/base_q_C_quartiles_separate.png)
+
+------------------------------------------------------------------------
+
+### Jackknife Estimates
+
+#### Figure 2.4: Spending Only (Jackknife)
+
+![](images/12_12_25/jk_q_A_quartiles_.png)
+
+------------------------------------------------------------------------
+
+#### Figure 2.5: Spending + Income Quartiles (Jackknife)
+
+![](images/12_12_25/jk_q_B_quartiles_.png)
+
+------------------------------------------------------------------------
+
+#### Figure 2.6: Spending + Income * Reform Types (Jackknife)
+
+![](images/12_12_25/jk_q_C_quartiles_.png)
+
+------------------------------------------------------------------------
 
 
 ------------------------------------------------------------------------
 
 ## Good vs Bad Counties Analysis
 
-### Figure 1.1: Good Counties Only, Q4 {#fig-1-1}
+### Figure 1.1: Good Counties Only, Q4 
 
-![](images/12_12_25/good_county_4.png){#fig-1-1-plot}
+![](images/12_12_25/good_county_4.png)
 
-::: {.callout-tip appearance="minimal"}
+::: {.callout-note}
 Good counties are defined as counties where every linked tract/LEAID has non-missing spending data for the year 1971.
 :::
 
 ------------------------------------------------------------------------
 
-### Figure 1.2: Good Counties Only, Q1-3 {#fig-1-2}
+### Figure 1.2: Good Counties Only, Q1-3 
 
-![](images/12_12_25/good_county_btm.png){#fig-1-2-plot}
-
-------------------------------------------------------------------------
-
-### Figure 1.3: Good and Bad Counties, Q4 {#fig-1-3}
-
-![](images/12_12_25/bad_county_4.png){#fig-1-3-plot}
+![](images/12_12_25/good_county_btm.png)
 
 ------------------------------------------------------------------------
 
-### Figure 1.4: Good and Bad Counties, Q 1-3 {#fig-1-4}
+### Figure 1.3: Good and Bad Counties, Q4 
 
-![](images/12_12_25/bad_county_btm.png){#fig-1-4-plot}
+![](images/12_12_25/bad_county_4.png)
 
-::: {.callout-tip appearance="minimal"}
+------------------------------------------------------------------------
+
+### Figure 1.4: Good and Bad Counties, Q 1-3 
+
+![](images/12_12_25/bad_county_btm.png)
+
+::: {.callout-note}
 Overall it seems that including bad counties reduces the magnitude of our point estimates slightly.
 :::
 
@@ -79,7 +125,7 @@ good_71     |      Freq.     Percent        Cum.
 
 ```
 
-::: {.callout-tip appearance="minimal"}
+::: {.callout-note}
 
 If we just restrict based on 1971 alone the percent of bad counties is quite small (2.36%). For context, bad counties for 1970 and 1966 (the first year) make up **67.41%** and **67.71%** of observations respectively.
 :::
@@ -98,7 +144,7 @@ good_county           |
 
 ```
 
-::: {.callout-tip appearance="minimal"}
+::: {.callout-note}
 The bad counties have slightly bigger expenditure and have a much larger population on average.
 :::
 
@@ -148,48 +194,6 @@ Total      |   36     1,489    |  1,525
 ```
 
 
-------------------------------------------------------------------------
 
-## Figure 2: Event Study Estimates by Quartile
 
-These figures show event study estimates with four lines, one for each quartile of predicted spending. Results are presented across three specifications and two approaches (no jackknife vs jackknife).
 
-### No Jackknife Estimates
-
-#### Figure 2.1: Spending Only (No Jackknife) {#fig-2-1}
-
-![](images/12_12_25/base_q_A_quartiles_separate.png){#fig-2-1-plot}
-
-------------------------------------------------------------------------
-
-#### Figure 2.2: Spending + Income Quartiles (No Jackknife) {#fig-2-2}
-
-![](images/12_12_25/base_q_B_quartiles_separate.png){#fig-2-2-plot}
-
-------------------------------------------------------------------------
-
-#### Figure 2.3: Spending + Income * Reform Types (No Jackknife) {#fig-2-3}
-
-![](images/12_12_25/base_q_C_quartiles_separate.png){#fig-2-3-plot}
-
-------------------------------------------------------------------------
-
-### Jackknife Estimates
-
-#### Figure 2.4: Spending Only (Jackknife) {#fig-2-4}
-
-![](images/12_12_25/jk_q_A_quartiles_.png){#fig-2-4-plot}
-
-------------------------------------------------------------------------
-
-#### Figure 2.5: Spending + Income Quartiles (Jackknife) {#fig-2-5}
-
-![](images/12_12_25/jk_q_B_quartiles_.png){#fig-2-5-plot}
-
-------------------------------------------------------------------------
-
-#### Figure 2.6: Spending + Income * Reform Types (Jackknife) {#fig-2-6}
-
-![](images/12_12_25/jk_q_C_quartiles_.png){#fig-2-6-plot}
-
-------------------------------------------------------------------------
