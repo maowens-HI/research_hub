@@ -23,9 +23,9 @@ This document presents two main analyses:
 
 ### Figure 1.1: Good Counties Only, Q4 {#fig-1-1}
 
-![Event study estimates using 1971 baseline spending quartiles - good counties only](images/12_12_25/good_county_4.png){#fig-1-1-plot}
+![](images/12_12_25/good_county_4.png){#fig-1-1-plot}
 
-::: callout-note
+::: {.callout-tip appearance="minimal"}
 Good counties are defined as counties where every linked tract/LEAID has non-missing spending data for the year 1971.
 :::
 
@@ -33,21 +33,21 @@ Good counties are defined as counties where every linked tract/LEAID has non-mis
 
 ### Figure 1.2: Good Counties Only, Q1-3 {#fig-1-2}
 
-![Event study estimates for bottom quartile - good counties only](images/12_12_25/good_county_btm.png){#fig-1-2-plot}
+![](images/12_12_25/good_county_btm.png){#fig-1-2-plot}
 
 ------------------------------------------------------------------------
 
 ### Figure 1.3: Good and Bad Counties, Q4 {#fig-1-3}
 
-![Event study estimates using 1971 baseline spending quartiles - good and bad counties](images/12_12_25/bad_county_4.png){#fig-1-3-plot}
+![](images/12_12_25/bad_county_4.png){#fig-1-3-plot}
 
 ------------------------------------------------------------------------
 
 ### Figure 1.4: Good and Bad Counties, Q 1-3 {#fig-1-4}
 
-![Event study estimates for bottom quartile - good and bad counties](images/12_12_25/bad_county_btm.png){#fig-1-4-plot}
+![](images/12_12_25/bad_county_btm.png){#fig-1-4-plot}
 
-::: callout-note
+::: {.callout-tip appearance="minimal"}
 Overall it seems that including bad counties reduces the magnitude of our point estimates slightly.
 :::
 
@@ -79,9 +79,9 @@ good_71     |      Freq.     Percent        Cum.
 
 ```
 
-::: callout-note
+::: {.callout-tip appearance="minimal"}
 
-If we just restrict based on 1971 alone the percent of bad counties is quite small (2.36%). For context, bad counties for 1970 and 1966 (the first year) make up **67.41%** and **67.71%** of observations respectively. 
+If we just restrict based on 1971 alone the percent of bad counties is quite small (2.36%). For context, bad counties for 1970 and 1966 (the first year) make up **67.41%** and **67.71%** of observations respectively.
 :::
 
 ```stata
@@ -98,7 +98,7 @@ good_county           |
 
 ```
 
-::: callout-note
+::: {.callout-tip appearance="minimal"}
 The bad counties have slightly bigger expenditure and have a much larger population on average.
 :::
 
@@ -158,19 +158,19 @@ These figures show event study estimates with four lines, one for each quartile 
 
 #### Figure 2.1: Spending Only (No Jackknife) {#fig-2-1}
 
-![Event study by baseline spending quartile - no jackknife](images/12_12_25/base_q_A_quartiles_separate.png){#fig-2-1-plot}
+![](images/12_12_25/base_q_A_quartiles_separate.png){#fig-2-1-plot}
 
 ------------------------------------------------------------------------
 
 #### Figure 2.2: Spending + Income Quartiles (No Jackknife) {#fig-2-2}
 
-![Event study by baseline spending and income quartiles - no jackknife](images/12_12_25/base_q_B_quartiles_separate.png){#fig-2-2-plot}
+![](images/12_12_25/base_q_B_quartiles_separate.png){#fig-2-2-plot}
 
 ------------------------------------------------------------------------
 
 #### Figure 2.3: Spending + Income * Reform Types (No Jackknife) {#fig-2-3}
 
-![Event study by baseline spending, income quartiles, and reform types - no jackknife](images/12_12_25/base_q_C_quartiles_separate.png){#fig-2-3-plot}
+![](images/12_12_25/base_q_C_quartiles_separate.png){#fig-2-3-plot}
 
 ------------------------------------------------------------------------
 
@@ -178,18 +178,18 @@ These figures show event study estimates with four lines, one for each quartile 
 
 #### Figure 2.4: Spending Only (Jackknife) {#fig-2-4}
 
-![Jackknife event study by baseline spending quartile](images/12_12_25/jk_q_A_quartiles_.png){#fig-2-4-plot}
+![](images/12_12_25/jk_q_A_quartiles_.png){#fig-2-4-plot}
 
 ------------------------------------------------------------------------
 
 #### Figure 2.5: Spending + Income Quartiles (Jackknife) {#fig-2-5}
 
-![Jackknife event study by baseline spending and income quartiles](images/12_12_25/jk_q_B_quartiles_.png){#fig-2-5-plot}
+![](images/12_12_25/jk_q_B_quartiles_.png){#fig-2-5-plot}
 
 ------------------------------------------------------------------------
 
 #### Figure 2.6: Spending + Income * Reform Types (Jackknife) {#fig-2-6}
 
-![Jackknife event study by baseline spending, income quartiles, and reform types](images/12_12_25/jk_q_C_quartiles_.png){#fig-2-6-plot}
+![](images/12_12_25/jk_q_C_quartiles_.png){#fig-2-6-plot}
 
 ------------------------------------------------------------------------
