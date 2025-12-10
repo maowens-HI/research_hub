@@ -46,19 +46,19 @@ These figures show event study estimates with four lines, one for each quartile 
 
 #### Figure 2.4: Spending Only (Jackknife)
 
-![](images/12_12_25/jk_q_A_quartiles_.png)
+![](images/12_12_25/jk_q_A_quartiles.png)
 
 ------------------------------------------------------------------------
 
 #### Figure 2.5: Spending + Income Quartiles (Jackknife)
 
-![](images/12_12_25/jk_q_B_quartiles_.png)
+![](images/12_12_25/jk_q_B_quartiles.png)
 
 ------------------------------------------------------------------------
 
 #### Figure 2.6: Spending + Income * Reform Types (Jackknife)
 
-![](images/12_12_25/jk_q_C_quartiles_.png)
+![](images/12_12_25/jk_q_C_quartiles.png)
 
 ------------------------------------------------------------------------
 
