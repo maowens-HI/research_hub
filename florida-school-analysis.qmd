@@ -73,7 +73,7 @@ distinct_c~d |        127    3.831188    1.631971   1.004363   7.327511
 
 -   **avg_income:** Average household income (2000 dollars)\
 -   **avg_age:** Mean age\
--   **total_school:** Count of private schools within 5 miles\
+-   **total_school:** Average private school count per block within the PUMA (5-mile radius)\
 -   **relig / non_relig:** Counts of religious vs. non-religious schools\
 -   **distinct_fine:** Number of distinct fine-grained school types\
 -   **distinct_collapsed:** Number of distinct collapsed school categories\
