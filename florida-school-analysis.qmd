@@ -14,13 +14,14 @@ This document presents cross-sectional analysis of the relationship between Flor
 
 **Key Features:**
 
-- **Geographic Unit:** Public Use Microdata Areas (PUMAs)
-- **Distance Buffer:** 5-mile radius (primary specification)
-- **School Levels:** Elementary, middle, and high school combined
-- **Time Period:** Year 2000 Census cross-section
+-   **Geographic Unit:** Public Use Microdata Areas (PUMAs)
+-   **Distance Buffer:** 5-mile radius (primary specification)
+-   **School Levels:** Elementary, middle, and high school combined
+-   **Time Period:** Year 2000 Census cross-section
 
 ::: {.callout-tip appearance="minimal"}
 ## Methodology Note
+
 School exposure measures are constructed at the Census block level using geocoded school coordinates, then aggregated to PUMA geography. Demographic measures come from IPUMS 2000 Census 5% sample.
 :::
 
@@ -30,44 +31,64 @@ School exposure measures are constructed at the Census block level using geocode
 
 ### Demographic and School Exposure Variables
 
-```stata
-    Variable        |    Obs     Mean      Std.Dev.    Min       Max
---------------------+------------------------------------------------
-avg_income          |    127   53414.55   11964.11   32551.12   99664.61
-black_share         |    127   14.57      13.73      0.47       75.14
-white_share         |    127   77.83      14.48      22.97      96.94
-hisp_share          |    127   9.01       12.13      0.51       62.39
-less_hs             |    127   0.35       0.07       0.21       0.56
-hs_grad             |    127   0.32       0.05       0.21       0.43
-some_college        |    127   0.17       0.03       0.08       0.29
-college_plus        |    127   0.16       0.06       0.04       0.34
-avg_age             |    127   39.11      4.76       30.40      54.33
-total_school        |    127   11.51      8.47       1.00       32.40
-relig               |    127   8.22       6.04       0.52       25.13
-non_relig           |    127   3.29       2.87       0.00       13.39
-distinct_fine       |    127   4.34       1.99       1.00       7.99
-distinct_collapsed  |    127   3.83       1.63       1.00       7.33
+``` stata
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+  avg_income |        127    53414.55    11964.11   32551.12   99664.61
+  hisp_share |        127    9.005877    12.13378   .5127943   62.38563
+ black_share |        127     14.5684    13.72702   .4728132   75.13567
+ white_share |        127     77.8335    14.48494   22.96925   96.94165
+     avg_age |        127    39.11436    4.755555   30.40369   54.32662
+-------------+---------------------------------------------------------
+     less_hs |        127    .3480401    .0688748   .2111996   .5606963
+     hs_grad |        127    .3232444    .0469215   .2109294   .4259095
+some_college |        127    .1687703    .0317962    .080014   .2908664
+college_plus |        127    .1599452     .059222    .039787   .3437506
+total_school |        127    11.50796    8.467682   1.004917   32.39997
+-------------+---------------------------------------------------------
+       relig |        127     8.21808    6.035409   .5196052   25.13372
+   non_relig |        127    3.289883    2.868321   .0003801   13.39161
+distinct_f~e |        127    4.344061     1.99133   1.004584   7.990918
+distinct_c~d |        127    3.831188    1.631971   1.004363   7.327511
+
 ```
 
 ::: {.callout-tip appearance="minimal"}
-## Variable Definitions
-- **avg_income:** Average household income in 2000 dollars
-- **[race]_share:** Percentage of population by race/ethnicity
-- **total_school:** Total private schools within 5-mile buffer
-- **relig/non_relig:** Religious vs. non-religious school counts
-- **distinct_fine:** School type diversity (granular classification)
-- **distinct_collapsed:** School type diversity (10-category classification)
+## Variable Definitions 
+
+### Percent Units (0–100 scale)
+
+- **hisp_share:** Percent Hispanic  
+- **black_share:** Percent Black  
+- **white_share:** Percent White  
+
+### Proportion Units (0–1 scale)
+
+- **less_hs:** Share with less than high school  
+- **hs_grad:** Share with high school diploma  
+- **some_college:** Share with some college  
+- **college_plus:** Share with a college degree or higher  
+
+### Raw Continuous Variables
+
+- **avg_income:** Average household income (2000 dollars)  
+- **avg_age:** Mean age  
+- **total_school:** Count of private schools within 5 miles  
+- **relig / non_relig:** Counts of religious vs. non-religious schools  
+- **distinct_fine:** Number of distinct fine-grained school types  
+- **distinct_collapsed:** Number of distinct collapsed school categories  
 :::
 
 ------------------------------------------------------------------------
 
 ## Bivariate Regression Results
 
-These tables present simple bivariate relationships between each school exposure measure and community demographic characteristics. Each cell represents a separate regression: Demographic Variable ~ School Exposure Measure.
+These tables present simple relationships between each school exposure measure and community demographic characteristics. Each cell represents a separate regression: Demographic Variable \~ School Exposure Measure.
 
 ### Table 1: Total Private School Count
 
-```stata
+``` stata
                           |   (1)          (2)          (3)          (4)          (5)          (6)          (7)          (8)
                           | avg_income  black_share  hisp_share   avg_age      hs_grad      less_hs   some_college college_plus
 --------------------------+-------------------------------------------------------------------------------------------
@@ -86,6 +107,7 @@ Standard errors in parentheses
 
 ::: {.callout-tip appearance="minimal"}
 ## Interpretation
+
 Positive coefficients indicate that areas with more private schools have higher levels of that demographic characteristic. Areas with more total private schools have significantly higher Black and Hispanic population shares, younger average age, fewer high school graduates (as highest attainment), and marginally more residents without high school completion.
 :::
 
@@ -93,7 +115,7 @@ Positive coefficients indicate that areas with more private schools have higher 
 
 ### Table 2: Religious Private Schools
 
-```stata
+``` stata
                           |   (1)          (2)          (3)          (4)          (5)          (6)          (7)          (8)
                           | avg_income  black_share  hisp_share   avg_age      hs_grad      less_hs   some_college college_plus
 --------------------------+-------------------------------------------------------------------------------------------
@@ -114,7 +136,7 @@ Standard errors in parentheses
 
 ### Table 3: Non-Religious Private Schools
 
-```stata
+``` stata
                           |   (1)          (2)          (3)          (4)          (5)          (6)          (7)          (8)
                           | avg_income  black_share  hisp_share   avg_age      hs_grad      less_hs   some_college college_plus
 --------------------------+-------------------------------------------------------------------------------------------
@@ -131,20 +153,21 @@ Standard errors in parentheses
 *** p<0.01, ** p<0.05, * p<0.1
 ```
 
-::: {.callout-important}
+::: callout-important
 ## Religious vs. Non-Religious Schools
+
 Non-religious schools show notably different patterns from religious schools:
 
-- **Income:** Non-religious schools are significantly associated with higher income areas (coef=728, p<0.05), while religious schools show no income relationship
-- **Hispanic share:** Non-religious schools show much stronger correlation with Hispanic population (coef=2.45 vs 0.85)
-- **Education:** Non-religious schools strongly associated with college-educated areas (coef=0.006, p<0.01); religious schools show no relationship
+-   **Income:** Non-religious schools are significantly associated with higher income areas (coef=728, p\<0.05), while religious schools show no income relationship
+-   **Hispanic share:** Non-religious schools show much stronger correlation with Hispanic population (coef=2.45 vs 0.85)
+-   **Education:** Non-religious schools strongly associated with college-educated areas (coef=0.006, p\<0.01); religious schools show no relationship
 :::
 
 ------------------------------------------------------------------------
 
 ### Table 4: School Type Diversity (Fine Classification)
 
-```stata
+``` stata
                           |   (1)          (2)          (3)          (4)          (5)          (6)          (7)          (8)
                           | avg_income  black_share  hisp_share   avg_age      hs_grad      less_hs   some_college college_plus
 --------------------------+-------------------------------------------------------------------------------------------
@@ -163,14 +186,15 @@ Standard errors in parentheses
 
 ::: {.callout-tip appearance="minimal"}
 ## Diversity Measures
-**distinct_fine** counts unique school types using granular denomination categories (Catholic, Lutheran, Methodist, Presbyterian, Episcopal, Baptist, etc. as separate types). Higher values indicate greater variety of school options available to families.
+
+**distinct_fine** counts unique school types using granular denomination categories (Catholic, Lutheran, Methodist, Presbyterian, Episcopal, Baptist, etc. as separate types). Higher values indicate greater variety of school options available to families. Non-religous schools are included in this definition.
 :::
 
 ------------------------------------------------------------------------
 
 ### Table 5: School Type Diversity (Collapsed Classification)
 
-```stata
+``` stata
                           |   (1)          (2)          (3)          (4)          (5)          (6)          (7)          (8)
                           | avg_income  black_share  hisp_share   avg_age      hs_grad      less_hs   some_college college_plus
 --------------------------+-------------------------------------------------------------------------------------------
@@ -189,8 +213,25 @@ Standard errors in parentheses
 
 ::: {.callout-tip appearance="minimal"}
 ## Diversity Measures
-**distinct_collapsed** uses 10 broad categories: Non-religious, Evangelical, Catholic, Baptist, Mainline Protestant, Adventist, Jewish, Muslim, Other Christian, Other Religion. This aggregated measure may be more stable than distinct_fine for areas with fewer schools.
+
+**distinct_collapsed** uses 10 broad categories: Non-religious, Evangelical, Catholic, Baptist, Mainline Protestant, Adventist, Jewish, Muslim, Other Christian, Other Religion. 
 :::
+
+
+Collapsed Category  | Original Types Included                        |
+------------------- | ---------------------------------------------- |
+Non-religious       | NON-RELIGIOUS                                  |
+Evangelical         | EVANGELICAL, APOSTOLIC-PENTECOSTAL-CHARISMATIC |
+Catholic            | CATHOLIC                                       |
+Baptist             | BAPTIST                                        |
+Mainline Protestant | LUTHERAN, METHODIST, PRESBYTERIAN, EPISCOPAL   |
+Adventist           | ADVENTIST                                      |
+Jewish              | JEWISH                                         |
+Muslim              | MUSLIM                                         |
+Other Christian     | OTHER CHRISTIAN                                |
+Other Religion      | OTHER RELIGION                                 |
+
+
 
 ------------------------------------------------------------------------
 
@@ -200,7 +241,7 @@ Standard errors in parentheses
 
 This multivariate specification examines the relationship between total private school count and average income, controlling for other demographic characteristics.
 
-```stata
+``` stata
                           |   (1)
                           | avg_income
 --------------------------+------------------
@@ -236,34 +277,18 @@ Standard errors in parentheses
 
 ::: {.callout-tip appearance="minimal"}
 ## Interpretation Guide
+
 This regression answers: **"After controlling for race, ethnicity, age, and education, do areas with more private schools have higher incomes?"**
 
-- **total_school coefficient (58.16, n.s.):** After controlling for demographics, private school count has no significant relationship with area income
-- **hs_grad coefficient (-224,711***):** Areas with higher shares of residents whose highest education is high school (vs. less or more) have dramatically lower incomes
-- **hisp_share coefficient (-244***):** Higher Hispanic population share associated with lower average income, controlling for other factors
-- **avg_age coefficient (928***):** Older populations associated with higher income areas
-- **R-squared (0.624):** Demographics explain 62% of income variation across PUMAs
+-   **total_school coefficient (58.16, n.s.):** After controlling for demographics, private school count has no significant relationship with area income
+-   **hs_grad coefficient (-224,711**\*):\*\* Areas with higher shares of residents whose highest education is high school (vs. less or more) have dramatically lower incomes
+-   **hisp_share coefficient (-244**\*):\*\* Higher Hispanic population share associated with lower average income, controlling for other factors
+-   **avg_age coefficient (928**\*):\*\* Older populations associated with higher income areas
+-   **R-squared (0.624):** Demographics explain 62% of income variation across PUMAs
 :::
 
 ------------------------------------------------------------------------
 
-## Key Findings
-
-Based on these results:
-
-1. **No Income Sorting on Total Schools:** Neither total schools nor religious schools show significant correlation with income. Only non-religious schools are located in higher-income areas.
-
-2. **Racial/Ethnic Patterns:** All school exposure measures are positively correlated with Black and Hispanic population shares. Areas with more private schools tend to be more racially diverse.
-
-3. **Education Correlation:** Areas with more schools (especially non-religious) have fewer residents with only high school education and more college graduates.
-
-4. **Religious vs. Non-Religious Differences:**
-   - Non-religious schools: Associated with higher income, higher Hispanic share, higher college attainment
-   - Religious schools: No income relationship, but associated with racial diversity and lower educational attainment
-
-5. **Multivariate Results:** After controlling for demographics, school count has no independent relationship with income. Education (hs_grad) and ethnicity (hisp_share) are the strongest predictors.
-
-------------------------------------------------------------------------
 
 ## Data Sources and Methods
 
@@ -272,56 +297,40 @@ Based on these results:
 
 **Demographic Data:**
 
-- Source: IPUMS USA 2000 Census 5% sample
-- Variables: Income (household-level), race, ethnicity, education, age (person-level)
-- Weights: `hhwt` for household variables, `perwt` for person variables
-- Geography: Public Use Microdata Areas (PUMAs)
+-   Source: IPUMS USA 2000 Census 5% sample
+-   Variables: Income (household-level), race, ethnicity, education, age (person-level)
+-   Weights: `hhwt` for household variables, `perwt` for person variables
+-   Geography: Public Use Microdata Areas (PUMAs)
 
 **School Data:**
 
-- Source: Geocoded private school locations
-- Distance Calculation: `geonear` package with 5-mile buffer
-- Geographic Construction: Block-level exposure aggregated to PUMA
-- School Classifications:
-  - Religious vs. Non-religious
-  - Fine-grained: All original denomination categories
-  - Collapsed: 10 broad categories
+-   Source: Geocoded private school locations
+-   Distance Calculation: `geonear` package with 5-mile buffer
+-   Geographic Construction: Block-level exposure aggregated to PUMA
+-   School Classifications:
+    -   Religious vs. Non-religious
+    -   Fine-grained: All original denomination categories
+    -   Collapsed: 10 broad categories
 
 **Sample Restrictions:**
 
-- Florida only (`statefip==12`)
-- Year 2000 (`year==2000`)
-- 5% Census sample (`sample==200001`)
-- Distance filter: 5-mile radius (primary specification)
+-   Florida only (`statefip==12`)
+-   Year 2000 (`year==2000`)
+-   5% Census sample (`sample==200001`)
+-   Distance filter: 5-mile radius (primary specification)
 
 **Crosswalk:**
 
-- MCDC Geocorr 2000: Links 2000 Census blocks to 2000 PUMAs
-- Block-level school counts averaged within each PUMA
+-   MCDC Geocorr 2000: Links 2000 Census blocks to 2000 PUMAs
+-   Block-level school counts averaged within each PUMA
 :::
 
 ------------------------------------------------------------------------
 
 ## Next Steps
 
-Potential extensions to this analysis:
+-   **1990 Comparison:** Cross-sectional analysis for 1990 Census (already constructed)
+-   **Panel Analysis:** Examine demographic and school access changes 1990-2000
+-   **Urban/Rural Heterogeneity:** Analysis by metropolitan status
 
-- **Distance Sensitivity:** Compare results across 1-10 mile buffers
-- **School Level Analysis:** Separate results for elementary, middle, and high schools
-- **1990 Comparison:** Cross-sectional analysis for 1990 Census (already constructed)
-- **Panel Analysis:** Examine demographic and school access changes 1990-2000
-- **Spatial Analysis:** Maps and spatial autocorrelation tests
-- **Urban/Rural Heterogeneity:** Stratified analysis by metropolitan status
 
-------------------------------------------------------------------------
-
-## Contact
-
-**Author:** Myles Owens
-**Institution:** Hoover Institution, Stanford University
-**Email:** myles.owens@stanford.edu
-**GitHub:** [maowens-HI/fl_private_school](https://github.com/maowens-HI/fl_private_school)
-
-------------------------------------------------------------------------
-
-*Document generated: December 12, 2025*
