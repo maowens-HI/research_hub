@@ -26,6 +26,20 @@ Recent notes.
 ::::::: carousel-wrapper
 :::: carousel-slide
 ::: research-card
+[Analysis]{.card-category}
+
+[Florida Private School Access and Demographics: 2000 Analysis]{.card-title}
+
+[Cross-sectional analysis of Florida community demographics and private school access at the PUMA level]{.card-excerpt}
+
+[December 2025]{.card-meta}
+
+[View Florida Analysis](florida-school-analysis.qmd){.card-link}
+:::
+::::
+
+:::: carousel-slide
+::: research-card
 [Notes]{.card-category}
 
 [December 12: Good vs Bad Counties and Quartile-Specific Figure 2]{.card-title}
@@ -160,6 +174,21 @@ A chronological record of project milestones and findings.
 ------------------------------------------------------------------------
 
 ### December 2025 {.mt-xl}
+
+#### Dec 12: Florida Private School Access and Demographics (2000)
+
+Cross-sectional analysis of the relationship between Florida community demographics and private school access for the year 2000.
+
+::: {.callout-note appearance="minimal"}
+- Geographic Unit: Public Use Microdata Areas (PUMAs)
+- Distance Buffer: 5-mile radius
+- Key finding: Non-religious schools show notably different patterns from religious schools, including significant association with higher income areas and college-educated populations
+- After controlling for demographics, private school count has no significant relationship with area income
+:::
+
+[View Full Florida Analysis](florida-school-analysis.qmd){.btn-ghost}
+
+------------------------------------------------------------------------
 
 #### Dec 12: Good vs Bad Counties and Quartile-Specific Figure 2
 
