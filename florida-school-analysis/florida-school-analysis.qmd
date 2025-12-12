@@ -1,16 +1,11 @@
 ---
 title: "Florida Private School Access and Demographics: 2000 Analysis"
-pagetitle: "2000 PUMA School Analysis | FL Private School Research"
 date: "December 12, 2025"
-author: "Myles Owens"
-affiliation: "Hoover Institution, Stanford University"
 format:
   html:
     toc: true
     toc-location: left
     toc-depth: 3
-    code-fold: true
-    theme: cosmo
 ---
 
 ## Analysis Overview
