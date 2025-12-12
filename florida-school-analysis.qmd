@@ -51,33 +51,32 @@ total_school |        127    11.50796    8.467682   1.004917   32.39997
    non_relig |        127    3.289883    2.868321   .0003801   13.39161
 distinct_f~e |        127    4.344061     1.99133   1.004584   7.990918
 distinct_c~d |        127    3.831188    1.631971   1.004363   7.327511
-
 ```
 
 ::: {.callout-tip appearance="minimal"}
-## Variable Definitions 
+## Variable Definitions
 
 ### Percent Units (0–100 scale)
 
-- **hisp_share:** Percent Hispanic  
-- **black_share:** Percent Black  
-- **white_share:** Percent White  
+-   **hisp_share:** Percent Hispanic\
+-   **black_share:** Percent Black\
+-   **white_share:** Percent White
 
 ### Proportion Units (0–1 scale)
 
-- **less_hs:** Share with less than high school  
-- **hs_grad:** Share with high school diploma  
-- **some_college:** Share with some college  
-- **college_plus:** Share with a college degree or higher  
+-   **less_hs:** Share with less than high school\
+-   **hs_grad:** Share with high school diploma\
+-   **some_college:** Share with some college\
+-   **college_plus:** Share with a college degree or higher
 
 ### Raw Continuous Variables
 
-- **avg_income:** Average household income (2000 dollars)  
-- **avg_age:** Mean age  
-- **total_school:** Count of private schools within 5 miles  
-- **relig / non_relig:** Counts of religious vs. non-religious schools  
-- **distinct_fine:** Number of distinct fine-grained school types  
-- **distinct_collapsed:** Number of distinct collapsed school categories  
+-   **avg_income:** Average household income (2000 dollars)\
+-   **avg_age:** Mean age\
+-   **total_school:** Count of private schools within 5 miles\
+-   **relig / non_relig:** Counts of religious vs. non-religious schools\
+-   **distinct_fine:** Number of distinct fine-grained school types\
+-   **distinct_collapsed:** Number of distinct collapsed school categories\
 :::
 
 ------------------------------------------------------------------------
@@ -214,24 +213,21 @@ Standard errors in parentheses
 ::: {.callout-tip appearance="minimal"}
 ## Diversity Measures
 
-**distinct_collapsed** uses 10 broad categories: Non-religious, Evangelical, Catholic, Baptist, Mainline Protestant, Adventist, Jewish, Muslim, Other Christian, Other Religion. 
+**distinct_collapsed** uses 10 broad categories: Non-religious, Evangelical, Catholic, Baptist, Mainline Protestant, Adventist, Jewish, Muslim, Other Christian, Other Religion.
 :::
 
-
-Collapsed Category  | Original Types Included                        |
-------------------- | ---------------------------------------------- |
-Non-religious       | NON-RELIGIOUS                                  |
-Evangelical         | EVANGELICAL, APOSTOLIC-PENTECOSTAL-CHARISMATIC |
-Catholic            | CATHOLIC                                       |
-Baptist             | BAPTIST                                        |
-Mainline Protestant | LUTHERAN, METHODIST, PRESBYTERIAN, EPISCOPAL   |
-Adventist           | ADVENTIST                                      |
-Jewish              | JEWISH                                         |
-Muslim              | MUSLIM                                         |
-Other Christian     | OTHER CHRISTIAN                                |
-Other Religion      | OTHER RELIGION                                 |
-
-
+| Collapsed Category  | Original Types Included                        |
+|---------------------|------------------------------------------------|
+| Non-religious       | NON-RELIGIOUS                                  |
+| Evangelical         | EVANGELICAL, APOSTOLIC-PENTECOSTAL-CHARISMATIC |
+| Catholic            | CATHOLIC                                       |
+| Baptist             | BAPTIST                                        |
+| Mainline Protestant | LUTHERAN, METHODIST, PRESBYTERIAN, EPISCOPAL   |
+| Adventist           | ADVENTIST                                      |
+| Jewish              | JEWISH                                         |
+| Muslim              | MUSLIM                                         |
+| Other Christian     | OTHER CHRISTIAN                                |
+| Other Religion      | OTHER RELIGION                                 |
 
 ------------------------------------------------------------------------
 
@@ -289,7 +285,6 @@ This regression answers: **"After controlling for race, ethnicity, age, and educ
 
 ------------------------------------------------------------------------
 
-
 ## Data Sources and Methods
 
 ::: {.callout-tip appearance="minimal" collapse="true"}
@@ -332,5 +327,3 @@ This regression answers: **"After controlling for race, ethnicity, age, and educ
 -   **1990 Comparison:** Cross-sectional analysis for 1990 Census (already constructed)
 -   **Panel Analysis:** Examine demographic and school access changes 1990-2000
 -   **Urban/Rural Heterogeneity:** Analysis by metropolitan status
-
-
