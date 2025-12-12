@@ -8,12 +8,17 @@ This is a Quarto-based research website called "research_hub". Quarto is an open
 
 ```
 research_hub/
-├── _quarto.yml          # Main Quarto configuration file
-├── index.qmd            # Homepage content
-├── about.qmd            # About page content
-├── styles.css           # Custom CSS styles
-├── docs/                # Output directory for rendered website
-└── research_hub.Rproj   # RStudio project file
+├── _quarto.yml                    # Main Quarto configuration file
+├── index.qmd                      # Homepage content
+├── github.qmd                     # GitHub page content
+├── styles.css                     # Custom CSS styles
+├── docs/                          # Output directory for rendered website
+├── research_hub.Rproj             # RStudio project file
+├── florida-school-analysis.qmd    # Florida Private School Access and Demographics (2000)
+├── meeting-dec-05-2025.qmd        # Meeting notes: Dec 5, 2025
+├── meeting-dec-09-2025.qmd        # Meeting notes: Dec 9, 2025
+├── meeting-dec-12-2025.qmd        # Meeting notes: Dec 12, 2025
+└── jk-instability-dec-05-2025.qmd # JK Instability Analysis
 ```
 
 ## Technologies
