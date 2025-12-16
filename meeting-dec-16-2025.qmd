@@ -11,7 +11,7 @@ format:
 
 ## Meeting Overview
 
-This document presents three analyses from the week of December 15-16:
+This document presents three analyses from the December 16 meeting:
 
 1. Sample consistency verification between non-jackknife and jackknife spending specifications
 2. Characterization of high predicted spending (blue-line) counties in Figure 2.3
@@ -194,6 +194,25 @@ This analysis examines how baseline spending quartiles map to predicted spending
 - If all rows are missing for a state, that state is never treated and therefore does not receive a predicted spending quartile.
 - If some rows are populated and others are missing, the state does not have enough counties in the balanced sample to form four quartiles (e.g., Arizona has only one county).
 :::
+
+### Table 8. Mean Baseline Expenditure by Predicted Spending Quartile
+
+| 4 quantiles of exp | Mean |
+|-------------------|------|
+| 1 | 2.94958 |
+| 2 | 3.601695 |
+| 3 | 1.864407 |
+| 4 | 1.256881 |
+| **Total** | 2.44181 |
+
+### Table 9. Baseline Spending Quartile by State (pre_q × State)
+
+| pre_q | AL | AZ | AR | CO | DE | FL | GA | ID | IL | IN | IA | KY | LA | ME | MA | MI | MN | MS | MO | MT | NE | NV | NH | NM | ND | OH | OK | PA | RI | SD | TN | TX | UT | VT |
+|-------|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|
+| 1 | 2 | 3 | 3 | . | . | . | 3 | . | . | 3 | . | . | 4 | 3 | . | . | 3 | 3 | . | . | 3 | 4 | . | 3 | . | . | . | 3 | 3 | . | 3 | . | . | 3 |
+| 2 | 2 | . | 4 | . | . | . | 4 | . | . | 4 | . | . | 4 | 4 | . | . | 4 | 3 | . | . | 4 | 4 | . | 3 | . | . | . | . | 4 | . | . | . | 3 | . |
+| 3 | 1 | . | 2 | . | . | . | 2 | . | . | 2 | . | . | 2 | 1 | . | . | 2 | 2 | . | . | 2 | 2 | . | 1 | . | . | . | 2 | 4 | . | . | 2 | . | 2 |
+| 4 | 1 | . | 1 | . | . | . | 1 | . | . | 1 | . | . | 1 | 1 | . | . | 1 | . | . | . | 1 | 1 | . | 2 | . | . | . | . | 2 | . | . | . | . | 1 |
 
 ### Key Pattern
 
