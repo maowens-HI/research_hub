@@ -233,39 +233,39 @@ Standard errors in parentheses
 
 ## Multivariate Regression Analysis
 
-### Table 6: Average Income Predicted by School Access and Demographics
+### Table 6: Total Private School Count Predicted by Demographics
 
-This multivariate specification examines the relationship between total private school count and average income, controlling for other demographic characteristics.
+This multivariate specification examines the demographic predictors of private school access, regressing total private school count on community characteristics.
 
 ``` stata
                           |   (1)
-                          | avg_income
+                          | total_school
 --------------------------+------------------
-total_school              |    58.16
-                          |  (108.18)
+avg_income                |    0.0000413
+                          |  (0.0000768)
                           |
-avg_age                   |   928.02***
-                          |  (230.01)
+avg_age                   |    0.525**
+                          |   (0.201)
                           |
-hs_grad                   | -224711.30***
-                          | (19133.10)
+hs_grad                   |  -35.40
+                          |  (23.42)
                           |
-white_share               |    73.68
-                          |  (270.84)
+white_share               |   -0.282
+                          |   (0.227)
                           |
-hisp_share                |  -244.32***
-                          |   (72.85)
+hisp_share                |    0.336***
+                          |   (0.056)
                           |
-black_share               |  -218.25
-                          |  (268.08)
+black_share               |    0.037
+                          |   (0.227)
                           |
-Constant                  |  88727.64***
-                          | (22163.57)
+Constant                  |   18.56
+                          |  (19.82)
 --------------------------+------------------
 Observations              |    127
-R-squared                 |   0.624
-Adjusted R-squared        |   0.605
-F-statistic               |   33.11
+R-squared                 |   0.466
+Adjusted R-squared        |   0.439
+F-statistic               |   17.46
 --------------------------+------------------
 Standard errors in parentheses
 *** p<0.01, ** p<0.05, * p<0.1
@@ -274,13 +274,203 @@ Standard errors in parentheses
 ::: {.callout-tip appearance="minimal"}
 ## Interpretation Guide
 
-This regression answers: **"After controlling for race, ethnicity, age, and education, do areas with more private schools have higher incomes?"**
+This regression answers: **"Which demographic characteristics predict higher private school counts in a community?"**
 
--   **total_school coefficient (58.16, n.s.):** After controlling for demographics, private school count has no significant relationship with area income
--   **hs_grad coefficient (-224,711**\*):\*\* Areas with higher shares of residents whose highest education is high school (vs. less or more) have dramatically lower incomes
--   **hisp_share coefficient (-244**\*):\*\* Higher Hispanic population share associated with lower average income, controlling for other factors
--   **avg_age coefficient (928**\*):\*\* Older populations associated with higher income areas
--   **R-squared (0.624):** Demographics explain 62% of income variation across PUMAs
+-   **hisp_share coefficient (0.336***):** Hispanic population share is the strongest predictor—a 1 percentage point increase in Hispanic share is associated with 0.34 more private schools within 5 miles, highly significant (p<0.001)
+-   **avg_age coefficient (0.525**):** Older communities have more private schools—each additional year of average age is associated with about 0.5 more schools (p=0.01)
+-   **avg_income coefficient (0.00004, n.s.):** After controlling for demographics, income has no significant relationship with private school count
+-   **hs_grad coefficient (-35.40, n.s.):** The negative coefficient suggests areas with more high school graduates (as highest attainment) have fewer private schools, though not statistically significant
+-   **Race shares (n.s.):** Neither white nor Black population shares significantly predict school count after controlling for Hispanic share and other variables
+-   **R-squared (0.466):** Demographics explain about 47% of the variation in private school counts across PUMAs
+:::
+
+------------------------------------------------------------------------
+
+### Table 7: Religious Private School Count Predicted by Demographics
+
+``` stata
+                          |   (1)
+                          |    relig
+--------------------------+------------------
+avg_income                |    0.00000732
+                          |  (0.0000556)
+                          |
+avg_age                   |    0.370**
+                          |   (0.145)
+                          |
+hs_grad                   |  -19.19
+                          |  (16.95)
+                          |
+white_share               |   -0.315*
+                          |   (0.164)
+                          |
+hisp_share                |    0.197***
+                          |   (0.041)
+                          |
+black_share               |   -0.065
+                          |   (0.164)
+                          |
+Constant                  |   23.25
+                          |  (14.34)
+--------------------------+------------------
+Observations              |    127
+R-squared                 |   0.449
+Adjusted R-squared        |   0.422
+F-statistic               |   16.32
+--------------------------+------------------
+Standard errors in parentheses
+*** p<0.01, ** p<0.05, * p<0.1
+```
+
+::: {.callout-tip appearance="minimal"}
+## Interpretation
+
+-   **hisp_share coefficient (0.197***):** Hispanic share strongly predicts religious school count (p<0.001)
+-   **avg_age coefficient (0.370**):** Older communities have more religious schools (p=0.012)
+-   **white_share coefficient (-0.315*):** Marginally significant negative relationship—areas with higher white population share have fewer religious schools (p=0.057)
+-   **Income and education:** Not significant predictors after controls
+:::
+
+------------------------------------------------------------------------
+
+### Table 8: Non-Religious Private School Count Predicted by Demographics
+
+``` stata
+                          |   (1)
+                          | non_relig
+--------------------------+------------------
+avg_income                |    0.000034
+                          |  (0.0000258)
+                          |
+avg_age                   |    0.155**
+                          |   (0.067)
+                          |
+hs_grad                   |  -16.21**
+                          |   (7.85)
+                          |
+white_share               |    0.034
+                          |   (0.076)
+                          |
+hisp_share                |    0.139***
+                          |   (0.019)
+                          |
+black_share               |    0.102
+                          |   (0.076)
+                          |
+Constant                  |   -4.69
+                          |   (6.64)
+--------------------------+------------------
+Observations              |    127
+R-squared                 |   0.477
+Adjusted R-squared        |   0.451
+F-statistic               |   18.25
+--------------------------+------------------
+Standard errors in parentheses
+*** p<0.01, ** p<0.05, * p<0.1
+```
+
+::: {.callout-tip appearance="minimal"}
+## Interpretation
+
+-   **hisp_share coefficient (0.139***):** Hispanic share is the strongest predictor of non-religious school count (p<0.001)
+-   **hs_grad coefficient (-16.21**):** Areas with more high school graduates (as highest attainment) have significantly fewer non-religious schools (p=0.041)
+-   **avg_age coefficient (0.155**):** Older communities have more non-religious schools (p=0.023)
+-   **Race shares:** Neither white nor Black share significant after controls
+:::
+
+------------------------------------------------------------------------
+
+### Table 9: School Type Diversity (Fine) Predicted by Demographics
+
+``` stata
+                          |   (1)
+                          | distinct_fine
+--------------------------+------------------
+avg_income                |    0.00000643
+                          |  (0.0000196)
+                          |
+avg_age                   |    0.164***
+                          |   (0.051)
+                          |
+hs_grad                   |  -11.75*
+                          |   (5.96)
+                          |
+white_share               |   -0.136**
+                          |   (0.058)
+                          |
+hisp_share                |    0.045***
+                          |   (0.014)
+                          |
+black_share               |   -0.061
+                          |   (0.058)
+                          |
+Constant                  |   12.49**
+                          |   (5.04)
+--------------------------+------------------
+Observations              |    127
+R-squared                 |   0.375
+Adjusted R-squared        |   0.343
+F-statistic               |   11.98
+--------------------------+------------------
+Standard errors in parentheses
+*** p<0.01, ** p<0.05, * p<0.1
+```
+
+::: {.callout-tip appearance="minimal"}
+## Interpretation
+
+-   **avg_age coefficient (0.164***):** Older communities have greater school type diversity (p=0.002)
+-   **white_share coefficient (-0.136**):** Higher white population share associated with less school diversity (p=0.020)
+-   **hisp_share coefficient (0.045***):** Hispanic share positively predicts diversity (p=0.002)
+-   **hs_grad coefficient (-11.75*):** Marginally significant negative effect (p=0.051)
+:::
+
+------------------------------------------------------------------------
+
+### Table 10: School Type Diversity (Collapsed) Predicted by Demographics
+
+``` stata
+                          |   (1)
+                          | distinct_collapsed
+--------------------------+------------------
+avg_income                |    0.00000807
+                          |  (0.0000164)
+                          |
+avg_age                   |    0.128***
+                          |   (0.043)
+                          |
+hs_grad                   |   -9.63*
+                          |   (5.01)
+                          |
+white_share               |   -0.118**
+                          |   (0.049)
+                          |
+hisp_share                |    0.034***
+                          |   (0.012)
+                          |
+black_share               |   -0.063
+                          |   (0.048)
+                          |
+Constant                  |   11.32***
+                          |   (4.24)
+--------------------------+------------------
+Observations              |    127
+R-squared                 |   0.342
+Adjusted R-squared        |   0.309
+F-statistic               |   10.39
+--------------------------+------------------
+Standard errors in parentheses
+*** p<0.01, ** p<0.05, * p<0.1
+```
+
+::: {.callout-tip appearance="minimal"}
+## Interpretation
+
+-   **avg_age coefficient (0.128***):** Older communities have more diverse school options (p=0.003)
+-   **white_share coefficient (-0.118**):** Higher white share associated with less categorical diversity (p=0.016)
+-   **hisp_share coefficient (0.034***):** Hispanic share positively predicts diversity (p=0.006)
+-   **hs_grad coefficient (-9.63*):** Marginally significant negative effect (p=0.057)
+-   Similar pattern to fine classification, with slightly lower explanatory power (R²=0.34 vs 0.37)
 :::
 
 ------------------------------------------------------------------------
