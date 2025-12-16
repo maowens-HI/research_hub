@@ -274,14 +274,14 @@ Standard errors in parentheses
 ::: {.callout-tip appearance="minimal"}
 ## Interpretation Guide
 
-This regression answers: **"Which demographic characteristics predict higher private school counts in a community?"**
+This regression answers: **"Which demographic characteristics predict higher private school counts in a PUMA?"**
 
--   **hisp_share coefficient (0.336***):** Hispanic population share is the strongest predictor—a 1 percentage point increase in Hispanic share is associated with 0.34 more private schools within 5 miles, highly significant (p<0.001)
+-   **avg_income coefficient (0.00004, n.s.):** After controlling for demographics, income has a weak non significant positive relationship with private school count.
+-   **hisp_share coefficient (0.336***):** Hispanic population share is the strongest predictor—a 1 percentage point increase in Hispanic share is associated with 0.34 more private schools within 5 miles (p<0.001)
 -   **avg_age coefficient (0.525**):** Older communities have more private schools—each additional year of average age is associated with about 0.5 more schools (p=0.01)
--   **avg_income coefficient (0.00004, n.s.):** After controlling for demographics, income has no significant relationship with private school count
--   **hs_grad coefficient (-35.40, n.s.):** The negative coefficient suggests areas with more high school graduates (as highest attainment) have fewer private schools, though not statistically significant
+
+-   **hs_grad coefficient (-35.40, n.s.):** The negative coefficient suggests areas with more high school graduates (as highest attainment) have fewer private schools, though not statistically significant. A one percentage point increase in high school grads is associated with a -0.354 decrease in the average number of total schools in a PUMA.
 -   **Race shares (n.s.):** Neither white nor Black population shares significantly predict school count after controlling for Hispanic share and other variables
--   **R-squared (0.466):** Demographics explain about 47% of the variation in private school counts across PUMAs
 :::
 
 ------------------------------------------------------------------------
@@ -323,12 +323,16 @@ Standard errors in parentheses
 ```
 
 ::: {.callout-tip appearance="minimal"}
-## Interpretation
+## Interpretation Guide
 
--   **hisp_share coefficient (0.197***):** Hispanic share strongly predicts religious school count (p<0.001)
--   **avg_age coefficient (0.370**):** Older communities have more religious schools (p=0.012)
--   **white_share coefficient (-0.315*):** Marginally significant negative relationship—areas with higher white population share have fewer religious schools (p=0.057)
--   **Income and education:** Not significant predictors after controls
+This regression answers: **"Which demographic characteristics predict higher private religious school counts in a PUMA?"**
+
+-   **avg_income coefficient (0.00000732, n.s.):** After controlling for demographics, income has a weak non significant positive relationship with religous school count.
+-   **avg_age coefficient (0.370**):** Older communities have more private schools—each additional year of average age is associated with about 0.370 more religous schools (p=0.01)
+-   **hs_grad coefficient (-19.19, n.s.):** The negative coefficient suggests areas with more high school graduates (as highest attainment) have fewer private schools, though not statistically significant. A one percentage point increase in high school grads is associated with a -0.1919 decrease in the average number of religous in a PUMA.
+-   **hisp_share coefficient ( 0.197****):** A 1 percentage point increase in Hispanic share is significantly associated with  0.197 more religous schools (p<0.001)
+-   **black_share(-0.065 n.s):** A 1 percentage point increase in black share is associated with a -0.065 decrease in the number of religous schools.
+-   **white_share(-0.315*):** A 1 percentage point increase in black share is associated with a -0.315 decrease in the number of religious schools.
 :::
 
 ------------------------------------------------------------------------
@@ -369,15 +373,6 @@ Standard errors in parentheses
 *** p<0.01, ** p<0.05, * p<0.1
 ```
 
-::: {.callout-tip appearance="minimal"}
-## Interpretation
-
--   **hisp_share coefficient (0.139***):** Hispanic share is the strongest predictor of non-religious school count (p<0.001)
--   **hs_grad coefficient (-16.21**):** Areas with more high school graduates (as highest attainment) have significantly fewer non-religious schools (p=0.041)
--   **avg_age coefficient (0.155**):** Older communities have more non-religious schools (p=0.023)
--   **Race shares:** Neither white nor Black share significant after controls
-:::
-
 ------------------------------------------------------------------------
 
 ### Table 9: School Type Diversity (Fine) Predicted by Demographics
@@ -416,15 +411,6 @@ Standard errors in parentheses
 *** p<0.01, ** p<0.05, * p<0.1
 ```
 
-::: {.callout-tip appearance="minimal"}
-## Interpretation
-
--   **avg_age coefficient (0.164***):** Older communities have greater school type diversity (p=0.002)
--   **white_share coefficient (-0.136**):** Higher white population share associated with less school diversity (p=0.020)
--   **hisp_share coefficient (0.045***):** Hispanic share positively predicts diversity (p=0.002)
--   **hs_grad coefficient (-11.75*):** Marginally significant negative effect (p=0.051)
-:::
-
 ------------------------------------------------------------------------
 
 ### Table 10: School Type Diversity (Collapsed) Predicted by Demographics
@@ -462,16 +448,6 @@ F-statistic               |   10.39
 Standard errors in parentheses
 *** p<0.01, ** p<0.05, * p<0.1
 ```
-
-::: {.callout-tip appearance="minimal"}
-## Interpretation
-
--   **avg_age coefficient (0.128***):** Older communities have more diverse school options (p=0.003)
--   **white_share coefficient (-0.118**):** Higher white share associated with less categorical diversity (p=0.016)
--   **hisp_share coefficient (0.034***):** Hispanic share positively predicts diversity (p=0.006)
--   **hs_grad coefficient (-9.63*):** Marginally significant negative effect (p=0.057)
--   Similar pattern to fine classification, with slightly lower explanatory power (R²=0.34 vs 0.37)
-:::
 
 ------------------------------------------------------------------------
 
