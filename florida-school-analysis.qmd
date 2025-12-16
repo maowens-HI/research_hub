@@ -279,9 +279,9 @@ This regression answers: **"Which demographic characteristics predict higher tot
 -   **avg_income coefficient (0.0000413, n.s.):** After controlling for demographics, income has a weak non-significant positive relationship with total private school count.
 -   **avg_age coefficient (0.525**):** A one year increase in average age is associated with 0.525 more total private schools (p<0.05).
 -   **hs_grad coefficient (-35.40, n.s.):** A one percentage point increase in high school graduates (as highest attainment) is associated with a -0.354 decrease in total private schools, though not statistically significant.
--   **hisp_share coefficient (0.336***):** A 1 percentage point increase in Hispanic share is significantly associated with 0.336 more total private schools (p<0.001).
--   **black_share coefficient (0.037, n.s.):** A 1 percentage point increase in Black share is associated with a 0.037 increase in total private schools, though not statistically significant.
--   **white_share coefficient (-0.282, n.s.):** A 1 percentage point increase in white share is associated with a -0.282 decrease in total private schools, though not statistically significant.
+-   **hisp_share coefficient (0.336***):** A one percentage point increase in Hispanic share is significantly associated with 0.336 more total private schools (p<0.001).
+-   **black_share coefficient (0.037, n.s.):** A one percentage point increase in Black share is associated with a 0.037 increase in total private schools, though not statistically significant.
+-   **white_share coefficient (-0.282, n.s.):** A one percentage point increase in white share is associated with a -0.282 decrease in total private schools, though not statistically significant.
 :::
 
 ------------------------------------------------------------------------
