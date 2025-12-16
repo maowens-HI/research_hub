@@ -553,14 +553,14 @@ Interpretation Guide
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This regression answers: <strong>“Which demographic characteristics predict higher private school counts in a community?”</strong></p>
+<p>This regression answers: <strong>"Which demographic characteristics predict higher total private school counts in a PUMA?"</strong></p>
 <ul>
-<li><strong>hisp_share coefficient (0.336</strong>*):** Hispanic population share is the strongest predictor—a 1 percentage point increase in Hispanic share is associated with 0.34 more private schools within 5 miles (p&lt;0.001)</li>
-<li><strong>avg_age coefficient (0.525</strong>):** Older communities have more private schools—each additional year of average age is associated with about 0.5 more schools (p=0.01)</li>
-<li><strong>avg_income coefficient (0.00004, n.s.):</strong> After controlling for demographics, income has no significant relationship with private school count</li>
-<li><strong>hs_grad coefficient (-35.40, n.s.):</strong> The negative coefficient suggests areas with more high school graduates (as highest attainment) have fewer private schools, though not statistically significant. A one percentage point increase in high school grads is associated with a -0.354 decrease in the average number of total schools in a PUMA.</li>
-<li><strong>Race shares (n.s.):</strong> Neither white nor Black population shares significantly predict school count after controlling for Hispanic share and other variables</li>
-<li><strong>R-squared (0.466):</strong> Demographics explain about 47% of the variation in private school counts across PUMAs</li>
+<li><strong>avg_income coefficient (0.0000413, n.s.):</strong> After controlling for demographics, income has a weak non-significant positive relationship with total private school count.</li>
+<li><strong>avg_age coefficient (0.525**):</strong> A one year increase in average age is associated with 0.525 more total private schools (p&lt;0.05).</li>
+<li><strong>hs_grad coefficient (-35.40, n.s.):</strong> A one percentage point increase in high school graduates (as highest attainment) is associated with a -0.354 decrease in total private schools, though not statistically significant.</li>
+<li><strong>hisp_share coefficient (0.336***):</strong> A 1 percentage point increase in Hispanic share is significantly associated with 0.336 more total private schools (p&lt;0.001).</li>
+<li><strong>black_share coefficient (0.037, n.s.):</strong> A 1 percentage point increase in Black share is associated with a 0.037 increase in total private schools, though not statistically significant.</li>
+<li><strong>white_share coefficient (-0.282, n.s.):</strong> A 1 percentage point increase in white share is associated with a -0.282 decrease in total private schools, though not statistically significant.</li>
 </ul>
 </div>
 </div>
@@ -599,6 +599,27 @@ Interpretation Guide
 <span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>--------------------------+------------------</span>
 <span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>Standard errors <span class="kw">in</span> parentheses</span>
 <span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>*** <span class="kw">p</span>&lt;0.01, ** <span class="kw">p</span>&lt;0.05, * <span class="kw">p</span>&lt;0.1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Interpretation Guide
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This regression answers: <strong>"Which demographic characteristics predict higher private religious school counts in a PUMA?"</strong></p>
+<ul>
+<li><strong>avg_income coefficient (0.00000732, n.s.):</strong> After controlling for demographics, income has a weak non-significant positive relationship with religious school count.</li>
+<li><strong>avg_age coefficient (0.370**):</strong> A one year increase in average age is associated with 0.370 more religious schools (p&lt;0.05).</li>
+<li><strong>hs_grad coefficient (-19.19, n.s.):</strong> A one percentage point increase in high school graduates (as highest attainment) is associated with a -0.1919 decrease in religious schools, though not statistically significant.</li>
+<li><strong>hisp_share coefficient (0.197***):</strong> A 1 percentage point increase in Hispanic share is significantly associated with 0.197 more religious schools (p&lt;0.001).</li>
+<li><strong>black_share coefficient (-0.065, n.s.):</strong> A 1 percentage point increase in Black share is associated with a -0.065 decrease in religious schools, though not statistically significant.</li>
+<li><strong>white_share coefficient (-0.315*):</strong> A 1 percentage point increase in white share is associated with a -0.315 decrease in religious schools (p&lt;0.10).</li>
+</ul>
+</div>
+</div>
 <hr>
 </section>
 <section id="table-8-non-religious-private-school-count-predicted-by-demographics" class="level3">
@@ -634,6 +655,27 @@ Interpretation Guide
 <span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>--------------------------+------------------</span>
 <span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>Standard errors <span class="kw">in</span> parentheses</span>
 <span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>*** <span class="kw">p</span>&lt;0.01, ** <span class="kw">p</span>&lt;0.05, * <span class="kw">p</span>&lt;0.1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Interpretation Guide
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This regression answers: <strong>"Which demographic characteristics predict higher non-religious private school counts in a PUMA?"</strong></p>
+<ul>
+<li><strong>avg_income coefficient (0.000034, n.s.):</strong> After controlling for demographics, income has a weak non-significant positive relationship with non-religious school count.</li>
+<li><strong>avg_age coefficient (0.155**):</strong> A one year increase in average age is associated with 0.155 more non-religious private schools (p&lt;0.05).</li>
+<li><strong>hs_grad coefficient (-16.21**):</strong> A one percentage point increase in high school graduates (as highest attainment) is associated with a -0.162 decrease in non-religious private schools (p&lt;0.05).</li>
+<li><strong>hisp_share coefficient (0.139***):</strong> A 1 percentage point increase in Hispanic share is significantly associated with 0.139 more non-religious private schools (p&lt;0.001).</li>
+<li><strong>black_share coefficient (0.102, n.s.):</strong> A 1 percentage point increase in Black share is associated with a 0.102 increase in non-religious private schools, though not statistically significant.</li>
+<li><strong>white_share coefficient (0.034, n.s.):</strong> A 1 percentage point increase in white share is associated with a 0.034 increase in non-religious private schools, though not statistically significant.</li>
+</ul>
+</div>
+</div>
 <hr>
 </section>
 <section id="table-9-school-type-diversity-fine-predicted-by-demographics" class="level3">
@@ -669,6 +711,27 @@ Interpretation Guide
 <span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>--------------------------+------------------</span>
 <span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>Standard errors <span class="kw">in</span> parentheses</span>
 <span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>*** <span class="kw">p</span>&lt;0.01, ** <span class="kw">p</span>&lt;0.05, * <span class="kw">p</span>&lt;0.1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Interpretation Guide
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This regression answers: <strong>"Which demographic characteristics predict higher school type diversity (fine classification) in a PUMA?"</strong></p>
+<ul>
+<li><strong>avg_income coefficient (0.00000643, n.s.):</strong> After controlling for demographics, income has a weak non-significant positive relationship with school type diversity.</li>
+<li><strong>avg_age coefficient (0.164***):</strong> A one year increase in average age is associated with 0.164 more distinct school types (p&lt;0.01).</li>
+<li><strong>hs_grad coefficient (-11.75*):</strong> A one percentage point increase in high school graduates (as highest attainment) is associated with a -0.118 decrease in distinct school types (p&lt;0.10).</li>
+<li><strong>hisp_share coefficient (0.045***):</strong> A 1 percentage point increase in Hispanic share is significantly associated with 0.045 more distinct school types (p&lt;0.001).</li>
+<li><strong>black_share coefficient (-0.061, n.s.):</strong> A 1 percentage point increase in Black share is associated with a -0.061 decrease in distinct school types, though not statistically significant.</li>
+<li><strong>white_share coefficient (-0.136**):</strong> A 1 percentage point increase in white share is associated with a -0.136 decrease in distinct school types (p&lt;0.05).</li>
+</ul>
+</div>
+</div>
 <hr>
 </section>
 <section id="table-10-school-type-diversity-collapsed-predicted-by-demographics" class="level3">
@@ -704,6 +767,27 @@ Interpretation Guide
 <span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>--------------------------+------------------</span>
 <span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>Standard errors <span class="kw">in</span> parentheses</span>
 <span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>*** <span class="kw">p</span>&lt;0.01, ** <span class="kw">p</span>&lt;0.05, * <span class="kw">p</span>&lt;0.1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Interpretation Guide
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This regression answers: <strong>"Which demographic characteristics predict higher school type diversity (collapsed classification) in a PUMA?"</strong></p>
+<ul>
+<li><strong>avg_income coefficient (0.00000807, n.s.):</strong> After controlling for demographics, income has a weak non-significant positive relationship with school type diversity.</li>
+<li><strong>avg_age coefficient (0.128***):</strong> A one year increase in average age is associated with 0.128 more distinct school categories (p&lt;0.01).</li>
+<li><strong>hs_grad coefficient (-9.63*):</strong> A one percentage point increase in high school graduates (as highest attainment) is associated with a -0.096 decrease in distinct school categories (p&lt;0.10).</li>
+<li><strong>hisp_share coefficient (0.034***):</strong> A 1 percentage point increase in Hispanic share is significantly associated with 0.034 more distinct school categories (p&lt;0.001).</li>
+<li><strong>black_share coefficient (-0.063, n.s.):</strong> A 1 percentage point increase in Black share is associated with a -0.063 decrease in distinct school categories, though not statistically significant.</li>
+<li><strong>white_share coefficient (-0.118**):</strong> A 1 percentage point increase in white share is associated with a -0.118 decrease in distinct school categories (p&lt;0.05).</li>
+</ul>
+</div>
+</div>
 <hr>
 </section>
 </section>
