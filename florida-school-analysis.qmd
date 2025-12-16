@@ -233,39 +233,39 @@ Standard errors in parentheses
 
 ## Multivariate Regression Analysis
 
-### Table 6: Average Income Predicted by School Access and Demographics
+### Table 6: Total Private School Count Predicted by Demographics
 
-This multivariate specification examines the relationship between total private school count and average income, controlling for other demographic characteristics.
+This multivariate specification examines the demographic predictors of private school access, regressing total private school count on community characteristics.
 
 ``` stata
                           |   (1)
-                          | avg_income
+                          | total_school
 --------------------------+------------------
-total_school              |    58.16
-                          |  (108.18)
+avg_income                |    0.0000413
+                          |  (0.0000768)
                           |
-avg_age                   |   928.02***
-                          |  (230.01)
+avg_age                   |    0.525**
+                          |   (0.201)
                           |
-hs_grad                   | -224711.30***
-                          | (19133.10)
+hs_grad                   |  -35.40
+                          |  (23.42)
                           |
-white_share               |    73.68
-                          |  (270.84)
+white_share               |   -0.282
+                          |   (0.227)
                           |
-hisp_share                |  -244.32***
-                          |   (72.85)
+hisp_share                |    0.336***
+                          |   (0.056)
                           |
-black_share               |  -218.25
-                          |  (268.08)
+black_share               |    0.037
+                          |   (0.227)
                           |
-Constant                  |  88727.64***
-                          | (22163.57)
+Constant                  |   18.56
+                          |  (19.82)
 --------------------------+------------------
 Observations              |    127
-R-squared                 |   0.624
-Adjusted R-squared        |   0.605
-F-statistic               |   33.11
+R-squared                 |   0.466
+Adjusted R-squared        |   0.439
+F-statistic               |   17.46
 --------------------------+------------------
 Standard errors in parentheses
 *** p<0.01, ** p<0.05, * p<0.1
@@ -274,13 +274,14 @@ Standard errors in parentheses
 ::: {.callout-tip appearance="minimal"}
 ## Interpretation Guide
 
-This regression answers: **"After controlling for race, ethnicity, age, and education, do areas with more private schools have higher incomes?"**
+This regression answers: **"Which demographic characteristics predict higher private school counts in a community?"**
 
--   **total_school coefficient (58.16, n.s.):** After controlling for demographics, private school count has no significant relationship with area income
--   **hs_grad coefficient (-224,711**\*):\*\* Areas with higher shares of residents whose highest education is high school (vs. less or more) have dramatically lower incomes
--   **hisp_share coefficient (-244**\*):\*\* Higher Hispanic population share associated with lower average income, controlling for other factors
--   **avg_age coefficient (928**\*):\*\* Older populations associated with higher income areas
--   **R-squared (0.624):** Demographics explain 62% of income variation across PUMAs
+-   **hisp_share coefficient (0.336***):** Hispanic population share is the strongest predictor—a 1 percentage point increase in Hispanic share is associated with 0.34 more private schools within 5 miles, highly significant (p<0.001)
+-   **avg_age coefficient (0.525**):** Older communities have more private schools—each additional year of average age is associated with about 0.5 more schools (p=0.01)
+-   **avg_income coefficient (0.00004, n.s.):** After controlling for demographics, income has no significant relationship with private school count
+-   **hs_grad coefficient (-35.40, n.s.):** The negative coefficient suggests areas with more high school graduates (as highest attainment) have fewer private schools, though not statistically significant
+-   **Race shares (n.s.):** Neither white nor Black population shares significantly predict school count after controlling for Hispanic share and other variables
+-   **R-squared (0.466):** Demographics explain about 47% of the variation in private school counts across PUMAs
 :::
 
 ------------------------------------------------------------------------
