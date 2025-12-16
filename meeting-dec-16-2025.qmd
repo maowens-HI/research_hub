@@ -1,0 +1,207 @@
+---
+title: "December 16, 2025 Meeting"
+pagetitle: "December 16, 2025 Meeting | Research Hub"
+date: "December 16, 2025"
+format:
+  html:
+    toc: true
+    toc-location: left
+    toc-depth: 3
+---
+
+## Meeting Overview
+
+This document presents three analyses from the week of December 15-16:
+
+1. Sample consistency verification between non-jackknife and jackknife spending specifications
+2. Characterization of high predicted spending (blue-line) counties in Figure 2.3
+3. Cross-tabulation of baseline spending quartiles by predicted spending quartiles
+
+------------------------------------------------------------------------
+
+## Sample Consistency: Jackknife vs Non-Jackknife
+
+This analysis verifies whether the samples are identical between the non-jackknife spending charts (Figure 2.1) and the jackknife spending charts (Figure 2.4) from the 12/12 meeting.
+
+### Key Findings
+
+- **Q0 (never-treated county-years) is identical** across both specifications
+- **Total observations unchanged** at 83,384
+- **Never-treated share remains 68.84%** in both cases
+- The two tables are built on the same set of county-years with identical treated vs. never-treated composition
+- Differences arise only **within the treated group**: counties are reassigned across predicted spending quartiles when moving from non-jackknife to jackknife
+
+### Table 1. Predicted Spending Quartiles (No Jackknife)
+
+```stata
+     pred_q |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |     57,400       68.84       68.84
+          1 |      6,104        7.32       76.16
+          2 |      6,608        7.92       84.08
+          3 |      6,664        7.99       92.08
+          4 |      6,608        7.92      100.00
+------------+-----------------------------------
+      Total |     83,384      100.00
+```
+
+### Table 2. Predicted Spending Quartiles (Jackknife)
+
+```stata
+4 quantiles |
+         of |
+ pred_spend |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |     57,400       68.84       68.84
+          1 |      7,224        8.66       77.50
+          2 |      6,160        7.39       84.89
+          3 |      6,496        7.79       92.68
+          4 |      6,104        7.32      100.00
+------------+-----------------------------------
+      Total |     83,384      100.00
+```
+
+------------------------------------------------------------------------
+
+## Quartile Switching Analysis
+
+Out of 464 ever-treated counties, **150 (32.33%) switch quartiles** after introducing the jackknife.
+
+### Table 3. Quartile Switching Among Ever-Treated Counties
+
+```stata
+   q_switch |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |        314       67.67       67.67
+          1 |        150       32.33      100.00
+------------+-----------------------------------
+      Total |        464      100.00
+```
+
+### Direction of Switching
+
+No clear pattern in how counties move between quartiles. Switching is not systematically upward or downward.
+
+#### Table 4. Direction of Quartile Switching (Non-Jackknife to Jackknife)
+
+**Panel A. Counts**
+
+|     | JK Q1 | JK Q2 | JK Q3 | JK Q4 | Total |
+|-----|-------|-------|-------|-------|-------|
+| Q1  | 0     | 28    | 0     | 0     | 28    |
+| Q2  | 48    | 0     | 0     | 16    | 64    |
+| Q3  | 0     | 15    | 0     | 9     | 24    |
+| Q4  | 0     | 13    | 21    | 0     | 34    |
+| **Total** | 48 | 56 | 21 | 25 | 150 |
+
+**Panel B. Row Percentages**
+
+|     | JK Q1 | JK Q2 | JK Q3 | JK Q4 | Total |
+|-----|-------|-------|-------|-------|-------|
+| Q1  | 0.00  | 100.00| 0.00  | 0.00  | 100.00|
+| Q2  | 75.00 | 0.00  | 0.00  | 25.00 | 100.00|
+| Q3  | 0.00  | 62.50 | 0.00  | 37.50 | 100.00|
+| Q4  | 0.00  | 38.24 | 61.76 | 0.00  | 100.00|
+| **Total** | 32.00 | 37.33 | 14.00 | 16.67 | 100.00 |
+
+### Predicted Spending Changes
+
+- **Switchers**: Average change of −0.0019 in predicted spending relative to non-jackknife
+- **Non-switchers**: Essentially no change (+0.00001)
+
+------------------------------------------------------------------------
+
+## Blue-Line Counties Analysis (Figure 2.3 Follow-Up)
+
+This section characterizes counties in the Q4 (highest predicted spending) group from Figure 2.3.
+
+### Baseline Spending
+
+Blue-line counties are **disproportionately low-spending**. 47.32% fall into quantile 1 of baseline spending (pre_q = 1).
+
+#### Table 5. Predicted Spending vs Baseline Expenditure
+
+::: {.callout-note}
+Predicted spending quantiles are only defined among ever-treated counties.
+:::
+
+```stata
+   4 quantiles |
+        of |             4 quantiles of exp
+pred_spend |         1          2          3          4 |     Total
+-----------+--------------------------------------------+----------
+         1 |      5.04      25.21      33.61      36.13 |    100.00
+         2 |     29.37      16.67      19.84      34.13 |    100.00
+         3 |     21.50      41.12      29.91       7.48 |    100.00
+         4 |     47.32      20.54      18.75      13.39 |    100.00
+-----------+--------------------------------------------+----------
+```
+
+### Income Distribution
+
+Blue-line counties are **spread across the income distribution** rather than concentrated in a single income quantile:
+
+- Q1: 27.68%
+- Q2: 16.07%
+- Q3: 34.82%
+- Q4: 21.43%
+
+#### Table 6. Predicted Spending vs Median Family Income
+
+```stata
+         4 |
+ quantiles |
+        of |         4 quantiles of median family income
+pred_spend |         1          2          3          4 |     Total
+-----------+--------------------------------------------+----------
+         1 |     18.49      17.65      20.17      43.70 |    100.00
+         2 |      9.52      19.84      26.19      44.44 |    100.00
+         3 |     32.71      33.64      25.23       8.41 |    100.00
+         4 |     27.68      16.07      34.82      21.43 |    100.00
+-----------+--------------------------------------------+----------
+```
+
+### State Composition
+
+Blue-line counties are **geographically concentrated**. Alabama alone accounts for 44.64%. Of the 15 treated states in the balanced panel, 10 appear in the blue line.
+
+#### Table 7. State Composition of Blue-Line Counties
+
+```stata
+  state_abr |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         AL |      2,800       44.64       44.64
+         AZ |         56        0.89       45.54
+         ID |        336        5.36       50.89
+         MA |        336        5.36       56.25
+         MI |        448        7.14       63.39
+         MT |        168        2.68       66.07
+         NH |         56        0.89       66.96
+         NM |      1,120       17.86       84.82
+         OH |        560        8.93       93.75
+         VT |        392        6.25      100.00
+------------+-----------------------------------
+      Total |      6,272      100.00
+```
+
+------------------------------------------------------------------------
+
+## Baseline vs Predicted Spending Cross-Tabulation
+
+This analysis examines how baseline spending quartiles map to predicted spending quartiles.
+
+::: {.callout-note appearance="minimal"}
+- If all rows are missing for a state, that state is never treated and therefore does not receive a predicted spending quartile.
+- If some rows are populated and others are missing, the state does not have enough counties in the balanced sample to form four quartiles (e.g., Arizona has only one county).
+:::
+
+### Key Pattern
+
+Quartiles 1 and 2 of baseline spending tend to go to **higher** quartiles of predicted spending, while quartiles 3 and 4 tend to go to **lower** quartiles of predicted spending. This pattern is consistent with mean reversion in spending predictions.
+
+------------------------------------------------------------------------
+
+## Next Steps
+
+- Organize tasks assigned from Friday meeting into research hub documentation
+- Continue advancing Florida research

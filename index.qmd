@@ -26,6 +26,20 @@ Recent notes.
 ::::::: carousel-wrapper
 :::: carousel-slide
 ::: research-card
+[Notes]{.card-category}
+
+[December 16: Sample Consistency and Blue-Line County Analysis]{.card-title}
+
+[Jackknife vs non-jackknife sample verification, quartile switching, and characterization of high predicted spending counties]{.card-excerpt}
+
+[December 2025]{.card-meta}
+
+[View Meeting Notes](meeting-dec-16-2025.qmd){.card-link}
+:::
+::::
+
+:::: carousel-slide
+::: research-card
 [Analysis]{.card-category}
 
 [Florida Private School Access and Demographics: 2000 Analysis]{.card-title}
@@ -174,6 +188,21 @@ A chronological record of project milestones and findings.
 ------------------------------------------------------------------------
 
 ### December 2025 {.mt-xl}
+
+#### Dec 16: Sample Consistency and Blue-Line County Analysis
+
+Verifying sample consistency between jackknife and non-jackknife specifications, analyzing quartile switching patterns, and characterizing high predicted spending (blue-line) counties.
+
+::: {.callout-note appearance="minimal"}
+- Confirmed identical samples between Figure 2.1 (non-jackknife) and Figure 2.4 (jackknife) from 12/12 meeting
+- 32.33% of ever-treated counties (150 of 464) switch quartiles after introducing jackknife
+- Blue-line (Q4) counties are disproportionately low-baseline-spending (47.32% in pre_q=1) and geographically concentrated (44.64% in Alabama)
+- Baseline spending quartiles 1-2 tend to move to higher predicted spending; quartiles 3-4 tend to move lower
+:::
+
+[View Full Meeting Notes](meeting-dec-16-2025.qmd){.btn-ghost}
+
+------------------------------------------------------------------------
 
 #### Dec 12: Florida Private School Access and Demographics (2000)
 
