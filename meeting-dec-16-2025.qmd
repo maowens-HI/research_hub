@@ -11,7 +11,7 @@ format:
 
 ## Meeting Overview
 
-This document presents three analyses:
+This document presents three analyses that follow up on findings from the [December 12, 2025 Meeting](meeting-dec-12-2025.html):
 
 1.  Sample consistency verification between non-jackknife and jackknife spending specifications
 2.  Characterization of high predicted spending (blue-line) counties in Figure 2.3
@@ -22,6 +22,14 @@ This document presents three analyses:
 ## Sample Consistency: Jackknife vs Non-Jackknife
 
 This analysis verifies whether the samples are identical between the non-jackknife spending charts (Figure 2.1) and the jackknife spending charts (Figure 2.4) from the 12/12 meeting.
+
+#### Figure 2.1: Spending Only (No Jackknife)
+
+![](images/12_12_25/base_q_A_quartiles_separate.png)
+
+#### Figure 2.4: Spending Only (Jackknife)
+
+![](images/12_12_25/jk_q_A_quartiles.png)
 
 ### Key Findings
 
@@ -114,6 +122,10 @@ No clear pattern in how counties move between quartiles. Switching is not system
 ## Blue-Line Counties Analysis (Figure 2.3 Follow-Up)
 
 This section characterizes counties in the Q4 (highest predicted spending) group from Figure 2.3.
+
+#### Figure 2.3: Spending + Income * Reform Types (No Jackknife)
+
+![](images/12_12_25/base_q_C_quartiles_separate.png)
 
 ### Baseline Spending
 
