@@ -208,7 +208,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="meeting-overview" class="level2">
 <h2 class="anchored" data-anchor-id="meeting-overview">Meeting Overview</h2>
-<p>This document presents three analyses that follow up on findings from the <a href="meeting-dec-12-2025.html">December 12, 2025 Meeting</a>:</p>
+<p>This document presents three analyses:</p>
 <ol type="1">
 <li>Sample consistency verification between non-jackknife and jackknife spending specifications</li>
 <li>Characterization of high predicted spending (blue-line) counties in Figure 2.3</li>
@@ -219,22 +219,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="sample-consistency-jackknife-vs-non-jackknife" class="level2">
 <h2 class="anchored" data-anchor-id="sample-consistency-jackknife-vs-non-jackknife">Sample Consistency: Jackknife vs Non-Jackknife</h2>
 <p>This analysis verifies whether the samples are identical between the non-jackknife spending charts (Figure 2.1) and the jackknife spending charts (Figure 2.4) from the 12/12 meeting.</p>
-<section id="figure-2.1-spending-only-no-jackknife" class="level4">
-<h4 class="anchored" data-anchor-id="figure-2.1-spending-only-no-jackknife">Figure 2.1: Spending Only (No Jackknife)</h4>
-<p><img src="images/12_12_25/base_q_A_quartiles_separate.png" class="img-fluid"></p>
-</section>
-<section id="figure-2.4-spending-only-jackknife" class="level4">
-<h4 class="anchored" data-anchor-id="figure-2.4-spending-only-jackknife">Figure 2.4: Spending Only (Jackknife)</h4>
-<p><img src="images/12_12_25/jk_q_A_quartiles.png" class="img-fluid"></p>
-</section>
 <section id="key-findings" class="level3">
 <h3 class="anchored" data-anchor-id="key-findings">Key Findings</h3>
 <ul>
-<li><strong>Q0 (never-treated county-years) is identical</strong> across both specifications</li>
-<li><strong>Total observations unchanged</strong> at 83,384</li>
-<li><strong>Never-treated share remains 68.84%</strong> in both cases</li>
+<li>Q0 (never-treated county-years) is identical across both specifications</li>
+<li>Total observations unchanged at 83,384</li>
+<li>Never-treated share remains 68.84% in both cases</li>
 <li>The two tables are built on the same set of county-years with identical treated vs.&nbsp;never-treated composition</li>
-<li>Differences arise only <strong>within the treated group</strong>: counties are reassigned across predicted spending quartiles when moving from non-jackknife to jackknife</li>
+<li>Differences arise only within the treated group: counties are reassigned across predicted spending quartiles when moving from non-jackknife to jackknife</li>
 </ul>
 </section>
 <section id="table-1.-predicted-spending-quartiles-no-jackknife" class="level3">
@@ -267,7 +259,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="quartile-switching-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="quartile-switching-analysis">Quartile Switching Analysis</h2>
-<p>Out of 464 ever-treated counties, <strong>150 (32.33%) switch quartiles</strong> after introducing the jackknife.</p>
+<p>Out of 464 ever-treated counties, 150 (32.33%) switch quartiles after introducing the jackknife.</p>
 <section id="table-3.-quartile-switching-among-ever-treated-counties" class="level3">
 <h3 class="anchored" data-anchor-id="table-3.-quartile-switching-among-ever-treated-counties">Table 3. Quartile Switching Among Ever-Treated Counties</h3>
 <div class="sourceCode" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>   q_switch |      Freq.     Percent        Cum.</span>
@@ -406,13 +398,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="blue-line-counties-analysis-figure-2.3-follow-up" class="level2">
 <h2 class="anchored" data-anchor-id="blue-line-counties-analysis-figure-2.3-follow-up">Blue-Line Counties Analysis (Figure 2.3 Follow-Up)</h2>
 <p>This section characterizes counties in the Q4 (highest predicted spending) group from Figure 2.3.</p>
-<section id="figure-2.3-spending-income-reform-types-no-jackknife" class="level4">
-<h4 class="anchored" data-anchor-id="figure-2.3-spending-income-reform-types-no-jackknife">Figure 2.3: Spending + Income * Reform Types (No Jackknife)</h4>
-<p><img src="images/12_12_25/base_q_C_quartiles_separate.png" class="img-fluid"></p>
-</section>
 <section id="baseline-spending" class="level3">
 <h3 class="anchored" data-anchor-id="baseline-spending">Baseline Spending</h3>
-<p>Blue-line counties are <strong>disproportionately low-spending</strong>. 47.32% fall into quantile 1 of baseline spending (pre_q = 1).</p>
+<p>Blue-line counties are disproportionately low-spending. 47.32% fall into quantile 1 of baseline spending (pre_q = 1).</p>
 <section id="table-5.-predicted-spending-vs-baseline-expenditure" class="level4">
 <h4 class="anchored" data-anchor-id="table-5.-predicted-spending-vs-baseline-expenditure">Table 5. Predicted Spending vs Baseline Expenditure</h4>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -441,7 +429,7 @@ Note
 </section>
 <section id="income-distribution" class="level3">
 <h3 class="anchored" data-anchor-id="income-distribution">Income Distribution</h3>
-<p>Blue-line counties are <strong>spread across the income distribution</strong> rather than concentrated in a single income quantile:</p>
+<p>Blue-line counties are spread across the income distribution rather than concentrated in a single income quantile:</p>
 <ul>
 <li>Q1: 27.68%</li>
 <li>Q2: 16.07%</li>
@@ -464,7 +452,7 @@ Note
 </section>
 <section id="state-composition" class="level3">
 <h3 class="anchored" data-anchor-id="state-composition">State Composition</h3>
-<p>Blue-line counties are <strong>geographically concentrated</strong>. Alabama alone accounts for 44.64%. Of the 15 treated states in the balanced panel, 10 appear in the blue line.</p>
+<p>Blue-line counties are geographically concentrated. Alabama alone accounts for 44.64%. Of the 15 treated states in the balanced panel, 10 appear in the blue line.</p>
 <section id="table-7.-state-composition-of-blue-line-counties" class="level4">
 <h4 class="anchored" data-anchor-id="table-7.-state-composition-of-blue-line-counties">Table 7. State Composition of Blue-Line Counties</h4>
 <div class="sourceCode" id="cb6"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>  state_abr |      Freq.     Percent        Cum.</span>
@@ -767,7 +755,7 @@ Note
 </section>
 <section id="key-pattern" class="level3">
 <h3 class="anchored" data-anchor-id="key-pattern">Key Pattern</h3>
-<p>Quartiles 1 and 2 of baseline spending tend to go to <strong>higher</strong> quartiles of predicted spending, while quartiles 3 and 4 tend to go to <strong>lower</strong> quartiles of predicted spending. This pattern is consistent with mean reversion in spending predictions.</p>
+<p>Quartiles 1 and 2 of baseline spending tend to go to <strong>higher</strong> quartiles of predicted spending, while quartiles 3 and 4 tend to go to <strong>lower</strong> quartiles of predicted spending.</p>
 <hr>
 
 

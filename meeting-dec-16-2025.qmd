@@ -25,11 +25,11 @@ This analysis verifies whether the samples are identical between the non-jackkni
 
 ### Key Findings
 
--   **Q0 (never-treated county-years) is identical** across both specifications
--   **Total observations unchanged** at 83,384
--   **Never-treated share remains 68.84%** in both cases
+-   Q0 (never-treated county-years) is identical across both specifications
+-   Total observations unchanged at 83,384
+-   Never-treated share remains 68.84% in both cases
 -   The two tables are built on the same set of county-years with identical treated vs. never-treated composition
--   Differences arise only **within the treated group**: counties are reassigned across predicted spending quartiles when moving from non-jackknife to jackknife
+-   Differences arise only within the treated group: counties are reassigned across predicted spending quartiles when moving from non-jackknife to jackknife
 
 ### Table 1. Predicted Spending Quartiles (No Jackknife)
 
@@ -65,7 +65,7 @@ This analysis verifies whether the samples are identical between the non-jackkni
 
 ## Quartile Switching Analysis
 
-Out of 464 ever-treated counties, **150 (32.33%) switch quartiles** after introducing the jackknife.
+Out of 464 ever-treated counties, 150 (32.33%) switch quartiles after introducing the jackknife.
 
 ### Table 3. Quartile Switching Among Ever-Treated Counties
 
@@ -117,7 +117,7 @@ This section characterizes counties in the Q4 (highest predicted spending) group
 
 ### Baseline Spending
 
-Blue-line counties are **disproportionately low-spending**. 47.32% fall into quantile 1 of baseline spending (pre_q = 1).
+Blue-line counties are disproportionately low-spending. 47.32% fall into quantile 1 of baseline spending (pre_q = 1).
 
 #### Table 5. Predicted Spending vs Baseline Expenditure
 
@@ -139,7 +139,7 @@ pred_spend |         1          2          3          4 |     Total
 
 ### Income Distribution
 
-Blue-line counties are **spread across the income distribution** rather than concentrated in a single income quantile:
+Blue-line counties are spread across the income distribution rather than concentrated in a single income quantile:
 
 -   Q1: 27.68%
 -   Q2: 16.07%
@@ -163,7 +163,7 @@ pred_spend |         1          2          3          4 |     Total
 
 ### State Composition
 
-Blue-line counties are **geographically concentrated**. Alabama alone accounts for 44.64%. Of the 15 treated states in the balanced panel, 10 appear in the blue line.
+Blue-line counties are geographically concentrated. Alabama alone accounts for 44.64%. Of the 15 treated states in the balanced panel, 10 appear in the blue line.
 
 #### Table 7. State Composition of Blue-Line Counties
 
@@ -216,7 +216,7 @@ This analysis examines how baseline spending quartiles map to predicted spending
 
 ### Key Pattern
 
-Quartiles 1 and 2 of baseline spending tend to go to **higher** quartiles of predicted spending, while quartiles 3 and 4 tend to go to **lower** quartiles of predicted spending. This pattern is consistent with mean reversion in spending predictions.
+Quartiles 1 and 2 of baseline spending tend to go to **higher** quartiles of predicted spending, while quartiles 3 and 4 tend to go to **lower** quartiles of predicted spending. 
 
 ------------------------------------------------------------------------
 
