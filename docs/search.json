@@ -655,14 +655,14 @@
     "href": "meeting-dec-16-2025.html",
     "title": "December 16, 2025 Meeting",
     "section": "",
-    "text": "This document presents three analyses from the week of December 15-16:\n\nSample consistency verification between non-jackknife and jackknife spending specifications\nCharacterization of high predicted spending (blue-line) counties in Figure 2.3\nCross-tabulation of baseline spending quartiles by predicted spending quartiles"
+    "text": "This document presents three analyses from the December 16 meeting:\n\nSample consistency verification between non-jackknife and jackknife spending specifications\nCharacterization of high predicted spending (blue-line) counties in Figure 2.3\nCross-tabulation of baseline spending quartiles by predicted spending quartiles"
   },
   {
     "objectID": "meeting-dec-16-2025.html#meeting-overview",
     "href": "meeting-dec-16-2025.html#meeting-overview",
     "title": "December 16, 2025 Meeting",
     "section": "",
-    "text": "This document presents three analyses from the week of December 15-16:\n\nSample consistency verification between non-jackknife and jackknife spending specifications\nCharacterization of high predicted spending (blue-line) counties in Figure 2.3\nCross-tabulation of baseline spending quartiles by predicted spending quartiles"
+    "text": "This document presents three analyses from the December 16 meeting:\n\nSample consistency verification between non-jackknife and jackknife spending specifications\nCharacterization of high predicted spending (blue-line) counties in Figure 2.3\nCross-tabulation of baseline spending quartiles by predicted spending quartiles"
   },
   {
     "objectID": "meeting-dec-16-2025.html#sample-consistency-jackknife-vs-non-jackknife",
@@ -690,7 +690,7 @@
     "href": "meeting-dec-16-2025.html#baseline-vs-predicted-spending-cross-tabulation",
     "title": "December 16, 2025 Meeting",
     "section": "Baseline vs Predicted Spending Cross-Tabulation",
-    "text": "Baseline vs Predicted Spending Cross-Tabulation\nThis analysis examines how baseline spending quartiles map to predicted spending quartiles.\n\n\n\n\n\n\n\nIf all rows are missing for a state, that state is never treated and therefore does not receive a predicted spending quartile.\nIf some rows are populated and others are missing, the state does not have enough counties in the balanced sample to form four quartiles (e.g., Arizona has only one county).\n\n\n\n\n\nKey Pattern\nQuartiles 1 and 2 of baseline spending tend to go to higher quartiles of predicted spending, while quartiles 3 and 4 tend to go to lower quartiles of predicted spending. This pattern is consistent with mean reversion in spending predictions."
+    "text": "Baseline vs Predicted Spending Cross-Tabulation\nThis analysis examines how baseline spending quartiles map to predicted spending quartiles.\n\n\n\n\n\n\n\nIf all rows are missing for a state, that state is never treated and therefore does not receive a predicted spending quartile.\nIf some rows are populated and others are missing, the state does not have enough counties in the balanced sample to form four quartiles (e.g., Arizona has only one county).\n\n\n\n\n\nTable 8. Mean Baseline Expenditure by Predicted Spending Quartile\n\n\n\n4 quantiles of exp\nMean\n\n\n\n\n1\n2.94958\n\n\n2\n3.601695\n\n\n3\n1.864407\n\n\n4\n1.256881\n\n\nTotal\n2.44181\n\n\n\n\n\nTable 9. Baseline Spending Quartile by State (pre_q × State)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\npre_q\nAL\nAZ\nAR\nCO\nDE\nFL\nGA\nID\nIL\nIN\nIA\nKY\nLA\nME\nMA\nMI\nMN\nMS\nMO\nMT\nNE\nNV\nNH\nNM\nND\nOH\nOK\nPA\nRI\nSD\nTN\nTX\nUT\nVT\n\n\n\n\n1\n2\n3\n3\n.\n.\n.\n3\n.\n.\n3\n.\n.\n4\n3\n.\n.\n3\n3\n.\n.\n3\n4\n.\n3\n.\n.\n.\n3\n3\n.\n3\n.\n.\n3\n\n\n2\n2\n.\n4\n.\n.\n.\n4\n.\n.\n4\n.\n.\n4\n4\n.\n.\n4\n3\n.\n.\n4\n4\n.\n3\n.\n.\n.\n.\n4\n.\n.\n.\n3\n.\n\n\n3\n1\n.\n2\n.\n.\n.\n2\n.\n.\n2\n.\n.\n2\n1\n.\n.\n2\n2\n.\n.\n2\n2\n.\n1\n.\n.\n.\n2\n4\n.\n.\n2\n.\n2\n\n\n4\n1\n.\n1\n.\n.\n.\n1\n.\n.\n1\n.\n.\n1\n1\n.\n.\n1\n.\n.\n.\n1\n1\n.\n2\n.\n.\n.\n.\n2\n.\n.\n.\n.\n1\n\n\n\n\n\nKey Pattern\nQuartiles 1 and 2 of baseline spending tend to go to higher quartiles of predicted spending, while quartiles 3 and 4 tend to go to lower quartiles of predicted spending. This pattern is consistent with mean reversion in spending predictions."
   },
   {
     "objectID": "meeting-dec-16-2025.html#next-steps",

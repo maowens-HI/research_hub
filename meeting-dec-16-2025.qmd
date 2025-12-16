@@ -11,11 +11,11 @@ format:
 
 ## Meeting Overview
 
-This document presents three analyses from the December 16 meeting:
+This document presents three analyses:
 
-1. Sample consistency verification between non-jackknife and jackknife spending specifications
-2. Characterization of high predicted spending (blue-line) counties in Figure 2.3
-3. Cross-tabulation of baseline spending quartiles by predicted spending quartiles
+1.  Sample consistency verification between non-jackknife and jackknife spending specifications
+2.  Characterization of high predicted spending (blue-line) counties in Figure 2.3
+3.  Cross-tabulation of baseline spending quartiles by predicted spending quartiles
 
 ------------------------------------------------------------------------
 
@@ -25,15 +25,15 @@ This analysis verifies whether the samples are identical between the non-jackkni
 
 ### Key Findings
 
-- **Q0 (never-treated county-years) is identical** across both specifications
-- **Total observations unchanged** at 83,384
-- **Never-treated share remains 68.84%** in both cases
-- The two tables are built on the same set of county-years with identical treated vs. never-treated composition
-- Differences arise only **within the treated group**: counties are reassigned across predicted spending quartiles when moving from non-jackknife to jackknife
+-   **Q0 (never-treated county-years) is identical** across both specifications
+-   **Total observations unchanged** at 83,384
+-   **Never-treated share remains 68.84%** in both cases
+-   The two tables are built on the same set of county-years with identical treated vs. never-treated composition
+-   Differences arise only **within the treated group**: counties are reassigned across predicted spending quartiles when moving from non-jackknife to jackknife
 
 ### Table 1. Predicted Spending Quartiles (No Jackknife)
 
-```stata
+``` stata
      pred_q |      Freq.     Percent        Cum.
 ------------+-----------------------------------
           0 |     57,400       68.84       68.84
@@ -47,7 +47,7 @@ This analysis verifies whether the samples are identical between the non-jackkni
 
 ### Table 2. Predicted Spending Quartiles (Jackknife)
 
-```stata
+``` stata
 4 quantiles |
          of |
  pred_spend |      Freq.     Percent        Cum.
@@ -69,7 +69,7 @@ Out of 464 ever-treated counties, **150 (32.33%) switch quartiles** after introd
 
 ### Table 3. Quartile Switching Among Ever-Treated Counties
 
-```stata
+``` stata
    q_switch |      Freq.     Percent        Cum.
 ------------+-----------------------------------
           0 |        314       67.67       67.67
@@ -86,28 +86,28 @@ No clear pattern in how counties move between quartiles. Switching is not system
 
 **Panel A. Counts**
 
-|     | JK Q1 | JK Q2 | JK Q3 | JK Q4 | Total |
-|-----|-------|-------|-------|-------|-------|
-| Q1  | 0     | 28    | 0     | 0     | 28    |
-| Q2  | 48    | 0     | 0     | 16    | 64    |
-| Q3  | 0     | 15    | 0     | 9     | 24    |
-| Q4  | 0     | 13    | 21    | 0     | 34    |
-| **Total** | 48 | 56 | 21 | 25 | 150 |
+|           | JK Q1 | JK Q2 | JK Q3 | JK Q4 | Total |
+|-----------|-------|-------|-------|-------|-------|
+| Q1        | 0     | 28    | 0     | 0     | 28    |
+| Q2        | 48    | 0     | 0     | 16    | 64    |
+| Q3        | 0     | 15    | 0     | 9     | 24    |
+| Q4        | 0     | 13    | 21    | 0     | 34    |
+| **Total** | 48    | 56    | 21    | 25    | 150   |
 
 **Panel B. Row Percentages**
 
-|     | JK Q1 | JK Q2 | JK Q3 | JK Q4 | Total |
-|-----|-------|-------|-------|-------|-------|
-| Q1  | 0.00  | 100.00| 0.00  | 0.00  | 100.00|
-| Q2  | 75.00 | 0.00  | 0.00  | 25.00 | 100.00|
-| Q3  | 0.00  | 62.50 | 0.00  | 37.50 | 100.00|
-| Q4  | 0.00  | 38.24 | 61.76 | 0.00  | 100.00|
-| **Total** | 32.00 | 37.33 | 14.00 | 16.67 | 100.00 |
+|           | JK Q1 | JK Q2  | JK Q3 | JK Q4 | Total  |
+|-----------|-------|--------|-------|-------|--------|
+| Q1        | 0.00  | 100.00 | 0.00  | 0.00  | 100.00 |
+| Q2        | 75.00 | 0.00   | 0.00  | 25.00 | 100.00 |
+| Q3        | 0.00  | 62.50  | 0.00  | 37.50 | 100.00 |
+| Q4        | 0.00  | 38.24  | 61.76 | 0.00  | 100.00 |
+| **Total** | 32.00 | 37.33  | 14.00 | 16.67 | 100.00 |
 
 ### Predicted Spending Changes
 
-- **Switchers**: Average change of −0.0019 in predicted spending relative to non-jackknife
-- **Non-switchers**: Essentially no change (+0.00001)
+-   **Switchers**: Average change of −0.0019 in predicted spending relative to non-jackknife
+-   **Non-switchers**: Essentially no change (+0.00001)
 
 ------------------------------------------------------------------------
 
@@ -121,11 +121,11 @@ Blue-line counties are **disproportionately low-spending**. 47.32% fall into qua
 
 #### Table 5. Predicted Spending vs Baseline Expenditure
 
-::: {.callout-note}
+::: callout-note
 Predicted spending quantiles are only defined among ever-treated counties.
 :::
 
-```stata
+``` stata
    4 quantiles |
         of |             4 quantiles of exp
 pred_spend |         1          2          3          4 |     Total
@@ -141,14 +141,14 @@ pred_spend |         1          2          3          4 |     Total
 
 Blue-line counties are **spread across the income distribution** rather than concentrated in a single income quantile:
 
-- Q1: 27.68%
-- Q2: 16.07%
-- Q3: 34.82%
-- Q4: 21.43%
+-   Q1: 27.68%
+-   Q2: 16.07%
+-   Q3: 34.82%
+-   Q4: 21.43%
 
 #### Table 6. Predicted Spending vs Median Family Income
 
-```stata
+``` stata
          4 |
  quantiles |
         of |         4 quantiles of median family income
@@ -167,7 +167,7 @@ Blue-line counties are **geographically concentrated**. Alabama alone accounts f
 
 #### Table 7. State Composition of Blue-Line Counties
 
-```stata
+``` stata
   state_abr |      Freq.     Percent        Cum.
 ------------+-----------------------------------
          AL |      2,800       44.64       44.64
@@ -191,24 +191,24 @@ Blue-line counties are **geographically concentrated**. Alabama alone accounts f
 This analysis examines how baseline spending quartiles map to predicted spending quartiles.
 
 ::: {.callout-note appearance="minimal"}
-- If all rows are missing for a state, that state is never treated and therefore does not receive a predicted spending quartile.
-- If some rows are populated and others are missing, the state does not have enough counties in the balanced sample to form four quartiles (e.g., Arizona has only one county).
+-   If all rows are missing for a state, that state is never treated and therefore does not receive a predicted spending quartile.
+-   If some rows are populated and others are missing, the state does not have enough counties in the balanced sample to form four quartiles (e.g., Arizona has only one county).
 :::
 
 ### Table 8. Mean Baseline Expenditure by Predicted Spending Quartile
 
-| 4 quantiles of exp | Mean |
-|-------------------|------|
-| 1 | 2.94958 |
-| 2 | 3.601695 |
-| 3 | 1.864407 |
-| 4 | 1.256881 |
-| **Total** | 2.44181 |
+| 4 quantiles of exp | Mean     |
+|--------------------|----------|
+| 1                  | 2.94958  |
+| 2                  | 3.601695 |
+| 3                  | 1.864407 |
+| 4                  | 1.256881 |
+| **Total**          | 2.44181  |
 
 ### Table 9. Baseline Spending Quartile by State (pre_q × State)
 
 | pre_q | AL | AZ | AR | CO | DE | FL | GA | ID | IL | IN | IA | KY | LA | ME | MA | MI | MN | MS | MO | MT | NE | NV | NH | NM | ND | OH | OK | PA | RI | SD | TN | TX | UT | VT |
-|-------|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
 | 1 | 2 | 3 | 3 | . | . | . | 3 | . | . | 3 | . | . | 4 | 3 | . | . | 3 | 3 | . | . | 3 | 4 | . | 3 | . | . | . | 3 | 3 | . | 3 | . | . | 3 |
 | 2 | 2 | . | 4 | . | . | . | 4 | . | . | 4 | . | . | 4 | 4 | . | . | 4 | 3 | . | . | 4 | 4 | . | 3 | . | . | . | . | 4 | . | . | . | 3 | . |
 | 3 | 1 | . | 2 | . | . | . | 2 | . | . | 2 | . | . | 2 | 1 | . | . | 2 | 2 | . | . | 2 | 2 | . | 1 | . | . | . | 2 | 4 | . | . | 2 | . | 2 |
@@ -220,7 +220,3 @@ Quartiles 1 and 2 of baseline spending tend to go to **higher** quartiles of pre
 
 ------------------------------------------------------------------------
 
-## Next Steps
-
-- Organize tasks assigned from Friday meeting into research hub documentation
-- Continue advancing Florida research
