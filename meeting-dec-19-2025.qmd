@@ -37,11 +37,13 @@ format:
 
 ## Figure 2: Quartiles (Baseline Specification)
 
-::: {layout-ncol=3}
+::: {layout-ncol=2}
 ![A: Spending Only (pre_q)](images/12_19_25_meeting/base_q_A_quartiles_separate.png)
 
 ![B: Spending + Income (pre_q + inc_q)](images/12_19_25_meeting/base_q_B_quartiles_separate.png)
+:::
 
+::: {layout="[[1], [0.25, 0.5, 0.25]]"}
 ![C: Spending + Income \* Reform Types](images/12_19_25_meeting/base_q_C_quartiles_separate.png)
 :::
 
@@ -49,11 +51,13 @@ format:
 
 ## Figure 2: High vs Low (Baseline Specification)
 
-::: {layout-ncol=3}
+::: {layout-ncol=2}
 ![A: Spending Only - High vs Low](images/12_19_25_meeting/baseline_spec_A_def_A_high_vs_low.png)
 
 ![B: Spending + Income - High vs Low](images/12_19_25_meeting/baseline_spec_B_def_A_high_vs_low.png)
+:::
 
+::: {layout="[[1], [0.25, 0.5, 0.25]]"}
 ![C: Spending + Income \* Reform Types - High vs Low](images/12_19_25_meeting/baseline_spec_C_def_A_high_vs_low.png)
 :::
 
@@ -61,11 +65,13 @@ format:
 
 ## Figure 2: Quartiles (Jackknife Specification)
 
-::: {layout-ncol=3}
+::: {layout-ncol=2}
 ![A: Spending Only (Jackknife)](images/12_19_25_meeting/jk_q_A_quartiles.png)
 
 ![B: Spending + Income (Jackknife)](images/12_19_25_meeting/jk_q_B_quartiles.png)
+:::
 
+::: {layout="[[1], [0.25, 0.5, 0.25]]"}
 ![C: Spending + Income \* Reform Types (Jackknife)](images/12_19_25_meeting/jk_q_C_quartiles.png)
 :::
 
@@ -73,11 +79,13 @@ format:
 
 ## Figure 2: High vs Low (Jackknife Specification)
 
-::: {layout-ncol=3}
+::: {layout-ncol=2}
 ![A: Spending Only (Jackknife) - High vs Low](images/12_19_25_meeting/jackknife_spec_A_def_A_high_vs_low.png)
 
 ![B: Spending + Income (Jackknife) - High vs Low](images/12_19_25_meeting/jackknife_spec_B_def_A_high_vs_low.png)
+:::
 
+::: {layout="[[1], [0.25, 0.5, 0.25]]"}
 ![C: Spending + Income \* Reform Types (Jackknife) - High vs Low](images/12_19_25_meeting/jackknife_spec_C_def_A_high_vs_low.png)
 :::
 
