@@ -131,6 +131,15 @@ ul.task-list li input[type="checkbox"] {
 <div class="carousel-slide">
 <div class="research-card">
 <p><span class="card-category">Notes</span></p>
+<p><span class="card-title">December 19: Too few counties</span></p>
+<p><span class="card-excerpt">Re-running Fig 1 &amp; Fig 2 specifications restricted to states with 10+ balanced counties</span></p>
+<p><span class="card-meta">December 2025</span></p>
+<p><a href="./meeting-dec-19-2025.html" class="card-link">View Meeting Notes</a></p>
+</div>
+</div>
+<div class="carousel-slide">
+<div class="research-card">
+<p><span class="card-category">Notes</span></p>
 <p><span class="card-title">December 16: Sample Consistency and Blue-Line County Analysis</span></p>
 <p><span class="card-excerpt">Jackknife vs non-jackknife sample verification, quartile switching, and characterization of high predicted spending counties</span></p>
 <p><span class="card-meta">December 2025</span></p>
@@ -238,6 +247,32 @@ ul.task-list li input[type="checkbox"] {
 <hr>
 <section id="december-2025" class="level3 mt-xl">
 <h3 class="mt-xl anchored" data-anchor-id="december-2025">December 2025</h3>
+<section id="december-19-too-few-counties" class="level4">
+<h4 class="anchored" data-anchor-id="december-19-too-few-counties">December 19: Too few counties</h4>
+<p>Addressing the issue of states contributing very few counties to the balanced sample, which undermines quartile-based effect interpretation.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<ul>
+<li>Problem: Several states contribute fewer than 4 counties to the balanced sample, making within-state quartiles poorly defined</li>
+<li>Solution: Restrict sample to states that are (i) never treated or (ii) ever-treated with 10+ counties meeting balance criteria</li>
+<li>Re-ran Fig 1 (county distribution by quartile) and Fig 2 (event studies) with three specifications each:
+<ul>
+<li>Specification A: Baseline spending only (pre_q)</li>
+<li>Specification B: Baseline spending + Income quartiles (pre_q + inc_q)</li>
+<li>Specification C: Baseline spending + Income × Reform Types (pre_q + inc_q*reform_types)</li>
+</ul></li>
+<li>Both baseline and jackknife versions presented for quartile and high vs low comparisons</li>
+</ul>
+</div>
+</div>
+</div>
+<p><a href="./meeting-dec-19-2025.html" class="btn-ghost">View Full Meeting Notes</a></p>
+<hr>
+</section>
 <section id="dec-16-sample-consistency-and-blue-line-county-analysis" class="level4">
 <h4 class="anchored" data-anchor-id="dec-16-sample-consistency-and-blue-line-county-analysis">Dec 16: Sample Consistency and Blue-Line County Analysis</h4>
 <p>Verifying sample consistency between jackknife and non-jackknife specifications, analyzing quartile switching patterns, and characterizing high predicted spending (blue-line) counties.</p>

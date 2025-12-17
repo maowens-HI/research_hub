@@ -60,7 +60,7 @@ In the balanced sample, several states contribute very few counties, in some cas
 
 ------------------------------------------------------------------------
 
-## Figure 1: County Distribution
+## Figure 1
 
 ### Quartiles 1-4
 
@@ -80,7 +80,7 @@ In the balanced sample, several states contribute very few counties, in some cas
 
 ------------------------------------------------------------------------
 
-## Figure 2: Quartiles (Baseline Specification)
+## Figure 2: Quartiles (No Jackknife)
 
 ::: {layout-ncol="2"}
 ![A: Spending Only (pre_q)](images/12_19_25_meeting/base_q_A_quartiles_separate.png)
@@ -94,7 +94,7 @@ In the balanced sample, several states contribute very few counties, in some cas
 
 ------------------------------------------------------------------------
 
-## Figure 2: High vs Low (Baseline Specification)
+## Figure 2: High vs Low (No Jackknife)
 
 ::: {layout-ncol="2"}
 ![A: Spending Only - High vs Low](images/12_19_25_meeting/baseline_spec_A_def_A_high_vs_low.png)
@@ -108,7 +108,7 @@ In the balanced sample, several states contribute very few counties, in some cas
 
 ------------------------------------------------------------------------
 
-## Figure 2: Quartiles (Jackknife Specification)
+## Figure 2: Quartiles (Jackknife)
 
 ::: {layout-ncol="2"}
 ![A: Spending Only (Jackknife)](images/12_19_25_meeting/jk_q_A_quartiles.png)
@@ -122,7 +122,7 @@ In the balanced sample, several states contribute very few counties, in some cas
 
 ------------------------------------------------------------------------
 
-## Figure 2: High vs Low (Jackknife Specification)
+## Figure 2: High vs Low (Jackknife)
 
 ::: {layout-ncol="2"}
 ![A: Spending Only (Jackknife) - High vs Low](images/12_19_25_meeting/jackknife_spec_A_def_A_high_vs_low.png)

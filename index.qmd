@@ -28,7 +28,7 @@ Recent notes.
 ::: research-card
 [Notes]{.card-category}
 
-[December 19: Small-State Robustness Analysis]{.card-title}
+[December 19: Too few counties]{.card-title}
 
 [Re-running Fig 1 & Fig 2 specifications restricted to states with 10+ balanced counties]{.card-excerpt}
 
@@ -203,7 +203,7 @@ A chronological record of project milestones and findings.
 
 ### December 2025 {.mt-xl}
 
-#### Dec 19: Small-State Robustness Analysis
+#### December 19: Too few counties
 
 Addressing the issue of states contributing very few counties to the balanced sample, which undermines quartile-based effect interpretation.
 
