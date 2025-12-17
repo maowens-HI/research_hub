@@ -9,45 +9,37 @@ format:
     toc-depth: 3
 ---
 
-## Meeting Overview
-
-This document presents results from re-running Figures 1 and 2 with sample restrictions to states that are either (i) never treated, or (ii) ever-treated and have 10 or more counties meeting the balance criteria.
-
-### Task Description
+## Task
 
 > Let's try re-running the Fig 1 and Fig 2's (3 versions each: pre_q; pre_q + inc_q; pre_q + inc_q*reform_types), with the sample limited to states that are (i) never treated or (ii) ever-treated and have 10 or more counties meeting the balance criteria.
 
 ------------------------------------------------------------------------
 
-## Figure 1: Bad Counties Analysis
+## Figure 1
 
-These figures show patterns for "bad counties" under the restricted sample.
-
-### Figure 1.1: Bad County 1
+### Figure 1.1: Quartile 1
 
 ![](images/12_19_25_meeting/bad_county_1.png)
 
-### Figure 1.2: Bad County 2
+### Figure 1.2: Quartile 2
 
 ![](images/12_19_25_meeting/bad_county_2.png)
 
-### Figure 1.3: Bad County 3
+### Figure 1.3: Quartile 3
 
 ![](images/12_19_25_meeting/bad_county_3.png)
 
-### Figure 1.4: Bad County 4
+### Figure 1.4: Quartile 4
 
 ![](images/12_19_25_meeting/bad_county_4.png)
 
-### Figure 1.5: Bad County BTM
+### Figure 1.5: Bottom
 
 ![](images/12_19_25_meeting/bad_county_btm.png)
 
 ------------------------------------------------------------------------
 
-## Figure 2: Baseline Specification Results (Non-Jackknife)
-
-Three versions of Figure 2 with the restricted sample using non-jackknife spending predictions.
+## Figure 2: Baseline Specification (Non-Jackknife)
 
 ### Figure 2.1: Spending Only (pre_q)
 
@@ -63,9 +55,7 @@ Three versions of Figure 2 with the restricted sample using non-jackknife spendi
 
 ------------------------------------------------------------------------
 
-## Figure 2: High vs Low Comparisons (Baseline Specification)
-
-Comparing high vs low predicted spending groups using Definition A (baseline specification).
+## Figure 2: High vs Low (Baseline Specification)
 
 ### Figure 2.A1: Spending Only - High vs Low
 
@@ -81,9 +71,7 @@ Comparing high vs low predicted spending groups using Definition A (baseline spe
 
 ------------------------------------------------------------------------
 
-## Figure 2: Jackknife Specification Results
-
-Three versions of Figure 2 with the restricted sample using jackknife spending predictions.
+## Figure 2: Jackknife Specification
 
 ### Figure 2.4: Spending Only (Jackknife)
 
@@ -93,11 +81,13 @@ Three versions of Figure 2 with the restricted sample using jackknife spending p
 
 ![](images/12_19_25_meeting/jk_q_B_quartiles.png)
 
+### Figure 2.6: Spending + Income * Reform Types (Jackknife)
+
+![](images/12_19_25_meeting/jk_q_C_quartiles.png)
+
 ------------------------------------------------------------------------
 
-## Figure 2: High vs Low Comparisons (Jackknife Specification)
-
-Comparing high vs low predicted spending groups using jackknife predictions.
+## Figure 2: High vs Low (Jackknife Specification)
 
 ### Figure 2.B1: Spending Only (Jackknife) - High vs Low
 
