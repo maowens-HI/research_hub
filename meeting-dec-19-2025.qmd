@@ -39,7 +39,7 @@ format:
 
 ------------------------------------------------------------------------
 
-## Figure 2: Baseline Specification (Non-Jackknife)
+## Figure 2: Quartiles (Baseline Specification)
 
 ### Figure 2.1: Spending Only (pre_q)
 
@@ -71,7 +71,7 @@ format:
 
 ------------------------------------------------------------------------
 
-## Figure 2: Jackknife Specification
+## Figure 2: Quartiles (Jackknife Specification)
 
 ### Figure 2.4: Spending Only (Jackknife)
 
