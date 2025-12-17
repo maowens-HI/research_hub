@@ -704,14 +704,14 @@
     "href": "meeting-dec-19-2025.html",
     "title": "December 19, 2025 Meeting",
     "section": "",
-    "text": "Let’s try re-running the Fig 1 and Fig 2’s (3 versions each: pre_q; pre_q + inc_q; pre_q + inc_q*reform_types), with the sample limited to states that are (i) never treated or (ii) ever-treated and have 10 or more counties meeting the balance criteria."
+    "text": "In the balanced sample, several states contribute very few counties, in some cases fewer than four. This undermines the interpretation of quartile-based effects, since within-state quartiles are poorly defined when the number of counties is small.\n state_fips |      Freq.     Percent        Cum.\n------------+-----------------------------------\n         01 |         50        3.36        3.36\n         04 |          1        0.07        3.43\n         05 |         17        1.14        4.57\n         08 |         50        3.36        7.92\n         10 |          3        0.20        8.13\n         12 |         67        4.50       12.63\n         13 |        155       10.41       23.04\n         16 |         36        2.42       25.45\n         17 |         89        5.98       31.43\n         18 |         86        5.78       37.21\n         19 |         95        6.38       43.59\n         21 |         34        2.28       45.87\n         22 |         64        4.30       50.17\n         23 |          7        0.47       50.64\n         25 |          9        0.60       51.24\n         26 |         65        4.37       55.61\n         27 |         71        4.77       60.38\n         28 |         75        5.04       65.41\n         29 |         85        5.71       71.12\n         30 |          3        0.20       71.32\n         31 |         37        2.48       73.81\n         32 |         17        1.14       74.95\n         33 |          7        0.47       75.42\n         35 |         20        1.34       76.76\n         38 |         10        0.67       77.43\n         39 |         74        4.97       82.40\n         40 |         65        4.37       86.77\n         42 |         57        3.83       90.60\n         44 |          3        0.20       90.80\n         46 |         45        3.02       93.82\n         47 |          2        0.13       93.96\n         48 |         54        3.63       97.58\n         49 |         29        1.95       99.53\n         50 |          7        0.47      100.00\n------------+-----------------------------------\n      Total |      1,489      100.00"
   },
   {
     "objectID": "meeting-dec-19-2025.html#task",
     "href": "meeting-dec-19-2025.html#task",
     "title": "December 19, 2025 Meeting",
-    "section": "",
-    "text": "Let’s try re-running the Fig 1 and Fig 2’s (3 versions each: pre_q; pre_q + inc_q; pre_q + inc_q*reform_types), with the sample limited to states that are (i) never treated or (ii) ever-treated and have 10 or more counties meeting the balance criteria."
+    "section": "Task",
+    "text": "Task\n\nLet’s try re-running the Fig 1 and Fig 2’s (3 versions each: pre_q; pre_q + inc_q; pre_q + inc_q*reform_types), with the sample limited to states that are (i) never treated or (ii) ever-treated and have 10 or more counties meeting the balance criteria."
   },
   {
     "objectID": "meeting-dec-19-2025.html#figure-1",
@@ -725,27 +725,41 @@
     "href": "meeting-dec-19-2025.html#figure-2-quartiles-baseline-specification",
     "title": "December 19, 2025 Meeting",
     "section": "Figure 2: Quartiles (Baseline Specification)",
-    "text": "Figure 2: Quartiles (Baseline Specification)\n\nFigure 2.1: Spending Only (pre_q)\n\n\n\nFigure 2.2: Spending + Income (pre_q + inc_q)\n\n\n\nFigure 2.3: Spending + Income * Reform Types (pre_q + inc_q * reform_types)"
+    "text": "Figure 2: Quartiles (Baseline Specification)\n\n\n\n\n\n\n\n\n\nA: Spending Only (pre_q)\n\n\n\n\n\n\n\nB: Spending + Income (pre_q + inc_q)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nC: Spending + Income * Reform Types"
   },
   {
     "objectID": "meeting-dec-19-2025.html#figure-2-high-vs-low-baseline-specification",
     "href": "meeting-dec-19-2025.html#figure-2-high-vs-low-baseline-specification",
     "title": "December 19, 2025 Meeting",
     "section": "Figure 2: High vs Low (Baseline Specification)",
-    "text": "Figure 2: High vs Low (Baseline Specification)\n\nFigure 2.A1: Spending Only - High vs Low\n\n\n\nFigure 2.A2: Spending + Income - High vs Low\n\n\n\nFigure 2.A3: Spending + Income * Reform Types - High vs Low"
+    "text": "Figure 2: High vs Low (Baseline Specification)\n\n\n\n\n\n\n\n\n\nA: Spending Only - High vs Low\n\n\n\n\n\n\n\nB: Spending + Income - High vs Low\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nC: Spending + Income * Reform Types - High vs Low"
   },
   {
     "objectID": "meeting-dec-19-2025.html#figure-2-quartiles-jackknife-specification",
     "href": "meeting-dec-19-2025.html#figure-2-quartiles-jackknife-specification",
     "title": "December 19, 2025 Meeting",
     "section": "Figure 2: Quartiles (Jackknife Specification)",
-    "text": "Figure 2: Quartiles (Jackknife Specification)\n\nFigure 2.4: Spending Only (Jackknife)\n\n\n\nFigure 2.5: Spending + Income (Jackknife)\n\n\n\nFigure 2.6: Spending + Income * Reform Types (Jackknife)"
+    "text": "Figure 2: Quartiles (Jackknife Specification)\n\n\n\n\n\n\n\n\n\nA: Spending Only (Jackknife)\n\n\n\n\n\n\n\nB: Spending + Income (Jackknife)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nC: Spending + Income * Reform Types (Jackknife)"
   },
   {
     "objectID": "meeting-dec-19-2025.html#figure-2-high-vs-low-jackknife-specification",
     "href": "meeting-dec-19-2025.html#figure-2-high-vs-low-jackknife-specification",
     "title": "December 19, 2025 Meeting",
     "section": "Figure 2: High vs Low (Jackknife Specification)",
-    "text": "Figure 2: High vs Low (Jackknife Specification)\n\nFigure 2.B1: Spending Only (Jackknife) - High vs Low\n\n\n\nFigure 2.B2: Spending + Income (Jackknife) - High vs Low\n\n\n\nFigure 2.B3: Spending + Income * Reform Types (Jackknife) - High vs Low"
+    "text": "Figure 2: High vs Low (Jackknife Specification)\n\n\n\n\n\n\n\n\n\nA: Spending Only (Jackknife) - High vs Low\n\n\n\n\n\n\n\nB: Spending + Income (Jackknife) - High vs Low\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nC: Spending + Income * Reform Types (Jackknife) - High vs Low"
+  },
+  {
+    "objectID": "meeting-dec-19-2025.html#figure-1-county-distribution",
+    "href": "meeting-dec-19-2025.html#figure-1-county-distribution",
+    "title": "December 19, 2025 Meeting",
+    "section": "Figure 1: County Distribution",
+    "text": "Figure 1: County Distribution\n\nQuartiles 1-4\n\n\n\n\n\n\n\n\n\nQuartile 1\n\n\n\n\n\n\n\nQuartile 2\n\n\n\n\n\n\n\n\n\nQuartile 3\n\n\n\n\n\n\n\nQuartile 4\n\n\n\n\n\n\n\nBottom"
+  },
+  {
+    "objectID": "meeting-dec-19-2025.html#problem",
+    "href": "meeting-dec-19-2025.html#problem",
+    "title": "December 19, 2025 Meeting",
+    "section": "",
+    "text": "In the balanced sample, several states contribute very few counties, in some cases fewer than four. This undermines the interpretation of quartile-based effects, since within-state quartiles are poorly defined when the number of counties is small.\n state_fips |      Freq.     Percent        Cum.\n------------+-----------------------------------\n         01 |         50        3.36        3.36\n         04 |          1        0.07        3.43\n         05 |         17        1.14        4.57\n         08 |         50        3.36        7.92\n         10 |          3        0.20        8.13\n         12 |         67        4.50       12.63\n         13 |        155       10.41       23.04\n         16 |         36        2.42       25.45\n         17 |         89        5.98       31.43\n         18 |         86        5.78       37.21\n         19 |         95        6.38       43.59\n         21 |         34        2.28       45.87\n         22 |         64        4.30       50.17\n         23 |          7        0.47       50.64\n         25 |          9        0.60       51.24\n         26 |         65        4.37       55.61\n         27 |         71        4.77       60.38\n         28 |         75        5.04       65.41\n         29 |         85        5.71       71.12\n         30 |          3        0.20       71.32\n         31 |         37        2.48       73.81\n         32 |         17        1.14       74.95\n         33 |          7        0.47       75.42\n         35 |         20        1.34       76.76\n         38 |         10        0.67       77.43\n         39 |         74        4.97       82.40\n         40 |         65        4.37       86.77\n         42 |         57        3.83       90.60\n         44 |          3        0.20       90.80\n         46 |         45        3.02       93.82\n         47 |          2        0.13       93.96\n         48 |         54        3.63       97.58\n         49 |         29        1.95       99.53\n         50 |          7        0.47      100.00\n------------+-----------------------------------\n      Total |      1,489      100.00"
   }
 ]
