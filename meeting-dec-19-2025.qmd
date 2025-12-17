@@ -11,7 +11,7 @@ format:
 
 ## Task
 
-> Let's try re-running the Fig 1 and Fig 2's (3 versions each: pre_q; pre_q + inc_q; pre_q + inc_q*reform_types), with the sample limited to states that are (i) never treated or (ii) ever-treated and have 10 or more counties meeting the balance criteria.
+> Let's try re-running the Fig 1 and Fig 2's (3 versions each: pre_q; pre_q + inc_q; pre_q + inc_q\*reform_types), with the sample limited to states that are (i) never treated or (ii) ever-treated and have 10 or more counties meeting the balance criteria.
 
 ------------------------------------------------------------------------
 
@@ -49,7 +49,7 @@ format:
 
 ![](images/12_19_25_meeting/base_q_B_quartiles_separate.png)
 
-### Figure 2.3: Spending + Income * Reform Types (pre_q + inc_q * reform_types)
+### Figure 2.3: Spending + Income \* Reform Types (pre_q + inc_q \* reform_types)
 
 ![](images/12_19_25_meeting/base_q_C_quartiles_separate.png)
 
@@ -65,7 +65,7 @@ format:
 
 ![](images/12_19_25_meeting/baseline_spec_B_def_A_high_vs_low.png)
 
-### Figure 2.A3: Spending + Income * Reform Types - High vs Low
+### Figure 2.A3: Spending + Income \* Reform Types - High vs Low
 
 ![](images/12_19_25_meeting/baseline_spec_C_def_A_high_vs_low.png)
 
@@ -81,7 +81,7 @@ format:
 
 ![](images/12_19_25_meeting/jk_q_B_quartiles.png)
 
-### Figure 2.6: Spending + Income * Reform Types (Jackknife)
+### Figure 2.6: Spending + Income \* Reform Types (Jackknife)
 
 ![](images/12_19_25_meeting/jk_q_C_quartiles.png)
 
@@ -97,9 +97,8 @@ format:
 
 ![](images/12_19_25_meeting/jackknife_spec_B_def_A_high_vs_low.png)
 
-### Figure 2.B3: Spending + Income * Reform Types (Jackknife) - High vs Low
+### Figure 2.B3: Spending + Income \* Reform Types (Jackknife) - High vs Low
 
 ![](images/12_19_25_meeting/jackknife_spec_C_def_A_high_vs_low.png)
 
 ------------------------------------------------------------------------
-
