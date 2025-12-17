@@ -28,6 +28,20 @@ Recent notes.
 ::: research-card
 [Notes]{.card-category}
 
+[December 19: Small-State Robustness Analysis]{.card-title}
+
+[Re-running Fig 1 & Fig 2 specifications restricted to states with 10+ balanced counties]{.card-excerpt}
+
+[December 2025]{.card-meta}
+
+[View Meeting Notes](meeting-dec-19-2025.qmd){.card-link}
+:::
+::::
+
+:::: carousel-slide
+::: research-card
+[Notes]{.card-category}
+
 [December 16: Sample Consistency and Blue-Line County Analysis]{.card-title}
 
 [Jackknife vs non-jackknife sample verification, quartile switching, and characterization of high predicted spending counties]{.card-excerpt}
@@ -188,6 +202,24 @@ A chronological record of project milestones and findings.
 ------------------------------------------------------------------------
 
 ### December 2025 {.mt-xl}
+
+#### Dec 19: Small-State Robustness Analysis
+
+Addressing the issue of states contributing very few counties to the balanced sample, which undermines quartile-based effect interpretation.
+
+::: {.callout-note appearance="minimal"}
+- Problem: Several states contribute fewer than 4 counties to the balanced sample, making within-state quartiles poorly defined
+- Solution: Restrict sample to states that are (i) never treated or (ii) ever-treated with 10+ counties meeting balance criteria
+- Re-ran Fig 1 (county distribution by quartile) and Fig 2 (event studies) with three specifications each:
+  - Specification A: Baseline spending only (pre_q)
+  - Specification B: Baseline spending + Income quartiles (pre_q + inc_q)
+  - Specification C: Baseline spending + Income × Reform Types (pre_q + inc_q*reform_types)
+- Both baseline and jackknife versions presented for quartile and high vs low comparisons
+:::
+
+[View Full Meeting Notes](meeting-dec-19-2025.qmd){.btn-ghost}
+
+------------------------------------------------------------------------
 
 #### Dec 16: Sample Consistency and Blue-Line County Analysis
 
