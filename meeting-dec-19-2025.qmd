@@ -97,5 +97,9 @@ format:
 
 ![](images/12_19_25_meeting/jackknife_spec_B_def_A_high_vs_low.png)
 
+### Figure 2.B3: Spending + Income * Reform Types (Jackknife) - High vs Low
+
+![](images/12_19_25_meeting/jackknife_spec_C_def_A_high_vs_low.png)
+
 ------------------------------------------------------------------------
 
