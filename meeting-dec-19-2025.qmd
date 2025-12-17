@@ -8,11 +8,12 @@ format:
     toc-location: left
     toc-depth: 3
 ---
+
 ## Problem
 
 In the balanced sample of counties, several states contribute very few counties, in some cases fewer than four. This undermines the interpretation of quartile-based effects, since within-state quartiles are poorly defined when the number of counties is small.
 
-```stata
+``` stata
  state_fips |      Freq.     Percent        Cum.
 ------------+-----------------------------------
          01 |         50        3.36        3.36
@@ -52,8 +53,8 @@ In the balanced sample of counties, several states contribute very few counties,
 ------------+-----------------------------------
       Total |      1,489      100.00
 
-
 ```
+
 ## Task
 
 > Let's try re-running the Fig 1 and Fig 2's (3 versions each: pre_q; pre_q + inc_q; pre_q + inc_q\*reform_types), with the sample limited to states that are (i) never treated or (ii) ever-treated and have 10 or more counties meeting the balance criteria.
