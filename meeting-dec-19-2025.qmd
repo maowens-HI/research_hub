@@ -10,7 +10,7 @@ format:
 ---
 ## Problem
 
-In the balanced sample, several states contribute very few counties, in some cases fewer than four. This undermines the interpretation of quartile-based effects, since within-state quartiles are poorly defined when the number of counties is small.
+In the balanced sample of counties, several states contribute very few counties, in some cases fewer than four. This undermines the interpretation of quartile-based effects, since within-state quartiles are poorly defined when the number of counties is small.
 
 ```stata
  state_fips |      Freq.     Percent        Cum.
