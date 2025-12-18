@@ -78,9 +78,11 @@ In the balanced sample of counties, several states contribute very few counties,
 
 ![](images/12_19_25_meeting/bad_county_btm.png)
 
-------------------------------------------------------------------------
+-------------------
 
-## Figure 2: Quartiles (No Jackknife)
+# Figure 2: Quartiles (No Jackknife)
+
+## Pre-Edits
 
 ::: {layout-ncol="2"}
 ![A: Spending Only (pre_q)](images/12_19_25_meeting/base_q_A_quartiles_separate.png)
@@ -89,12 +91,24 @@ In the balanced sample of counties, several states contribute very few counties,
 :::
 
 ::: {layout="[[1], [0.25, 0.5, 0.25]]"}
-![C: Spending + Income \* Reform Types](images/12_19_25_meeting/base_q_C_quartiles_separate.png)
+![C: Spending + Income * Reform Types](images/12_19_25_meeting/base_q_C_quartiles_separate.png)
 :::
 
-------------------------------------------------------------------------
+## Post Edits
 
-## Figure 2: High vs Low (No Jackknife)
+::: {layout-ncol="2"}
+![A: Spending Only (pre_q)](images/12_19_edit/base_q_A_quartiles_separate.png)
+
+![B: Spending + Income (pre_q + inc_q)](images/12_19_edit/base_q_B_quartiles_separate.png)
+:::
+
+::: {layout="[[1], [0.25, 0.5, 0.25]]"}
+![C: Spending + Income * Reform Types](images/12_19_edit/base_q_C_quartiles_separate.png)
+:::
+
+# Figure 2: High vs Low (No Jackknife)
+
+## Pre- Edit
 
 ::: {layout-ncol="2"}
 ![A: Spending Only - High vs Low](images/12_19_25_meeting/baseline_spec_A_def_A_high_vs_low.png)
@@ -106,9 +120,25 @@ In the balanced sample of counties, several states contribute very few counties,
 ![C: Spending + Income \* Reform Types - High vs Low](images/12_19_25_meeting/baseline_spec_C_def_A_high_vs_low.png)
 :::
 
+## Post-Edit
+
+## Figure 2: High vs Low (No Jackknife)
+
+::: {layout-ncol="2"}
+![A: Spending Only - High vs Low](images/12_19_edit/baseline_spec_A_def_A_high_vs_low.png)
+
+![B: Spending + Income - High vs Low](images/12_19_edit/baseline_spec_B_def_A_high_vs_low.png)
+:::
+
+::: {layout="[[1], [0.25, 0.5, 0.25]]"}
+![C: Spending + Income \* Reform Types - High vs Low](images/12_19_edit/baseline_spec_C_def_A_high_vs_low.png)
+:::
+
 ------------------------------------------------------------------------
 
-## Figure 2: Quartiles (Jackknife)
+# Figure 2: Quartiles (Jackknife)
+
+# Pre-Edit
 
 ::: {layout-ncol="2"}
 ![A: Spending Only (Jackknife)](images/12_19_25_meeting/jk_q_A_quartiles.png)
@@ -120,9 +150,23 @@ In the balanced sample of counties, several states contribute very few counties,
 ![C: Spending + Income \* Reform Types (Jackknife)](images/12_19_25_meeting/jk_q_C_quartiles.png)
 :::
 
+# Post-Edit
+
+::: {layout-ncol="2"}
+![A: Spending Only (Jackknife)](images/12_19_edit/jk_q_A_quartiles.png)
+
+![B: Spending + Income (Jackknife)](images/12_19_edit/jk_q_B_quartiles.png)
+:::
+
+::: {layout="[[1], [0.25, 0.5, 0.25]]"}
+![C: Spending + Income \* Reform Types (Jackknife)](images/12_19_edit/jk_q_C_quartiles.png)
+:::
+
 ------------------------------------------------------------------------
 
-## Figure 2: High vs Low (Jackknife)
+# Figure 2: High vs Low (Jackknife)
+
+## Pre-Edit
 
 ::: {layout-ncol="2"}
 ![A: Spending Only (Jackknife) - High vs Low](images/12_19_25_meeting/jackknife_spec_A_def_A_high_vs_low.png)
@@ -132,6 +176,18 @@ In the balanced sample of counties, several states contribute very few counties,
 
 ::: {layout="[[1], [0.25, 0.5, 0.25]]"}
 ![C: Spending + Income \* Reform Types (Jackknife) - High vs Low](images/12_19_25_meeting/jackknife_spec_C_def_A_high_vs_low.png)
+:::
+
+## Post-Edit
+
+::: {layout-ncol="2"}
+![A: Spending Only (Jackknife) - High vs Low](images/12_19_edit/jackknife_spec_A_def_A_high_vs_low.png)
+
+![B: Spending + Income (Jackknife) - High vs Low](images/12_19_edit/jackknife_spec_B_def_A_high_vs_low.png)
+:::
+
+::: {layout="[[1], [0.25, 0.5, 0.25]]"}
+![C: Spending + Income \* Reform Types (Jackknife) - High vs Low](images/12_19_edit/jackknife_spec_C_def_A_high_vs_low.png)
 :::
 
 ------------------------------------------------------------------------
