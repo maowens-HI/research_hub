@@ -52,7 +52,6 @@ In the balanced sample of counties, several states contribute very few counties,
          50 |          7        0.47      100.00
 ------------+-----------------------------------
       Total |      1,489      100.00
-
 ```
 
 ## Task
