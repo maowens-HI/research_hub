@@ -122,7 +122,6 @@ In the balanced sample of counties, several states contribute very few counties,
 
 ## Post-Edit
 
-## Figure 2: High vs Low (No Jackknife)
 
 ::: {layout-ncol="2"}
 ![A: Spending Only - High vs Low](images/12_19_edit/baseline_spec_A_def_A_high_vs_low.png)
@@ -138,7 +137,7 @@ In the balanced sample of counties, several states contribute very few counties,
 
 # Figure 2: Quartiles (Jackknife)
 
-# Pre-Edit
+## Pre-Edit
 
 ::: {layout-ncol="2"}
 ![A: Spending Only (Jackknife)](images/12_19_25_meeting/jk_q_A_quartiles.png)
@@ -150,7 +149,7 @@ In the balanced sample of counties, several states contribute very few counties,
 ![C: Spending + Income \* Reform Types (Jackknife)](images/12_19_25_meeting/jk_q_C_quartiles.png)
 :::
 
-# Post-Edit
+## Post-Edit
 
 ::: {layout-ncol="2"}
 ![A: Spending Only (Jackknife)](images/12_19_edit/jk_q_A_quartiles.png)
