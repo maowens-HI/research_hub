@@ -106,6 +106,8 @@ In the balanced sample of counties, several states contribute very few counties,
 ![C: Spending + Income * Reform Types](images/12_19_edit/base_q_C_quartiles_separate.png)
 :::
 
+--------------
+
 # Figure 2: High vs Low (No Jackknife)
 
 ## Pre- Edit
