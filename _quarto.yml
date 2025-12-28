@@ -1,6 +1,8 @@
 project:
   type: website
   output-dir: docs
+  post-render:
+    - "cp styles.css docs/styles.css"
 
 website:
   title: "Research Hub"

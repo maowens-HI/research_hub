@@ -1,0 +1,80 @@
+---
+title: "{{MONTH}} {{DAY}}, {{YEAR}} Meeting"
+pagetitle: "{{MONTH}} {{DAY}}, {{YEAR}} Meeting | Research Hub"
+date: "{{MONTH}} {{DAY}}, {{YEAR}}"
+format:
+  html:
+    toc: true
+    toc-location: left
+    toc-depth: 3
+---
+
+## Problem Statement
+
+[What issue or question was addressed in this meeting? Be specific about the analytical challenge or decision point.]
+
+## Task
+
+> [Quote the specific task, decision, or direction from the meeting. Include any parameter changes or methodological decisions.]
+
+---
+
+## Results
+
+### [Result Category 1]
+
+[Description of methodology or approach]
+
+::: {layout-ncol="2"}
+![Description 1](images/{{YYYY}}-{{MM}}-{{DD}}/figure1.png)
+
+![Description 2](images/{{YYYY}}-{{MM}}-{{DD}}/figure2.png)
+:::
+
+### [Result Category 2]
+
+[Description]
+
+::: {layout="[[1], [0.25, 0.5, 0.25]]"}
+![Description 3](images/{{YYYY}}-{{MM}}-{{DD}}/figure3.png)
+:::
+
+---
+
+## Key Takeaways
+
+::: {.callout-note appearance="minimal"}
+- [Key finding 1: What does this tell us?]
+- [Key finding 2: How does this compare to previous results?]
+- [Key finding 3: What are the implications?]
+:::
+
+---
+
+## Technical Notes
+
+```stata
+// Key code snippets or parameters used
+// Example: Sample restrictions, variable definitions, etc.
+```
+
+---
+
+## Next Steps
+
+- [ ] [Action item 1 with owner]
+- [ ] [Action item 2 with owner]
+- [ ] [Analysis to run for next meeting]
+
+---
+
+## Appendix
+
+### Data Notes
+
+[Any data quality issues, sample restrictions, or caveats]
+
+### Related Documents
+
+- [Link to previous meeting](meeting-{{prev-date}}.qmd)
+- [Link to external analysis](https://maowens.quarto.pub/...)

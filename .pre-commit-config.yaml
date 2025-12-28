@@ -1,0 +1,56 @@
+# Pre-commit hooks for Research Hub
+# Install: pip install pre-commit && pre-commit install
+# Run manually: pre-commit run --all-files
+
+repos:
+  # Standard pre-commit hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace
+        args: [--markdown-linebreak-ext=md,qmd]
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+        args: ['--maxkb=500']
+        exclude: 'docs/.*'
+      - id: check-merge-conflict
+      - id: mixed-line-ending
+        args: ['--fix=lf']
+
+  # Local hooks for Quarto-specific checks
+  - repo: local
+    hooks:
+      - id: check-qmd-frontmatter
+        name: Check QMD frontmatter
+        entry: bash -c 'for f in "$@"; do head -1 "$f" | grep -q "^---$" || (echo "Missing frontmatter: $f" && exit 1); done'
+        language: system
+        files: \.qmd$
+        pass_filenames: true
+
+      - id: check-image-refs
+        name: Check image references exist
+        entry: bash -c '
+          for qmd in $(git diff --cached --name-only --diff-filter=ACMR | grep "\.qmd$"); do
+            grep -oP "!\[.*?\]\(\K[^)]+" "$qmd" 2>/dev/null | while read img; do
+              [[ "$img" =~ ^https?:// ]] && continue
+              [[ -f "$img" ]] || (echo "Missing image: $qmd -> $img" && exit 1)
+            done
+          done
+        '
+        language: system
+        pass_filenames: false
+
+      - id: no-bold-labels
+        name: Check for bold labels (style guide)
+        entry: bash -c 'grep -l "^\*\*[A-Za-z]\+:\*\*" "$@" && echo "Error: Use plain labels, not bold" && exit 1 || exit 0'
+        language: system
+        files: \.qmd$
+        pass_filenames: true
+
+      - id: sync-styles
+        name: Sync styles.css
+        entry: bash -c 'cp styles.css docs/styles.css 2>/dev/null || true'
+        language: system
+        pass_filenames: false
+        stages: [commit]
