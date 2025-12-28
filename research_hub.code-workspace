@@ -1,0 +1,119 @@
+{
+  "folders": [
+    {
+      "path": ".",
+      "name": "Research Hub"
+    }
+  ],
+  "settings": {
+    "files.associations": {
+      "*.qmd": "quarto"
+    },
+    "editor.wordWrap": "on",
+    "editor.wordWrapColumn": 100,
+    "editor.rulers": [100],
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "[quarto]": {
+      "editor.quickSuggestions": {
+        "strings": true
+      },
+      "editor.tabSize": 2
+    },
+    "[markdown]": {
+      "editor.wordWrap": "on",
+      "editor.quickSuggestions": false
+    },
+    "files.exclude": {
+      "**/.git": true,
+      "**/.DS_Store": true,
+      "**/Thumbs.db": true,
+      "**/.quarto": true,
+      "docs/site_libs": true
+    },
+    "search.exclude": {
+      "**/docs/site_libs": true,
+      "**/docs/*.js": true,
+      "**/.quarto": true
+    }
+  },
+  "extensions": {
+    "recommendations": [
+      "quarto.quarto",
+      "yzhang.markdown-all-in-one",
+      "ms-vscode.live-server",
+      "streetsidesoftware.code-spell-checker",
+      "EditorConfig.EditorConfig",
+      "esbenp.prettier-vscode"
+    ]
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Quarto: Preview",
+        "type": "shell",
+        "command": "quarto preview",
+        "group": "build",
+        "presentation": {
+          "reveal": "always",
+          "panel": "new"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "Quarto: Render",
+        "type": "shell",
+        "command": "make render",
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "presentation": {
+          "reveal": "always",
+          "panel": "shared"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "New Meeting Notes",
+        "type": "shell",
+        "command": "make new-meeting",
+        "group": "none",
+        "presentation": {
+          "reveal": "always",
+          "panel": "shared"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "Validate Content",
+        "type": "shell",
+        "command": "make validate",
+        "group": "test",
+        "presentation": {
+          "reveal": "always",
+          "panel": "shared"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "Lint QMD Files",
+        "type": "shell",
+        "command": "make lint",
+        "group": "test",
+        "presentation": {
+          "reveal": "always",
+          "panel": "shared"
+        },
+        "problemMatcher": []
+      }
+    ]
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": []
+  }
+}

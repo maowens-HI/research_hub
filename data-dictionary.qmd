@@ -1,0 +1,235 @@
+---
+title: "Data Dictionary"
+pagetitle: "Data Dictionary | Research Hub"
+format:
+  html:
+    toc: true
+    toc-location: right
+    toc-depth: 3
+---
+
+::: {.content-page}
+
+::: {.page-header}
+# Data Dictionary {.page-title}
+
+Comprehensive reference for all variables and identifiers used in the school finance analysis.
+:::
+
+## Geographic Identifiers
+
+Understanding the ID systems is critical for working with this codebase. Multiple identifier systems are used across different data sources.
+
+### Primary Identifiers
+
+| Identifier | Format | Length | Description | Example |
+|------------|--------|--------|-------------|---------|
+| **LEAID** | SSDDDDD | 7 chars | NCES Local Education Agency ID | 0100005 |
+| **GOVID** | SS5CCCDDD | 9 chars | Government ID (State+Type+County+District) | 015000100 |
+| **tract70** | SSCCCBTCTSC | 11 chars | 1970 Census tract code | 01001000100 |
+| **county** | SSCCC | 5 chars | State FIPS + County FIPS | 01001 |
+
+### Identifier Components
+
+| Component | Position | Description |
+|-----------|----------|-------------|
+| **SS** | 1-2 | State FIPS code |
+| **CCC** | 3-5 | County FIPS code |
+| **DDDDD** | 3-7 (LEAID) | District code within state |
+| **BTCTSC** | 6-11 (tract70) | Basic Tract + Tract Suffix Code |
+
+---
+
+## Spending Variables
+
+### Raw Spending Measures
+
+| Variable | Type | Units | Description |
+|----------|------|-------|-------------|
+| `pp_exp` | Continuous | Nominal $ | Per-pupil expenditure (current dollars) |
+| `pp_exp_real` | Continuous | 2000 $ | Inflation-adjusted per-pupil expenditure |
+| `total_exp` | Continuous | $ | Total expenditure for district/county |
+
+### Transformed Spending Measures
+
+| Variable | Type | Units | Description |
+|----------|------|-------|-------------|
+| `lexp` | Continuous | Log | Natural log of real per-pupil expenditure |
+| `lexp_ma` | Continuous | Log | Log of 13-year rolling mean (lenient) |
+| `lexp_ma_strict` | Continuous | Log | Log of 13-year rolling mean (strict: requires all 13 years) |
+
+::: {.callout-note appearance="minimal"}
+### Rolling Mean Construction
+
+The 13-year rolling mean (`lexp_ma_strict`) requires non-missing spending data for all 13 years in the window. This creates a more restrictive but cleaner sample for analysis.
+
+- **Lenient version** (`lexp_ma`): Uses available years, filling gaps with 1967 baseline
+- **Strict version** (`lexp_ma_strict`): Missing if <13 years of data available
+:::
+
+---
+
+## Population Variables
+
+| Variable | Type | Description |
+|----------|------|-------------|
+| `school_age_pop` | Integer | School-age population (ages 5-17) |
+| `enrollment` | Integer | Actual school enrollment |
+| `pop_weight` | Continuous | Population weight for aggregation |
+
+---
+
+## Treatment Variables
+
+### Reform Indicators
+
+| Variable | Type | Values | Description |
+|----------|------|--------|-------------|
+| `reform_year` | Integer | 1971-2000 | Year of court-ordered school finance reform |
+| `ever_treated` | Binary | 0/1 | State had SFR during sample period |
+| `never_treated` | Binary | 0/1 | State had no SFR during sample |
+| `post` | Binary | 0/1 | Observation is post-reform |
+
+### Event Study Variables
+
+| Variable | Type | Description |
+|----------|------|-------------|
+| `relative_year` | Integer | Years since reform (-∞ to +∞) |
+| `lead_*` | Binary | Indicator for years before reform |
+| `lag_*` | Binary | Indicator for years after reform |
+
+::: {.callout-note appearance="minimal"}
+### Event Time Convention
+
+- **lead_5**: 5+ years before reform (binned)
+- **lead_4** to **lead_1**: 4 to 1 years before reform
+- **lag_0**: Year of reform (omitted reference)
+- **lag_1** to **lag_16**: 1 to 16 years after reform
+- **lag_17**: 17+ years after reform (binned)
+:::
+
+---
+
+## Quality Flags
+
+### County Quality Indicators
+
+| Variable | Type | Values | Description |
+|----------|------|--------|-------------|
+| `good_county` | Binary | 0/1 | Complete baseline data for 1967, 1970-1972 |
+| `good_county_6671` | Binary | 0/1 | Complete data for all years 1966-1971 |
+| `balanced` | Binary | 0/1 | Complete event window from -5 to +17 |
+
+### Data Completeness
+
+| Variable | Type | Description |
+|----------|------|-------------|
+| `good_govid` | Binary | GOVID has complete spending data |
+| `good_tract` | Binary | Tract has valid LEAID assignment |
+| `has_tract_data` | Binary | Tract has non-missing enrollment |
+
+---
+
+## Baseline Quartile Variables
+
+### Spending Quartiles
+
+| Variable | Type | Values | Description |
+|----------|------|--------|-------------|
+| `pre_q1969` | Categorical | 1-4 | Quartile based on 1969 baseline spending |
+| `pre_q1970` | Categorical | 1-4 | Quartile based on 1970 baseline spending |
+| `pre_q1971` | Categorical | 1-4 | Quartile based on 1971 baseline spending |
+| `pre_q` | Categorical | 1-4 | Primary baseline quartile (typically 1971) |
+
+### Income Quartiles
+
+| Variable | Type | Values | Description |
+|----------|------|--------|-------------|
+| `inc_q` | Categorical | 1-4 | Income quartile based on county median income |
+
+---
+
+## Jackknife Variables
+
+### Predicted Spending
+
+| Variable | Type | Description |
+|----------|------|-------------|
+| `pred_spend` | Continuous | Predicted spending change from regression |
+| `pred_spend_jk` | Continuous | Jackknife-predicted spending (leave-one-state-out) |
+| `high` | Binary | pred_spend > 0 |
+| `high_jk` | Binary | pred_spend_jk > 0 |
+
+### Quartile Classifications
+
+| Variable | Type | Description |
+|----------|------|-------------|
+| `pred_q` | Categorical (1-4) | Quartile of predicted spending |
+| `pred_q_jk` | Categorical (1-4) | Quartile of jackknife-predicted spending |
+
+---
+
+## Reform Type Variables
+
+| Variable | Type | Description |
+|----------|------|-------------|
+| `reform_type` | Categorical | Type of court ruling (adequacy, equity, etc.) |
+| `court_type` | Categorical | State vs. federal court |
+
+---
+
+## Sample Restrictions
+
+### Standard Restrictions
+
+```stata
+// Good counties only
+keep if good_county == 1
+
+// Balanced panel
+keep if balanced == 1
+
+// Ever-treated states with 10+ counties
+keep if never_treated == 1 | county_count >= 10
+```
+
+### County Count by State
+
+For the December 2025 analysis, states were restricted to those with 10+ balanced counties:
+
+| State | Counties | Include? |
+|-------|----------|----------|
+| Georgia (13) | 155 | Yes |
+| Iowa (19) | 95 | Yes |
+| Illinois (17) | 89 | Yes |
+| ... | ... | ... |
+| Arizona (04) | 1 | No |
+| Tennessee (47) | 2 | No |
+
+---
+
+## Data Sources
+
+| Source | Years | Level | Key Variables |
+|--------|-------|-------|---------------|
+| **INDFIN** | 1967, 1969-1991 | District | Expenditures, revenue |
+| **F-33** | 1992-2019 | District | Expenditures, enrollment |
+| **GRF 1969** | 1969-70 | Tract | District-tract linkages |
+| **Census** | Decennial | County | Demographics, income |
+| **FRED** | Annual | National | CPI-U for inflation adjustment |
+
+---
+
+## Variable Naming Conventions
+
+| Prefix/Suffix | Meaning |
+|---------------|---------|
+| `l*` | Log-transformed |
+| `*_ma` | Moving average |
+| `*_real` | Inflation-adjusted |
+| `*_jk` | Jackknife version |
+| `pre_*` | Pre-reform baseline |
+| `post_*` | Post-reform |
+| `good_*` | Quality flag |
+
+:::

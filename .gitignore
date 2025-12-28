@@ -1,6 +1,77 @@
-.Rproj.user
+# ============================================
+# Research Hub .gitignore
+# ============================================
+
+# R / RStudio
+.Rproj.user/
 .Rhistory
 .RData
 .Ruserdata
 
+# Quarto
 /.quarto/
+_freeze/
+_site/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*~
+
+# Editor files
+*.swp
+*.swo
+*.swn
+.vscode/settings.json
+.idea/
+*.sublime-workspace
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+*.log
+
+# Large data files (should use Git LFS if needed)
+*.dta
+*.csv
+*.xlsx
+*.xls
+*.rds
+*.RData
+*.feather
+*.parquet
+
+# Sensitive/credential files (never commit)
+.env
+.env.*
+credentials.json
+secrets.json
+*.pem
+*.key
+
+# Build artifacts
+*.html~
+*.pdf~
+
+# Python (if used for scripts)
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+*.egg-info/
+.eggs/
+
+# Node (if using for any tooling)
+node_modules/
+npm-debug.log*
+
+# Local configuration overrides
+*.local
+*.local.*
