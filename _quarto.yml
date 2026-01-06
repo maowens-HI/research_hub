@@ -11,7 +11,7 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: github.qmd
+      - href: https://github.com/maowens-HI/school_finance
         text: Github
   page-footer:
     background: light
