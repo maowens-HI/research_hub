@@ -1,0 +1,467 @@
+---
+title: "Florida Private School Access and Demographics: 2000 County-Level Analysis"
+date: "January 9, 2026"
+format:
+  html:
+    toc: true
+    toc-location: left
+    toc-depth: 3
+---
+
+## Analysis Overview
+
+[Add analysis overview commentary here]
+
+**Key Features:**
+
+-   **Geographic Unit:** Counties (N=28)
+-   **Distance Buffer:** 5-mile radius (primary specification)
+-   **School Levels:** Elementary, middle, and high school combined
+-   **Time Period:** Year 2000 Census cross-section
+
+::: {.callout-tip appearance="minimal"}
+## Methodology Note
+
+School exposure measures are constructed at the Census block level using geocoded school coordinates, then aggregated to county geography. Demographic measures come from IPUMS 2000 Census 5% sample.
+:::
+
+------------------------------------------------------------------------
+
+## Summary Statistics
+
+### Demographic and School Exposure Variables
+
+``` stata
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+  avg_income |         28    53471.88    8792.716   41498.19    74734.8
+  hisp_share |         28     4.05177     3.89438   .5912867   18.51387
+ black_share |         28    9.800095    5.351307   1.949774   21.56962
+ white_share |         28    83.69145    7.108454   68.80533   93.66389
+     avg_age |         28    40.48011    4.472742   33.46168   49.65272
+-------------+---------------------------------------------------------
+     less_hs |         28     .327926    .0356447   .2483356    .400131
+     hs_grad |         28     .336126    .0428638   .2260561   .4133825
+some_college |         28    .1772018    .0220841   .1379533   .2645465
+college_plus |         28    .1587463    .0433305   .0924645   .2481904
+total_school |         28    6.844557    4.817006   1.623682    17.1461
+-------------+---------------------------------------------------------
+       relig |         28    5.183716    3.405206   1.453487   12.34662
+   non_relig |         28     1.66084    1.544926    .136608   5.500585
+distinct_f~e |         28    3.320077    1.258234   1.276968    5.98674
+distinct_c~d |         28    2.975109    1.048436   1.276235   5.186797
+```
+
+::: {.callout-tip appearance="minimal"}
+## Variable Definitions
+
+### Percent Units (0–100 scale)
+
+-   **hisp_share:** Percent Hispanic\
+-   **black_share:** Percent Black\
+-   **white_share:** Percent White
+
+### Proportion Units (0–1 scale)
+
+-   **less_hs:** Share with less than high school\
+-   **hs_grad:** Share with high school diploma\
+-   **some_college:** Share with some college\
+-   **college_plus:** Share with a college degree or higher
+
+### Raw Continuous Variables
+
+-   **avg_income:** Average household income (2000 dollars)\
+-   **avg_age:** Mean age\
+-   **total_school:** Average private school count per block within the county (5-mile radius)\
+-   **relig / non_relig:** Counts of religious vs. non-religious schools\
+-   **distinct_fine:** Number of distinct fine-grained school types\
+-   **distinct_collapsed:** Number of distinct collapsed school categories
+:::
+
+| distinct_collapsed  | distinct_fine                                  |
+|---------------------|------------------------------------------------|
+| Non-religious       | NON-RELIGIOUS                                  |
+| Evangelical         | EVANGELICAL, APOSTOLIC-PENTECOSTAL-CHARISMATIC |
+| Catholic            | CATHOLIC                                       |
+| Baptist             | BAPTIST                                        |
+| Mainline Protestant | LUTHERAN, METHODIST, PRESBYTERIAN, EPISCOPAL   |
+| Adventist           | ADVENTIST                                      |
+| Jewish              | JEWISH                                         |
+| Muslim              | MUSLIM                                         |
+| Other Christian     | OTHER CHRISTIAN                                |
+| Other Religion      | OTHER RELIGION                                 |
+
+------------------------------------------------------------------------
+
+## Bivariate Regression Results
+
+These tables present simple relationships between each school exposure measure and community demographic characteristics. Each cell represents a separate regression: Demographic Variable ~ School Exposure Measure.
+
+### Table 1: Total Private School Count
+
+``` stata
+                          |   (1)          (2)          (3)          (4)          (5)          (6)          (7)          (8)
+                          | avg_income  black_share  hisp_share   avg_age      hs_grad      less_hs   some_college college_plus
+--------------------------+-------------------------------------------------------------------------------------------
+total_school              |   298.05       0.526**      0.237       -0.172      -0.00233    -0.0000212   -0.0000161   0.00237
+                          |  (353.18)     (0.192)      (0.152)     (0.179)      (0.00168)   (0.00145)    (0.00090)   (0.00170)
+                          |
+Constant                  |  51431.88***   6.20***      2.43        41.66***     0.352***    0.328***     0.177***    0.143***
+                          | (2938.43)     (1.60)       (1.26)      (1.49)       (0.0140)    (0.0121)     (0.0075)    (0.0142)
+--------------------------+-------------------------------------------------------------------------------------------
+Observations              |    28          28           28          28           28          28           28          28
+R-squared                 |   0.027       0.224        0.086       0.035        0.069       0.000        0.000       0.069
+--------------------------+-------------------------------------------------------------------------------------------
+Standard errors in parentheses
+*** p<0.01, ** p<0.05, * p<0.1
+```
+
+[Add interpretation of total private school count results here]
+
+------------------------------------------------------------------------
+
+### Table 2: Religious Private Schools
+
+``` stata
+                          |   (1)          (2)          (3)          (4)          (5)          (6)          (7)          (8)
+                          | avg_income  black_share  hisp_share   avg_age      hs_grad      less_hs   some_college college_plus
+--------------------------+-------------------------------------------------------------------------------------------
+relig                     |   251.56       0.823***     0.375*      -0.326      -0.00318     0.000974    -0.000196    0.00240
+                          |  (503.99)     (0.263)      (0.212)     (0.250)      (0.00239)   (0.00204)    (0.00127)   (0.00245)
+                          |
+Constant                  |  52167.86***   5.53***      2.11        42.17***     0.353***    0.323***     0.178***    0.146***
+                          | (3108.94)     (1.62)       (1.31)      (1.54)       (0.0147)    (0.0126)     (0.0078)    (0.0151)
+--------------------------+-------------------------------------------------------------------------------------------
+Observations              |    28          28           28          28           28          28           28          28
+R-squared                 |   0.010       0.275        0.107       0.061        0.064       0.009        0.001       0.036
+--------------------------+-------------------------------------------------------------------------------------------
+Standard errors in parentheses
+*** p<0.01, ** p<0.05, * p<0.1
+```
+
+[Add interpretation of religious school results here]
+
+------------------------------------------------------------------------
+
+### Table 3: Non-Religious Private Schools
+
+``` stata
+                          |   (1)          (2)          (3)          (4)          (5)          (6)          (7)          (8)
+                          | avg_income  black_share  hisp_share   avg_age      hs_grad      less_hs   some_college college_plus
+--------------------------+-------------------------------------------------------------------------------------------
+non_relig                 |  1675.38       1.110*       0.485       -0.095      -0.00720    -0.00494     0.000793    0.0113**
+                          | (1066.71)     (0.643)      (0.485)     (0.567)      (0.00525)   (0.00442)    (0.00280)   (0.00503)
+                          |
+Constant                  |  50689.34***   7.96***      3.25***     40.64***     0.348***    0.336***     0.176***    0.140***
+                          | (2399.49)     (1.45)       (1.09)      (1.28)       (0.0118)    (0.0099)     (0.0063)    (0.0113)
+--------------------------+-------------------------------------------------------------------------------------------
+Observations              |    28          28           28          28           28          28           28          28
+R-squared                 |   0.087       0.103        0.037       0.001        0.067       0.046        0.003       0.164
+--------------------------+-------------------------------------------------------------------------------------------
+Standard errors in parentheses
+*** p<0.01, ** p<0.05, * p<0.1
+```
+
+[Add interpretation of non-religious school results here]
+
+------------------------------------------------------------------------
+
+### Table 4: School Type Diversity (Fine Classification)
+
+``` stata
+                          |   (1)          (2)          (3)          (4)          (5)          (6)          (7)          (8)
+                          | avg_income  black_share  hisp_share   avg_age      hs_grad      less_hs   some_college college_plus
+--------------------------+-------------------------------------------------------------------------------------------
+distinct_fine             |  1156.35       1.938**      0.959       -0.466      -0.00799    -0.00114     0.0000124   0.00912
+                          | (1351.59)     (0.742)      (0.577)     (0.691)      (0.00649)   (0.00555)    (0.00344)   (0.00651)
+                          |
+Constant                  |  49632.70***   3.36         0.87        42.03***     0.363***    0.332***     0.177***    0.128***
+                          | (4788.06)     (2.63)       (2.04)      (2.45)       (0.0230)    (0.0197)     (0.0122)    (0.0231)
+--------------------------+-------------------------------------------------------------------------------------------
+Observations              |    28          28           28          28           28          28           28          28
+R-squared                 |   0.027       0.208        0.096       0.017        0.055       0.002        0.000       0.070
+--------------------------+-------------------------------------------------------------------------------------------
+Standard errors in parentheses
+*** p<0.01, ** p<0.05, * p<0.1
+```
+
+::: {.callout-tip appearance="minimal"}
+## Diversity Measures
+
+**distinct_fine** counts unique school types using granular denomination categories (Catholic, Lutheran, Methodist, Presbyterian, Episcopal, Baptist, etc. as separate types). Higher values indicate greater variety of school options available to families. Non-religious schools are included in this definition.
+:::
+
+------------------------------------------------------------------------
+
+### Table 5: School Type Diversity (Collapsed Classification)
+
+``` stata
+                          |   (1)          (2)          (3)          (4)          (5)          (6)          (7)          (8)
+                          | avg_income  black_share  hisp_share   avg_age      hs_grad      less_hs   some_college college_plus
+--------------------------+-------------------------------------------------------------------------------------------
+distinct_collapsed        |  1474.70       2.133**      0.978       -0.335      -0.00847    -0.00223    -0.000254    0.0110
+                          | (1619.10)     (0.909)      (0.703)     (0.834)      (0.00784)   (0.00665)    (0.00413)   (0.00782)
+                          |
+Constant                  |  49084.48***   3.45         1.14        41.48***     0.361***    0.335***     0.178***    0.126***
+                          | (5097.28)     (2.86)       (2.21)      (2.63)       (0.0247)    (0.0209)     (0.0130)    (0.0246)
+--------------------------+-------------------------------------------------------------------------------------------
+Observations              |    28          28           28          28           28          28           28          28
+R-squared                 |   0.031       0.175        0.069       0.006        0.043       0.004        0.000       0.070
+--------------------------+-------------------------------------------------------------------------------------------
+Standard errors in parentheses
+*** p<0.01, ** p<0.05, * p<0.1
+```
+
+::: {.callout-tip appearance="minimal"}
+## Diversity Measures
+
+**distinct_collapsed** uses 10 broad categories: Non-religious, Evangelical, Catholic, Baptist, Mainline Protestant, Adventist, Jewish, Muslim, Other Christian, Other Religion.
+:::
+
+------------------------------------------------------------------------
+
+## Multivariate Regression Analysis
+
+### Table 6: Total Private School Count Predicted by Demographics
+
+This multivariate specification examines the demographic predictors of private school access, regressing total private school count on community characteristics.
+
+``` stata
+                          |   (1)
+                          | total_school
+--------------------------+------------------
+avg_income                |    0.000125
+                          |  (0.000166)
+                          |
+avg_age                   |    0.428
+                          |   (0.434)
+                          |
+hs_grad                   |    7.65
+                          |  (48.74)
+                          |
+white_share               |   -1.256
+                          |   (0.979)
+                          |
+hisp_share                |   -0.433
+                          |   (0.594)
+                          |
+black_share               |   -0.827
+                          |   (1.067)
+                          |
+Constant                  |   95.26
+                          |  (86.84)
+--------------------------+------------------
+Observations              |    28
+R-squared                 |   0.381
+Adjusted R-squared        |   0.204
+F-statistic               |   2.16
+--------------------------+------------------
+Standard errors in parentheses
+*** p<0.01, ** p<0.05, * p<0.1
+```
+
+[Add interpretation of multivariate results for total school count here]
+
+------------------------------------------------------------------------
+
+### Table 7: Religious Private School Count Predicted by Demographics
+
+``` stata
+                          |   (1)
+                          |    relig
+--------------------------+------------------
+avg_income                |    0.0000860
+                          |  (0.000114)
+                          |
+avg_age                   |    0.212
+                          |   (0.298)
+                          |
+hs_grad                   |   14.33
+                          |  (33.41)
+                          |
+white_share               |   -0.898
+                          |   (0.671)
+                          |
+hisp_share                |   -0.301
+                          |   (0.407)
+                          |
+black_share               |   -0.574
+                          |   (0.731)
+                          |
+Constant                  |   69.20
+                          |  (59.52)
+--------------------------+------------------
+Observations              |    28
+R-squared                 |   0.418
+Adjusted R-squared        |   0.252
+F-statistic               |   2.52
+--------------------------+------------------
+Standard errors in parentheses
+*** p<0.01, ** p<0.05, * p<0.1
+```
+
+[Add interpretation of multivariate results for religious schools here]
+
+------------------------------------------------------------------------
+
+### Table 8: Non-Religious Private School Count Predicted by Demographics
+
+``` stata
+                          |   (1)
+                          | non_relig
+--------------------------+------------------
+avg_income                |    0.0000385
+                          |  (0.0000559)
+                          |
+avg_age                   |    0.215
+                          |   (0.146)
+                          |
+hs_grad                   |   -6.68
+                          |  (16.39)
+                          |
+white_share               |   -0.357
+                          |   (0.329)
+                          |
+hisp_share                |   -0.132
+                          |   (0.200)
+                          |
+black_share               |   -0.253
+                          |   (0.359)
+                          |
+Constant                  |   26.06
+                          |  (29.20)
+--------------------------+------------------
+Observations              |    28
+R-squared                 |   0.320
+Adjusted R-squared        |   0.126
+F-statistic               |   1.65
+--------------------------+------------------
+Standard errors in parentheses
+*** p<0.01, ** p<0.05, * p<0.1
+```
+
+[Add interpretation of multivariate results for non-religious schools here]
+
+------------------------------------------------------------------------
+
+### Table 9: School Type Diversity (Fine) Predicted by Demographics
+
+``` stata
+                          |   (1)
+                          | distinct_fine
+--------------------------+------------------
+avg_income                |    0.0000255
+                          |  (0.0000440)
+                          |
+avg_age                   |    0.124
+                          |   (0.115)
+                          |
+hs_grad                   |   -0.80
+                          |  (12.89)
+                          |
+white_share               |   -0.219
+                          |   (0.259)
+                          |
+hisp_share                |   -0.037
+                          |   (0.157)
+                          |
+black_share               |   -0.100
+                          |   (0.282)
+                          |
+Constant                  |   16.65
+                          |  (22.96)
+--------------------------+------------------
+Observations              |    28
+R-squared                 |   0.366
+Adjusted R-squared        |   0.185
+F-statistic               |   2.02
+--------------------------+------------------
+Standard errors in parentheses
+*** p<0.01, ** p<0.05, * p<0.1
+```
+
+[Add interpretation of multivariate results for fine classification diversity here]
+
+------------------------------------------------------------------------
+
+### Table 10: School Type Diversity (Collapsed) Predicted by Demographics
+
+``` stata
+                          |   (1)
+                          | distinct_collapsed
+--------------------------+------------------
+avg_income                |    0.0000223
+                          |  (0.0000374)
+                          |
+avg_age                   |    0.119
+                          |   (0.098)
+                          |
+hs_grad                   |   -0.84
+                          |  (10.96)
+                          |
+white_share               |   -0.208
+                          |   (0.220)
+                          |
+hisp_share                |   -0.055
+                          |   (0.133)
+                          |
+black_share               |   -0.114
+                          |   (0.240)
+                          |
+Constant                  |   16.01
+                          |  (19.52)
+--------------------------+------------------
+Observations              |    28
+R-squared                 |   0.340
+Adjusted R-squared        |   0.151
+F-statistic               |   1.80
+--------------------------+------------------
+Standard errors in parentheses
+*** p<0.01, ** p<0.05, * p<0.1
+```
+
+[Add interpretation of multivariate results for collapsed classification diversity here]
+
+------------------------------------------------------------------------
+
+## Data Sources and Methods
+
+::: {.callout-tip appearance="minimal" collapse="true"}
+## Click to expand: Technical Details
+
+**Demographic Data:**
+
+-   Source: IPUMS USA 2000 Census 5% sample
+-   Variables: Income (household-level), race, ethnicity, education, age (person-level)
+-   Weights: `hhwt` for household variables, `perwt` for person variables
+-   Geography: Counties
+
+**School Data:**
+
+-   Source: Geocoded private school locations
+-   Distance Calculation: `geonear` package with 5-mile buffer
+-   Geographic Construction: Block-level exposure aggregated to county
+-   School Classifications:
+    -   Religious vs. Non-religious
+    -   Fine-grained: All original denomination categories
+    -   Collapsed: 10 broad categories
+
+**Sample Restrictions:**
+
+-   Florida only (`statefip==12`)
+-   Year 2000 (`year==2000`)
+-   5% Census sample (`sample==200001`)
+-   Distance filter: 5-mile radius (primary specification)
+
+**Crosswalk:**
+
+-   MCDC Geocorr 2000: Links 2000 Census blocks to counties
+-   Block-level school counts averaged within each county
+:::
+
+------------------------------------------------------------------------
+
+## Next Steps
+
+[Add next steps here]
