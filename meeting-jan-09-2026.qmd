@@ -36,15 +36,15 @@ See PUMA version of these results [here.](https://maowens-hi.github.io/research_
     Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
   avg_income |         28    53471.88    8792.716   41498.19    74734.8
-  hisp_share |         28     4.05177     3.89438   .5912867   18.51387
- black_share |         28    9.800095    5.351307   1.949774   21.56962
- white_share |         28    83.69145    7.108454   68.80533   93.66389
+pct_hispanic |         28     4.05177     3.89438   .5912867   18.51387
+   pct_black |         28    9.800095    5.351307   1.949774   21.56962
+   pct_white |         28    83.69145    7.108454   68.80533   93.66389
      avg_age |         28    40.48011    4.472742   33.46168   49.65272
 -------------+---------------------------------------------------------
-     less_hs |         28     .327926    .0356447   .2483356    .400131
-     hs_grad |         28     .336126    .0428638   .2260561   .4133825
-some_college |         28    .1772018    .0220841   .1379533   .2645465
-college_plus |         28    .1587463    .0433305   .0924645   .2481904
+ pct_less_hs |         28     32.7926    3.564469   24.83356    40.0131
+ pct_hs_grad |         28     33.6126    4.286381   22.60561   41.33825
+pct_some_c~e |         28    17.72018    2.208407   13.79533   26.45465
+pct_colleg~s |         28    15.87463    4.333054   9.246449   24.81904
 total_school |         28    6.844557    4.817006   1.623682    17.1461
 -------------+---------------------------------------------------------
        relig |         28    5.183716    3.405206   1.453487   12.34662
@@ -56,20 +56,22 @@ distinct_c~d |         28    2.975109    1.048436   1.276235   5.186797
 ::: {.callout-tip appearance="minimal"}
 ## Variable Definitions
 
-### Percent Units (0–100 scale)
+All demographic share variables are on a 0–100 percentage scale.
 
--   **hisp_share:** Percent Hispanic\
--   **black_share:** Percent Black\
--   **white_share:** Percent White
+### Race/Ethnicity
 
-### Proportion Units (0–1 scale)
+-   **pct_hispanic:** Percent Hispanic\
+-   **pct_black:** Percent Black\
+-   **pct_white:** Percent White
 
--   **less_hs:** Share with less than high school\
--   **hs_grad:** Share with high school diploma\
--   **some_college:** Share with some college\
--   **college_plus:** Share with a college degree or higher
+### Education
 
-### Raw Continuous Variables
+-   **pct_less_hs:** Percent with less than high school\
+-   **pct_hs_grad:** Percent with high school diploma\
+-   **pct_some_college:** Percent with some college\
+-   **pct_college_plus:** Percent with college degree or higher
+
+### Other Variables
 
 -   **avg_income:** Average household income (2000 dollars)\
 -   **avg_age:** Mean age\
@@ -102,13 +104,13 @@ These tables present simple relationships between each school exposure measure a
 
 ``` stata
                           |   (1)          (2)          (3)          (4)          (5)          (6)          (7)          (8)
-                          | avg_income  black_share  hisp_share   avg_age      hs_grad      less_hs   some_college college_plus
+                          | avg_income  pct_black  pct_hispanic   avg_age   pct_hs_grad  pct_less_hs pct_some_college pct_college_plus
 --------------------------+-------------------------------------------------------------------------------------------
-total_school              |   298.05       0.526**      0.237       -0.172      -0.00233    -0.0000212   -0.0000161   0.00237
-                          |  (353.18)     (0.192)      (0.152)     (0.179)      (0.00168)   (0.00145)    (0.00090)   (0.00170)
+total_school              |   298.05       0.526**      0.237       -0.172      -0.233      -0.00212     -0.00161      0.237
+                          |  (353.18)     (0.192)      (0.152)     (0.179)      (0.168)     (0.145)      (0.0899)     (0.170)
                           |
-Constant                  |  51431.88***   6.20***      2.43        41.66***     0.352***    0.328***     0.177***    0.143***
-                          | (2938.43)     (1.60)       (1.26)      (1.49)       (0.0140)    (0.0121)     (0.0075)    (0.0142)
+Constant                  |  51431.88***   6.20***      2.43        41.66***     35.21***    32.81***     17.73***     14.25***
+                          | (2938.43)     (1.60)       (1.26)      (1.49)       (1.40)      (1.21)       (0.748)      (1.42)
 --------------------------+-------------------------------------------------------------------------------------------
 Observations              |    28          28           28          28           28          28           28          28
 R-squared                 |   0.027       0.224        0.086       0.035        0.069       0.000        0.000       0.069
@@ -123,13 +125,13 @@ Standard errors in parentheses
 
 ``` stata
                           |   (1)          (2)          (3)          (4)          (5)          (6)          (7)          (8)
-                          | avg_income  black_share  hisp_share   avg_age      hs_grad      less_hs   some_college college_plus
+                          | avg_income  pct_black  pct_hispanic   avg_age   pct_hs_grad  pct_less_hs pct_some_college pct_college_plus
 --------------------------+-------------------------------------------------------------------------------------------
-relig                     |   251.56       0.823***     0.375*      -0.326      -0.00318     0.000974    -0.000196    0.00240
-                          |  (503.99)     (0.263)      (0.212)     (0.250)      (0.00239)   (0.00204)    (0.00127)   (0.00245)
+relig                     |   251.56       0.823***     0.375*      -0.326      -0.318       0.0974      -0.0196       0.240
+                          |  (503.99)     (0.263)      (0.212)     (0.250)      (0.239)     (0.204)      (0.127)      (0.245)
                           |
-Constant                  |  52167.86***   5.53***      2.11        42.17***     0.353***    0.323***     0.178***    0.146***
-                          | (3108.94)     (1.62)       (1.31)      (1.54)       (0.0147)    (0.0126)     (0.0078)    (0.0151)
+Constant                  |  52167.86***   5.53***      2.11        42.17***     35.26***    32.29***     17.82***     14.63***
+                          | (3108.94)     (1.62)       (1.31)      (1.54)       (1.47)      (1.26)       (0.784)      (1.51)
 --------------------------+-------------------------------------------------------------------------------------------
 Observations              |    28          28           28          28           28          28           28          28
 R-squared                 |   0.010       0.275        0.107       0.061        0.064       0.009        0.001       0.036
@@ -144,13 +146,13 @@ Standard errors in parentheses
 
 ``` stata
                           |   (1)          (2)          (3)          (4)          (5)          (6)          (7)          (8)
-                          | avg_income  black_share  hisp_share   avg_age      hs_grad      less_hs   some_college college_plus
+                          | avg_income  pct_black  pct_hispanic   avg_age   pct_hs_grad  pct_less_hs pct_some_college pct_college_plus
 --------------------------+-------------------------------------------------------------------------------------------
-non_relig                 |  1675.38       1.110*       0.485       -0.095      -0.00720    -0.00494     0.000793    0.0113**
-                          | (1066.71)     (0.643)      (0.485)     (0.567)      (0.00525)   (0.00442)    (0.00280)   (0.00503)
+non_relig                 |  1675.38       1.110*       0.485       -0.0946     -0.720      -0.494        0.0793       1.134**
+                          | (1066.71)     (0.643)      (0.485)     (0.567)      (0.525)     (0.442)      (0.280)      (0.503)
                           |
-Constant                  |  50689.34***   7.96***      3.25***     40.64***     0.348***    0.336***     0.176***    0.140***
-                          | (2399.49)     (1.45)       (1.09)      (1.28)       (0.0118)    (0.0099)     (0.0063)    (0.0113)
+Constant                  |  50689.34***   7.96***      3.25***     40.64***     34.81***    33.61***     17.59***     13.99***
+                          | (2399.49)     (1.45)       (1.09)      (1.28)       (1.18)      (0.994)      (0.630)      (1.13)
 --------------------------+-------------------------------------------------------------------------------------------
 Observations              |    28          28           28          28           28          28           28          28
 R-squared                 |   0.087       0.103        0.037       0.001        0.067       0.046        0.003       0.164
@@ -165,13 +167,13 @@ Standard errors in parentheses
 
 ``` stata
                           |   (1)          (2)          (3)          (4)          (5)          (6)          (7)          (8)
-                          | avg_income  black_share  hisp_share   avg_age      hs_grad      less_hs   some_college college_plus
+                          | avg_income  pct_black  pct_hispanic   avg_age   pct_hs_grad  pct_less_hs pct_some_college pct_college_plus
 --------------------------+-------------------------------------------------------------------------------------------
-distinct_fine             |  1156.35       1.938**      0.959       -0.466      -0.00799    -0.00114     0.0000124   0.00912
-                          | (1351.59)     (0.742)      (0.577)     (0.691)      (0.00649)   (0.00555)    (0.00344)   (0.00651)
+distinct_fine             |  1156.35       1.938**      0.959       -0.466      -0.799      -0.114        0.00124      0.912
+                          | (1351.59)     (0.742)      (0.577)     (0.691)      (0.649)     (0.555)      (0.344)      (0.651)
                           |
-Constant                  |  49632.70***   3.36         0.87        42.03***     0.363***    0.332***     0.177***    0.128***
-                          | (4788.06)     (2.63)       (2.04)      (2.45)       (0.0230)    (0.0197)     (0.0122)    (0.0231)
+Constant                  |  49632.70***   3.36         0.87        42.03***     36.27***    33.17***     17.72***     12.85***
+                          | (4788.06)     (2.63)       (2.04)      (2.45)       (2.30)      (1.97)       (1.22)       (2.31)
 --------------------------+-------------------------------------------------------------------------------------------
 Observations              |    28          28           28          28           28          28           28          28
 R-squared                 |   0.027       0.208        0.096       0.017        0.055       0.002        0.000       0.070
@@ -192,13 +194,13 @@ Standard errors in parentheses
 
 ``` stata
                           |   (1)          (2)          (3)          (4)          (5)          (6)          (7)          (8)
-                          | avg_income  black_share  hisp_share   avg_age      hs_grad      less_hs   some_college college_plus
+                          | avg_income  pct_black  pct_hispanic   avg_age   pct_hs_grad  pct_less_hs pct_some_college pct_college_plus
 --------------------------+-------------------------------------------------------------------------------------------
-distinct_collapsed        |  1474.70       2.133**      0.978       -0.335      -0.00847    -0.00223    -0.000254    0.0110
-                          | (1619.10)     (0.909)      (0.703)     (0.834)      (0.00784)   (0.00665)    (0.00413)   (0.00782)
+distinct_collapsed        |  1474.70       2.133**      0.978       -0.335      -0.847      -0.223       -0.0254       1.095
+                          | (1619.10)     (0.909)      (0.703)     (0.834)      (0.784)     (0.665)      (0.413)      (0.782)
                           |
-Constant                  |  49084.48***   3.45         1.14        41.48***     0.361***    0.335***     0.178***    0.126***
-                          | (5097.28)     (2.86)       (2.21)      (2.63)       (0.0247)    (0.0209)     (0.0130)    (0.0246)
+Constant                  |  49084.48***   3.45         1.14        41.48***     36.13***    33.46***     17.80***     12.62***
+                          | (5097.28)     (2.86)       (2.21)      (2.63)       (2.47)      (2.09)       (1.30)       (2.46)
 --------------------------+-------------------------------------------------------------------------------------------
 Observations              |    28          28           28          28           28          28           28          28
 R-squared                 |   0.031       0.175        0.069       0.006        0.043       0.004        0.000       0.070
@@ -231,16 +233,16 @@ avg_income                |    0.000125
 avg_age                   |    0.428
                           |   (0.434)
                           |
-hs_grad                   |    7.65
-                          |  (48.74)
+pct_hs_grad               |    0.0765
+                          |   (0.487)
                           |
-white_share               |   -1.256
+pct_white                 |   -1.256
                           |   (0.979)
                           |
-hisp_share                |   -0.433
+pct_hispanic              |   -0.433
                           |   (0.594)
                           |
-black_share               |   -0.827
+pct_black                 |   -0.827
                           |   (1.067)
                           |
 Constant                  |   95.26
@@ -269,16 +271,16 @@ avg_income                |    0.0000860
 avg_age                   |    0.212
                           |   (0.298)
                           |
-hs_grad                   |   14.33
-                          |  (33.41)
+pct_hs_grad               |    0.143
+                          |   (0.334)
                           |
-white_share               |   -0.898
+pct_white                 |   -0.898
                           |   (0.671)
                           |
-hisp_share                |   -0.301
+pct_hispanic              |   -0.301
                           |   (0.407)
                           |
-black_share               |   -0.574
+pct_black                 |   -0.574
                           |   (0.731)
                           |
 Constant                  |   69.20
@@ -307,16 +309,16 @@ avg_income                |    0.0000385
 avg_age                   |    0.215
                           |   (0.146)
                           |
-hs_grad                   |   -6.68
-                          |  (16.39)
+pct_hs_grad               |   -0.0668
+                          |   (0.164)
                           |
-white_share               |   -0.357
+pct_white                 |   -0.357
                           |   (0.329)
                           |
-hisp_share                |   -0.132
+pct_hispanic              |   -0.132
                           |   (0.200)
                           |
-black_share               |   -0.253
+pct_black                 |   -0.253
                           |   (0.359)
                           |
 Constant                  |   26.06
@@ -345,16 +347,16 @@ avg_income                |    0.0000255
 avg_age                   |    0.124
                           |   (0.115)
                           |
-hs_grad                   |   -0.80
-                          |  (12.89)
+pct_hs_grad               |   -0.00799
+                          |   (0.129)
                           |
-white_share               |   -0.219
+pct_white                 |   -0.219
                           |   (0.259)
                           |
-hisp_share                |   -0.037
+pct_hispanic              |   -0.0374
                           |   (0.157)
                           |
-black_share               |   -0.100
+pct_black                 |   -0.100
                           |   (0.282)
                           |
 Constant                  |   16.65
@@ -383,16 +385,16 @@ avg_income                |    0.0000223
 avg_age                   |    0.119
                           |   (0.098)
                           |
-hs_grad                   |   -0.84
-                          |  (10.96)
+pct_hs_grad               |   -0.00844
+                          |   (0.110)
                           |
-white_share               |   -0.208
+pct_white                 |   -0.208
                           |   (0.220)
                           |
-hisp_share                |   -0.055
+pct_hispanic              |   -0.0553
                           |   (0.133)
                           |
-black_share               |   -0.114
+pct_black                 |   -0.114
                           |   (0.240)
                           |
 Constant                  |   16.01
@@ -443,6 +445,3 @@ Standard errors in parentheses
 -   MCDC Geocorr 2000: Links 2000 Census blocks to counties
 -   Block-level school counts averaged within each county
 :::
-
-
-
