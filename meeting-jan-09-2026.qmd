@@ -25,6 +25,8 @@ School exposure measures are constructed at the Census block level using geocode
 
 See PUMA version of these results [here.](https://maowens-hi.github.io/research_hub/meeting-dec-12-2025.html)
 
+**Related Resources:** [State Summary Spreadsheet](https://office365stanford-my.sharepoint.com/:x:/r/personal/maowens_stanford_edu/_layouts/15/Doc.aspx?sourcedoc=%7B7062619A-EC5D-4C9F-B6DF-C4D05D3CC702%7D&file=jjp_state_summary.xlsx&action=default&mobileredirect=true) - Tracks which states are in our final regression results.
+
 ------------------------------------------------------------------------
 
 ## Summary Statistics
