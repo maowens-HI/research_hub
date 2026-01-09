@@ -10,20 +10,20 @@ format:
 
 ## Analysis Overview
 
-[Add analysis overview commentary here]
-
 **Key Features:**
 
 -   **Geographic Unit:** Counties (N=28)
 -   **Distance Buffer:** 5-mile radius (primary specification)
 -   **School Levels:** Elementary, middle, and high school combined
--   **Time Period:** Year 2000 Census cross-section
+-   **Time Period:** 2000 Census
 
 ::: {.callout-tip appearance="minimal"}
 ## Methodology Note
 
 School exposure measures are constructed at the Census block level using geocoded school coordinates, then aggregated to county geography. Demographic measures come from IPUMS 2000 Census 5% sample.
 :::
+
+See PUMA version of these results [here.](https://maowens-hi.github.io/research_hub/meeting-dec-12-2025.html)
 
 ------------------------------------------------------------------------
 
@@ -117,8 +117,6 @@ Standard errors in parentheses
 *** p<0.01, ** p<0.05, * p<0.1
 ```
 
-[Add interpretation of total private school count results here]
-
 ------------------------------------------------------------------------
 
 ### Table 2: Religious Private Schools
@@ -140,8 +138,6 @@ Standard errors in parentheses
 *** p<0.01, ** p<0.05, * p<0.1
 ```
 
-[Add interpretation of religious school results here]
-
 ------------------------------------------------------------------------
 
 ### Table 3: Non-Religious Private Schools
@@ -162,8 +158,6 @@ R-squared                 |   0.087       0.103        0.037       0.001        
 Standard errors in parentheses
 *** p<0.01, ** p<0.05, * p<0.1
 ```
-
-[Add interpretation of non-religious school results here]
 
 ------------------------------------------------------------------------
 
@@ -261,8 +255,6 @@ Standard errors in parentheses
 *** p<0.01, ** p<0.05, * p<0.1
 ```
 
-[Add interpretation of multivariate results for total school count here]
-
 ------------------------------------------------------------------------
 
 ### Table 7: Religious Private School Count Predicted by Demographics
@@ -300,8 +292,6 @@ F-statistic               |   2.52
 Standard errors in parentheses
 *** p<0.01, ** p<0.05, * p<0.1
 ```
-
-[Add interpretation of multivariate results for religious schools here]
 
 ------------------------------------------------------------------------
 
@@ -341,8 +331,6 @@ Standard errors in parentheses
 *** p<0.01, ** p<0.05, * p<0.1
 ```
 
-[Add interpretation of multivariate results for non-religious schools here]
-
 ------------------------------------------------------------------------
 
 ### Table 9: School Type Diversity (Fine) Predicted by Demographics
@@ -380,8 +368,6 @@ F-statistic               |   2.02
 Standard errors in parentheses
 *** p<0.01, ** p<0.05, * p<0.1
 ```
-
-[Add interpretation of multivariate results for fine classification diversity here]
 
 ------------------------------------------------------------------------
 
@@ -421,8 +407,6 @@ Standard errors in parentheses
 *** p<0.01, ** p<0.05, * p<0.1
 ```
 
-[Add interpretation of multivariate results for collapsed classification diversity here]
-
 ------------------------------------------------------------------------
 
 ## Data Sources and Methods
@@ -460,8 +444,5 @@ Standard errors in parentheses
 -   Block-level school counts averaged within each county
 :::
 
-------------------------------------------------------------------------
 
-## Next Steps
 
-[Add next steps here]
