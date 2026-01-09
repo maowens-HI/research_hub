@@ -1,0 +1,234 @@
+---
+title: "[State] Private School Access and Demographics: [Year] Analysis"
+date: "January 9, 2026"
+format:
+  html:
+    toc: true
+    toc-location: left
+    toc-depth: 3
+---
+
+## Analysis Overview
+
+[Add analysis overview commentary here]
+
+**Key Features:**
+
+-   **Geographic Unit:** Counties
+-   **Distance Buffer:** 5-mile radius (primary specification)
+-   **School Levels:** Elementary, middle, and high school combined
+-   **Time Period:** [Year] Census cross-section
+
+::: {.callout-tip appearance="minimal"}
+## Methodology Note
+
+School exposure measures are constructed at the Census block level using geocoded school coordinates, then aggregated to county geography. Demographic measures come from IPUMS [Year] Census 5% sample.
+:::
+
+------------------------------------------------------------------------
+
+## Summary Statistics
+
+### Demographic and School Exposure Variables
+
+``` stata
+[Insert summary statistics table here]
+```
+
+::: {.callout-tip appearance="minimal"}
+## Variable Definitions
+
+### Percent Units (0–100 scale)
+
+-   **hisp_share:** Percent Hispanic\
+-   **black_share:** Percent Black\
+-   **white_share:** Percent White
+
+### Proportion Units (0–1 scale)
+
+-   **less_hs:** Share with less than high school\
+-   **hs_grad:** Share with high school diploma\
+-   **some_college:** Share with some college\
+-   **college_plus:** Share with a college degree or higher
+
+### Raw Continuous Variables
+
+-   **avg_income:** Average household income ([Year] dollars)\
+-   **avg_age:** Mean age\
+-   **total_school:** Average private school count per block within the county (5-mile radius)\
+-   **relig / non_relig:** Counts of religious vs. non-religious schools\
+-   **distinct_fine:** Number of distinct fine-grained school types\
+-   **distinct_collapsed:** Number of distinct collapsed school categories
+:::
+
+| distinct_collapsed  | distinct_fine                                  |
+|---------------------|------------------------------------------------|
+| Non-religious       | NON-RELIGIOUS                                  |
+| Evangelical         | EVANGELICAL, APOSTOLIC-PENTECOSTAL-CHARISMATIC |
+| Catholic            | CATHOLIC                                       |
+| Baptist             | BAPTIST                                        |
+| Mainline Protestant | LUTHERAN, METHODIST, PRESBYTERIAN, EPISCOPAL   |
+| Adventist           | ADVENTIST                                      |
+| Jewish              | JEWISH                                         |
+| Muslim              | MUSLIM                                         |
+| Other Christian     | OTHER CHRISTIAN                                |
+| Other Religion      | OTHER RELIGION                                 |
+
+------------------------------------------------------------------------
+
+## Bivariate Regression Results
+
+These tables present simple relationships between each school exposure measure and community demographic characteristics. Each cell represents a separate regression: Demographic Variable ~ School Exposure Measure.
+
+### Table 1: Total Private School Count
+
+``` stata
+[Insert bivariate regression table for total_school here]
+```
+
+[Add interpretation of total private school count results here]
+
+------------------------------------------------------------------------
+
+### Table 2: Religious Private Schools
+
+``` stata
+[Insert bivariate regression table for religious schools here]
+```
+
+[Add interpretation of religious school results here]
+
+------------------------------------------------------------------------
+
+### Table 3: Non-Religious Private Schools
+
+``` stata
+[Insert bivariate regression table for non-religious schools here]
+```
+
+[Add interpretation of non-religious school results here]
+
+------------------------------------------------------------------------
+
+### Table 4: School Type Diversity (Fine Classification)
+
+``` stata
+[Insert bivariate regression table for distinct_fine here]
+```
+
+::: {.callout-tip appearance="minimal"}
+## Diversity Measures
+
+**distinct_fine** counts unique school types using granular denomination categories (Catholic, Lutheran, Methodist, Presbyterian, Episcopal, Baptist, etc. as separate types). Higher values indicate greater variety of school options available to families. Non-religious schools are included in this definition.
+:::
+
+------------------------------------------------------------------------
+
+### Table 5: School Type Diversity (Collapsed Classification)
+
+``` stata
+[Insert bivariate regression table for distinct_collapsed here]
+```
+
+::: {.callout-tip appearance="minimal"}
+## Diversity Measures
+
+**distinct_collapsed** uses 10 broad categories: Non-religious, Evangelical, Catholic, Baptist, Mainline Protestant, Adventist, Jewish, Muslim, Other Christian, Other Religion.
+:::
+
+------------------------------------------------------------------------
+
+## Multivariate Regression Analysis
+
+### Table 6: Total Private School Count Predicted by Demographics
+
+This multivariate specification examines the demographic predictors of private school access, regressing total private school count on community characteristics.
+
+``` stata
+[Insert multivariate regression table for total_school here]
+```
+
+[Add interpretation of multivariate results for total school count here]
+
+------------------------------------------------------------------------
+
+### Table 7: Religious Private School Count Predicted by Demographics
+
+``` stata
+[Insert multivariate regression table for religious schools here]
+```
+
+[Add interpretation of multivariate results for religious schools here]
+
+------------------------------------------------------------------------
+
+### Table 8: Non-Religious Private School Count Predicted by Demographics
+
+``` stata
+[Insert multivariate regression table for non-religious schools here]
+```
+
+[Add interpretation of multivariate results for non-religious schools here]
+
+------------------------------------------------------------------------
+
+### Table 9: School Type Diversity (Fine) Predicted by Demographics
+
+``` stata
+[Insert multivariate regression table for distinct_fine here]
+```
+
+[Add interpretation of multivariate results for fine classification diversity here]
+
+------------------------------------------------------------------------
+
+### Table 10: School Type Diversity (Collapsed) Predicted by Demographics
+
+``` stata
+[Insert multivariate regression table for distinct_collapsed here]
+```
+
+[Add interpretation of multivariate results for collapsed classification diversity here]
+
+------------------------------------------------------------------------
+
+## Data Sources and Methods
+
+::: {.callout-tip appearance="minimal" collapse="true"}
+## Click to expand: Technical Details
+
+**Demographic Data:**
+
+-   Source: IPUMS USA [Year] Census 5% sample
+-   Variables: Income (household-level), race, ethnicity, education, age (person-level)
+-   Weights: `hhwt` for household variables, `perwt` for person variables
+-   Geography: Counties
+
+**School Data:**
+
+-   Source: Geocoded private school locations
+-   Distance Calculation: `geonear` package with 5-mile buffer
+-   Geographic Construction: Block-level exposure aggregated to county
+-   School Classifications:
+    -   Religious vs. Non-religious
+    -   Fine-grained: All original denomination categories
+    -   Collapsed: 10 broad categories
+
+**Sample Restrictions:**
+
+-   [State] only (`statefip==[XX]`)
+-   Year [Year] (`year==[Year]`)
+-   5% Census sample (`sample==[XXXXXX]`)
+-   Distance filter: 5-mile radius (primary specification)
+
+**Crosswalk:**
+
+-   MCDC Geocorr [Year]: Links [Year] Census blocks to counties
+-   Block-level school counts averaged within each county
+:::
+
+------------------------------------------------------------------------
+
+## Next Steps
+
+[Add next steps here]
