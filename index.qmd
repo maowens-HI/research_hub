@@ -34,7 +34,7 @@ Recent notes.
 
 [January 2026]{.card-meta}
 
-[View Meeting Notes](meeting-jan-09-2026.qmd){.card-link} | [State Summary Spreadsheet](https://office365stanford-my.sharepoint.com/:x:/r/personal/maowens_stanford_edu/_layouts/15/Doc.aspx?sourcedoc=%7B7062619A-EC5D-4C9F-B6DF-C4D05D3CC702%7D&file=jjp_state_summary.xlsx&action=default&mobileredirect=true){.card-link}
+[View Meeting Notes](meeting-jan-09-2026.qmd){.card-link}
 :::
 ::::
 :::::::
@@ -91,6 +91,14 @@ This is where you can check out the latest code.
 
 [Open GitHub Repo](https://github.com/maowens-HI/school_finance){.card-link}
 :::
+
+::: card
+### State Summary
+
+Tracks which states are in our final regression results.
+
+[Open Spreadsheet](https://office365stanford-my.sharepoint.com/:x:/r/personal/maowens_stanford_edu/_layouts/15/Doc.aspx?sourcedoc=%7B7062619A-EC5D-4C9F-B6DF-C4D05D3CC702%7D&file=jjp_state_summary.xlsx&action=default&mobileredirect=true){.card-link}
+:::
 ::::::
 ::::::::
 :::::::::
@@ -117,7 +125,7 @@ Transitioned from PUMA-level to county-level analysis for Florida private school
 - Maintained same analytical approach: block-level school exposure aggregated to the new geographic unit
 :::
 
-[View Full Meeting Notes](meeting-jan-09-2026.qmd){.btn-ghost} [State Summary Spreadsheet](https://office365stanford-my.sharepoint.com/:x:/r/personal/maowens_stanford_edu/_layouts/15/Doc.aspx?sourcedoc=%7B7062619A-EC5D-4C9F-B6DF-C4D05D3CC702%7D&file=jjp_state_summary.xlsx&action=default&mobileredirect=true){.btn-ghost}
+[View Full Meeting Notes](meeting-jan-09-2026.qmd){.btn-ghost}
 
 ------------------------------------------------------------------------
 
