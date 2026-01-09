@@ -24,7 +24,19 @@ Recent notes.
 
 :::::::::: carousel-container
 ::::::: carousel-wrapper
-<!-- January 2026 cards will go here -->
+:::: carousel-slide
+::: research-card
+[Notes]{.card-category}
+
+[January 09: County-Level School Access Analysis]{.card-title}
+
+[Switched from PUMAs to counties as the geographic unit due to PUMA boundaries shifting between 1990 and 2000]{.card-excerpt}
+
+[January 2026]{.card-meta}
+
+[View Meeting Notes](meeting-jan-09-2026.qmd){.card-link}
+:::
+::::
 :::::::
 
 :::: carousel-controls
@@ -88,6 +100,24 @@ This is where you can check out the latest code.
 ## Research Timeline
 
 A chronological record of project milestones and findings.
+
+------------------------------------------------------------------------
+
+### January 2026 {.mt-xl}
+
+#### January 09: County-Level School Access Analysis
+
+Transitioned from PUMA-level to county-level analysis for Florida private school access due to PUMA boundary changes between 1990 and 2000.
+
+::: {.callout-note appearance="minimal"}
+- **Reason for Switch:** PUMA boundaries shifted substantially between 1990 and 2000, making cross-year comparisons unreliable
+- Geographic Unit: Counties (N=28)
+- Distance Buffer: 5-mile radius
+- Time Period: 2000 Census
+- Maintained same analytical approach: block-level school exposure aggregated to the new geographic unit
+:::
+
+[View Full Meeting Notes](meeting-jan-09-2026.qmd){.btn-ghost}
 
 ------------------------------------------------------------------------
 
