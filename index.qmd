@@ -145,6 +145,13 @@ Addressing the issue of states contributing very few counties to the balanced sa
 - Both baseline and jackknife versions presented for quartile and high vs low comparisons
 :::
 
+::: {.callout-tip appearance="minimal"}
+**Takeaways:**
+
+1. Fully interacting with non-jackknife produces correctly ordered results, so we are resolved that wrong ordering with non-jackknife is just because of not fully interacting. Going forward, we'll use JJP's not fully interacted version, but we'll know that any incorrect ordering is due to that as opposed to some other issue.
+2. These look like our "final" Fig 1's and Fig 2's, or at least workable versions to take to the Census data.
+:::
+
 [View Full Meeting Notes](meeting-dec-19-2025.qmd){.btn-ghost}
 
 ------------------------------------------------------------------------
