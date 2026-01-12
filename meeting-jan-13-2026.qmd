@@ -1,0 +1,843 @@
+---
+title: "Florida Private School Access and Demographics: County-Level Analysis"
+date: "January 13, 2026"
+format:
+  html:
+    toc: true
+    toc-location: left
+    toc-depth: 3
+---
+
+## Analysis Overview
+
+This document presents three parallel analyses of the relationship between county-level demographics and private school access in Florida:
+
+1. **2000 Cross-Section** (N=28 counties)
+2. **1990 Cross-Section** (N=22 counties)
+3. **2000-1990 Difference** (N=21 matched counties)
+
+**Key Features:**
+
+-   **Geographic Unit:** Counties
+-   **Distance Buffer:** 5-mile radius (primary specification)
+-   **School Levels:** Elementary, middle, and high school combined
+-   **Weighting:** School-age population (ages 5-17)
+
+::: {.callout-tip appearance="minimal"}
+## Methodology Note
+
+School exposure measures are constructed at the Census block level using geocoded school coordinates, then aggregated to county geography. Demographic measures come from IPUMS Census 5% samples for 1990 and 2000. The difference specification uses 2000 school exposure levels with changes in demographics from 1990 to 2000.
+:::
+
+See PUMA version of 2000 results [here.](https://maowens-hi.github.io/research_hub/meeting-dec-12-2025.html)
+
+------------------------------------------------------------------------
+
+## Summary Statistics
+
+::: {.panel-tabset}
+
+### 2000 Cross-Section
+
+``` stata
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+  avg_income |         28    53471.88    8792.716   41498.19    74734.8
+pct_hispanic |         28     4.05177     3.89438   .5912867   18.51387
+   pct_black |         28    9.800095    5.351307   1.949774   21.56962
+   pct_white |         28    83.69145    7.108454   68.80533   93.66389
+     avg_age |         28    40.48011    4.472742   33.46168   49.65272
+-------------+---------------------------------------------------------
+ pct_less_hs |         28     32.7926    3.564469   24.83356    40.0131
+ pct_hs_grad |         28     33.6126    4.286381   22.60561   41.33825
+pct_some_c~e |         28    17.72018    2.208407   13.79533   26.45465
+pct_colleg~s |         28    15.87463    4.333054   9.246449   24.81904
+total_school |         28    6.844557    4.817006   1.623682    17.1461
+-------------+---------------------------------------------------------
+       relig |         28    5.183716    3.405206   1.453487   12.34662
+   non_relig |         28     1.66084    1.544926    .136608   5.500585
+distinct_f~e |         28    3.320077    1.258234   1.276968    5.98674
+distinct_c~d |         28    2.975109    1.048436   1.276235   5.186797
+```
+
+### 2000-1990 Difference
+
+``` stata
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+  avg_income |         21    18371.75    3499.624   13440.11    25330.9
+pct_hispanic |         21    2.178923    2.316837   .0536616   10.43235
+   pct_black |         21    .5691316    1.396855   -1.70627   4.868745
+   pct_white |         21   -4.739806    3.168424  -12.08534  -1.329391
+     avg_age |         21    .7289447    1.136246  -1.593956   2.846329
+-------------+---------------------------------------------------------
+ pct_less_hs |         21   -3.496873    1.481368  -6.154388  -.7615894
+ pct_hs_grad |         21    4.537469    1.345453     1.3414   6.642747
+pct_some_c~e |         21   -3.957237    1.206921  -5.869105  -1.892951
+pct_colleg~s |         21    2.916641    .9243508   1.009915   4.414531
+total_school |         21     7.81257    5.047752   3.452132    17.1461
+-------------+---------------------------------------------------------
+       relig |         21     5.83285    3.521726   2.558495   12.34662
+   non_relig |         21     1.97972    1.653835   .1635172   5.500585
+distinct_f~e |         21    3.653743    1.229486   2.196612    5.98674
+distinct_c~d |         21    3.240661    1.032241   2.157344   5.186797
+```
+
+::: {.callout-note}
+## Difference Interpretation
+
+In the difference specification, demographic variables represent **changes** from 1990 to 2000 (e.g., avg_income = $18,372 average increase). School exposure variables remain in **levels** (2000 values). This asks: do counties with more private schools in 2000 experience different demographic trajectories?
+:::
+
+:::
+
+::: {.callout-tip appearance="minimal"}
+## Variable Definitions
+
+All demographic share variables are on a 0–100 percentage scale.
+
+### Race/Ethnicity
+
+-   **pct_hispanic:** Percent Hispanic
+-   **pct_black:** Percent Black
+-   **pct_white:** Percent White
+
+### Education
+
+-   **pct_less_hs:** Percent with less than high school
+-   **pct_hs_grad:** Percent with high school diploma
+-   **pct_some_college:** Percent with some college
+-   **pct_college_plus:** Percent with college degree or higher
+
+### Other Variables
+
+-   **avg_income:** Average household income (nominal dollars)
+-   **avg_age:** Mean age
+-   **total_school:** Average private school count per block within the county (5-mile radius)
+-   **relig / non_relig:** Counts of religious vs. non-religious schools
+-   **distinct_fine:** Number of distinct fine-grained school types
+-   **distinct_collapsed:** Number of distinct collapsed school categories
+:::
+
+| distinct_collapsed  | distinct_fine                                  |
+|---------------------|------------------------------------------------|
+| Non-religious       | NON-RELIGIOUS                                  |
+| Evangelical         | EVANGELICAL, APOSTOLIC-PENTECOSTAL-CHARISMATIC |
+| Catholic            | CATHOLIC                                       |
+| Baptist             | BAPTIST                                        |
+| Mainline Protestant | LUTHERAN, METHODIST, PRESBYTERIAN, EPISCOPAL   |
+| Adventist           | ADVENTIST                                      |
+| Jewish              | JEWISH                                         |
+| Muslim              | MUSLIM                                         |
+| Other Christian     | OTHER CHRISTIAN                                |
+| Other Religion      | OTHER RELIGION                                 |
+
+------------------------------------------------------------------------
+
+## Bivariate Regression Results
+
+These tables present simple relationships between each school exposure measure and community demographic characteristics. Each cell represents a separate regression: Demographic Variable ~ School Exposure Measure. All regressions are weighted by school-age population.
+
+### Table 1: Total Private School Count
+
+::: {.panel-tabset}
+
+#### 2000 Cross-Section
+
+``` stata
+                          |   (1)          (2)          (3)          (4)          (5)          (6)          (7)          (8)
+                          | avg_income  pct_black  pct_hispanic   avg_age   pct_hs_grad  pct_less_hs pct_some_college pct_college_plus
+--------------------------+-------------------------------------------------------------------------------------------
+total_school              |   321.31       0.537***     0.271**    -0.228*     -0.263**     0.0218       0.00416      0.237**
+                          |  (249.32)     (0.159)      (0.107)     (0.126)      (0.112)     (0.115)      (0.0657)     (0.115)
+                          |
+Constant                  |  51111.03***   6.97***      2.17*      41.87***     35.28***    32.98***     17.58***     14.16***
+                          | (2912.35)     (1.85)       (1.24)      (1.47)       (1.30)      (1.34)       (0.767)      (1.34)
+--------------------------+-------------------------------------------------------------------------------------------
+Observations              |    28          28           28          28           28          28           28          28
+R-squared                 |   0.060       0.306        0.199       0.112        0.175       0.001        0.000       0.140
+--------------------------+-------------------------------------------------------------------------------------------
+Standard errors in parentheses
+*** p<0.01, ** p<0.05, * p<0.1
+```
+
+#### 2000-1990 Difference
+
+``` stata
+                          |   (1)          (2)          (3)          (4)          (5)          (6)          (7)          (8)
+                          | Δavg_income  Δpct_black  Δpct_hispanic  Δavg_age  Δpct_hs_grad Δpct_less_hs Δpct_some_college Δpct_college_plus
+--------------------------+-------------------------------------------------------------------------------------------
+total_school              |   159.20       0.238***     0.127      -0.120***   -0.187***    0.184***    -0.0709*      0.0741**
+                          |  (124.90)     (0.0490)     (0.0751)    (0.0419)     (0.0531)    (0.0482)     (0.0355)     (0.0305)
+                          |
+Constant                  |  17355.30***  -1.25**       1.22        1.71***      6.03***    -4.78***     -3.55***      2.30***
+                          | (1536.56)     (0.603)      (0.924)     (0.516)      (0.653)     (0.593)      (0.437)      (0.375)
+--------------------------+-------------------------------------------------------------------------------------------
+Observations              |    21          21           21          21           21          21           21          21
+R-squared                 |   0.079       0.554        0.131       0.303        0.395       0.434        0.173       0.237
+--------------------------+-------------------------------------------------------------------------------------------
+Standard errors in parentheses
+*** p<0.01, ** p<0.05, * p<0.1
+```
+
+:::
+
+------------------------------------------------------------------------
+
+### Table 2: Religious Private Schools
+
+::: {.panel-tabset}
+
+#### 2000 Cross-Section
+
+``` stata
+                          |   (1)          (2)          (3)          (4)          (5)          (6)          (7)          (8)
+                          | avg_income  pct_black  pct_hispanic   avg_age   pct_hs_grad  pct_less_hs pct_some_college pct_college_plus
+--------------------------+-------------------------------------------------------------------------------------------
+relig                     |   324.76       0.823***     0.407**    -0.389**    -0.370**     0.109       -0.00802      0.269
+                          |  (360.27)     (0.218)      (0.149)     (0.174)      (0.159)     (0.162)      (0.0934)     (0.168)
+                          |
+Constant                  |  51941.70***   6.23***      1.86       42.49***     35.40***    32.37***     17.69***     14.54***
+                          | (3079.65)     (1.86)       (1.28)      (1.49)       (1.36)      (1.39)       (0.799)      (1.44)
+--------------------------+-------------------------------------------------------------------------------------------
+Observations              |    28          28           28          28           28          28           28          28
+R-squared                 |   0.030       0.355        0.222       0.161        0.172       0.017        0.000       0.090
+--------------------------+-------------------------------------------------------------------------------------------
+Standard errors in parentheses
+*** p<0.01, ** p<0.05, * p<0.1
+```
+
+#### 2000-1990 Difference
+
+``` stata
+                          |   (1)          (2)          (3)          (4)          (5)          (6)          (7)          (8)
+                          | Δavg_income  Δpct_black  Δpct_hispanic  Δavg_age  Δpct_hs_grad Δpct_less_hs Δpct_some_college Δpct_college_plus
+--------------------------+-------------------------------------------------------------------------------------------
+relig                     |   156.85       0.342***     0.202*     -0.167**    -0.251***    0.259***    -0.0962*      0.0886*
+                          |  (181.96)     (0.0690)     (0.105)     (0.0605)     (0.0785)    (0.0695)     (0.0512)     (0.0455)
+                          |
+Constant                  |  17841.27***  -1.40**       0.99        1.73***      6.00***    -4.84***     -3.55***      2.39***
+                          | (1629.65)     (0.618)      (0.941)     (0.542)      (0.703)     (0.622)      (0.458)      (0.407)
+--------------------------+-------------------------------------------------------------------------------------------
+Observations              |    21          21           21          21           21          21           21          21
+R-squared                 |   0.038       0.564        0.163       0.285        0.350       0.422        0.157       0.167
+--------------------------+-------------------------------------------------------------------------------------------
+Standard errors in parentheses
+*** p<0.01, ** p<0.05, * p<0.1
+```
+
+:::
+
+------------------------------------------------------------------------
+
+### Table 3: Non-Religious Private Schools
+
+::: {.panel-tabset}
+
+#### 2000 Cross-Section
+
+``` stata
+                          |   (1)          (2)          (3)          (4)          (5)          (6)          (7)          (8)
+                          | avg_income  pct_black  pct_hispanic   avg_age   pct_hs_grad  pct_less_hs pct_some_college pct_college_plus
+--------------------------+-------------------------------------------------------------------------------------------
+non_relig                 |  1580.40**    1.283**      0.686*     -0.351      -0.782**    -0.316        0.0798       1.017***
+                          |  (744.13)     (0.541)      (0.348)     (0.414)      (0.354)     (0.356)      (0.205)      (0.334)
+                          |
+Constant                  |  50193.66***   9.06***      3.12***    40.46***     34.67***    34.04***     17.41***     13.87***
+                          | (2385.87)     (1.74)       (1.12)      (1.33)       (1.13)      (1.14)       (0.658)      (1.07)
+--------------------------+-------------------------------------------------------------------------------------------
+Observations              |    28          28           28          28           28          28           28          28
+R-squared                 |   0.148       0.178        0.130       0.027        0.158       0.029        0.006       0.263
+--------------------------+-------------------------------------------------------------------------------------------
+Standard errors in parentheses
+*** p<0.01, ** p<0.05, * p<0.1
+```
+
+#### 2000-1990 Difference
+
+``` stata
+                          |   (1)          (2)          (3)          (4)          (5)          (6)          (7)          (8)
+                          | Δavg_income  Δpct_black  Δpct_hispanic  Δavg_age  Δpct_hs_grad Δpct_less_hs Δpct_some_college Δpct_college_plus
+--------------------------+-------------------------------------------------------------------------------------------
+non_relig                 |   801.17**    0.678***     0.270      -0.376***   -0.622***    0.554***    -0.230**      0.297***
+                          |  (362.88)     (0.168)      (0.244)     (0.131)      (0.159)     (0.155)      (0.110)      (0.0852)
+                          |
+Constant                  |  16762.73***  -0.613        1.83**      1.48***      5.79***    -4.37***     -3.66***      2.24***
+                          | (1237.13)     (0.574)      (0.832)     (0.447)      (0.542)     (0.528)      (0.376)      (0.291)
+--------------------------+-------------------------------------------------------------------------------------------
+Observations              |    21          21           21          21           21          21           21          21
+R-squared                 |   0.204       0.461        0.060       0.302        0.446       0.402        0.186       0.391
+--------------------------+-------------------------------------------------------------------------------------------
+Standard errors in parentheses
+*** p<0.01, ** p<0.05, * p<0.1
+```
+
+:::
+
+------------------------------------------------------------------------
+
+### Table 4: School Type Diversity (Fine Classification)
+
+::: {.panel-tabset}
+
+#### 2000 Cross-Section
+
+``` stata
+                          |   (1)          (2)          (3)          (4)          (5)          (6)          (7)          (8)
+                          | avg_income  pct_black  pct_hispanic   avg_age   pct_hs_grad  pct_less_hs pct_some_college pct_college_plus
+--------------------------+-------------------------------------------------------------------------------------------
+distinct_fine             |  1341.01       2.071***     1.088**    -0.774      -0.985**    -0.000       0.0199       0.966**
+                          | (1002.58)     (0.651)      (0.430)     (0.517)      (0.457)     (0.464)      (0.265)      (0.463)
+                          |
+Constant                  |  48786.89***   3.80         0.39       42.77***     36.72***    33.20***     17.54***     12.54***
+                          | (4426.06)     (2.87)       (1.90)      (2.28)       (2.02)      (2.05)       (1.17)       (2.04)
+--------------------------+-------------------------------------------------------------------------------------------
+Observations              |    28          28           28          28           28          28           28          28
+R-squared                 |   0.064       0.280        0.198       0.079        0.152       0.000        0.000       0.144
+--------------------------+-------------------------------------------------------------------------------------------
+Standard errors in parentheses
+*** p<0.01, ** p<0.05, * p<0.1
+```
+
+#### 2000-1990 Difference
+
+``` stata
+                          |   (1)          (2)          (3)          (4)          (5)          (6)          (7)          (8)
+                          | Δavg_income  Δpct_black  Δpct_hispanic  Δavg_age  Δpct_hs_grad Δpct_less_hs Δpct_some_college Δpct_college_plus
+--------------------------+-------------------------------------------------------------------------------------------
+distinct_fine             |   658.56       1.032***     0.522      -0.499***   -0.780***    0.796***    -0.344**      0.327**
+                          |  (530.64)     (0.201)      (0.320)     (0.179)      (0.228)     (0.201)      (0.146)      (0.128)
+                          |
+Constant                  |  16192.66***  -3.20***      0.31        2.59***      7.42***    -6.28***     -2.81***      1.66***
+                          | (2448.97)     (0.929)      (1.48)      (0.828)      (1.05)      (0.928)      (0.673)      (0.589)
+--------------------------+-------------------------------------------------------------------------------------------
+Observations              |    21          21           21          21           21          21           21          21
+R-squared                 |   0.075       0.581        0.123       0.289        0.382       0.452        0.227       0.257
+--------------------------+-------------------------------------------------------------------------------------------
+Standard errors in parentheses
+*** p<0.01, ** p<0.05, * p<0.1
+```
+
+:::
+
+::: {.callout-tip appearance="minimal"}
+## Diversity Measures
+
+**distinct_fine** counts unique school types using granular denomination categories (Catholic, Lutheran, Methodist, Presbyterian, Episcopal, Baptist, etc. as separate types). Higher values indicate greater variety of school options available to families. Non-religious schools are included in this definition.
+:::
+
+------------------------------------------------------------------------
+
+### Table 5: School Type Diversity (Collapsed Classification)
+
+::: {.panel-tabset}
+
+#### 2000 Cross-Section
+
+``` stata
+                          |   (1)          (2)          (3)          (4)          (5)          (6)          (7)          (8)
+                          | avg_income  pct_black  pct_hispanic   avg_age   pct_hs_grad  pct_less_hs pct_some_college pct_college_plus
+--------------------------+-------------------------------------------------------------------------------------------
+distinct_collapsed        |  1482.86       2.301***     1.153**    -0.805      -1.084*     -0.0466       0.0235       1.107*
+                          | (1188.52)     (0.785)      (0.519)     (0.617)      (0.545)     (0.548)      (0.312)      (0.549)
+                          |
+Constant                  |  48914.41***   3.95         0.68       42.51***     36.61***    33.37***     17.54***     12.48***
+                          | (4618.82)     (3.05)       (2.02)      (2.40)       (2.12)      (2.13)       (1.21)       (2.13)
+--------------------------+-------------------------------------------------------------------------------------------
+Observations              |    28          28           28          28           28          28           28          28
+R-squared                 |   0.057       0.248        0.160       0.062        0.132       0.000        0.000       0.135
+--------------------------+-------------------------------------------------------------------------------------------
+Standard errors in parentheses
+*** p<0.01, ** p<0.05, * p<0.1
+```
+
+#### 2000-1990 Difference
+
+``` stata
+                          |   (1)          (2)          (3)          (4)          (5)          (6)          (7)          (8)
+                          | Δavg_income  Δpct_black  Δpct_hispanic  Δavg_age  Δpct_hs_grad Δpct_less_hs Δpct_some_college Δpct_college_plus
+--------------------------+-------------------------------------------------------------------------------------------
+distinct_collapsed        |   729.09       1.163***     0.509      -0.572***   -0.863***    0.873***    -0.384**      0.374**
+                          |  (622.13)     (0.246)      (0.381)     (0.211)      (0.274)     (0.246)      (0.172)      (0.150)
+                          |
+Constant                  |  16269.23***  -3.16***      0.64        2.61***      7.33***    -6.15***     -2.83***      1.66***
+                          | (2520.37)     (0.996)      (1.54)      (0.855)      (1.11)      (0.997)      (0.698)      (0.609)
+--------------------------+-------------------------------------------------------------------------------------------
+Observations              |    21          21           21          21           21          21           21          21
+R-squared                 |   0.067       0.541        0.086       0.279        0.343       0.399        0.208       0.246
+--------------------------+-------------------------------------------------------------------------------------------
+Standard errors in parentheses
+*** p<0.01, ** p<0.05, * p<0.1
+```
+
+:::
+
+::: {.callout-tip appearance="minimal"}
+## Diversity Measures
+
+**distinct_collapsed** uses 10 broad categories: Non-religious, Evangelical, Catholic, Baptist, Mainline Protestant, Adventist, Jewish, Muslim, Other Christian, Other Religion.
+:::
+
+------------------------------------------------------------------------
+
+## Multivariate Regression Analysis
+
+These specifications regress each school exposure measure on a full set of demographic controls.
+
+### Table 6: Total Private School Count Predicted by Demographics
+
+::: {.panel-tabset}
+
+#### 2000 Cross-Section
+
+``` stata
+                          |   (1)
+                          | total_school
+--------------------------+------------------
+avg_income                |    0.0000529
+                          |  (0.000227)
+                          |
+avg_age                   |    0.808
+                          |   (0.599)
+                          |
+pct_hs_grad               |   -0.208
+                          |   (0.684)
+                          |
+pct_white                 |   -1.873*
+                          |   (1.036)
+                          |
+pct_hispanic              |   -0.625
+                          |   (0.679)
+                          |
+pct_black                 |   -1.431
+                          |   (1.057)
+                          |
+Constant                  |   152.86*
+                          |  (84.98)
+--------------------------+------------------
+Observations              |    28
+R-squared                 |   0.470
+Adjusted R-squared        |   0.319
+F-statistic               |   3.10
+--------------------------+------------------
+Standard errors in parentheses
+*** p<0.01, ** p<0.05, * p<0.1
+```
+
+#### 2000-1990 Difference
+
+``` stata
+                          |   (1)
+                          | total_school
+--------------------------+------------------
+Δavg_income               |    0.000378
+                          |  (0.000318)
+                          |
+Δavg_age                  |   -1.358
+                          |   (0.790)
+                          |
+Δpct_hs_grad              |    0.664
+                          |   (1.159)
+                          |
+Δpct_white                |   -2.603***
+                          |   (0.661)
+                          |
+Δpct_hispanic             |   -2.785***
+                          |   (0.705)
+                          |
+Δpct_black                |   -0.238
+                          |   (1.366)
+                          |
+Constant                  |   -7.15
+                          |  (11.20)
+--------------------------+------------------
+Observations              |    21
+R-squared                 |   0.832
+Adjusted R-squared        |   0.760
+F-statistic               |  11.53
+--------------------------+------------------
+Standard errors in parentheses
+*** p<0.01, ** p<0.05, * p<0.1
+```
+
+:::
+
+------------------------------------------------------------------------
+
+### Table 7: Religious Private School Count Predicted by Demographics
+
+::: {.panel-tabset}
+
+#### 2000 Cross-Section
+
+``` stata
+                          |   (1)
+                          |    relig
+--------------------------+------------------
+avg_income                |    0.0000248
+                          |  (0.000155)
+                          |
+avg_age                   |    0.449
+                          |   (0.408)
+                          |
+pct_hs_grad               |   -0.0377
+                          |   (0.467)
+                          |
+pct_white                 |   -1.349*
+                          |   (0.707)
+                          |
+pct_hispanic              |   -0.457
+                          |   (0.463)
+                          |
+pct_black                 |   -1.025
+                          |   (0.721)
+                          |
+Constant                  |   112.65*
+                          |  (57.99)
+--------------------------+------------------
+Observations              |    28
+R-squared                 |   0.501
+Adjusted R-squared        |   0.358
+F-statistic               |   3.51
+--------------------------+------------------
+Standard errors in parentheses
+*** p<0.01, ** p<0.05, * p<0.1
+```
+
+#### 2000-1990 Difference
+
+``` stata
+                          |   (1)
+                          |    relig
+--------------------------+------------------
+Δavg_income               |    0.000205
+                          |  (0.000208)
+                          |
+Δavg_age                  |   -0.890
+                          |   (0.516)
+                          |
+Δpct_hs_grad              |    0.649
+                          |   (0.758)
+                          |
+Δpct_white                |   -1.990***
+                          |   (0.432)
+                          |
+Δpct_hispanic             |   -1.945***
+                          |   (0.461)
+                          |
+Δpct_black                |   -0.245
+                          |   (0.894)
+                          |
+Constant                  |   -5.21
+                          |   (7.32)
+--------------------------+------------------
+Observations              |    21
+R-squared                 |   0.854
+Adjusted R-squared        |   0.791
+F-statistic               |  13.62
+--------------------------+------------------
+Standard errors in parentheses
+*** p<0.01, ** p<0.05, * p<0.1
+```
+
+:::
+
+------------------------------------------------------------------------
+
+### Table 8: Non-Religious Private School Count Predicted by Demographics
+
+::: {.panel-tabset}
+
+#### 2000 Cross-Section
+
+``` stata
+                          |   (1)
+                          | non_relig
+--------------------------+------------------
+avg_income                |    0.0000281
+                          |  (0.0000754)
+                          |
+avg_age                   |    0.360*
+                          |   (0.199)
+                          |
+pct_hs_grad               |   -0.170
+                          |   (0.228)
+                          |
+pct_white                 |   -0.524
+                          |   (0.345)
+                          |
+pct_hispanic              |   -0.168
+                          |   (0.226)
+                          |
+pct_black                 |   -0.407
+                          |   (0.352)
+                          |
+Constant                  |   40.22
+                          |  (28.29)
+--------------------------+------------------
+Observations              |    28
+R-squared                 |   0.423
+Adjusted R-squared        |   0.258
+F-statistic               |   2.56
+--------------------------+------------------
+Standard errors in parentheses
+*** p<0.01, ** p<0.05, * p<0.1
+```
+
+#### 2000-1990 Difference
+
+``` stata
+                          |   (1)
+                          | non_relig
+--------------------------+------------------
+Δavg_income               |    0.000173
+                          |  (0.000120)
+                          |
+Δavg_age                  |   -0.468
+                          |   (0.297)
+                          |
+Δpct_hs_grad              |    0.0143
+                          |   (0.436)
+                          |
+Δpct_white                |   -0.613**
+                          |   (0.249)
+                          |
+Δpct_hispanic             |   -0.841***
+                          |   (0.265)
+                          |
+Δpct_black                |    0.00707
+                          |   (0.514)
+                          |
+Constant                  |   -1.93
+                          |   (4.21)
+--------------------------+------------------
+Observations              |    21
+R-squared                 |   0.767
+Adjusted R-squared        |   0.667
+F-statistic               |   7.69
+--------------------------+------------------
+Standard errors in parentheses
+*** p<0.01, ** p<0.05, * p<0.1
+```
+
+:::
+
+------------------------------------------------------------------------
+
+### Table 9: School Type Diversity (Fine) Predicted by Demographics
+
+::: {.panel-tabset}
+
+#### 2000 Cross-Section
+
+``` stata
+                          |   (1)
+                          | distinct_fine
+--------------------------+------------------
+avg_income                |    2.65e-06
+                          |  (0.0000591)
+                          |
+avg_age                   |    0.199
+                          |   (0.156)
+                          |
+pct_hs_grad               |   -0.0957
+                          |   (0.179)
+                          |
+pct_white                 |   -0.301
+                          |   (0.270)
+                          |
+pct_hispanic              |   -0.0484
+                          |   (0.177)
+                          |
+pct_black                 |   -0.194
+                          |   (0.276)
+                          |
+Constant                  |   26.06
+                          |  (22.18)
+--------------------------+------------------
+Observations              |    28
+R-squared                 |   0.414
+Adjusted R-squared        |   0.246
+F-statistic               |   2.47
+--------------------------+------------------
+Standard errors in parentheses
+*** p<0.01, ** p<0.05, * p<0.1
+```
+
+#### 2000-1990 Difference
+
+``` stata
+                          |   (1)
+                          | distinct_fine
+--------------------------+------------------
+Δavg_income               |    0.000116
+                          |  (0.0000783)
+                          |
+Δavg_age                  |   -0.224
+                          |   (0.194)
+                          |
+Δpct_hs_grad              |    0.326
+                          |   (0.285)
+                          |
+Δpct_white                |   -0.479***
+                          |   (0.163)
+                          |
+Δpct_hispanic             |   -0.569***
+                          |   (0.173)
+                          |
+Δpct_black                |    0.296
+                          |   (0.336)
+                          |
+Constant                  |   -0.943
+                          |   (2.76)
+--------------------------+------------------
+Observations              |    21
+R-squared                 |   0.817
+Adjusted R-squared        |   0.738
+F-statistic               |  10.41
+--------------------------+------------------
+Standard errors in parentheses
+*** p<0.01, ** p<0.05, * p<0.1
+```
+
+:::
+
+------------------------------------------------------------------------
+
+### Table 10: School Type Diversity (Collapsed) Predicted by Demographics
+
+::: {.panel-tabset}
+
+#### 2000 Cross-Section
+
+``` stata
+                          |   (1)
+                          | distinct_collapsed
+--------------------------+------------------
+avg_income                |    1.13e-06
+                          |  (0.0000514)
+                          |
+avg_age                   |    0.187
+                          |   (0.136)
+                          |
+pct_hs_grad               |   -0.0808
+                          |   (0.155)
+                          |
+pct_white                 |   -0.297
+                          |   (0.235)
+                          |
+pct_hispanic              |   -0.0747
+                          |   (0.154)
+                          |
+pct_black                 |   -0.207
+                          |   (0.240)
+                          |
+Constant                  |   25.54
+                          |  (19.30)
+--------------------------+------------------
+Observations              |    28
+R-squared                 |   0.381
+Adjusted R-squared        |   0.205
+F-statistic               |   2.16
+--------------------------+------------------
+Standard errors in parentheses
+*** p<0.01, ** p<0.05, * p<0.1
+```
+
+#### 2000-1990 Difference
+
+``` stata
+                          |   (1)
+                          | distinct_collapsed
+--------------------------+------------------
+Δavg_income               |    0.0000929
+                          |  (0.0000664)
+                          |
+Δavg_age                  |   -0.225
+                          |   (0.165)
+                          |
+Δpct_hs_grad              |    0.283
+                          |   (0.242)
+                          |
+Δpct_white                |   -0.429***
+                          |   (0.138)
+                          |
+Δpct_hispanic             |   -0.551***
+                          |   (0.147)
+                          |
+Δpct_black                |    0.243
+                          |   (0.285)
+                          |
+Constant                  |   -0.515
+                          |   (2.34)
+--------------------------+------------------
+Observations              |    21
+R-squared                 |   0.820
+Adjusted R-squared        |   0.743
+F-statistic               |  10.64
+--------------------------+------------------
+Standard errors in parentheses
+*** p<0.01, ** p<0.05, * p<0.1
+```
+
+:::
+
+------------------------------------------------------------------------
+
+## Key Findings
+
+### Cross-Sectional Patterns (2000)
+
+1. **Race and Private School Access:** Counties with higher percent Black show significantly more private schools (β = 0.54 per percentage point, p < 0.01). This relationship is driven primarily by religious schools.
+
+2. **Education and School Access:** Higher college attainment is associated with more non-religious private schools (β = 1.02, p < 0.01). Counties with more HS graduates have fewer total schools.
+
+3. **Income:** No significant relationship with school counts in bivariate or multivariate specifications.
+
+### Difference Patterns (2000-1990)
+
+1. **Stronger Relationships:** The difference specification shows much stronger R-squared values (0.77-0.85 vs 0.38-0.50), suggesting school exposure is more predictive of demographic *changes* than levels.
+
+2. **Racial Change:** Counties with more private schools experienced larger increases in Black population share and smaller decreases in white share (or larger decreases in white share are associated with fewer schools).
+
+3. **Education Upgrading:** More private schools associated with larger declines in "less than HS" (-0.18 pp) and larger increases in college attainment (+0.07 pp).
+
+4. **Multivariate Results:** In the full model, changes in white and Hispanic shares are the strongest predictors. Counties with growing Hispanic and declining white populations have fewer private schools.
+
+------------------------------------------------------------------------
+
+## Data Sources and Methods
+
+::: {.callout-tip appearance="minimal" collapse="true"}
+## Click to expand: Technical Details
+
+**Demographic Data:**
+
+-   Source: IPUMS USA Census 5% samples (1990 and 2000)
+-   Variables: Income (household-level), race, ethnicity, education, age (person-level)
+-   Weights: `hhwt` for household variables, `perwt` for person variables
+-   Geography: Counties
+
+**School Data:**
+
+-   Source: Geocoded private school locations
+-   Distance Calculation: `geonear` package with 5-mile buffer
+-   Geographic Construction: Block-level exposure aggregated to county
+-   School Classifications:
+    -   Religious vs. Non-religious
+    -   Fine-grained: All original denomination categories
+    -   Collapsed: 10 broad categories
+
+**Sample Restrictions:**
+
+-   Florida only (`statefip==12`)
+-   5% Census samples
+-   Distance filter: 5-mile radius (primary specification)
+-   Difference specification: 21 counties matched across both years
+
+**Crosswalk:**
+
+-   MCDC Geocorr 2000: Links Census blocks to counties
+-   Block-level school counts averaged within each county
+-   Regressions weighted by school-age population (ages 5-17)
+:::
