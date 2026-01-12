@@ -131,14 +131,6 @@ A chronological record of project milestones and findings.
 
 Extended the county-level Florida analysis to include three parallel specifications: 2000 cross-section, 1990 cross-section, and 2000-1990 difference.
 
-::: {.callout-note appearance="minimal"}
-- **2000 Cross-Section:** N=28 counties, confirms positive relationship between private school exposure and Black population share
-- **2000-1990 Difference:** N=21 matched counties, much stronger R² values (0.77-0.85) than cross-sectional specs
-- **Key Finding:** School exposure is more predictive of demographic *changes* than levels
-- Counties with more private schools experienced larger increases in Black share, larger declines in "less than HS," and larger increases in college attainment
-- In multivariate difference models, changes in white and Hispanic shares are strongest predictors of school access
-:::
-
 [View Full Meeting Notes](meeting-jan-13-2026.qmd){.btn-ghost}
 
 ------------------------------------------------------------------------
