@@ -782,28 +782,6 @@ Standard errors in parentheses
 
 ------------------------------------------------------------------------
 
-## Key Findings
-
-### Cross-Sectional Patterns (2000)
-
-1. **Race and Private School Access:** Counties with higher percent Black show significantly more private schools (β = 0.54 per percentage point, p < 0.01). This relationship is driven primarily by religious schools.
-
-2. **Education and School Access:** Higher college attainment is associated with more non-religious private schools (β = 1.02, p < 0.01). Counties with more HS graduates have fewer total schools.
-
-3. **Income:** No significant relationship with school counts in bivariate or multivariate specifications.
-
-### Difference Patterns (2000-1990)
-
-1. **Stronger Relationships:** The difference specification shows much stronger R-squared values (0.77-0.85 vs 0.38-0.50), suggesting school exposure is more predictive of demographic *changes* than levels.
-
-2. **Racial Change:** Counties with more private schools experienced larger increases in Black population share and smaller decreases in white share (or larger decreases in white share are associated with fewer schools).
-
-3. **Education Upgrading:** More private schools associated with larger declines in "less than HS" (-0.18 pp) and larger increases in college attainment (+0.07 pp).
-
-4. **Multivariate Results:** In the full model, changes in white and Hispanic shares are the strongest predictors. Counties with growing Hispanic and declining white populations have fewer private schools.
-
-------------------------------------------------------------------------
-
 ## Data Sources and Methods
 
 ::: {.callout-tip appearance="minimal" collapse="true"}
