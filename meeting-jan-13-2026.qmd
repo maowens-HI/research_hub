@@ -29,8 +29,6 @@ This document presents three parallel analyses of the relationship between count
 School exposure measures are constructed at the Census block level using geocoded school coordinates, then aggregated to county geography. Demographic measures come from IPUMS Census 5% samples for 1990 and 2000. The difference specification uses 2000 school exposure levels with changes in demographics from 1990 to 2000.
 :::
 
-See PUMA version of 2000 results [here.](https://maowens-hi.github.io/research_hub/meeting-dec-12-2025.html)
-
 ------------------------------------------------------------------------
 
 ## Summary Statistics
