@@ -21,7 +21,7 @@ This document presents three parallel analyses of the relationship between count
 -   **Geographic Unit:** Counties
 -   **Distance Buffer:** 5-mile radius (primary specification)
 -   **School Levels:** Elementary, middle, and high school combined
--   **Weighting:** School-age population (ages 5-17)
+-   **Weighting:** School-age population (ages 5-17) from 1990 Census
 
 ::: {.callout-tip appearance="minimal"}
 ## Methodology Note
