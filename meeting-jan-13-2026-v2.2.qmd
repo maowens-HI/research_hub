@@ -12,9 +12,10 @@ format:
 
 This document presents three parallel analyses of the relationship between county-level demographics and private school access in Florida:
 
-1. **2000 Cross-Section** (N=21 counties)
-2. **1990 Cross-Section** (N=21 counties)
+1. **2000 Cross-Section** (N=28 counties)
+2. **1990 Cross-Section** (N=22 counties)
 3. **2000-1990 Difference** (N=21 matched counties)
+4. All regression anlysis is done with the 21 matched counties.
 
 **Key Features:**
 
@@ -30,6 +31,131 @@ This analysis uses **simple county-level school counts** rather than the 5-mile 
 
 The tradeoff is that we lose within-county variation in school access—a family in a rural part of a large county is treated the same as one near a cluster of schools. However, at the county level of analysis, this simpler measure may be more appropriate.
 :::
+
+------------------------------------------------------------------------
+
+## Summary Statistics
+
+::: {.panel-tabset}
+
+### 1990 Cross-Section
+
+``` stata
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+  avg_income |         22    33792.64    4679.242   25913.58   42570.36
+pct_hispanic |         22    4.935093    3.089576   2.057285   12.55274
+   pct_black |         22    10.16525    5.653502   1.822362   24.40136
+   pct_white |         22    87.31723    6.159262   72.65544   96.35172
+     avg_age |         22     40.3581    4.758501   31.81017   47.95951
+-------------+---------------------------------------------------------
+ pct_less_hs |         22    36.15015    4.315328   28.00873   44.64157
+ pct_hs_grad |         22    29.69262    4.166982   18.31279   37.17099
+pct_some_c~e |         22    21.50818    2.814256    17.3807   29.06493
+pct_colleg~s |         22    12.64906    3.974681   6.959563   22.38741
+total_school |         22     8.59593    4.550404   3.906557   16.43083
+-------------+---------------------------------------------------------
+       relig |         22    6.362666     3.11197   2.462995   11.80433
+   non_relig |         22    2.233264    1.606733   .2024515   5.471791
+distinct_f~e |         22    3.978855    1.067501   2.456909   5.710439
+distinct_c~d |         22     3.52286    .9052995   2.456909     5.0921
+```
+
+### 2000 Cross-Section
+
+``` stata
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+  avg_income |         28    53471.88    8792.716   41498.19    74734.8
+pct_hispanic |         28    8.525426    6.398896   1.693106    28.6004
+   pct_black |         28    9.800095    5.351307   1.949774   21.56962
+   pct_white |         28    83.69145    7.108454   68.80533   93.66389
+     avg_age |         28    40.48011    4.472742   33.46168   49.65272
+-------------+---------------------------------------------------------
+ pct_less_hs |         28     32.7926    3.564469   24.83356    40.0131
+ pct_hs_grad |         28     33.6126    4.286381   22.60561   41.33825
+pct_some_c~e |         28    17.72018    2.208407   13.79533   26.45465
+pct_colleg~s |         28    15.87463    4.333054   9.246449   24.81904
+total_school |         28    7.438399    4.408276   1.774245   16.43083
+-------------+---------------------------------------------------------
+       relig |         28    5.598128    3.040948   1.709223   11.80433
+   non_relig |         28    1.840271    1.537442   .0650219   5.471791
+distinct_f~e |         28    3.613151    1.144754   1.371477   5.710439
+distinct_c~d |         28     3.23077    .9538119   1.370474     5.0921
+```
+
+### 2000-1990 Difference
+
+``` stata
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+  avg_income |         21    18371.75    3499.624   13440.11    25330.9
+pct_hispanic |         21     4.54415    3.574807   .9916987   16.88794
+   pct_black |         21    .5691316    1.396855   -1.70627   4.868745
+   pct_white |         21   -4.739806    3.168423  -12.08534  -1.329399
+     avg_age |         21    .7289447    1.136246  -1.593956   2.846329
+-------------+---------------------------------------------------------
+ pct_less_hs |         21   -3.496873    1.481368  -6.154385  -.7615891
+ pct_hs_grad |         21    4.537468    1.345453     1.3414   6.642746
+pct_some_c~e |         21   -3.957237    1.206921  -5.869106  -1.892951
+pct_colleg~s |         21    2.916641    .9243507   1.009915   4.414531
+total_school |         21    8.388885    4.555353   3.906557   16.43083
+-------------+---------------------------------------------------------
+       relig |         21    6.219278     3.11346   2.462995   11.80433
+   non_relig |         21    2.169608    1.617734   .2024515   5.471791
+distinct_f~e |         21    3.934639    1.073022   2.456909   5.710439
+distinct_c~d |         21    3.486389    .9109441   2.456909     5.0921
+```
+
+::: {.callout-note}
+## Difference Interpretation
+
+In the difference specification, demographic variables represent **changes** from 1990 to 2000 (e.g., avg_income = $18,372 average increase). School exposure variables remain in **levels** (2000 values). This asks: do counties with more private schools in 2000 experience different demographic trajectories?
+:::
+
+:::
+
+::: {.callout-tip appearance="minimal"}
+## Variable Definitions
+
+All demographic share variables are on a 0–100 percentage scale.
+
+### Race/Ethnicity
+
+-   **pct_hispanic:** Percent Hispanic
+-   **pct_black:** Percent Black
+-   **pct_white:** Percent White
+
+### Education
+
+-   **pct_less_hs:** Percent with less than high school
+-   **pct_hs_grad:** Percent with high school diploma
+-   **pct_some_college:** Percent with some college
+-   **pct_college_plus:** Percent with college degree or higher
+
+### Other Variables
+
+-   **avg_income:** Average household income (nominal dollars)
+-   **avg_age:** Mean age
+-   **total_school:** Average private school count per block within the county (5-mile radius)
+-   **relig / non_relig:** Counts of religious vs. non-religious schools
+-   **distinct_fine:** Number of distinct fine-grained school types
+-   **distinct_collapsed:** Number of distinct collapsed school categories
+:::
+
+| distinct_collapsed  | distinct_fine                                  |
+|---------------------|------------------------------------------------|
+| Non-religious       | NON-RELIGIOUS                                  |
+| Evangelical         | EVANGELICAL, APOSTOLIC-PENTECOSTAL-CHARISMATIC |
+| Catholic            | CATHOLIC                                       |
+| Baptist             | BAPTIST                                        |
+| Mainline Protestant | LUTHERAN, METHODIST, PRESBYTERIAN, EPISCOPAL   |
+| Adventist           | ADVENTIST                                      |
+| Jewish              | JEWISH                                         |
+| Muslim              | MUSLIM                                         |
+| Other Christian     | OTHER CHRISTIAN                                |
+| Other Religion      | OTHER RELIGION                                 |
+
 
 ------------------------------------------------------------------------
 
@@ -533,36 +659,28 @@ N = 21, R² = 0.684, Adj. R² = 0.549, F = 5.06
 
 -   Source: IPUMS USA Census 5% samples (1990 and 2000)
 -   Variables: Income (household-level), race, ethnicity, education, age (person-level)
--   Geography: Counties identified in IPUMS (21 Florida counties)
+-   Weights: `hhwt` for household variables, `perwt` for person variables
+-   Geography: Counties
 
 **School Data:**
 
--   Source: Geocoded private school locations with county assignment
+-   Source: Geocoded private school locations
+-   Geographic Construction: Block-level exposure aggregated to county
 -   School Classifications:
     -   Religious vs. Non-religious
-    -   Fine-grained: 14 original denomination categories
-    -   Collapsed: 8 broad categories
+    -   Fine-grained: All original denomination categories
+    -   Collapsed: 10 broad categories
 
 **Sample Restrictions:**
 
 -   Florida only (`statefip==12`)
--   21 IPUMS-identifiable counties for 2000
--   21 IPUMS-identifiable counties for 1990
--   21 matched counties for difference specification
+-   5% Census samples
+-   21 counties matched across both years
 
-**Weighting:**
+**Crosswalk:**
 
--   All regressions weighted by school-age population (ages 5-17) from 1990 Census
--   Population data from NHGIS county-level age tables
+-   MCDC Geocorr 2000: Links Census blocks to counties
+-   Regressions weighted by school-age population (ages 5-17)
 :::
 
-| distinct_collapsed  | distinct_fine                                  |
-|---------------------|------------------------------------------------|
-| Non-religious       | NON-RELIGIOUS                                  |
-| Evangelical         | EVANGELICAL, APOSTOLIC-PENTECOSTAL-CHARISMATIC, BAPTIST |
-| Catholic            | CATHOLIC                                       |
-| Mainline Protestant | LUTHERAN, METHODIST, PRESBYTERIAN, EPISCOPAL   |
-| Adventist           | ADVENTIST                                      |
-| Jewish              | JEWISH                                         |
-| Muslim              | MUSLIM                                         |
-| Other               | OTHER CHRISTIAN, OTHER RELIGION                 |
+

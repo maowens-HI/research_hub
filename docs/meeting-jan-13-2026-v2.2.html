@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -113,6 +147,7 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#analysis-overview" id="toc-analysis-overview" class="nav-link active" data-scroll-target="#analysis-overview">Analysis Overview</a></li>
+  <li><a href="#summary-statistics" id="toc-summary-statistics" class="nav-link" data-scroll-target="#summary-statistics">Summary Statistics</a></li>
   <li><a href="#bivariate-regression-results" id="toc-bivariate-regression-results" class="nav-link" data-scroll-target="#bivariate-regression-results">Bivariate Regression Results</a>
   <ul class="collapse">
   <li><a href="#table-1-total-private-school-count" id="toc-table-1-total-private-school-count" class="nav-link" data-scroll-target="#table-1-total-private-school-count">Table 1: Total Private School Count</a></li>
@@ -169,9 +204,10 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="analysis-overview">Analysis Overview</h2>
 <p>This document presents three parallel analyses of the relationship between county-level demographics and private school access in Florida:</p>
 <ol type="1">
-<li><strong>2000 Cross-Section</strong> (N=21 counties)</li>
-<li><strong>1990 Cross-Section</strong> (N=21 counties)</li>
+<li><strong>2000 Cross-Section</strong> (N=28 counties)</li>
+<li><strong>1990 Cross-Section</strong> (N=22 counties)</li>
 <li><strong>2000-1990 Difference</strong> (N=21 matched counties)</li>
+<li>All regression anlysis is done with the 21 matched counties.</li>
 </ol>
 <p><strong>Key Features:</strong></p>
 <ul>
@@ -196,15 +232,188 @@ Methodological Change from V1
 </div>
 <hr>
 </section>
+<section id="summary-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="summary-statistics">Summary Statistics</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">1990 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">2000 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">2000-1990 Difference</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="sourceCode" id="cb1"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>    Variable |        Obs        Mean    Std. <span class="kw">dev</span>.       Min        Max</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>-------------+---------------------------------------------------------</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  avg_income |         22    33792.64    4679.242   25913.58   42570.36</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>pct_hispanic |         22    4.935093    3.089576   2.057285   12.55274</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>   pct_black |         22    10.16525    5.653502   1.822362   24.40136</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>   pct_white |         22    87.31723    6.159262   72.65544   96.35172</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>     avg_age |         22     40.3581    4.758501   31.81017   47.95951</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>-------------+---------------------------------------------------------</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a> pct_less_hs |         22    36.15015    4.315328   28.00873   44.64157</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a> pct_hs_grad |         22    29.69262    4.166982   18.31279   37.17099</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>pct_some_c~<span class="fu">e</span> |         22    21.50818    2.814256    17.3807   29.06493</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>pct_colleg~<span class="fu">s</span> |         22    12.64906    3.974681   6.959563   22.38741</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>total_school |         22     8.59593    4.550404   3.906557   16.43083</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>-------------+---------------------------------------------------------</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>       relig |         22    6.362666     3.11197   2.462995   11.80433</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>   non_relig |         22    2.233264    1.606733   .2024515   5.471791</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>distinct_f~<span class="fu">e</span> |         22    3.978855    1.067501   2.456909   5.710439</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>distinct_c~<span class="kw">d</span> |         22     3.52286    .9052995   2.456909     5.0921</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="sourceCode" id="cb2"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>    Variable |        Obs        Mean    Std. <span class="kw">dev</span>.       Min        Max</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>-------------+---------------------------------------------------------</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  avg_income |         28    53471.88    8792.716   41498.19    74734.8</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>pct_hispanic |         28    8.525426    6.398896   1.693106    28.6004</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>   pct_black |         28    9.800095    5.351307   1.949774   21.56962</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>   pct_white |         28    83.69145    7.108454   68.80533   93.66389</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>     avg_age |         28    40.48011    4.472742   33.46168   49.65272</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>-------------+---------------------------------------------------------</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a> pct_less_hs |         28     32.7926    3.564469   24.83356    40.0131</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a> pct_hs_grad |         28     33.6126    4.286381   22.60561   41.33825</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>pct_some_c~<span class="fu">e</span> |         28    17.72018    2.208407   13.79533   26.45465</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>pct_colleg~<span class="fu">s</span> |         28    15.87463    4.333054   9.246449   24.81904</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>total_school |         28    7.438399    4.408276   1.774245   16.43083</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>-------------+---------------------------------------------------------</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>       relig |         28    5.598128    3.040948   1.709223   11.80433</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>   non_relig |         28    1.840271    1.537442   .0650219   5.471791</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>distinct_f~<span class="fu">e</span> |         28    3.613151    1.144754   1.371477   5.710439</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>distinct_c~<span class="kw">d</span> |         28     3.23077    .9538119   1.370474     5.0921</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<div class="sourceCode" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>    Variable |        Obs        Mean    Std. <span class="kw">dev</span>.       Min        Max</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>-------------+---------------------------------------------------------</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  avg_income |         21    18371.75    3499.624   13440.11    25330.9</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>pct_hispanic |         21     4.54415    3.574807   .9916987   16.88794</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>   pct_black |         21    .5691316    1.396855   -1.70627   4.868745</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>   pct_white |         21   -4.739806    3.168423  -12.08534  -1.329399</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>     avg_age |         21    .7289447    1.136246  -1.593956   2.846329</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>-------------+---------------------------------------------------------</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a> pct_less_hs |         21   -3.496873    1.481368  -6.154385  -.7615891</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a> pct_hs_grad |         21    4.537468    1.345453     1.3414   6.642746</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>pct_some_c~<span class="fu">e</span> |         21   -3.957237    1.206921  -5.869106  -1.892951</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>pct_colleg~<span class="fu">s</span> |         21    2.916641    .9243507   1.009915   4.414531</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>total_school |         21    8.388885    4.555353   3.906557   16.43083</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>-------------+---------------------------------------------------------</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>       relig |         21    6.219278     3.11346   2.462995   11.80433</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>   non_relig |         21    2.169608    1.617734   .2024515   5.471791</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>distinct_f~<span class="fu">e</span> |         21    3.934639    1.073022   2.456909   5.710439</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>distinct_c~<span class="kw">d</span> |         21    3.486389    .9109441   2.456909     5.0921</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Difference Interpretation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In the difference specification, demographic variables represent <strong>changes</strong> from 1990 to 2000 (e.g., avg_income = $18,372 average increase). School exposure variables remain in <strong>levels</strong> (2000 values). This asks: do counties with more private schools in 2000 experience different demographic trajectories?</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Variable Definitions
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>All demographic share variables are on a 0–100 percentage scale.</p>
+<section id="raceethnicity" class="level3">
+<h3 class="anchored" data-anchor-id="raceethnicity">Race/Ethnicity</h3>
+<ul>
+<li><strong>pct_hispanic:</strong> Percent Hispanic</li>
+<li><strong>pct_black:</strong> Percent Black</li>
+<li><strong>pct_white:</strong> Percent White</li>
+</ul>
+</section>
+<section id="education" class="level3">
+<h3 class="anchored" data-anchor-id="education">Education</h3>
+<ul>
+<li><strong>pct_less_hs:</strong> Percent with less than high school</li>
+<li><strong>pct_hs_grad:</strong> Percent with high school diploma</li>
+<li><strong>pct_some_college:</strong> Percent with some college</li>
+<li><strong>pct_college_plus:</strong> Percent with college degree or higher</li>
+</ul>
+</section>
+<section id="other-variables" class="level3">
+<h3 class="anchored" data-anchor-id="other-variables">Other Variables</h3>
+<ul>
+<li><strong>avg_income:</strong> Average household income (nominal dollars)</li>
+<li><strong>avg_age:</strong> Mean age</li>
+<li><strong>total_school:</strong> Average private school count per block within the county (5-mile radius)</li>
+<li><strong>relig / non_relig:</strong> Counts of religious vs.&nbsp;non-religious schools</li>
+<li><strong>distinct_fine:</strong> Number of distinct fine-grained school types</li>
+<li><strong>distinct_collapsed:</strong> Number of distinct collapsed school categories</li>
+</ul>
+</section>
+</div>
+</div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>distinct_collapsed</th>
+<th>distinct_fine</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Non-religious</td>
+<td>NON-RELIGIOUS</td>
+</tr>
+<tr class="even">
+<td>Evangelical</td>
+<td>EVANGELICAL, APOSTOLIC-PENTECOSTAL-CHARISMATIC</td>
+</tr>
+<tr class="odd">
+<td>Catholic</td>
+<td>CATHOLIC</td>
+</tr>
+<tr class="even">
+<td>Baptist</td>
+<td>BAPTIST</td>
+</tr>
+<tr class="odd">
+<td>Mainline Protestant</td>
+<td>LUTHERAN, METHODIST, PRESBYTERIAN, EPISCOPAL</td>
+</tr>
+<tr class="even">
+<td>Adventist</td>
+<td>ADVENTIST</td>
+</tr>
+<tr class="odd">
+<td>Jewish</td>
+<td>JEWISH</td>
+</tr>
+<tr class="even">
+<td>Muslim</td>
+<td>MUSLIM</td>
+</tr>
+<tr class="odd">
+<td>Other Christian</td>
+<td>OTHER CHRISTIAN</td>
+</tr>
+<tr class="even">
+<td>Other Religion</td>
+<td>OTHER RELIGION</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
 <section id="bivariate-regression-results" class="level2">
 <h2 class="anchored" data-anchor-id="bivariate-regression-results">Bivariate Regression Results</h2>
 <p>These tables present simple relationships between each school exposure measure and community demographic characteristics. Each cell represents a separate regression: School Exposure ~ Demographic Variable. All regressions are weighted by school-age population.</p>
 <section id="table-1-total-private-school-count" class="level3">
 <h3 class="anchored" data-anchor-id="table-1-total-private-school-count">Table 1: Total Private School Count</h3>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">2000 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">1990 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">2000-1990 Difference</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">2000 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">1990 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">2000-1990 Difference</a></li></ul>
 <div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -255,7 +464,7 @@ Methodological Change from V1
 </table>
 <p>N = 21 counties. Standard errors in parentheses. * p&lt;0.1, ** p&lt;0.05, *** p&lt;0.01</p>
 </div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -306,7 +515,7 @@ Methodological Change from V1
 </table>
 <p>N = 21 counties. Standard errors in parentheses. * p&lt;0.1, ** p&lt;0.05, *** p&lt;0.01</p>
 </div>
-<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -364,9 +573,9 @@ Methodological Change from V1
 <section id="table-2-non-religious-private-schools" class="level3">
 <h3 class="anchored" data-anchor-id="table-2-non-religious-private-schools">Table 2: Non-Religious Private Schools</h3>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">2000 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">1990 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">2000-1990 Difference</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">2000 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">1990 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false">2000-1990 Difference</a></li></ul>
 <div class="tab-content">
-<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -417,7 +626,7 @@ Methodological Change from V1
 </table>
 <p>N = 21 counties. Standard errors in parentheses. * p&lt;0.1, ** p&lt;0.05, *** p&lt;0.01</p>
 </div>
-<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -468,7 +677,7 @@ Methodological Change from V1
 </table>
 <p>N = 21 counties. Standard errors in parentheses. * p&lt;0.1, ** p&lt;0.05, *** p&lt;0.01</p>
 </div>
-<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
+<div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -526,9 +735,9 @@ Methodological Change from V1
 <section id="table-3-religious-private-schools" class="level3">
 <h3 class="anchored" data-anchor-id="table-3-religious-private-schools">Table 3: Religious Private Schools</h3>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">2000 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">1990 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false">2000-1990 Difference</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">2000 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">1990 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false">2000-1990 Difference</a></li></ul>
 <div class="tab-content">
-<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -579,7 +788,7 @@ Methodological Change from V1
 </table>
 <p>N = 21 counties. Standard errors in parentheses. * p&lt;0.1, ** p&lt;0.05, *** p&lt;0.01</p>
 </div>
-<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -630,7 +839,7 @@ Methodological Change from V1
 </table>
 <p>N = 21 counties. Standard errors in parentheses. * p&lt;0.1, ** p&lt;0.05, *** p&lt;0.01</p>
 </div>
-<div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
+<div id="tabset-4-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-3-tab">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -688,9 +897,9 @@ Methodological Change from V1
 <section id="table-4-school-type-diversity-fine-classification" class="level3">
 <h3 class="anchored" data-anchor-id="table-4-school-type-diversity-fine-classification">Table 4: School Type Diversity (Fine Classification)</h3>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">2000 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">1990 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false">2000-1990 Difference</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">2000 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">1990 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-3" role="tab" aria-controls="tabset-5-3" aria-selected="false">2000-1990 Difference</a></li></ul>
 <div class="tab-content">
-<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -741,7 +950,7 @@ Methodological Change from V1
 </table>
 <p>N = 21 counties. Standard errors in parentheses. * p&lt;0.1, ** p&lt;0.05, *** p&lt;0.01</p>
 </div>
-<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -792,7 +1001,7 @@ Methodological Change from V1
 </table>
 <p>N = 21 counties. Standard errors in parentheses. * p&lt;0.1, ** p&lt;0.05, *** p&lt;0.01</p>
 </div>
-<div id="tabset-4-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-3-tab">
+<div id="tabset-5-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-3-tab">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -863,9 +1072,9 @@ Diversity Measures
 <section id="table-5-school-type-diversity-collapsed-classification" class="level3">
 <h3 class="anchored" data-anchor-id="table-5-school-type-diversity-collapsed-classification">Table 5: School Type Diversity (Collapsed Classification)</h3>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">2000 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">1990 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-3" role="tab" aria-controls="tabset-5-3" aria-selected="false">2000-1990 Difference</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">2000 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false">1990 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-3" role="tab" aria-controls="tabset-6-3" aria-selected="false">2000-1990 Difference</a></li></ul>
 <div class="tab-content">
-<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -916,7 +1125,7 @@ Diversity Measures
 </table>
 <p>N = 21 counties. Standard errors in parentheses. * p&lt;0.1, ** p&lt;0.05, *** p&lt;0.01</p>
 </div>
-<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -967,7 +1176,7 @@ Diversity Measures
 </table>
 <p>N = 21 counties. Standard errors in parentheses. * p&lt;0.1, ** p&lt;0.05, *** p&lt;0.01</p>
 </div>
-<div id="tabset-5-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-3-tab">
+<div id="tabset-6-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-3-tab">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1042,9 +1251,9 @@ Diversity Measures
 <section id="table-6-total-private-school-count-predicted-by-demographics" class="level3">
 <h3 class="anchored" data-anchor-id="table-6-total-private-school-count-predicted-by-demographics">Table 6: Total Private School Count Predicted by Demographics</h3>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">2000 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false">1990 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-3" role="tab" aria-controls="tabset-6-3" aria-selected="false">2000-1990 Difference</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true">2000 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false">1990 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-3" role="tab" aria-controls="tabset-7-3" aria-selected="false">2000-1990 Difference</a></li></ul>
 <div class="tab-content">
-<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
+<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1101,7 +1310,7 @@ Diversity Measures
 </table>
 <p>N = 21, R² = 0.617, Adj. R² = 0.452, F = 3.75</p>
 </div>
-<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
+<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1158,7 +1367,7 @@ Diversity Measures
 </table>
 <p>N = 21, R² = 0.619, Adj. R² = 0.455, F = 3.79</p>
 </div>
-<div id="tabset-6-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-3-tab">
+<div id="tabset-7-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-3-tab">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1222,9 +1431,9 @@ Diversity Measures
 <section id="table-7-non-religious-private-schools-predicted-by-demographics" class="level3">
 <h3 class="anchored" data-anchor-id="table-7-non-religious-private-schools-predicted-by-demographics">Table 7: Non-Religious Private Schools Predicted by Demographics</h3>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true">2000 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false">1990 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-3" role="tab" aria-controls="tabset-7-3" aria-selected="false">2000-1990 Difference</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true">2000 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false">1990 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-3" role="tab" aria-controls="tabset-8-3" aria-selected="false">2000-1990 Difference</a></li></ul>
 <div class="tab-content">
-<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
+<div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1281,7 +1490,7 @@ Diversity Measures
 </table>
 <p>N = 21, R² = 0.679, Adj. R² = 0.541, F = 4.94</p>
 </div>
-<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
+<div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1338,7 +1547,7 @@ Diversity Measures
 </table>
 <p>N = 21, R² = 0.698, Adj. R² = 0.568, F = 5.39</p>
 </div>
-<div id="tabset-7-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-3-tab">
+<div id="tabset-8-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-3-tab">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1402,9 +1611,9 @@ Diversity Measures
 <section id="table-8-religious-private-schools-predicted-by-demographics" class="level3">
 <h3 class="anchored" data-anchor-id="table-8-religious-private-schools-predicted-by-demographics">Table 8: Religious Private Schools Predicted by Demographics</h3>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true">2000 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false">1990 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-3" role="tab" aria-controls="tabset-8-3" aria-selected="false">2000-1990 Difference</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true">2000 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false">1990 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-3" role="tab" aria-controls="tabset-9-3" aria-selected="false">2000-1990 Difference</a></li></ul>
 <div class="tab-content">
-<div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
+<div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1461,7 +1670,7 @@ Diversity Measures
 </table>
 <p>N = 21, R² = 0.569, Adj. R² = 0.384, F = 3.08</p>
 </div>
-<div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
+<div id="tabset-9-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-2-tab">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1518,7 +1727,7 @@ Diversity Measures
 </table>
 <p>N = 21, R² = 0.572, Adj. R² = 0.388, F = 3.11</p>
 </div>
-<div id="tabset-8-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-3-tab">
+<div id="tabset-9-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-3-tab">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1582,9 +1791,9 @@ Diversity Measures
 <section id="table-9-school-type-diversity-fine-predicted-by-demographics" class="level3">
 <h3 class="anchored" data-anchor-id="table-9-school-type-diversity-fine-predicted-by-demographics">Table 9: School Type Diversity (Fine) Predicted by Demographics</h3>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true">2000 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false">1990 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-3" role="tab" aria-controls="tabset-9-3" aria-selected="false">2000-1990 Difference</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-10-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-1" role="tab" aria-controls="tabset-10-1" aria-selected="true">2000 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-2" role="tab" aria-controls="tabset-10-2" aria-selected="false">1990 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-3" role="tab" aria-controls="tabset-10-3" aria-selected="false">2000-1990 Difference</a></li></ul>
 <div class="tab-content">
-<div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
+<div id="tabset-10-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-10-1-tab">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1641,7 +1850,7 @@ Diversity Measures
 </table>
 <p>N = 21, R² = 0.548, Adj. R² = 0.354, F = 2.83</p>
 </div>
-<div id="tabset-9-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-2-tab">
+<div id="tabset-10-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-2-tab">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1698,7 +1907,7 @@ Diversity Measures
 </table>
 <p>N = 21, R² = 0.565, Adj. R² = 0.379, F = 3.04</p>
 </div>
-<div id="tabset-9-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-3-tab">
+<div id="tabset-10-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-3-tab">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1762,9 +1971,9 @@ Diversity Measures
 <section id="table-10-school-type-diversity-collapsed-predicted-by-demographics" class="level3">
 <h3 class="anchored" data-anchor-id="table-10-school-type-diversity-collapsed-predicted-by-demographics">Table 10: School Type Diversity (Collapsed) Predicted by Demographics</h3>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-10-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-1" role="tab" aria-controls="tabset-10-1" aria-selected="true">2000 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-2" role="tab" aria-controls="tabset-10-2" aria-selected="false">1990 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-3" role="tab" aria-controls="tabset-10-3" aria-selected="false">2000-1990 Difference</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-11-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-1" role="tab" aria-controls="tabset-11-1" aria-selected="true">2000 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-11-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-2" role="tab" aria-controls="tabset-11-2" aria-selected="false">1990 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-11-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-3" role="tab" aria-controls="tabset-11-3" aria-selected="false">2000-1990 Difference</a></li></ul>
 <div class="tab-content">
-<div id="tabset-10-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-10-1-tab">
+<div id="tabset-11-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-11-1-tab">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1821,7 +2030,7 @@ Diversity Measures
 </table>
 <p>N = 21, R² = 0.565, Adj. R² = 0.379, F = 3.03</p>
 </div>
-<div id="tabset-10-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-2-tab">
+<div id="tabset-11-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-11-2-tab">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1878,7 +2087,7 @@ Diversity Measures
 </table>
 <p>N = 21, R² = 0.534, Adj. R² = 0.335, F = 2.68</p>
 </div>
-<div id="tabset-10-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-3-tab">
+<div id="tabset-11-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-11-3-tab">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1943,7 +2152,7 @@ Diversity Measures
 <section id="data-sources-and-methods" class="level2">
 <h2 class="anchored" data-anchor-id="data-sources-and-methods">Data Sources and Methods</h2>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1952,85 +2161,41 @@ Click to expand: Technical Details
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Demographic Data:</strong></p>
 <ul>
 <li>Source: IPUMS USA Census 5% samples (1990 and 2000)</li>
 <li>Variables: Income (household-level), race, ethnicity, education, age (person-level)</li>
-<li>Geography: Counties identified in IPUMS (21 Florida counties)</li>
+<li>Weights: <code>hhwt</code> for household variables, <code>perwt</code> for person variables</li>
+<li>Geography: Counties</li>
 </ul>
 <p><strong>School Data:</strong></p>
 <ul>
-<li>Source: Geocoded private school locations with county assignment</li>
+<li>Source: Geocoded private school locations</li>
+<li>Distance Calculation: <code>geonear</code> package with 5-mile buffer</li>
+<li>Geographic Construction: Block-level exposure aggregated to county</li>
 <li>School Classifications:
 <ul>
 <li>Religious vs.&nbsp;Non-religious</li>
-<li>Fine-grained: 14 original denomination categories</li>
-<li>Collapsed: 8 broad categories</li>
+<li>Fine-grained: All original denomination categories</li>
+<li>Collapsed: 10 broad categories</li>
 </ul></li>
 </ul>
 <p><strong>Sample Restrictions:</strong></p>
 <ul>
 <li>Florida only (<code>statefip==12</code>)</li>
-<li>21 IPUMS-identifiable counties for 2000</li>
-<li>21 IPUMS-identifiable counties for 1990</li>
-<li>21 matched counties for difference specification</li>
+<li>5% Census samples</li>
+<li>21 counties matched across both years</li>
 </ul>
-<p><strong>Weighting:</strong></p>
+<p><strong>Crosswalk:</strong></p>
 <ul>
-<li>All regressions weighted by school-age population (ages 5-17) from 1990 Census</li>
-<li>Population data from NHGIS county-level age tables</li>
+<li>MCDC Geocorr 2000: Links Census blocks to counties</li>
+<li>Regressions weighted by school-age population (ages 5-17)</li>
 </ul>
 </div>
 </div>
 </div>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 30%">
-<col style="width: 69%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>distinct_collapsed</th>
-<th>distinct_fine</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Non-religious</td>
-<td>NON-RELIGIOUS</td>
-</tr>
-<tr class="even">
-<td>Evangelical</td>
-<td>EVANGELICAL, APOSTOLIC-PENTECOSTAL-CHARISMATIC, BAPTIST</td>
-</tr>
-<tr class="odd">
-<td>Catholic</td>
-<td>CATHOLIC</td>
-</tr>
-<tr class="even">
-<td>Mainline Protestant</td>
-<td>LUTHERAN, METHODIST, PRESBYTERIAN, EPISCOPAL</td>
-</tr>
-<tr class="odd">
-<td>Adventist</td>
-<td>ADVENTIST</td>
-</tr>
-<tr class="even">
-<td>Jewish</td>
-<td>JEWISH</td>
-</tr>
-<tr class="odd">
-<td>Muslim</td>
-<td>MUSLIM</td>
-</tr>
-<tr class="even">
-<td>Other</td>
-<td>OTHER CHRISTIAN, OTHER RELIGION</td>
-</tr>
-</tbody>
-</table>
 
 
 </section>
