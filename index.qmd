@@ -28,6 +28,20 @@ Recent notes.
 ::: research-card
 [Notes]{.card-category}
 
+[January 13: Florida County-Level Analysis (V2) - Simple School Counts]{.card-title}
+
+[Simplified methodology using county-level school counts instead of 5-mile radius buffer approach]{.card-excerpt}
+
+[January 2026]{.card-meta}
+
+[View Meeting Notes](meeting-jan-13-2026-v2.qmd){.card-link}
+:::
+::::
+
+:::: carousel-slide
+::: research-card
+[Notes]{.card-category}
+
 [January 13: Florida Update - 1990, 2000, and Difference Analysis]{.card-title}
 
 [Extended county-level analysis to include 1990 cross-section and 2000-1990 difference specifications]{.card-excerpt}
@@ -126,6 +140,21 @@ A chronological record of project milestones and findings.
 ------------------------------------------------------------------------
 
 ### January 2026 {.mt-xl}
+
+#### January 13: Florida County-Level Analysis (V2) - Simple School Counts
+
+Simplified the methodology to use county-level school counts instead of the 5-mile radius buffer approach used in V1.
+
+::: {.callout-note appearance="minimal"}
+- **Methodological Change:** Uses simple county-level school counts rather than average school exposure per Census block
+- Geographic Unit: Counties (N=21 matched across both years)
+- Three parallel analyses: 2000 Cross-Section, 1990 Cross-Section, 2000-1990 Difference
+- Weighting: School-age population (ages 5-17) from 1990 Census
+:::
+
+[View Full Meeting Notes](meeting-jan-13-2026-v2.qmd){.btn-ghost}
+
+------------------------------------------------------------------------
 
 #### January 13: Florida Update - 1990, 2000, and Difference Analysis
 
