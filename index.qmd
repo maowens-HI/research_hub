@@ -28,7 +28,7 @@ Recent notes.
 ::: research-card
 [Notes]{.card-category}
 
-[January 13: Florida County-Level Analysis (2.2) - Simple School Counts]{.card-title}
+[January 13: Florida County-Level Analysis (V2) - Simple School Counts]{.card-title}
 
 [Simplified methodology using county-level school counts instead of 5-mile radius buffer approach]{.card-excerpt}
 
@@ -141,7 +141,7 @@ A chronological record of project milestones and findings.
 
 ### January 2026 {.mt-xl}
 
-#### January 13: Florida County-Level Analysis (2.2) - Simple School Counts
+#### January 13: Florida County-Level Analysis (V2) - Simple School Counts
 
 Simplified the methodology to use county-level school counts instead of the 5-mile radius buffer approach used in V1.
 
