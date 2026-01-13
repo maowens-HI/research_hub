@@ -311,7 +311,7 @@ A brief 2–3 sentence block reinforcing credibility:
 │                                                                      │
 │  ───────────────────────────────────────────────────────────────    │
 │                                                                      │
-│  © 2025 Institute Name. All rights reserved.   Privacy | Terms     │
+│  Built with Quarto                                                  │
 │                                                                      │
 └─────────────────────────────────────────────────────────────────────┘
 ```

@@ -15,8 +15,6 @@ website:
         text: Github
   page-footer:
     background: light
-    left: |
-      &copy; 2025 Research Hub. All rights reserved.
     right: |
       Built with [Quarto](https://quarto.org)
 
