@@ -1,0 +1,2497 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2026-01-13">
+
+<title>Florida Private School Access and Demographics: County-Level Analysis (V2) – Research Hub</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-937d584fb5d552ffcd9025614ad707e2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Research Hub</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://github.com/maowens-HI/school_finance"> 
+<span class="menu-text">Github</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#analysis-overview" id="toc-analysis-overview" class="nav-link active" data-scroll-target="#analysis-overview">Analysis Overview</a></li>
+  <li><a href="#bivariate-regression-results" id="toc-bivariate-regression-results" class="nav-link" data-scroll-target="#bivariate-regression-results">Bivariate Regression Results</a>
+  <ul class="collapse">
+  <li><a href="#table-1-total-private-school-count" id="toc-table-1-total-private-school-count" class="nav-link" data-scroll-target="#table-1-total-private-school-count">Table 1: Total Private School Count</a></li>
+  <li><a href="#table-2-non-religious-private-schools" id="toc-table-2-non-religious-private-schools" class="nav-link" data-scroll-target="#table-2-non-religious-private-schools">Table 2: Non-Religious Private Schools</a></li>
+  <li><a href="#table-3-religious-private-schools" id="toc-table-3-religious-private-schools" class="nav-link" data-scroll-target="#table-3-religious-private-schools">Table 3: Religious Private Schools</a></li>
+  <li><a href="#table-4-school-type-diversity-fine-classification" id="toc-table-4-school-type-diversity-fine-classification" class="nav-link" data-scroll-target="#table-4-school-type-diversity-fine-classification">Table 4: School Type Diversity (Fine Classification)</a></li>
+  <li><a href="#table-5-school-type-diversity-collapsed-classification" id="toc-table-5-school-type-diversity-collapsed-classification" class="nav-link" data-scroll-target="#table-5-school-type-diversity-collapsed-classification">Table 5: School Type Diversity (Collapsed Classification)</a></li>
+  </ul></li>
+  <li><a href="#multivariate-regression-analysis" id="toc-multivariate-regression-analysis" class="nav-link" data-scroll-target="#multivariate-regression-analysis">Multivariate Regression Analysis</a>
+  <ul class="collapse">
+  <li><a href="#table-6-total-private-school-count-predicted-by-demographics" id="toc-table-6-total-private-school-count-predicted-by-demographics" class="nav-link" data-scroll-target="#table-6-total-private-school-count-predicted-by-demographics">Table 6: Total Private School Count Predicted by Demographics</a></li>
+  <li><a href="#table-7-non-religious-private-schools-predicted-by-demographics" id="toc-table-7-non-religious-private-schools-predicted-by-demographics" class="nav-link" data-scroll-target="#table-7-non-religious-private-schools-predicted-by-demographics">Table 7: Non-Religious Private Schools Predicted by Demographics</a></li>
+  <li><a href="#table-8-religious-private-schools-predicted-by-demographics" id="toc-table-8-religious-private-schools-predicted-by-demographics" class="nav-link" data-scroll-target="#table-8-religious-private-schools-predicted-by-demographics">Table 8: Religious Private Schools Predicted by Demographics</a></li>
+  <li><a href="#table-9-school-type-diversity-fine-predicted-by-demographics" id="toc-table-9-school-type-diversity-fine-predicted-by-demographics" class="nav-link" data-scroll-target="#table-9-school-type-diversity-fine-predicted-by-demographics">Table 9: School Type Diversity (Fine) Predicted by Demographics</a></li>
+  <li><a href="#table-10-school-type-diversity-collapsed-predicted-by-demographics" id="toc-table-10-school-type-diversity-collapsed-predicted-by-demographics" class="nav-link" data-scroll-target="#table-10-school-type-diversity-collapsed-predicted-by-demographics">Table 10: School Type Diversity (Collapsed) Predicted by Demographics</a></li>
+  </ul></li>
+  <li><a href="#key-findings-summary" id="toc-key-findings-summary" class="nav-link" data-scroll-target="#key-findings-summary">Key Findings Summary</a></li>
+  <li><a href="#data-sources-and-methods" id="toc-data-sources-and-methods" class="nav-link" data-scroll-target="#data-sources-and-methods">Data Sources and Methods</a></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Florida Private School Access and Demographics: County-Level Analysis (V2)</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 13, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="analysis-overview" class="level2">
+<h2 class="anchored" data-anchor-id="analysis-overview">Analysis Overview</h2>
+<p>This document presents three parallel analyses of the relationship between county-level demographics and private school access in Florida:</p>
+<ol type="1">
+<li><strong>2000 Cross-Section</strong> (N=21 counties)</li>
+<li><strong>1990 Cross-Section</strong> (N=22 counties)</li>
+<li><strong>2000-1990 Difference</strong> (N=21 matched counties)</li>
+</ol>
+<p><strong>Key Features:</strong></p>
+<ul>
+<li><strong>Geographic Unit:</strong> Counties</li>
+<li><strong>School Measure:</strong> Simple county-level counts (total schools in county)</li>
+<li><strong>School Levels:</strong> Elementary, middle, and high school combined</li>
+<li><strong>Weighting:</strong> School-age population (ages 5-17) from 1990 Census</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Methodological Change from V1
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This analysis uses <strong>simple county-level school counts</strong> rather than the 5-mile radius buffer approach used in V1. Instead of calculating average school exposure per Census block within a county, we now count the total number of private schools located within each county’s borders. This simplification addresses concerns about the complexity of the radius-based approach and provides a more straightforward interpretation: “How many private schools are in this county?”</p>
+<p>The tradeoff is that we lose within-county variation in school access—a family in a rural part of a large county is treated the same as one near a cluster of schools. However, at the county level of analysis, this simpler measure may be more appropriate.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="bivariate-regression-results" class="level2">
+<h2 class="anchored" data-anchor-id="bivariate-regression-results">Bivariate Regression Results</h2>
+<p>These tables present simple relationships between each school exposure measure and community demographic characteristics. Each cell represents a separate regression: School Exposure ~ Demographic Variable. All regressions are weighted by school-age population.</p>
+<section id="table-1-total-private-school-count" class="level3">
+<h3 class="anchored" data-anchor-id="table-1-total-private-school-count">Table 1: Total Private School Count</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">2000 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">1990 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">2000-1990 Difference</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Predictor</th>
+<th>Coefficient</th>
+<th>Std. Error</th>
+<th>p-value</th>
+<th>R²</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>avg_income</td>
+<td>0.0020</td>
+<td>(0.0013)</td>
+<td>0.151</td>
+<td>0.105</td>
+</tr>
+<tr class="even">
+<td>pct_black</td>
+<td>5.793***</td>
+<td>(1.317)</td>
+<td>0.000</td>
+<td>0.504</td>
+</tr>
+<tr class="odd">
+<td>pct_hispanic</td>
+<td>4.082***</td>
+<td>(1.393)</td>
+<td>0.009</td>
+<td>0.311</td>
+</tr>
+<tr class="even">
+<td>avg_age</td>
+<td>-4.198*</td>
+<td>(2.308)</td>
+<td>0.085</td>
+<td>0.148</td>
+</tr>
+<tr class="odd">
+<td>pct_college_plus</td>
+<td>3.658</td>
+<td>(2.567)</td>
+<td>0.170</td>
+<td>0.097</td>
+</tr>
+</tbody>
+</table>
+<p>N = 21 counties. Standard errors in parentheses. * p&lt;0.1, ** p&lt;0.05, *** p&lt;0.01</p>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Predictor</th>
+<th>Coefficient</th>
+<th>Std. Error</th>
+<th>p-value</th>
+<th>R²</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>avg_income</td>
+<td>0.0034</td>
+<td>(0.0022)</td>
+<td>0.131</td>
+<td>0.110</td>
+</tr>
+<tr class="even">
+<td>pct_black</td>
+<td>4.086***</td>
+<td>(1.420)</td>
+<td>0.009</td>
+<td>0.293</td>
+</tr>
+<tr class="odd">
+<td>pct_hispanic</td>
+<td>5.914**</td>
+<td>(2.314)</td>
+<td>0.019</td>
+<td>0.246</td>
+</tr>
+<tr class="even">
+<td>avg_age</td>
+<td>-2.708</td>
+<td>(2.123)</td>
+<td>0.217</td>
+<td>0.075</td>
+</tr>
+<tr class="odd">
+<td>pct_college_plus</td>
+<td>3.086</td>
+<td>(3.005)</td>
+<td>0.317</td>
+<td>0.050</td>
+</tr>
+</tbody>
+</table>
+<p>N = 22 counties. Standard errors in parentheses. * p&lt;0.1, ** p&lt;0.05, *** p&lt;0.01</p>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Predictor (Δ)</th>
+<th>Coefficient</th>
+<th>Std. Error</th>
+<th>p-value</th>
+<th>R²</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Δavg_income</td>
+<td>18.06</td>
+<td>(16.23)</td>
+<td>0.279</td>
+<td>0.061</td>
+</tr>
+<tr class="even">
+<td>Δpct_black</td>
+<td>0.031***</td>
+<td>(0.006)</td>
+<td>0.000</td>
+<td>0.570</td>
+</tr>
+<tr class="odd">
+<td>Δpct_hispanic</td>
+<td>0.027*</td>
+<td>(0.015)</td>
+<td>0.080</td>
+<td>0.153</td>
+</tr>
+<tr class="even">
+<td>Δavg_age</td>
+<td>-0.015**</td>
+<td>(0.005)</td>
+<td>0.014</td>
+<td>0.278</td>
+</tr>
+<tr class="odd">
+<td>Δpct_college_plus</td>
+<td>0.008*</td>
+<td>(0.004)</td>
+<td>0.081</td>
+<td>0.152</td>
+</tr>
+</tbody>
+</table>
+<p>N = 21 counties. Regressions of demographic <em>changes</em> (2000-1990) on school counts (2000 levels). Standard errors in parentheses. * p&lt;0.1, ** p&lt;0.05, *** p&lt;0.01</p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="table-2-non-religious-private-schools" class="level3">
+<h3 class="anchored" data-anchor-id="table-2-non-religious-private-schools">Table 2: Non-Religious Private Schools</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">2000 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">1990 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">2000-1990 Difference</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Predictor</th>
+<th>Coefficient</th>
+<th>Std. Error</th>
+<th>p-value</th>
+<th>R²</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>avg_income</td>
+<td>0.0010**</td>
+<td>(0.0005)</td>
+<td>0.043</td>
+<td>0.198</td>
+</tr>
+<tr class="even">
+<td>pct_black</td>
+<td>2.020***</td>
+<td>(0.494)</td>
+<td>0.001</td>
+<td>0.468</td>
+</tr>
+<tr class="odd">
+<td>pct_hispanic</td>
+<td>1.372**</td>
+<td>(0.519)</td>
+<td>0.016</td>
+<td>0.269</td>
+</tr>
+<tr class="even">
+<td>avg_age</td>
+<td>-1.228</td>
+<td>(0.860)</td>
+<td>0.169</td>
+<td>0.097</td>
+</tr>
+<tr class="odd">
+<td>pct_college_plus</td>
+<td>1.786*</td>
+<td>(0.887)</td>
+<td>0.059</td>
+<td>0.176</td>
+</tr>
+</tbody>
+</table>
+<p>N = 21 counties. Standard errors in parentheses. * p&lt;0.1, ** p&lt;0.05, *** p&lt;0.01</p>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Predictor</th>
+<th>Coefficient</th>
+<th>Std. Error</th>
+<th>p-value</th>
+<th>R²</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>avg_income</td>
+<td>0.0016**</td>
+<td>(0.0007)</td>
+<td>0.043</td>
+<td>0.190</td>
+</tr>
+<tr class="even">
+<td>pct_black</td>
+<td>1.252**</td>
+<td>(0.483)</td>
+<td>0.019</td>
+<td>0.251</td>
+</tr>
+<tr class="odd">
+<td>pct_hispanic</td>
+<td>1.782**</td>
+<td>(0.790)</td>
+<td>0.036</td>
+<td>0.203</td>
+</tr>
+<tr class="even">
+<td>avg_age</td>
+<td>-0.666</td>
+<td>(0.695)</td>
+<td>0.351</td>
+<td>0.044</td>
+</tr>
+<tr class="odd">
+<td>pct_college_plus</td>
+<td>1.421</td>
+<td>(0.990)</td>
+<td>0.168</td>
+<td>0.093</td>
+</tr>
+</tbody>
+</table>
+<p>N = 22 counties. Standard errors in parentheses. * p&lt;0.1, ** p&lt;0.05, *** p&lt;0.01</p>
+</div>
+<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Predictor (Δ)</th>
+<th>Coefficient</th>
+<th>Std. Error</th>
+<th>p-value</th>
+<th>R²</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Δavg_income</td>
+<td>78.24*</td>
+<td>(42.67)</td>
+<td>0.082</td>
+<td>0.150</td>
+</tr>
+<tr class="even">
+<td>Δpct_black</td>
+<td>0.084***</td>
+<td>(0.018)</td>
+<td>0.000</td>
+<td>0.542</td>
+</tr>
+<tr class="odd">
+<td>Δpct_hispanic</td>
+<td>0.070</td>
+<td>(0.041)</td>
+<td>0.108</td>
+<td>0.130</td>
+</tr>
+<tr class="even">
+<td>Δavg_age</td>
+<td>-0.041**</td>
+<td>(0.015)</td>
+<td>0.015</td>
+<td>0.273</td>
+</tr>
+<tr class="odd">
+<td>Δpct_college_plus</td>
+<td>0.024**</td>
+<td>(0.011)</td>
+<td>0.046</td>
+<td>0.189</td>
+</tr>
+</tbody>
+</table>
+<p>N = 21 counties. Standard errors in parentheses. * p&lt;0.1, ** p&lt;0.05, *** p&lt;0.01</p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="table-3-religious-private-schools" class="level3">
+<h3 class="anchored" data-anchor-id="table-3-religious-private-schools">Table 3: Religious Private Schools</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">2000 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">1990 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false">2000-1990 Difference</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Predictor</th>
+<th>Coefficient</th>
+<th>Std. Error</th>
+<th>p-value</th>
+<th>R²</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>avg_income</td>
+<td>0.0010</td>
+<td>(0.0009)</td>
+<td>0.277</td>
+<td>0.062</td>
+</tr>
+<tr class="even">
+<td>pct_black</td>
+<td>3.773***</td>
+<td>(0.877)</td>
+<td>0.000</td>
+<td>0.494</td>
+</tr>
+<tr class="odd">
+<td>pct_hispanic</td>
+<td>2.710***</td>
+<td>(0.914)</td>
+<td>0.008</td>
+<td>0.316</td>
+</tr>
+<tr class="even">
+<td>avg_age</td>
+<td>-2.970*</td>
+<td>(1.499)</td>
+<td>0.062</td>
+<td>0.171</td>
+</tr>
+<tr class="odd">
+<td>pct_college_plus</td>
+<td>1.872</td>
+<td>(1.722)</td>
+<td>0.292</td>
+<td>0.058</td>
+</tr>
+</tbody>
+</table>
+<p>N = 21 counties. Standard errors in parentheses. * p&lt;0.1, ** p&lt;0.05, *** p&lt;0.01</p>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Predictor</th>
+<th>Coefficient</th>
+<th>Std. Error</th>
+<th>p-value</th>
+<th>R²</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>avg_income</td>
+<td>0.0018</td>
+<td>(0.0015)</td>
+<td>0.243</td>
+<td>0.068</td>
+</tr>
+<tr class="even">
+<td>pct_black</td>
+<td>2.834***</td>
+<td>(0.971)</td>
+<td>0.009</td>
+<td>0.299</td>
+</tr>
+<tr class="odd">
+<td>pct_hispanic</td>
+<td>4.132**</td>
+<td>(1.560)</td>
+<td>0.016</td>
+<td>0.260</td>
+</tr>
+<tr class="even">
+<td>avg_age</td>
+<td>-2.042</td>
+<td>(1.455)</td>
+<td>0.178</td>
+<td>0.090</td>
+</tr>
+<tr class="odd">
+<td>pct_college_plus</td>
+<td>1.665</td>
+<td>(2.037)</td>
+<td>0.425</td>
+<td>0.032</td>
+</tr>
+</tbody>
+</table>
+<p>N = 22 counties. Standard errors in parentheses. * p&lt;0.1, ** p&lt;0.05, *** p&lt;0.01</p>
+</div>
+<div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Predictor (Δ)</th>
+<th>Coefficient</th>
+<th>Std. Error</th>
+<th>p-value</th>
+<th>R²</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Δavg_income</td>
+<td>-3.59</td>
+<td>(48.03)</td>
+<td>0.941</td>
+<td>0.000</td>
+</tr>
+<tr class="even">
+<td>Δpct_black</td>
+<td>0.066***</td>
+<td>(0.018)</td>
+<td>0.002</td>
+<td>0.420</td>
+</tr>
+<tr class="odd">
+<td>Δpct_hispanic</td>
+<td>0.044</td>
+<td>(0.044)</td>
+<td>0.327</td>
+<td>0.050</td>
+</tr>
+<tr class="even">
+<td>Δavg_age</td>
+<td>-0.033*</td>
+<td>(0.017)</td>
+<td>0.065</td>
+<td>0.164</td>
+</tr>
+<tr class="odd">
+<td>Δpct_college_plus</td>
+<td>0.013</td>
+<td>(0.013)</td>
+<td>0.321</td>
+<td>0.052</td>
+</tr>
+</tbody>
+</table>
+<p>N = 21 counties. Standard errors in parentheses. * p&lt;0.1, ** p&lt;0.05, *** p&lt;0.01</p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="table-4-school-type-diversity-fine-classification" class="level3">
+<h3 class="anchored" data-anchor-id="table-4-school-type-diversity-fine-classification">Table 4: School Type Diversity (Fine Classification)</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">2000 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">1990 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false">2000-1990 Difference</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Predictor</th>
+<th>Coefficient</th>
+<th>Std. Error</th>
+<th>p-value</th>
+<th>R²</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>avg_income</td>
+<td>0.00005</td>
+<td>(0.00004)</td>
+<td>0.172</td>
+<td>0.094</td>
+</tr>
+<tr class="even">
+<td>pct_black</td>
+<td>0.494***</td>
+<td>(0.122)</td>
+<td>0.001</td>
+<td>0.463</td>
+</tr>
+<tr class="odd">
+<td>pct_hispanic</td>
+<td>0.306**</td>
+<td>(0.135)</td>
+<td>0.035</td>
+<td>0.212</td>
+</tr>
+<tr class="even">
+<td>avg_age</td>
+<td>-0.276</td>
+<td>(0.215)</td>
+<td>0.216</td>
+<td>0.078</td>
+</tr>
+<tr class="odd">
+<td>pct_college_plus</td>
+<td>0.288</td>
+<td>(0.237)</td>
+<td>0.240</td>
+<td>0.071</td>
+</tr>
+</tbody>
+</table>
+<p>N = 21 counties. Standard errors in parentheses. * p&lt;0.1, ** p&lt;0.05, *** p&lt;0.01</p>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Predictor</th>
+<th>Coefficient</th>
+<th>Std. Error</th>
+<th>p-value</th>
+<th>R²</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>avg_income</td>
+<td>0.00008</td>
+<td>(0.00005)</td>
+<td>0.173</td>
+<td>0.090</td>
+</tr>
+<tr class="even">
+<td>pct_black</td>
+<td>0.253***</td>
+<td>(0.083)</td>
+<td>0.007</td>
+<td>0.315</td>
+</tr>
+<tr class="odd">
+<td>pct_hispanic</td>
+<td>0.288*</td>
+<td>(0.145)</td>
+<td>0.062</td>
+<td>0.164</td>
+</tr>
+<tr class="even">
+<td>avg_age</td>
+<td>-0.160</td>
+<td>(0.127)</td>
+<td>0.221</td>
+<td>0.074</td>
+</tr>
+<tr class="odd">
+<td>pct_college_plus</td>
+<td>0.019</td>
+<td>(0.184)</td>
+<td>0.918</td>
+<td>0.001</td>
+</tr>
+</tbody>
+</table>
+<p>N = 22 counties. Standard errors in parentheses. * p&lt;0.1, ** p&lt;0.05, *** p&lt;0.01</p>
+</div>
+<div id="tabset-4-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-3-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Predictor (Δ)</th>
+<th>Coefficient</th>
+<th>Std. Error</th>
+<th>p-value</th>
+<th>R²</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Δavg_income</td>
+<td>3.35</td>
+<td>(3.54)</td>
+<td>0.358</td>
+<td>0.045</td>
+</tr>
+<tr class="even">
+<td>Δpct_black</td>
+<td>0.006***</td>
+<td>(0.001)</td>
+<td>0.000</td>
+<td>0.542</td>
+</tr>
+<tr class="odd">
+<td>Δpct_hispanic</td>
+<td>0.004</td>
+<td>(0.003)</td>
+<td>0.239</td>
+<td>0.072</td>
+</tr>
+<tr class="even">
+<td>Δavg_age</td>
+<td>-0.003**</td>
+<td>(0.001)</td>
+<td>0.039</td>
+<td>0.204</td>
+</tr>
+<tr class="odd">
+<td>Δpct_college_plus</td>
+<td>0.001</td>
+<td>(0.001)</td>
+<td>0.325</td>
+<td>0.051</td>
+</tr>
+</tbody>
+</table>
+<p>N = 21 counties. Standard errors in parentheses. * p&lt;0.1, ** p&lt;0.05, *** p&lt;0.01</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Diversity Measures
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>distinct_fine</strong> counts unique school types using granular denomination categories (Catholic, Lutheran, Methodist, Presbyterian, Episcopal, Baptist, etc. as separate types). Higher values indicate greater variety of school options available to families.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="table-5-school-type-diversity-collapsed-classification" class="level3">
+<h3 class="anchored" data-anchor-id="table-5-school-type-diversity-collapsed-classification">Table 5: School Type Diversity (Collapsed Classification)</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">2000 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">1990 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-3" role="tab" aria-controls="tabset-5-3" aria-selected="false">2000-1990 Difference</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Predictor</th>
+<th>Coefficient</th>
+<th>Std. Error</th>
+<th>p-value</th>
+<th>R²</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>avg_income</td>
+<td>0.00004</td>
+<td>(0.00003)</td>
+<td>0.189</td>
+<td>0.088</td>
+</tr>
+<tr class="even">
+<td>pct_black</td>
+<td>0.406***</td>
+<td>(0.100)</td>
+<td>0.001</td>
+<td>0.466</td>
+</tr>
+<tr class="odd">
+<td>pct_hispanic</td>
+<td>0.114**</td>
+<td>(0.053)</td>
+<td>0.043</td>
+<td>0.195</td>
+</tr>
+<tr class="even">
+<td>avg_age</td>
+<td>-0.110</td>
+<td>(0.084)</td>
+<td>0.208</td>
+<td>0.082</td>
+</tr>
+<tr class="odd">
+<td>pct_college_plus</td>
+<td>0.079</td>
+<td>(0.093)</td>
+<td>0.408</td>
+<td>0.036</td>
+</tr>
+</tbody>
+</table>
+<p>N = 21 counties. Standard errors in parentheses. * p&lt;0.1, ** p&lt;0.05, *** p&lt;0.01</p>
+</div>
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Predictor</th>
+<th>Coefficient</th>
+<th>Std. Error</th>
+<th>p-value</th>
+<th>R²</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>avg_income</td>
+<td>0.00005</td>
+<td>(0.00008)</td>
+<td>0.556</td>
+<td>0.018</td>
+</tr>
+<tr class="even">
+<td>pct_black</td>
+<td>0.128**</td>
+<td>(0.052)</td>
+<td>0.023</td>
+<td>0.233</td>
+</tr>
+<tr class="odd">
+<td>pct_hispanic</td>
+<td>0.182**</td>
+<td>(0.084)</td>
+<td>0.042</td>
+<td>0.191</td>
+</tr>
+<tr class="even">
+<td>avg_age</td>
+<td>-0.083</td>
+<td>(0.075)</td>
+<td>0.279</td>
+<td>0.058</td>
+</tr>
+<tr class="odd">
+<td>pct_college_plus</td>
+<td>0.067</td>
+<td>(0.107)</td>
+<td>0.540</td>
+<td>0.019</td>
+</tr>
+</tbody>
+</table>
+<p>N = 22 counties. Standard errors in parentheses. * p&lt;0.1, ** p&lt;0.05, *** p&lt;0.01</p>
+</div>
+<div id="tabset-5-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-3-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Predictor (Δ)</th>
+<th>Coefficient</th>
+<th>Std. Error</th>
+<th>p-value</th>
+<th>R²</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Δavg_income</td>
+<td>1.67</td>
+<td>(2.81)</td>
+<td>0.562</td>
+<td>0.018</td>
+</tr>
+<tr class="even">
+<td>Δpct_black</td>
+<td>0.622***</td>
+<td>(0.228)</td>
+<td>0.014</td>
+<td>0.281</td>
+</tr>
+<tr class="odd">
+<td>Δpct_hispanic</td>
+<td>0.500</td>
+<td>(0.443)</td>
+<td>0.273</td>
+<td>0.063</td>
+</tr>
+<tr class="even">
+<td>Δavg_age</td>
+<td>-0.256</td>
+<td>(0.175)</td>
+<td>0.160</td>
+<td>0.101</td>
+</tr>
+<tr class="odd">
+<td>Δpct_college_plus</td>
+<td>0.114</td>
+<td>(0.126)</td>
+<td>0.376</td>
+<td>0.041</td>
+</tr>
+</tbody>
+</table>
+<p>N = 21 counties. Standard errors in parentheses. * p&lt;0.1, ** p&lt;0.05, *** p&lt;0.01</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Diversity Measures
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>distinct_collapsed</strong> uses 8 broad categories: Non-religious, Evangelical, Catholic, Mainline Protestant, Adventist, Jewish, Muslim, Other.</p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="multivariate-regression-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="multivariate-regression-analysis">Multivariate Regression Analysis</h2>
+<p>These specifications regress each school exposure measure on a full set of demographic controls simultaneously.</p>
+<section id="table-6-total-private-school-count-predicted-by-demographics" class="level3">
+<h3 class="anchored" data-anchor-id="table-6-total-private-school-count-predicted-by-demographics">Table 6: Total Private School Count Predicted by Demographics</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">2000 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false">1990 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-3" role="tab" aria-controls="tabset-6-3" aria-selected="false">2000-1990 Difference</a></li></ul>
+<div class="tab-content">
+<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Coefficient</th>
+<th>Std. Error</th>
+<th>p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>avg_income</td>
+<td>-0.0012</td>
+<td>(0.0024)</td>
+<td>0.622</td>
+</tr>
+<tr class="even">
+<td>avg_age</td>
+<td>11.576</td>
+<td>(7.577)</td>
+<td>0.149</td>
+</tr>
+<tr class="odd">
+<td>pct_hs_grad</td>
+<td>-5.680</td>
+<td>(6.867)</td>
+<td>0.422</td>
+</tr>
+<tr class="even">
+<td>pct_white</td>
+<td>-7.802</td>
+<td>(10.856)</td>
+<td>0.484</td>
+</tr>
+<tr class="odd">
+<td>pct_hispanic</td>
+<td>1.514</td>
+<td>(4.689)</td>
+<td>0.752</td>
+</tr>
+<tr class="even">
+<td>pct_black</td>
+<td>-2.277</td>
+<td>(10.806)</td>
+<td>0.836</td>
+</tr>
+<tr class="odd">
+<td>Constant</td>
+<td>498.14</td>
+<td>(908.00)</td>
+<td>0.592</td>
+</tr>
+</tbody>
+</table>
+<p>N = 21, R² = 0.617, Adj. R² = 0.452, F = 3.75</p>
+</div>
+<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Coefficient</th>
+<th>Std. Error</th>
+<th>p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>avg_income</td>
+<td>-0.00002</td>
+<td>(0.0022)</td>
+<td>0.992</td>
+</tr>
+<tr class="even">
+<td>avg_age</td>
+<td>7.639</td>
+<td>(5.577)</td>
+<td>0.191</td>
+</tr>
+<tr class="odd">
+<td>pct_hs_grad</td>
+<td>-1.672</td>
+<td>(4.505)</td>
+<td>0.716</td>
+</tr>
+<tr class="even">
+<td>pct_white</td>
+<td>-3.985</td>
+<td>(14.775)</td>
+<td>0.791</td>
+</tr>
+<tr class="odd">
+<td>pct_hispanic</td>
+<td>6.830**</td>
+<td>(2.964)</td>
+<td>0.036</td>
+</tr>
+<tr class="even">
+<td>pct_black</td>
+<td>2.899</td>
+<td>(14.126)</td>
+<td>0.840</td>
+</tr>
+<tr class="odd">
+<td>Constant</td>
+<td>89.83</td>
+<td>(1357.46)</td>
+<td>0.948</td>
+</tr>
+</tbody>
+</table>
+<p>N = 22, R² = 0.622, Adj. R² = 0.471, F = 4.12</p>
+</div>
+<div id="tabset-6-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-3-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Variable (Δ)</th>
+<th>Coefficient</th>
+<th>Std. Error</th>
+<th>p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Δavg_income</td>
+<td>0.0007</td>
+<td>(0.0025)</td>
+<td>0.789</td>
+</tr>
+<tr class="even">
+<td>Δavg_age</td>
+<td>-6.446</td>
+<td>(6.493)</td>
+<td>0.338</td>
+</tr>
+<tr class="odd">
+<td>Δpct_hs_grad</td>
+<td>-5.534</td>
+<td>(9.152)</td>
+<td>0.555</td>
+</tr>
+<tr class="even">
+<td>Δpct_white</td>
+<td>-28.392***</td>
+<td>(7.113)</td>
+<td>0.001</td>
+</tr>
+<tr class="odd">
+<td>Δpct_hispanic</td>
+<td>-17.063***</td>
+<td>(4.343)</td>
+<td>0.002</td>
+</tr>
+<tr class="even">
+<td>Δpct_black</td>
+<td>-19.638</td>
+<td>(12.497)</td>
+<td>0.138</td>
+</tr>
+<tr class="odd">
+<td>Constant</td>
+<td>23.42</td>
+<td>(88.90)</td>
+<td>0.796</td>
+</tr>
+</tbody>
+</table>
+<p>N = 21, R² = 0.812, Adj. R² = 0.731, F = 10.06</p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="table-7-non-religious-private-schools-predicted-by-demographics" class="level3">
+<h3 class="anchored" data-anchor-id="table-7-non-religious-private-schools-predicted-by-demographics">Table 7: Non-Religious Private Schools Predicted by Demographics</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true">2000 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false">1990 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-3" role="tab" aria-controls="tabset-7-3" aria-selected="false">2000-1990 Difference</a></li></ul>
+<div class="tab-content">
+<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Coefficient</th>
+<th>Std. Error</th>
+<th>p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>avg_income</td>
+<td>-0.0004</td>
+<td>(0.0008)</td>
+<td>0.641</td>
+</tr>
+<tr class="even">
+<td>avg_age</td>
+<td>5.490**</td>
+<td>(2.508)</td>
+<td>0.046</td>
+</tr>
+<tr class="odd">
+<td>pct_hs_grad</td>
+<td>-2.882</td>
+<td>(2.273)</td>
+<td>0.226</td>
+</tr>
+<tr class="even">
+<td>pct_white</td>
+<td>-3.735</td>
+<td>(3.593)</td>
+<td>0.316</td>
+</tr>
+<tr class="odd">
+<td>pct_hispanic</td>
+<td>0.377</td>
+<td>(1.552)</td>
+<td>0.811</td>
+</tr>
+<tr class="even">
+<td>pct_black</td>
+<td>-1.755</td>
+<td>(3.577)</td>
+<td>0.631</td>
+</tr>
+<tr class="odd">
+<td>Constant</td>
+<td>234.11</td>
+<td>(300.54)</td>
+<td>0.449</td>
+</tr>
+</tbody>
+</table>
+<p>N = 21, R² = 0.679, Adj. R² = 0.541, F = 4.94</p>
+</div>
+<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Coefficient</th>
+<th>Std. Error</th>
+<th>p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>avg_income</td>
+<td>0.00007</td>
+<td>(0.0007)</td>
+<td>0.918</td>
+</tr>
+<tr class="even">
+<td>avg_age</td>
+<td>4.745**</td>
+<td>(1.794)</td>
+<td>0.018</td>
+</tr>
+<tr class="odd">
+<td>pct_hs_grad</td>
+<td>-1.629</td>
+<td>(1.449)</td>
+<td>0.279</td>
+</tr>
+<tr class="even">
+<td>pct_white</td>
+<td>-5.585</td>
+<td>(4.753)</td>
+<td>0.258</td>
+</tr>
+<tr class="odd">
+<td>pct_hispanic</td>
+<td>2.040**</td>
+<td>(0.953)</td>
+<td>0.049</td>
+</tr>
+<tr class="even">
+<td>pct_black</td>
+<td>-2.804</td>
+<td>(4.544)</td>
+<td>0.546</td>
+</tr>
+<tr class="odd">
+<td>Constant</td>
+<td>378.46</td>
+<td>(436.66)</td>
+<td>0.400</td>
+</tr>
+</tbody>
+</table>
+<p>N = 22, R² = 0.693, Adj. R² = 0.570, F = 5.65</p>
+</div>
+<div id="tabset-7-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-3-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Variable (Δ)</th>
+<th>Coefficient</th>
+<th>Std. Error</th>
+<th>p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Δavg_income</td>
+<td>0.0001</td>
+<td>(0.0009)</td>
+<td>0.890</td>
+</tr>
+<tr class="even">
+<td>Δavg_age</td>
+<td>-2.715</td>
+<td>(2.310)</td>
+<td>0.259</td>
+</tr>
+<tr class="odd">
+<td>Δpct_hs_grad</td>
+<td>-5.983*</td>
+<td>(3.255)</td>
+<td>0.087</td>
+</tr>
+<tr class="even">
+<td>Δpct_white</td>
+<td>-9.060***</td>
+<td>(2.530)</td>
+<td>0.003</td>
+</tr>
+<tr class="odd">
+<td>Δpct_hispanic</td>
+<td>-5.684***</td>
+<td>(1.545)</td>
+<td>0.002</td>
+</tr>
+<tr class="even">
+<td>Δpct_black</td>
+<td>-9.053*</td>
+<td>(4.445)</td>
+<td>0.061</td>
+</tr>
+<tr class="odd">
+<td>Constant</td>
+<td>30.06</td>
+<td>(31.62)</td>
+<td>0.358</td>
+</tr>
+</tbody>
+</table>
+<p>N = 21, R² = 0.818, Adj. R² = 0.740, F = 10.48</p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="table-8-religious-private-schools-predicted-by-demographics" class="level3">
+<h3 class="anchored" data-anchor-id="table-8-religious-private-schools-predicted-by-demographics">Table 8: Religious Private Schools Predicted by Demographics</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true">2000 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false">1990 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-3" role="tab" aria-controls="tabset-8-3" aria-selected="false">2000-1990 Difference</a></li></ul>
+<div class="tab-content">
+<div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Coefficient</th>
+<th>Std. Error</th>
+<th>p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>avg_income</td>
+<td>-0.0008</td>
+<td>(0.0017)</td>
+<td>0.627</td>
+</tr>
+<tr class="even">
+<td>avg_age</td>
+<td>6.086</td>
+<td>(5.291)</td>
+<td>0.269</td>
+</tr>
+<tr class="odd">
+<td>pct_hs_grad</td>
+<td>-2.798</td>
+<td>(4.795)</td>
+<td>0.569</td>
+</tr>
+<tr class="even">
+<td>pct_white</td>
+<td>-4.067</td>
+<td>(7.581)</td>
+<td>0.600</td>
+</tr>
+<tr class="odd">
+<td>pct_hispanic</td>
+<td>1.136</td>
+<td>(3.275)</td>
+<td>0.734</td>
+</tr>
+<tr class="even">
+<td>pct_black</td>
+<td>-0.523</td>
+<td>(7.546)</td>
+<td>0.946</td>
+</tr>
+<tr class="odd">
+<td>Constant</td>
+<td>264.04</td>
+<td>(634.09)</td>
+<td>0.683</td>
+</tr>
+</tbody>
+</table>
+<p>N = 21, R² = 0.569, Adj. R² = 0.384, F = 3.08</p>
+</div>
+<div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Coefficient</th>
+<th>Std. Error</th>
+<th>p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>avg_income</td>
+<td>-0.0001</td>
+<td>(0.0015)</td>
+<td>0.950</td>
+</tr>
+<tr class="even">
+<td>avg_age</td>
+<td>2.894</td>
+<td>(3.892)</td>
+<td>0.469</td>
+</tr>
+<tr class="odd">
+<td>pct_hs_grad</td>
+<td>-0.043</td>
+<td>(3.143)</td>
+<td>0.989</td>
+</tr>
+<tr class="even">
+<td>pct_white</td>
+<td>1.599</td>
+<td>(10.310)</td>
+<td>0.879</td>
+</tr>
+<tr class="odd">
+<td>pct_hispanic</td>
+<td>4.790**</td>
+<td>(2.068)</td>
+<td>0.035</td>
+</tr>
+<tr class="even">
+<td>pct_black</td>
+<td>5.703</td>
+<td>(9.857)</td>
+<td>0.571</td>
+</tr>
+<tr class="odd">
+<td>Constant</td>
+<td>-288.63</td>
+<td>(947.22)</td>
+<td>0.765</td>
+</tr>
+</tbody>
+</table>
+<p>N = 22, R² = 0.584, Adj. R² = 0.418, F = 3.51</p>
+</div>
+<div id="tabset-8-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-3-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Variable (Δ)</th>
+<th>Coefficient</th>
+<th>Std. Error</th>
+<th>p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Δavg_income</td>
+<td>0.0006</td>
+<td>(0.0017)</td>
+<td>0.748</td>
+</tr>
+<tr class="even">
+<td>Δavg_age</td>
+<td>-3.731</td>
+<td>(4.396)</td>
+<td>0.410</td>
+</tr>
+<tr class="odd">
+<td>Δpct_hs_grad</td>
+<td>0.449</td>
+<td>(6.195)</td>
+<td>0.943</td>
+</tr>
+<tr class="even">
+<td>Δpct_white</td>
+<td>-19.331***</td>
+<td>(4.815)</td>
+<td>0.001</td>
+</tr>
+<tr class="odd">
+<td>Δpct_hispanic</td>
+<td>-11.379***</td>
+<td>(2.940)</td>
+<td>0.002</td>
+</tr>
+<tr class="even">
+<td>Δpct_black</td>
+<td>-10.585</td>
+<td>(8.460)</td>
+<td>0.231</td>
+</tr>
+<tr class="odd">
+<td>Constant</td>
+<td>-6.64</td>
+<td>(60.19)</td>
+<td>0.914</td>
+</tr>
+</tbody>
+</table>
+<p>N = 21, R² = 0.801, Adj. R² = 0.716, F = 9.39</p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="table-9-school-type-diversity-fine-predicted-by-demographics" class="level3">
+<h3 class="anchored" data-anchor-id="table-9-school-type-diversity-fine-predicted-by-demographics">Table 9: School Type Diversity (Fine) Predicted by Demographics</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true">2000 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false">1990 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-3" role="tab" aria-controls="tabset-9-3" aria-selected="false">2000-1990 Difference</a></li></ul>
+<div class="tab-content">
+<div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Coefficient</th>
+<th>Std. Error</th>
+<th>p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>avg_income</td>
+<td>-0.0002</td>
+<td>(0.0002)</td>
+<td>0.182</td>
+</tr>
+<tr class="even">
+<td>avg_age</td>
+<td>0.912*</td>
+<td>(0.485)</td>
+<td>0.081</td>
+</tr>
+<tr class="odd">
+<td>pct_hs_grad</td>
+<td>-0.511</td>
+<td>(0.440)</td>
+<td>0.264</td>
+</tr>
+<tr class="even">
+<td>pct_white</td>
+<td>-0.418</td>
+<td>(0.695)</td>
+<td>0.557</td>
+</tr>
+<tr class="odd">
+<td>pct_hispanic</td>
+<td>0.183</td>
+<td>(0.300)</td>
+<td>0.551</td>
+</tr>
+<tr class="even">
+<td>pct_black</td>
+<td>-0.098</td>
+<td>(0.692)</td>
+<td>0.889</td>
+</tr>
+<tr class="odd">
+<td>Constant</td>
+<td>34.34</td>
+<td>(58.12)</td>
+<td>0.564</td>
+</tr>
+</tbody>
+</table>
+<p>N = 21, R² = 0.548, Adj. R² = 0.354, F = 2.83</p>
+</div>
+<div id="tabset-9-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-2-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Coefficient</th>
+<th>Std. Error</th>
+<th>p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>avg_income</td>
+<td>-0.0001</td>
+<td>(0.0001)</td>
+<td>0.403</td>
+</tr>
+<tr class="even">
+<td>avg_age</td>
+<td>0.314</td>
+<td>(0.350)</td>
+<td>0.383</td>
+</tr>
+<tr class="odd">
+<td>pct_hs_grad</td>
+<td>-0.026</td>
+<td>(0.282)</td>
+<td>0.927</td>
+</tr>
+<tr class="even">
+<td>pct_white</td>
+<td>0.242</td>
+<td>(0.926)</td>
+<td>0.797</td>
+</tr>
+<tr class="odd">
+<td>pct_hispanic</td>
+<td>0.462**</td>
+<td>(0.186)</td>
+<td>0.025</td>
+</tr>
+<tr class="even">
+<td>pct_black</td>
+<td>0.649</td>
+<td>(0.885)</td>
+<td>0.474</td>
+</tr>
+<tr class="odd">
+<td>Constant</td>
+<td>-28.61</td>
+<td>(85.07)</td>
+<td>0.741</td>
+</tr>
+</tbody>
+</table>
+<p>N = 22, R² = 0.584, Adj. R² = 0.417, F = 3.50</p>
+</div>
+<div id="tabset-9-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-3-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Variable (Δ)</th>
+<th>Coefficient</th>
+<th>Std. Error</th>
+<th>p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Δavg_income</td>
+<td>-0.0002</td>
+<td>(0.0002)</td>
+<td>0.331</td>
+</tr>
+<tr class="even">
+<td>Δavg_age</td>
+<td>-0.212</td>
+<td>(0.541)</td>
+<td>0.701</td>
+</tr>
+<tr class="odd">
+<td>Δpct_hs_grad</td>
+<td>-0.904</td>
+<td>(0.762)</td>
+<td>0.256</td>
+</tr>
+<tr class="even">
+<td>Δpct_white</td>
+<td>-1.910***</td>
+<td>(0.592)</td>
+<td>0.006</td>
+</tr>
+<tr class="odd">
+<td>Δpct_hispanic</td>
+<td>-1.127***</td>
+<td>(0.362)</td>
+<td>0.008</td>
+</tr>
+<tr class="even">
+<td>Δpct_black</td>
+<td>-2.018*</td>
+<td>(1.041)</td>
+<td>0.073</td>
+</tr>
+<tr class="odd">
+<td>Constant</td>
+<td>14.19*</td>
+<td>(7.40)</td>
+<td>0.076</td>
+</tr>
+</tbody>
+</table>
+<p>N = 21, R² = 0.624, Adj. R² = 0.463, F = 3.87</p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="table-10-school-type-diversity-collapsed-predicted-by-demographics" class="level3">
+<h3 class="anchored" data-anchor-id="table-10-school-type-diversity-collapsed-predicted-by-demographics">Table 10: School Type Diversity (Collapsed) Predicted by Demographics</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-10-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-1" role="tab" aria-controls="tabset-10-1" aria-selected="true">2000 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-2" role="tab" aria-controls="tabset-10-2" aria-selected="false">1990 Cross-Section</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-3" role="tab" aria-controls="tabset-10-3" aria-selected="false">2000-1990 Difference</a></li></ul>
+<div class="tab-content">
+<div id="tabset-10-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-10-1-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Coefficient</th>
+<th>Std. Error</th>
+<th>p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>avg_income</td>
+<td>-0.0002*</td>
+<td>(0.00009)</td>
+<td>0.076</td>
+</tr>
+<tr class="even">
+<td>avg_age</td>
+<td>0.756***</td>
+<td>(0.283)</td>
+<td>0.018</td>
+</tr>
+<tr class="odd">
+<td>pct_hs_grad</td>
+<td>-0.505*</td>
+<td>(0.256)</td>
+<td>0.069</td>
+</tr>
+<tr class="even">
+<td>pct_white</td>
+<td>-0.412</td>
+<td>(0.405)</td>
+<td>0.327</td>
+</tr>
+<tr class="odd">
+<td>pct_hispanic</td>
+<td>0.107</td>
+<td>(0.175)</td>
+<td>0.549</td>
+</tr>
+<tr class="even">
+<td>pct_black</td>
+<td>-0.264</td>
+<td>(0.403)</td>
+<td>0.523</td>
+</tr>
+<tr class="odd">
+<td>Constant</td>
+<td>36.68</td>
+<td>(33.89)</td>
+<td>0.297</td>
+</tr>
+</tbody>
+</table>
+<p>N = 21, R² = 0.565, Adj. R² = 0.379, F = 3.03</p>
+</div>
+<div id="tabset-10-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-2-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Coefficient</th>
+<th>Std. Error</th>
+<th>p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>avg_income</td>
+<td>-0.00009</td>
+<td>(0.00009)</td>
+<td>0.294</td>
+</tr>
+<tr class="even">
+<td>avg_age</td>
+<td>0.330</td>
+<td>(0.219)</td>
+<td>0.152</td>
+</tr>
+<tr class="odd">
+<td>pct_hs_grad</td>
+<td>-0.132</td>
+<td>(0.177)</td>
+<td>0.465</td>
+</tr>
+<tr class="even">
+<td>pct_white</td>
+<td>-0.205</td>
+<td>(0.579)</td>
+<td>0.728</td>
+</tr>
+<tr class="odd">
+<td>pct_hispanic</td>
+<td>0.249**</td>
+<td>(0.116)</td>
+<td>0.049</td>
+</tr>
+<tr class="even">
+<td>pct_black</td>
+<td>0.040</td>
+<td>(0.554)</td>
+<td>0.944</td>
+</tr>
+<tr class="odd">
+<td>Constant</td>
+<td>15.80</td>
+<td>(53.21)</td>
+<td>0.771</td>
+</tr>
+</tbody>
+</table>
+<p>N = 22, R² = 0.526, Adj. R² = 0.336, F = 2.77</p>
+</div>
+<div id="tabset-10-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-3-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Variable (Δ)</th>
+<th>Coefficient</th>
+<th>Std. Error</th>
+<th>p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Δavg_income</td>
+<td>-0.0001</td>
+<td>(0.0001)</td>
+<td>0.289</td>
+</tr>
+<tr class="even">
+<td>Δavg_age</td>
+<td>-0.125</td>
+<td>(0.295)</td>
+<td>0.678</td>
+</tr>
+<tr class="odd">
+<td>Δpct_hs_grad</td>
+<td>-0.720</td>
+<td>(0.415)</td>
+<td>0.105</td>
+</tr>
+<tr class="even">
+<td>Δpct_white</td>
+<td>-1.249***</td>
+<td>(0.323)</td>
+<td>0.002</td>
+</tr>
+<tr class="odd">
+<td>Δpct_hispanic</td>
+<td>-0.756***</td>
+<td>(0.197)</td>
+<td>0.002</td>
+</tr>
+<tr class="even">
+<td>Δpct_black</td>
+<td>-1.467**</td>
+<td>(0.567)</td>
+<td>0.022</td>
+</tr>
+<tr class="odd">
+<td>Constant</td>
+<td>9.45**</td>
+<td>(4.03)</td>
+<td>0.034</td>
+</tr>
+</tbody>
+</table>
+<p>N = 21, R² = 0.684, Adj. R² = 0.549, F = 5.06</p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="key-findings-summary" class="level2">
+<h2 class="anchored" data-anchor-id="key-findings-summary">Key Findings Summary</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Main Results
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p><strong>Cross-sectional patterns:</strong> Counties with more private schools have significantly higher Black and Hispanic population shares. This holds for both 1990 and 2000, and for both religious and non-religious schools.</p></li>
+<li><p><strong>Difference specification:</strong> Counties with more private schools experienced <em>larger increases</em> in minority population shares from 1990-2000, and <em>larger decreases</em> in white population share. This is the opposite of a “white flight” narrative.</p></li>
+<li><p><strong>Interpretation:</strong> The positive relationship between private schools and minority shares likely reflects <strong>urbanization</strong>—growing metropolitan areas have both more demographic diversity and more private schools due to population density. The school-demographic relationship appears to be driven by geography rather than sorting.</p></li>
+<li><p><strong>Multivariate controls:</strong> When controlling for multiple demographics simultaneously, Hispanic share remains a significant positive predictor of school counts in 1990, but most individual predictors become insignificant in the presence of controls, suggesting collinearity among the demographic measures.</p></li>
+</ol>
+</div>
+</div>
+<hr>
+</section>
+<section id="data-sources-and-methods" class="level2">
+<h2 class="anchored" data-anchor-id="data-sources-and-methods">Data Sources and Methods</h2>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Click to expand: Technical Details
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Demographic Data:</strong></p>
+<ul>
+<li>Source: IPUMS USA Census 5% samples (1990 and 2000)</li>
+<li>Variables: Income (household-level), race, ethnicity, education, age (person-level)</li>
+<li>Geography: Counties identified in IPUMS (21-22 Florida counties)</li>
+</ul>
+<p><strong>School Data:</strong></p>
+<ul>
+<li>Source: Geocoded private school locations with county assignment</li>
+<li>School Classifications:
+<ul>
+<li>Religious vs.&nbsp;Non-religious</li>
+<li>Fine-grained: 14 original denomination categories</li>
+<li>Collapsed: 8 broad categories</li>
+</ul></li>
+</ul>
+<p><strong>Sample Restrictions:</strong></p>
+<ul>
+<li>Florida only (<code>statefip==12</code>)</li>
+<li>21 IPUMS-identifiable counties for 2000</li>
+<li>22 IPUMS-identifiable counties for 1990</li>
+<li>21 matched counties for difference specification</li>
+</ul>
+<p><strong>Weighting:</strong></p>
+<ul>
+<li>All regressions weighted by school-age population (ages 5-17) from 1990 Census</li>
+<li>Population data from NHGIS county-level age tables</li>
+</ul>
+</div>
+</div>
+</div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 69%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>distinct_collapsed</th>
+<th>distinct_fine</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Non-religious</td>
+<td>NON-RELIGIOUS</td>
+</tr>
+<tr class="even">
+<td>Evangelical</td>
+<td>EVANGELICAL, APOSTOLIC-PENTECOSTAL-CHARISMATIC, BAPTIST</td>
+</tr>
+<tr class="odd">
+<td>Catholic</td>
+<td>CATHOLIC</td>
+</tr>
+<tr class="even">
+<td>Mainline Protestant</td>
+<td>LUTHERAN, METHODIST, PRESBYTERIAN, EPISCOPAL</td>
+</tr>
+<tr class="odd">
+<td>Adventist</td>
+<td>ADVENTIST</td>
+</tr>
+<tr class="even">
+<td>Jewish</td>
+<td>JEWISH</td>
+</tr>
+<tr class="odd">
+<td>Muslim</td>
+<td>MUSLIM</td>
+</tr>
+<tr class="even">
+<td>Other</td>
+<td>OTHER CHRISTIAN, OTHER RELIGION</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2025 Research Hub. All rights reserved.</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
