@@ -510,31 +510,31 @@ These specifications regress each school exposure measure on a full set of demog
                           |   (1)
                           | total_school
 --------------------------+------------------
-avg_income                |    0.000245
-                          |  (0.000308)
+avg_income                |    0.0000404
+                          |  (0.000358)
                           |
-avg_age                   |    0.536
-                          |   (0.782)
+avg_age                   |    0.527
+                          |   (0.514)
                           |
-pct_hs_grad               |   -0.153
-                          |   (0.632)
+pct_college_plus          |    0.430
+                          |   (0.446)
                           |
-pct_white                 |   -1.406
-                          |   (2.071)
+pct_white                 |   -1.405
+                          |   (1.952)
                           |
-pct_hispanic              |    0.276
-                          |   (0.416)
+pct_hispanic              |    0.322
+                          |   (0.407)
                           |
-pct_black                 |   -1.044
-                          |   (1.980)
+pct_black                 |   -1.017
+                          |   (1.889)
                           |
-Constant                  |   116.62
-                          | (190.30)
+Constant                  |   113.31
+                          | (178.70)
 --------------------------+------------------
 Observations              |    22
-R-squared                 |   0.373
-Adjusted R-squared        |   0.122
-F-statistic               |   1.49
+R-squared                 |   0.407
+Adjusted R-squared        |   0.170
+F-statistic               |   1.72
 --------------------------+------------------
 Standard errors in parentheses
 *** p<0.01, ** p<0.05, * p<0.1
@@ -546,31 +546,31 @@ Standard errors in parentheses
                           |   (1)
                           | total_school
 --------------------------+------------------
-avg_income                |    0.0000248
-                          |  (0.000201)
+avg_income                |   -0.000172
+                          |  (0.000194)
                           |
-avg_age                   |    0.677
-                          |   (0.548)
+avg_age                   |    0.418
+                          |   (0.392)
                           |
-pct_hs_grad               |   -0.395
-                          |   (0.578)
+pct_college_plus          |    0.721
+                          |   (0.372)
                           |
-pct_white                 |   -0.876
-                          |   (1.155)
+pct_white                 |   -0.493
+                          |   (1.095)
                           |
-pct_hispanic              |    0.032
-                          |   (0.432)
+pct_hispanic              |    0.236
+                          |   (0.414)
                           |
-pct_black                 |   -0.565
-                          |   (1.168)
+pct_black                 |   -0.224
+                          |   (1.104)
                           |
-Constant                  |   71.84
-                          |  (97.10)
+Constant                  |   30.95
+                          |  (92.88)
 --------------------------+------------------
 Observations              |    28
-R-squared                 |   0.447
-Adjusted R-squared        |   0.290
-F-statistic               |   2.83
+R-squared                 |   0.521
+Adjusted R-squared        |   0.384
+F-statistic               |   3.80
 --------------------------+------------------
 Standard errors in parentheses
 *** p<0.01, ** p<0.05, * p<0.1
@@ -582,31 +582,31 @@ Standard errors in parentheses
                           |   (1)
                           | total_school
 --------------------------+------------------
-Δavg_income               |    0.000613*
-                          |  (0.000321)
+Δavg_income               |   -0.0000327
+                          |  (0.000366)
                           |
-Δavg_age                  |   -0.824
-                          |   (0.828)
+Δavg_age                  |   -0.525
+                          |   (0.812)
                           |
-Δpct_hs_grad              |    1.153
-                          |   (1.167)
+Δpct_college_plus         |    2.324
+                          |   (1.739)
                           |
-Δpct_white                |   -2.166**
-                          |   (0.907)
+Δpct_white                |   -2.755**
+                          |   (0.954)
                           |
-Δpct_hispanic             |   -1.221**
-                          |   (0.554)
+Δpct_hispanic             |   -1.436**
+                          |   (0.540)
                           |
-Δpct_black                |   -0.072
-                          |   (1.594)
+Δpct_black                |   -1.999
+                          |   (1.538)
                           |
-Constant                  |  -12.10
-                          |  (11.34)
+Constant                  |   -2.48
+                          |   (4.62)
 --------------------------+------------------
 Observations              |    21
-R-squared                 |   0.747
-Adjusted R-squared        |   0.639
-F-statistic               |   6.89
+R-squared                 |   0.760
+Adjusted R-squared        |   0.657
+F-statistic               |   7.39
 --------------------------+------------------
 Standard errors in parentheses
 *** p<0.01, ** p<0.05, * p<0.1
@@ -626,31 +626,31 @@ Standard errors in parentheses
                           |   (1)
                           |    relig
 --------------------------+------------------
-avg_income                |    0.000141
-                          |  (0.000207)
+avg_income                |    0.0000274
+                          |  (0.000245)
                           |
-avg_age                   |    0.135
-                          |   (0.524)
+avg_age                   |    0.268
+                          |   (0.352)
                           |
-pct_hs_grad               |    0.088
-                          |   (0.423)
+pct_college_plus          |    0.158
+                          |   (0.305)
                           |
-pct_white                 |   -0.884
-                          |   (1.389)
+pct_white                 |   -1.004
+                          |   (1.336)
                           |
-pct_hispanic              |    0.226
+pct_hispanic              |    0.246
                           |   (0.279)
                           |
-pct_black                 |   -0.687
-                          |   (1.328)
+pct_black                 |   -0.767
+                          |   (1.293)
                           |
-Constant                  |   77.53
-                          | (127.59)
+Constant                  |   87.81
+                          | (122.32)
 --------------------------+------------------
 Observations              |    22
-R-squared                 |   0.391
-Adjusted R-squared        |   0.148
-F-statistic               |   1.61
+R-squared                 |   0.400
+Adjusted R-squared        |   0.160
+F-statistic               |   1.67
 --------------------------+------------------
 Standard errors in parentheses
 *** p<0.01, ** p<0.05, * p<0.1
@@ -662,31 +662,31 @@ Standard errors in parentheses
                           |   (1)
                           |    relig
 --------------------------+------------------
-avg_income                |    0.00000773
-                          |  (0.000133)
+avg_income                |   -0.000120
+                          |  (0.000130)
                           |
-avg_age                   |    0.336
-                          |   (0.361)
+avg_age                   |    0.244
+                          |   (0.263)
                           |
-pct_hs_grad               |   -0.134
-                          |   (0.381)
+pct_college_plus          |    0.386
+                          |   (0.250)
                           |
-pct_white                 |   -0.680
-                          |   (0.761)
+pct_white                 |   -0.455
+                          |   (0.737)
                           |
-pct_hispanic              |    0.007
-                          |   (0.285)
+pct_hispanic              |    0.132
+                          |   (0.279)
                           |
-pct_black                 |   -0.457
-                          |   (0.770)
+pct_black                 |   -0.263
+                          |   (0.743)
                           |
-Constant                  |   58.25
-                          |  (63.99)
+Constant                  |   36.30
+                          |  (62.47)
 --------------------------+------------------
 Observations              |    28
-R-squared                 |   0.481
-Adjusted R-squared        |   0.333
-F-statistic               |   3.25
+R-squared                 |   0.531
+Adjusted R-squared        |   0.397
+F-statistic               |   3.97
 --------------------------+------------------
 Standard errors in parentheses
 *** p<0.01, ** p<0.05, * p<0.1
@@ -698,31 +698,31 @@ Standard errors in parentheses
                           |   (1)
                           |    relig
 --------------------------+------------------
-Δavg_income               |    0.000343
-                          |  (0.000213)
+Δavg_income               |   -0.000120
+                          |  (0.000248)
                           |
-Δavg_age                  |   -0.470
+Δavg_age                  |   -0.256
                           |   (0.551)
                           |
-Δpct_hs_grad              |    0.945
-                          |   (0.777)
+Δpct_college_plus         |    1.526
+                          |   (1.181)
                           |
-Δpct_white                |   -1.582**
-                          |   (0.604)
+Δpct_white                |   -1.983***
+                          |   (0.648)
                           |
-Δpct_hispanic             |   -0.760*
-                          |   (0.369)
+Δpct_hispanic             |   -0.916**
+                          |   (0.366)
                           |
-Δpct_black                |   -0.083
-                          |   (1.061)
+Δpct_black                |   -1.487
+                          |   (1.044)
                           |
-Constant                  |   -7.98
-                          |   (7.54)
+Constant                  |   -0.01
+                          |   (3.14)
 --------------------------+------------------
 Observations              |    21
-R-squared                 |   0.758
-Adjusted R-squared        |   0.654
-F-statistic               |   7.31
+R-squared                 |   0.761
+Adjusted R-squared        |   0.659
+F-statistic               |   7.43
 --------------------------+------------------
 Standard errors in parentheses
 *** p<0.01, ** p<0.05, * p<0.1
@@ -742,31 +742,31 @@ Standard errors in parentheses
                           |   (1)
                           | non_relig
 --------------------------+------------------
-avg_income                |    0.000105
-                          |  (0.000105)
+avg_income                |    0.0000130
+                          |  (0.000118)
                           |
-avg_age                   |    0.401
-                          |   (0.267)
+avg_age                   |    0.259
+                          |   (0.170)
                           |
-pct_hs_grad               |   -0.242
-                          |   (0.216)
+pct_college_plus          |    0.272
+                          |   (0.147)
                           |
-pct_white                 |   -0.522
-                          |   (0.708)
+pct_white                 |   -0.401
+                          |   (0.645)
                           |
-pct_hispanic              |    0.050
-                          |   (0.142)
+pct_hispanic              |    0.076
+                          |   (0.134)
                           |
-pct_black                 |   -0.357
-                          |   (0.677)
+pct_black                 |   -0.250
+                          |   (0.624)
                           |
-Constant                  |   39.09
-                          |  (65.08)
+Constant                  |   25.50
+                          |  (59.05)
 --------------------------+------------------
 Observations              |    22
-R-squared                 |   0.409
-Adjusted R-squared        |   0.173
-F-statistic               |   1.73
+R-squared                 |   0.479
+Adjusted R-squared        |   0.270
+F-statistic               |   2.29
 --------------------------+------------------
 Standard errors in parentheses
 *** p<0.01, ** p<0.05, * p<0.1
@@ -778,31 +778,31 @@ Standard errors in parentheses
                           |   (1)
                           | non_relig
 --------------------------+------------------
-avg_income                |    0.0000171
-                          |  (0.0000724)
+avg_income                |   -0.0000526
+                          |  (0.0000676)
                           |
-avg_age                   |    0.341*
-                          |   (0.197)
+avg_age                   |    0.174
+                          |   (0.137)
                           |
-pct_hs_grad               |   -0.260
-                          |   (0.208)
+pct_college_plus          |    0.334**
+                          |   (0.130)
                           |
-pct_white                 |   -0.196
-                          |   (0.415)
+pct_white                 |   -0.038
+                          |   (0.382)
                           |
-pct_hispanic              |    0.025
-                          |   (0.155)
+pct_hispanic              |    0.104
+                          |   (0.144)
                           |
-pct_black                 |   -0.107
-                          |   (0.420)
+pct_black                 |    0.039
+                          |   (0.385)
                           |
-Constant                  |   13.59
-                          |  (34.90)
+Constant                  |   -5.35
+                          |  (32.40)
 --------------------------+------------------
 Observations              |    28
-R-squared                 |   0.423
-Adjusted R-squared        |   0.259
-F-statistic               |   2.57
+R-squared                 |   0.529
+Adjusted R-squared        |   0.395
+F-statistic               |   3.93
 --------------------------+------------------
 Standard errors in parentheses
 *** p<0.01, ** p<0.05, * p<0.1
@@ -814,31 +814,31 @@ Standard errors in parentheses
                           |   (1)
                           | non_relig
 --------------------------+------------------
-Δavg_income               |    0.000270**
-                          |  (0.000117)
+Δavg_income               |    0.0000872
+                          |  (0.000131)
                           |
-Δavg_age                  |   -0.354
-                          |   (0.303)
+Δavg_age                  |   -0.270
+                          |   (0.291)
                           |
-Δpct_hs_grad              |    0.208
-                          |   (0.427)
+Δpct_college_plus         |    0.798
+                          |   (0.623)
                           |
-Δpct_white                |   -0.585*
-                          |   (0.332)
+Δpct_white                |   -0.772**
+                          |   (0.342)
                           |
-Δpct_hispanic             |   -0.461**
-                          |   (0.203)
+Δpct_hispanic             |   -0.520**
+                          |   (0.193)
                           |
-Δpct_black                |    0.011
-                          |   (0.583)
+Δpct_black                |   -0.512
+                          |   (0.551)
                           |
-Constant                  |   -4.12
-                          |   (4.15)
+Constant                  |   -2.48
+                          |   (1.66)
 --------------------------+------------------
 Observations              |    21
-R-squared                 |   0.729
-Adjusted R-squared        |   0.613
-F-statistic               |   6.27
+R-squared                 |   0.753
+Adjusted R-squared        |   0.647
+F-statistic               |   7.12
 --------------------------+------------------
 Standard errors in parentheses
 *** p<0.01, ** p<0.05, * p<0.1
@@ -858,31 +858,31 @@ Standard errors in parentheses
                           |   (1)
                           | distinct_fine
 --------------------------+------------------
-avg_income                |    0.0000746
-                          |  (0.0000689)
+avg_income                |    0.0000270
+                          |  (0.0000800)
                           |
-avg_age                   |    0.060
-                          |   (0.175)
+avg_age                   |    0.061
+                          |   (0.115)
                           |
-pct_hs_grad               |   -0.031
-                          |   (0.141)
+pct_college_plus          |    0.098
+                          |   (0.099)
                           |
-pct_white                 |   -0.172
-                          |   (0.463)
+pct_white                 |   -0.175
+                          |   (0.436)
                           |
-pct_hispanic              |    0.063
-                          |   (0.093)
+pct_hispanic              |    0.073
+                          |   (0.091)
                           |
-pct_black                 |   -0.113
-                          |   (0.443)
+pct_black                 |   -0.109
+                          |   (0.421)
                           |
-Constant                  |   16.10
-                          |  (42.53)
+Constant                  |   15.66
+                          |  (39.87)
 --------------------------+------------------
 Observations              |    22
-R-squared                 |   0.381
-Adjusted R-squared        |   0.133
-F-statistic               |   1.54
+R-squared                 |   0.416
+Adjusted R-squared        |   0.183
+F-statistic               |   1.78
 --------------------------+------------------
 Standard errors in parentheses
 *** p<0.01, ** p<0.05, * p<0.1
@@ -894,31 +894,31 @@ Standard errors in parentheses
                           |   (1)
                           | distinct_fine
 --------------------------+------------------
-avg_income                |   -0.00001
-                          |  (0.000049)
+avg_income                |   -0.0000563
+                          |  (0.0000465)
                           |
-avg_age                   |    0.174
-                          |   (0.133)
+avg_age                   |    0.083
+                          |   (0.094)
                           |
-pct_hs_grad               |   -0.140
-                          |   (0.141)
+pct_college_plus          |    0.200**
+                          |   (0.089)
                           |
-pct_white                 |   -0.116
-                          |   (0.281)
+pct_white                 |   -0.018
+                          |   (0.263)
                           |
-pct_hispanic              |    0.053
-                          |   (0.105)
+pct_hispanic              |    0.103
+                          |   (0.099)
                           |
-pct_black                 |   -0.051
-                          |   (0.284)
+pct_black                 |    0.039
+                          |   (0.265)
                           |
-Constant                  |   11.97
-                          |  (23.63)
+Constant                  |    0.60
+                          |  (22.30)
 --------------------------+------------------
 Observations              |    28
-R-squared                 |   0.445
-Adjusted R-squared        |   0.287
-F-statistic               |   2.81
+R-squared                 |   0.531
+Adjusted R-squared        |   0.397
+F-statistic               |   3.97
 --------------------------+------------------
 Standard errors in parentheses
 *** p<0.01, ** p<0.05, * p<0.1
@@ -930,31 +930,31 @@ Standard errors in parentheses
                           |   (1)
                           | distinct_fine
 --------------------------+------------------
-Δavg_income               |    0.000131*
-                          |  (0.0000688)
+Δavg_income               |   -0.0000316
+                          |  (0.0000768)
                           |
-Δavg_age                  |   -0.071
-                          |   (0.178)
+Δavg_age                  |    0.005
+                          |   (0.171)
                           |
-Δpct_hs_grad              |    0.275
-                          |   (0.250)
+Δpct_college_plus         |    0.601
+                          |   (0.365)
                           |
-Δpct_white                |   -0.489**
-                          |   (0.194)
+Δpct_white                |   -0.639***
+                          |   (0.200)
                           |
-Δpct_hispanic             |   -0.291**
-                          |   (0.119)
+Δpct_hispanic             |   -0.345***
+                          |   (0.113)
                           |
-Δpct_black                |    0.081
-                          |   (0.342)
+Δpct_black                |   -0.401
+                          |   (0.323)
                           |
-Constant                  |   -0.677
-                          |   (2.43)
+Constant                  |    1.61
+                          |   (0.97)
 --------------------------+------------------
 Observations              |    21
-R-squared                 |   0.771
-Adjusted R-squared        |   0.673
-F-statistic               |   7.87
+R-squared                 |   0.792
+Adjusted R-squared        |   0.702
+F-statistic               |   8.87
 --------------------------+------------------
 Standard errors in parentheses
 *** p<0.01, ** p<0.05, * p<0.1
@@ -974,31 +974,31 @@ Standard errors in parentheses
                           |   (1)
                           | distinct_collapsed
 --------------------------+------------------
-avg_income                |    0.0000639
-                          |  (0.0000628)
+avg_income                |    0.0000204
+                          |  (0.0000730)
                           |
-avg_age                   |    0.038
-                          |   (0.159)
+avg_age                   |    0.042
+                          |   (0.105)
                           |
-pct_hs_grad               |   -0.025
-                          |   (0.129)
+pct_college_plus          |    0.088
+                          |   (0.091)
                           |
-pct_white                 |    0.008
-                          |   (0.422)
+pct_white                 |    0.003
+                          |   (0.397)
                           |
-pct_hispanic              |    0.085
-                          |   (0.085)
+pct_hispanic              |    0.095
+                          |   (0.083)
                           |
-pct_black                 |    0.053
-                          |   (0.403)
+pct_black                 |    0.054
+                          |   (0.385)
                           |
-Constant                  |   -0.81
-                          |  (38.77)
+Constant                  |   -0.95
+                          |  (36.38)
 --------------------------+------------------
 Observations              |    22
-R-squared                 |   0.333
-Adjusted R-squared        |   0.066
-F-statistic               |   1.25
+R-squared                 |   0.371
+Adjusted R-squared        |   0.119
+F-statistic               |   1.47
 --------------------------+------------------
 Standard errors in parentheses
 *** p<0.01, ** p<0.05, * p<0.1
@@ -1010,31 +1010,31 @@ Standard errors in parentheses
                           |   (1)
                           | distinct_collapsed
 --------------------------+------------------
-avg_income                |   -0.0000119
-                          |  (0.0000431)
+avg_income                |   -0.0000521
+                          |  (0.0000409)
                           |
-avg_age                   |    0.155
-                          |   (0.117)
+avg_age                   |    0.070
+                          |   (0.083)
                           |
-pct_hs_grad               |   -0.131
-                          |   (0.124)
+pct_college_plus          |    0.180**
+                          |   (0.079)
                           |
-pct_white                 |   -0.053
-                          |   (0.247)
+pct_white                 |    0.034
+                          |   (0.231)
                           |
-pct_hispanic              |    0.061
-                          |   (0.093)
+pct_hispanic              |    0.106
+                          |   (0.087)
                           |
-pct_black                 |    0.002
-                          |   (0.250)
+pct_black                 |    0.082
+                          |   (0.233)
                           |
-Constant                  |    6.23
-                          |  (20.80)
+Constant                  |   -3.97
+                          |  (19.61)
 --------------------------+------------------
 Observations              |    28
-R-squared                 |   0.421
-Adjusted R-squared        |   0.255
-F-statistic               |   2.54
+R-squared                 |   0.512
+Adjusted R-squared        |   0.373
+F-statistic               |   3.67
 --------------------------+------------------
 Standard errors in parentheses
 *** p<0.01, ** p<0.05, * p<0.1
@@ -1046,31 +1046,31 @@ Standard errors in parentheses
                           |   (1)
                           | distinct_collapsed
 --------------------------+------------------
-Δavg_income               |    0.000126**
-                          |  (0.0000566)
+Δavg_income               |   -0.0000301
+                          |  (0.0000653)
                           |
-Δavg_age                  |   -0.105
-                          |   (0.146)
+Δavg_age                  |   -0.033
+                          |   (0.145)
                           |
-Δpct_hs_grad              |    0.314
-                          |   (0.206)
+Δpct_college_plus         |    0.521
+                          |   (0.310)
                           |
-Δpct_white                |   -0.443**
-                          |   (0.160)
+Δpct_white                |   -0.580***
+                          |   (0.170)
                           |
-Δpct_hispanic             |   -0.292***
-                          |   (0.0977)
+Δpct_hispanic             |   -0.345***
+                          |   (0.096)
                           |
-Δpct_black                |    0.116
-                          |   (0.281)
+Δpct_black                |   -0.357
+                          |   (0.274)
                           |
-Constant                  |   -1.01
-                          |   (2.00)
+Constant                  |    1.63
+                          |   (0.82)
 --------------------------+------------------
 Observations              |    21
-R-squared                 |   0.800
-Adjusted R-squared        |   0.714
-F-statistic               |   9.33
+R-squared                 |   0.806
+Adjusted R-squared        |   0.723
+F-statistic               |   9.69
 --------------------------+------------------
 Standard errors in parentheses
 *** p<0.01, ** p<0.05, * p<0.1
