@@ -34,7 +34,7 @@ Recent notes.
 
 [January 2026]{.card-meta}
 
-[View Meeting Notes](#){.card-link}
+[View Meeting Notes](meeting-jan-13-2026-v2.2.qmd){.card-link}
 :::
 ::::
 
@@ -152,7 +152,7 @@ Simplified the methodology to use county-level school counts instead of the 5-mi
 - Weighting: School-age population (ages 5-17) from 1990 Census
 :::
 
-[View Full Meeting Notes](#){.btn-ghost}
+[View Full Meeting Notes](meeting-jan-13-2026-v2.2.qmd){.btn-ghost}
 
 ------------------------------------------------------------------------
 
