@@ -15,7 +15,7 @@ This document presents three parallel analyses of the relationship between count
 1. **2000 Cross-Section** (N=28 counties)
 2. **1990 Cross-Section** (N=22 counties)
 3. **2000-1990 Difference** (N=21 matched counties)
-4. All regression anlysis is done with the 21 matched counties.
+4. All regression analyses are conducted using the 21 matched counties, while summary statistics are computed using all available counties.
 
 **Key Features:**
 
@@ -137,7 +137,7 @@ All demographic share variables are on a 0–100 percentage scale.
 
 -   **avg_income:** Average household income (nominal dollars)
 -   **avg_age:** Mean age
--   **total_school:** Average private school count per block within the county (5-mile radius)
+-   **total_school:** Count of total private schools within a county
 -   **relig / non_relig:** Counts of religious vs. non-religious schools
 -   **distinct_fine:** Number of distinct fine-grained school types
 -   **distinct_collapsed:** Number of distinct collapsed school categories
@@ -169,39 +169,57 @@ These tables present simple relationships between each school exposure measure a
 
 #### 2000 Cross-Section
 
-| Predictor | Coefficient | Std. Error | p-value | R² |
-|-----------|-------------|------------|---------|-----|
+*Each row represents a separate bivariate regression.*
+
+| Predictor | Coef. | (SE) | p | R² |
+|:----------|------:|-----:|----:|----:|
 | avg_income | 0.0020 | (0.0013) | 0.151 | 0.105 |
-| pct_black | 5.79*** | (1.32) | 0.000 | 0.504 |
-| pct_hispanic | 4.08*** | (1.39) | 0.009 | 0.311 |
 | avg_age | -4.20* | (2.31) | 0.085 | 0.148 |
+| pct_hispanic | 4.08*** | (1.39) | 0.009 | 0.311 |
+| pct_black | 5.79*** | (1.32) | 0.000 | 0.504 |
+| pct_white | -3.97*** | (0.9341) | 0.000 | 0.488 |
+| pct_less_hs | 2.07 | (2.79) | 0.467 | 0.028 |
+| pct_hs_grad | -4.99** | (2.38) | 0.049 | 0.189 |
+| pct_some_college | -1.06 | (5.01) | 0.834 | 0.002 |
 | pct_college_plus | 3.66 | (2.57) | 0.170 | 0.097 |
 
-N = 21 counties. Standard errors in parentheses. \* p<0.1, \*\* p<0.05, \*\*\* p<0.01
+*N = 21 counties. Standard errors in parentheses.* \* *p<0.1,* \*\* *p<0.05,* \*\*\* *p<0.01*
 
 #### 1990 Cross-Section
 
-| Predictor | Coefficient | Std. Error | p-value | R² |
-|-----------|-------------|------------|---------|-----|
+*Each row represents a separate bivariate regression.*
+
+| Predictor | Coef. | (SE) | p | R² |
+|:----------|------:|-----:|----:|----:|
 | avg_income | 0.0035 | (0.0022) | 0.119 | 0.123 |
-| pct_black | 5.97*** | (1.93) | 0.006 | 0.335 |
-| pct_hispanic | 7.57*** | (2.26) | 0.003 | 0.370 |
 | avg_age | -2.32 | (2.38) | 0.342 | 0.048 |
+| pct_hispanic | 7.57*** | (2.26) | 0.003 | 0.370 |
+| pct_black | 5.97*** | (1.93) | 0.006 | 0.335 |
+| pct_white | -5.17*** | (1.66) | 0.006 | 0.337 |
+| pct_less_hs | -1.54 | (2.55) | 0.554 | 0.019 |
+| pct_hs_grad | -1.92 | (2.96) | 0.524 | 0.022 |
+| pct_some_college | 1.61 | (4.20) | 0.705 | 0.008 |
 | pct_college_plus | 3.49 | (3.03) | 0.263 | 0.066 |
 
-N = 21 counties. Standard errors in parentheses. \* p<0.1, \*\* p<0.05, \*\*\* p<0.01
+*N = 21 counties. Standard errors in parentheses.* \* *p<0.1,* \*\* *p<0.05,* \*\*\* *p<0.01*
 
 #### 2000-1990 Difference
 
-| Predictor (Δ) | Coefficient | Std. Error | p-value | R² |
-|---------------|-------------|------------|---------|-----|
+*Each row represents a separate bivariate regression of demographic change on school exposure.*
+
+| Predictor (Δ) | Coef. | (SE) | p | R² |
+|:--------------|------:|-----:|----:|----:|
 | Δavg_income | 18.06 | (16.23) | 0.279 | 0.061 |
-| Δpct_black | 0.031*** | (0.0062) | 0.000 | 0.570 |
-| Δpct_hispanic | 0.027* | (0.015) | 0.080 | 0.153 |
-| Δavg_age | -0.015** | (0.0055) | 0.014 | 0.278 |
+| Δavg_age | -0.0149** | (0.0055) | 0.014 | 0.278 |
+| Δpct_hispanic | 0.0273* | (0.0148) | 0.080 | 0.153 |
+| Δpct_black | 0.0310*** | (0.0062) | 0.000 | 0.570 |
+| Δpct_white | -0.0575*** | (0.0121) | 0.000 | 0.541 |
+| Δpct_less_hs | 0.0258*** | (0.0057) | 0.000 | 0.516 |
+| Δpct_hs_grad | -0.0265*** | (0.0064) | 0.001 | 0.477 |
+| Δpct_some_college | -0.0070 | (0.0048) | 0.158 | 0.102 |
 | Δpct_college_plus | 0.0076* | (0.0041) | 0.081 | 0.152 |
 
-N = 21 counties. Regressions of demographic *changes* (2000-1990) on school counts (2000 levels). Standard errors in parentheses. \* p<0.1, \*\* p<0.05, \*\*\* p<0.01
+*N = 21 counties. Standard errors in parentheses.* \* *p<0.1,* \*\* *p<0.05,* \*\*\* *p<0.01*
 
 :::
 
@@ -213,39 +231,57 @@ N = 21 counties. Regressions of demographic *changes* (2000-1990) on school coun
 
 #### 2000 Cross-Section
 
-| Predictor | Coefficient | Std. Error | p-value | R² |
-|-----------|-------------|------------|---------|-----|
-| avg_income | 0.0010** | (0.0005) | 0.043 | 0.198 |
-| pct_black | 2.02*** | (0.494) | 0.001 | 0.468 |
-| pct_hispanic | 1.37** | (0.519) | 0.016 | 0.269 |
-| avg_age | -1.23 | (0.860) | 0.169 | 0.097 |
-| pct_college_plus | 1.79* | (0.887) | 0.059 | 0.176 |
+*Each row represents a separate bivariate regression.*
 
-N = 21 counties. Standard errors in parentheses. \* p<0.1, \*\* p<0.05, \*\*\* p<0.01
+| Predictor | Coef. | (SE) | p | R² |
+|:----------|------:|-----:|----:|----:|
+| avg_income | 0.0010** | (0.0005) | 0.043 | 0.198 |
+| avg_age | -1.23 | (0.8597) | 0.169 | 0.097 |
+| pct_hispanic | 1.37** | (0.5194) | 0.016 | 0.269 |
+| pct_black | 2.02*** | (0.4936) | 0.001 | 0.468 |
+| pct_white | -1.36*** | (0.3540) | 0.001 | 0.438 |
+| pct_less_hs | 0.2096 | (1.02) | 0.840 | 0.002 |
+| pct_hs_grad | -1.92** | (0.8461) | 0.035 | 0.214 |
+| pct_some_college | 0.1347 | (1.81) | 0.942 | 0.000 |
+| pct_college_plus | 1.79* | (0.8871) | 0.059 | 0.176 |
+
+*N = 21 counties. Standard errors in parentheses.* \* *p<0.1,* \*\* *p<0.05,* \*\*\* *p<0.01*
 
 #### 1990 Cross-Section
 
-| Predictor | Coefficient | Std. Error | p-value | R² |
-|-----------|-------------|------------|---------|-----|
+*Each row represents a separate bivariate regression.*
+
+| Predictor | Coef. | (SE) | p | R² |
+|:----------|------:|-----:|----:|----:|
 | avg_income | 0.0016** | (0.0007) | 0.044 | 0.197 |
-| pct_black | 2.07*** | (0.714) | 0.009 | 0.307 |
-| pct_hispanic | 2.55*** | (0.850) | 0.007 | 0.322 |
-| avg_age | -0.525 | (0.875) | 0.556 | 0.018 |
+| avg_age | -0.5245 | (0.8754) | 0.556 | 0.018 |
+| pct_hispanic | 2.55*** | (0.8500) | 0.007 | 0.322 |
+| pct_black | 2.07*** | (0.7136) | 0.009 | 0.307 |
+| pct_white | -1.79*** | (0.6135) | 0.009 | 0.310 |
+| pct_less_hs | -1.03 | (0.9007) | 0.267 | 0.065 |
+| pct_hs_grad | -0.6263 | (1.07) | 0.566 | 0.018 |
+| pct_some_college | 0.8777 | (1.51) | 0.569 | 0.017 |
 | pct_college_plus | 1.73 | (1.06) | 0.120 | 0.123 |
 
-N = 21 counties. Standard errors in parentheses. \* p<0.1, \*\* p<0.05, \*\*\* p<0.01
+*N = 21 counties. Standard errors in parentheses.* \* *p<0.1,* \*\* *p<0.05,* \*\*\* *p<0.01*
 
 #### 2000-1990 Difference
 
-| Predictor (Δ) | Coefficient | Std. Error | p-value | R² |
-|---------------|-------------|------------|---------|-----|
-| Δavg_income | 78.24* | (42.67) | 0.082 | 0.150 |
-| Δpct_black | 0.084*** | (0.018) | 0.000 | 0.542 |
-| Δpct_hispanic | 0.070 | (0.041) | 0.108 | 0.130 |
-| Δavg_age | -0.044*** | (0.015) | 0.008 | 0.314 |
-| Δpct_college_plus | 0.028** | (0.011) | 0.019 | 0.259 |
+*Each row represents a separate bivariate regression of demographic change on school exposure.*
 
-N = 21 counties. Standard errors in parentheses. \* p<0.1, \*\* p<0.05, \*\*\* p<0.01
+| Predictor (Δ) | Coef. | (SE) | p | R² |
+|:--------------|------:|-----:|----:|----:|
+| Δavg_income | 78.24* | (42.67) | 0.082 | 0.150 |
+| Δavg_age | -0.0436*** | (0.0148) | 0.008 | 0.314 |
+| Δpct_hispanic | 0.0697 | (0.0414) | 0.108 | 0.130 |
+| Δpct_black | 0.0837*** | (0.0176) | 0.000 | 0.542 |
+| Δpct_white | -0.1487*** | (0.0360) | 0.001 | 0.473 |
+| Δpct_less_hs | 0.0731*** | (0.0154) | 0.000 | 0.541 |
+| Δpct_hs_grad | -0.0830*** | (0.0151) | 0.000 | 0.614 |
+| Δpct_some_college | -0.0177 | (0.0133) | 0.199 | 0.085 |
+| Δpct_college_plus | 0.0275** | (0.0107) | 0.019 | 0.259 |
+
+*N = 21 counties. Standard errors in parentheses.* \* *p<0.1,* \*\* *p<0.05,* \*\*\* *p<0.01*
 
 :::
 
@@ -257,39 +293,57 @@ N = 21 counties. Standard errors in parentheses. \* p<0.1, \*\* p<0.05, \*\*\* p
 
 #### 2000 Cross-Section
 
-| Predictor | Coefficient | Std. Error | p-value | R² |
-|-----------|-------------|------------|---------|-----|
+*Each row represents a separate bivariate regression.*
+
+| Predictor | Coef. | (SE) | p | R² |
+|:----------|------:|-----:|----:|----:|
 | avg_income | 0.0010 | (0.0009) | 0.277 | 0.062 |
-| pct_black | 3.77*** | (0.877) | 0.000 | 0.493 |
-| pct_hispanic | 2.71*** | (0.914) | 0.008 | 0.316 |
 | avg_age | -2.97* | (1.50) | 0.062 | 0.171 |
+| pct_hispanic | 2.71*** | (0.9142) | 0.008 | 0.316 |
+| pct_black | 3.77*** | (0.8770) | 0.000 | 0.493 |
+| pct_white | -2.61*** | (0.6165) | 0.000 | 0.486 |
+| pct_less_hs | 1.86 | (1.81) | 0.318 | 0.052 |
+| pct_hs_grad | -3.07* | (1.59) | 0.068 | 0.164 |
+| pct_some_college | -1.20 | (3.29) | 0.720 | 0.007 |
 | pct_college_plus | 1.87 | (1.73) | 0.292 | 0.058 |
 
-N = 21 counties. Standard errors in parentheses. \* p<0.1, \*\* p<0.05, \*\*\* p<0.01
+*N = 21 counties. Standard errors in parentheses.* \* *p<0.1,* \*\* *p<0.05,* \*\*\* *p<0.01*
 
 #### 1990 Cross-Section
 
-| Predictor | Coefficient | Std. Error | p-value | R² |
-|-----------|-------------|------------|---------|-----|
+*Each row represents a separate bivariate regression.*
+
+| Predictor | Coef. | (SE) | p | R² |
+|:----------|------:|-----:|----:|----:|
 | avg_income | 0.0019 | (0.0015) | 0.205 | 0.083 |
-| pct_black | 3.90*** | (1.28) | 0.006 | 0.330 |
-| pct_hispanic | 5.01*** | (1.49) | 0.003 | 0.375 |
 | avg_age | -1.80 | (1.55) | 0.262 | 0.066 |
+| pct_hispanic | 5.01*** | (1.49) | 0.003 | 0.375 |
+| pct_black | 3.90*** | (1.28) | 0.006 | 0.330 |
+| pct_white | -3.37*** | (1.10) | 0.006 | 0.332 |
+| pct_less_hs | -0.5071 | (1.69) | 0.768 | 0.005 |
+| pct_hs_grad | -1.29 | (1.95) | 0.514 | 0.023 |
+| pct_some_college | 0.7351 | (2.77) | 0.794 | 0.004 |
 | pct_college_plus | 1.77 | (2.02) | 0.394 | 0.039 |
 
-N = 21 counties. Standard errors in parentheses. \* p<0.1, \*\* p<0.05, \*\*\* p<0.01
+*N = 21 counties. Standard errors in parentheses.* \* *p<0.1,* \*\* *p<0.05,* \*\*\* *p<0.01*
 
 #### 2000-1990 Difference
 
-| Predictor (Δ) | Coefficient | Std. Error | p-value | R² |
-|---------------|-------------|------------|---------|-----|
+*Each row represents a separate bivariate regression of demographic change on school exposure.*
+
+| Predictor (Δ) | Coef. | (SE) | p | R² |
+|:--------------|------:|-----:|----:|----:|
 | Δavg_income | 18.04 | (25.09) | 0.481 | 0.026 |
-| Δpct_black | 0.046*** | (0.0096) | 0.000 | 0.550 |
-| Δpct_hispanic | 0.042* | (0.022) | 0.076 | 0.156 |
-| Δavg_age | -0.021** | (0.0085) | 0.023 | 0.243 |
+| Δavg_age | -0.0211** | (0.0085) | 0.023 | 0.243 |
+| Δpct_hispanic | 0.0420* | (0.0224) | 0.076 | 0.156 |
+| Δpct_black | 0.0463*** | (0.0096) | 0.000 | 0.550 |
+| Δpct_white | -0.0877*** | (0.0183) | 0.000 | 0.546 |
+| Δpct_less_hs | 0.0375*** | (0.0091) | 0.001 | 0.471 |
+| Δpct_hs_grad | -0.0360*** | (0.0105) | 0.003 | 0.383 |
+| Δpct_some_college | -0.0108 | (0.0072) | 0.151 | 0.105 |
 | Δpct_college_plus | 0.0093 | (0.0065) | 0.168 | 0.098 |
 
-N = 21 counties. Standard errors in parentheses. \* p<0.1, \*\* p<0.05, \*\*\* p<0.01
+*N = 21 counties. Standard errors in parentheses.* \* *p<0.1,* \*\* *p<0.05,* \*\*\* *p<0.01*
 
 :::
 
@@ -301,39 +355,57 @@ N = 21 counties. Standard errors in parentheses. \* p<0.1, \*\* p<0.05, \*\*\* p
 
 #### 2000 Cross-Section
 
-| Predictor | Coefficient | Std. Error | p-value | R² |
-|-----------|-------------|------------|---------|-----|
-| avg_income | 0.0000 | (0.0001) | 0.693 | 0.008 |
-| pct_black | 0.302*** | (0.086) | 0.002 | 0.395 |
-| pct_hispanic | 0.202** | (0.087) | 0.033 | 0.218 |
-| avg_age | -0.194 | (0.141) | 0.184 | 0.091 |
-| pct_college_plus | 0.060 | (0.159) | 0.711 | 0.007 |
+*Each row represents a separate bivariate regression.*
 
-N = 21 counties. Standard errors in parentheses. \* p<0.1, \*\* p<0.05, \*\*\* p<0.01
+| Predictor | Coef. | (SE) | p | R² |
+|:----------|------:|-----:|----:|----:|
+| avg_income | 0.0000 | (0.0001) | 0.693 | 0.008 |
+| avg_age | -0.1939 | (0.1405) | 0.184 | 0.091 |
+| pct_hispanic | 0.2016** | (0.0875) | 0.033 | 0.218 |
+| pct_black | 0.3023*** | (0.0858) | 0.002 | 0.395 |
+| pct_white | -0.2039*** | (0.0611) | 0.003 | 0.369 |
+| pct_less_hs | 0.2004 | (0.1602) | 0.226 | 0.076 |
+| pct_hs_grad | -0.1829 | (0.1497) | 0.237 | 0.073 |
+| pct_some_college | -0.1744 | (0.2930) | 0.559 | 0.018 |
+| pct_college_plus | 0.0596 | (0.1586) | 0.711 | 0.007 |
+
+*N = 21 counties. Standard errors in parentheses.* \* *p<0.1,* \*\* *p<0.05,* \*\*\* *p<0.01*
 
 #### 1990 Cross-Section
 
-| Predictor | Coefficient | Std. Error | p-value | R² |
-|-----------|-------------|------------|---------|-----|
-| avg_income | 0.0001 | (0.0001) | 0.615 | 0.014 |
-| pct_black | 0.342*** | (0.116) | 0.008 | 0.315 |
-| pct_hispanic | 0.393** | (0.142) | 0.012 | 0.287 |
-| avg_age | -0.121 | (0.141) | 0.402 | 0.037 |
-| pct_college_plus | 0.047 | (0.184) | 0.803 | 0.003 |
+*Each row represents a separate bivariate regression.*
 
-N = 21 counties. Standard errors in parentheses. \* p<0.1, \*\* p<0.05, \*\*\* p<0.01
+| Predictor | Coef. | (SE) | p | R² |
+|:----------|------:|-----:|----:|----:|
+| avg_income | 0.0001 | (0.0001) | 0.615 | 0.014 |
+| avg_age | -0.1212 | (0.1413) | 0.402 | 0.037 |
+| pct_hispanic | 0.3925** | (0.1421) | 0.012 | 0.287 |
+| pct_black | 0.3416*** | (0.1156) | 0.008 | 0.315 |
+| pct_white | -0.2839** | (0.1012) | 0.011 | 0.293 |
+| pct_less_hs | 0.0158 | (0.1517) | 0.918 | 0.001 |
+| pct_hs_grad | -0.0473 | (0.1759) | 0.791 | 0.004 |
+| pct_some_college | -0.0327 | (0.2485) | 0.897 | 0.001 |
+| pct_college_plus | 0.0465 | (0.1843) | 0.803 | 0.003 |
+
+*N = 21 counties. Standard errors in parentheses.* \* *p<0.1,* \*\* *p<0.05,* \*\*\* *p<0.01*
 
 #### 2000-1990 Difference
 
-| Predictor (Δ) | Coefficient | Std. Error | p-value | R² |
-|---------------|-------------|------------|---------|-----|
-| Δavg_income | 56.49 | (283.81) | 0.844 | 0.002 |
-| Δpct_black | 0.386*** | (0.133) | 0.009 | 0.305 |
-| Δpct_hispanic | 0.353 | (0.260) | 0.190 | 0.089 |
-| Δavg_age | -0.162 | (0.103) | 0.132 | 0.115 |
-| Δpct_college_plus | 0.052 | (0.075) | 0.499 | 0.024 |
+*Each row represents a separate bivariate regression of demographic change on school exposure.*
 
-N = 21 counties. Standard errors in parentheses. \* p<0.1, \*\* p<0.05, \*\*\* p<0.01
+| Predictor (Δ) | Coef. | (SE) | p | R² |
+|:--------------|------:|-----:|----:|----:|
+| Δavg_income | 56.49 | (283.81) | 0.844 | 0.002 |
+| Δavg_age | -0.1621 | (0.1031) | 0.132 | 0.115 |
+| Δpct_hispanic | 0.3533 | (0.2598) | 0.190 | 0.089 |
+| Δpct_black | 0.3855*** | (0.1334) | 0.009 | 0.305 |
+| Δpct_white | -0.7805*** | (0.2460) | 0.005 | 0.346 |
+| Δpct_less_hs | 0.3434*** | (0.1156) | 0.008 | 0.317 |
+| Δpct_hs_grad | -0.3181** | (0.1300) | 0.024 | 0.240 |
+| Δpct_some_college | -0.0771 | (0.0835) | 0.367 | 0.043 |
+| Δpct_college_plus | 0.0519 | (0.0753) | 0.499 | 0.024 |
+
+*N = 21 counties. Standard errors in parentheses.* \* *p<0.1,* \*\* *p<0.05,* \*\*\* *p<0.01*
 
 :::
 
@@ -351,39 +423,57 @@ N = 21 counties. Standard errors in parentheses. \* p<0.1, \*\* p<0.05, \*\*\* p
 
 #### 2000 Cross-Section
 
-| Predictor | Coefficient | Std. Error | p-value | R² |
-|-----------|-------------|------------|---------|-----|
-| avg_income | 0.0000 | (0.0000) | 0.537 | 0.020 |
-| pct_black | 0.164*** | (0.054) | 0.006 | 0.331 |
-| pct_hispanic | 0.114** | (0.053) | 0.043 | 0.199 |
-| avg_age | -0.110 | (0.084) | 0.208 | 0.082 |
-| pct_college_plus | 0.079 | (0.093) | 0.408 | 0.036 |
+*Each row represents a separate bivariate regression.*
 
-N = 21 counties. Standard errors in parentheses. \* p<0.1, \*\* p<0.05, \*\*\* p<0.01
+| Predictor | Coef. | (SE) | p | R² |
+|:----------|------:|-----:|----:|----:|
+| avg_income | 0.0000 | (0.0000) | 0.537 | 0.020 |
+| avg_age | -0.1096 | (0.0840) | 0.208 | 0.082 |
+| pct_hispanic | 0.1144** | (0.0527) | 0.043 | 0.199 |
+| pct_black | 0.1644*** | (0.0537) | 0.006 | 0.331 |
+| pct_white | -0.1138*** | (0.0376) | 0.007 | 0.326 |
+| pct_less_hs | 0.0702 | (0.0978) | 0.482 | 0.026 |
+| pct_hs_grad | -0.1325 | (0.0873) | 0.146 | 0.108 |
+| pct_some_college | -0.0126 | (0.1758) | 0.944 | 0.000 |
+| pct_college_plus | 0.0786 | (0.0929) | 0.408 | 0.036 |
+
+*N = 21 counties. Standard errors in parentheses.* \* *p<0.1,* \*\* *p<0.05,* \*\*\* *p<0.01*
 
 #### 1990 Cross-Section
 
-| Predictor | Coefficient | Std. Error | p-value | R² |
-|-----------|-------------|------------|---------|-----|
-| avg_income | 0.0001 | (0.0001) | 0.527 | 0.021 |
-| pct_black | 0.182** | (0.072) | 0.020 | 0.253 |
-| pct_hispanic | 0.236** | (0.084) | 0.011 | 0.292 |
-| avg_age | -0.069 | (0.084) | 0.423 | 0.034 |
-| pct_college_plus | 0.080 | (0.108) | 0.471 | 0.028 |
+*Each row represents a separate bivariate regression.*
 
-N = 21 counties. Standard errors in parentheses. \* p<0.1, \*\* p<0.05, \*\*\* p<0.01
+| Predictor | Coef. | (SE) | p | R² |
+|:----------|------:|-----:|----:|----:|
+| avg_income | 0.0001 | (0.0001) | 0.527 | 0.021 |
+| avg_age | -0.0689 | (0.0841) | 0.423 | 0.034 |
+| pct_hispanic | 0.2355** | (0.0842) | 0.011 | 0.292 |
+| pct_black | 0.1821** | (0.0718) | 0.020 | 0.253 |
+| pct_white | -0.1564** | (0.0619) | 0.021 | 0.251 |
+| pct_less_hs | -0.0334 | (0.0899) | 0.714 | 0.007 |
+| pct_hs_grad | -0.0521 | (0.1041) | 0.623 | 0.013 |
+| pct_some_college | 0.0489 | (0.1474) | 0.744 | 0.006 |
+| pct_college_plus | 0.0797 | (0.1082) | 0.471 | 0.028 |
+
+*N = 21 counties. Standard errors in parentheses.* \* *p<0.1,* \*\* *p<0.05,* \*\*\* *p<0.01*
 
 #### 2000-1990 Difference
 
-| Predictor (Δ) | Coefficient | Std. Error | p-value | R² |
-|---------------|-------------|------------|---------|-----|
-| Δavg_income | 248.15 | (474.38) | 0.607 | 0.014 |
-| Δpct_black | 0.622** | (0.228) | 0.014 | 0.281 |
-| Δpct_hispanic | 0.500 | (0.443) | 0.273 | 0.063 |
-| Δavg_age | -0.256 | (0.175) | 0.160 | 0.101 |
-| Δpct_college_plus | 0.114 | (0.126) | 0.376 | 0.041 |
+*Each row represents a separate bivariate regression of demographic change on school exposure.*
 
-N = 21 counties. Standard errors in parentheses. \* p<0.1, \*\* p<0.05, \*\*\* p<0.01
+| Predictor (Δ) | Coef. | (SE) | p | R² |
+|:--------------|------:|-----:|----:|----:|
+| Δavg_income | 248.15 | (474.38) | 0.607 | 0.014 |
+| Δavg_age | -0.2555 | (0.1747) | 0.160 | 0.101 |
+| Δpct_hispanic | 0.5003 | (0.4430) | 0.273 | 0.063 |
+| Δpct_black | 0.6216** | (0.2283) | 0.014 | 0.281 |
+| Δpct_white | -1.25*** | (0.4233) | 0.008 | 0.316 |
+| Δpct_less_hs | 0.5922*** | (0.1921) | 0.006 | 0.333 |
+| Δpct_hs_grad | -0.5667** | (0.2144) | 0.016 | 0.269 |
+| Δpct_some_college | -0.1393 | (0.1399) | 0.332 | 0.050 |
+| Δpct_college_plus | 0.1138 | (0.1256) | 0.376 | 0.041 |
+
+*N = 21 counties. Standard errors in parentheses.* \* *p<0.1,* \*\* *p<0.05,* \*\*\* *p<0.01*
 
 :::
 
@@ -405,8 +495,10 @@ These specifications regress each school exposure measure on a full set of demog
 
 #### 2000 Cross-Section
 
+*Single regression with key predictors entered simultaneously.*
+
 | Variable | Coefficient | Std. Error | p-value |
-|----------|-------------|------------|---------|
+|:----------|------------:|-----------:|--------:|
 | avg_income | -0.0012 | (0.0024) | 0.622 |
 | avg_age | 11.58 | (7.58) | 0.149 |
 | pct_hs_grad | -5.68 | (6.87) | 0.422 |
@@ -415,12 +507,16 @@ These specifications regress each school exposure measure on a full set of demog
 | pct_black | -2.28 | (10.81) | 0.836 |
 | Constant | 498.14 | (908.00) | 0.592 |
 
-N = 21, R² = 0.617, Adj. R² = 0.452, F = 3.75
+**Model Fit:** N = 21, R² = 0.617, Adj. R² = 0.452, F = 3.75
+
+\* *p<0.1,* \*\* *p<0.05,* \*\*\* *p<0.01*
 
 #### 1990 Cross-Section
 
+*Single regression with key predictors entered simultaneously.*
+
 | Variable | Coefficient | Std. Error | p-value |
-|----------|-------------|------------|---------|
+|:----------|------------:|-----------:|--------:|
 | avg_income | -0.0004 | (0.0023) | 0.867 |
 | avg_age | 9.09 | (6.14) | 0.161 |
 | pct_hs_grad | -2.99 | (5.05) | 0.563 |
@@ -429,12 +525,16 @@ N = 21, R² = 0.617, Adj. R² = 0.452, F = 3.75
 | pct_black | 1.75 | (14.53) | 0.906 |
 | Constant | 125.35 | (1386.60) | 0.929 |
 
-N = 21, R² = 0.619, Adj. R² = 0.455, F = 3.79
+**Model Fit:** N = 21, R² = 0.619, Adj. R² = 0.455, F = 3.79
+
+\* *p<0.1,* \*\* *p<0.05,* \*\*\* *p<0.01*
 
 #### 2000-1990 Difference
 
+*Single regression with key predictors entered simultaneously.*
+
 | Variable (Δ) | Coefficient | Std. Error | p-value |
-|--------------|-------------|------------|---------|
+|:----------|------------:|-----------:|--------:|
 | Δavg_income | 0.0007 | (0.0025) | 0.789 |
 | Δavg_age | -6.45 | (6.49) | 0.338 |
 | Δpct_hs_grad | -5.53 | (9.15) | 0.555 |
@@ -443,7 +543,9 @@ N = 21, R² = 0.619, Adj. R² = 0.455, F = 3.79
 | Δpct_black | -19.64 | (12.50) | 0.138 |
 | Constant | 23.42 | (88.90) | 0.796 |
 
-N = 21, R² = 0.812, Adj. R² = 0.731, F = 10.06
+**Model Fit:** N = 21, R² = 0.812, Adj. R² = 0.731, F = 10.06
+
+\* *p<0.1,* \*\* *p<0.05,* \*\*\* *p<0.01*
 
 :::
 
@@ -455,22 +557,28 @@ N = 21, R² = 0.812, Adj. R² = 0.731, F = 10.06
 
 #### 2000 Cross-Section
 
+*Single regression with key predictors entered simultaneously.*
+
 | Variable | Coefficient | Std. Error | p-value |
-|----------|-------------|------------|---------|
+|:----------|------------:|-----------:|--------:|
 | avg_income | -0.0004 | (0.0008) | 0.641 |
 | avg_age | 5.49** | (2.51) | 0.046 |
 | pct_hs_grad | -2.88 | (2.27) | 0.226 |
 | pct_white | -3.74 | (3.59) | 0.316 |
-| pct_hispanic | 0.377 | (1.55) | 0.811 |
+| pct_hispanic | 0.3774 | (1.55) | 0.811 |
 | pct_black | -1.75 | (3.58) | 0.631 |
 | Constant | 234.11 | (300.54) | 0.449 |
 
-N = 21, R² = 0.679, Adj. R² = 0.541, F = 4.94
+**Model Fit:** N = 21, R² = 0.679, Adj. R² = 0.541, F = 4.94
+
+\* *p<0.1,* \*\* *p<0.05,* \*\*\* *p<0.01*
 
 #### 1990 Cross-Section
 
+*Single regression with key predictors entered simultaneously.*
+
 | Variable | Coefficient | Std. Error | p-value |
-|----------|-------------|------------|---------|
+|:----------|------------:|-----------:|--------:|
 | avg_income | -0.0000 | (0.0007) | 0.957 |
 | avg_age | 5.19** | (1.98) | 0.020 |
 | pct_hs_grad | -2.04 | (1.63) | 0.231 |
@@ -479,12 +587,16 @@ N = 21, R² = 0.679, Adj. R² = 0.541, F = 4.94
 | pct_black | -3.16 | (4.68) | 0.511 |
 | Constant | 389.42 | (446.54) | 0.398 |
 
-N = 21, R² = 0.698, Adj. R² = 0.568, F = 5.39
+**Model Fit:** N = 21, R² = 0.698, Adj. R² = 0.568, F = 5.39
+
+\* *p<0.1,* \*\* *p<0.05,* \*\*\* *p<0.01*
 
 #### 2000-1990 Difference
 
+*Single regression with key predictors entered simultaneously.*
+
 | Variable (Δ) | Coefficient | Std. Error | p-value |
-|--------------|-------------|------------|---------|
+|:----------|------------:|-----------:|--------:|
 | Δavg_income | 0.0001 | (0.0009) | 0.890 |
 | Δavg_age | -2.71 | (2.31) | 0.259 |
 | Δpct_hs_grad | -5.98* | (3.26) | 0.087 |
@@ -493,7 +605,9 @@ N = 21, R² = 0.698, Adj. R² = 0.568, F = 5.39
 | Δpct_black | -9.05* | (4.45) | 0.061 |
 | Constant | 30.06 | (31.62) | 0.358 |
 
-N = 21, R² = 0.818, Adj. R² = 0.740, F = 10.48
+**Model Fit:** N = 21, R² = 0.818, Adj. R² = 0.740, F = 10.48
+
+\* *p<0.1,* \*\* *p<0.05,* \*\*\* *p<0.01*
 
 :::
 
@@ -505,45 +619,57 @@ N = 21, R² = 0.818, Adj. R² = 0.740, F = 10.48
 
 #### 2000 Cross-Section
 
+*Single regression with key predictors entered simultaneously.*
+
 | Variable | Coefficient | Std. Error | p-value |
-|----------|-------------|------------|---------|
+|:----------|------------:|-----------:|--------:|
 | avg_income | -0.0008 | (0.0017) | 0.627 |
 | avg_age | 6.09 | (5.29) | 0.269 |
 | pct_hs_grad | -2.80 | (4.80) | 0.569 |
 | pct_white | -4.07 | (7.58) | 0.600 |
 | pct_hispanic | 1.14 | (3.27) | 0.734 |
-| pct_black | -0.523 | (7.55) | 0.946 |
+| pct_black | -0.5225 | (7.55) | 0.946 |
 | Constant | 264.04 | (634.09) | 0.683 |
 
-N = 21, R² = 0.569, Adj. R² = 0.384, F = 3.08
+**Model Fit:** N = 21, R² = 0.569, Adj. R² = 0.384, F = 3.08
+
+\* *p<0.1,* \*\* *p<0.05,* \*\*\* *p<0.01*
 
 #### 1990 Cross-Section
 
+*Single regression with key predictors entered simultaneously.*
+
 | Variable | Coefficient | Std. Error | p-value |
-|----------|-------------|------------|---------|
+|:----------|------------:|-----------:|--------:|
 | avg_income | -0.0004 | (0.0016) | 0.829 |
 | avg_age | 3.90 | (4.28) | 0.378 |
-| pct_hs_grad | -0.952 | (3.52) | 0.791 |
+| pct_hs_grad | -0.9520 | (3.52) | 0.791 |
 | pct_white | 1.29 | (10.54) | 0.904 |
 | pct_hispanic | 5.69** | (2.55) | 0.043 |
 | pct_black | 4.91 | (10.14) | 0.636 |
 | Constant | -264.07 | (967.82) | 0.789 |
 
-N = 21, R² = 0.572, Adj. R² = 0.388, F = 3.11
+**Model Fit:** N = 21, R² = 0.572, Adj. R² = 0.388, F = 3.11
+
+\* *p<0.1,* \*\* *p<0.05,* \*\*\* *p<0.01*
 
 #### 2000-1990 Difference
 
+*Single regression with key predictors entered simultaneously.*
+
 | Variable (Δ) | Coefficient | Std. Error | p-value |
-|--------------|-------------|------------|---------|
+|:----------|------------:|-----------:|--------:|
 | Δavg_income | 0.0006 | (0.0017) | 0.748 |
 | Δavg_age | -3.73 | (4.40) | 0.410 |
-| Δpct_hs_grad | 0.449 | (6.20) | 0.943 |
+| Δpct_hs_grad | 0.4489 | (6.20) | 0.943 |
 | Δpct_white | -19.33*** | (4.82) | 0.001 |
 | Δpct_hispanic | -11.38*** | (2.94) | 0.002 |
 | Δpct_black | -10.58 | (8.46) | 0.231 |
 | Constant | -6.64 | (60.19) | 0.914 |
 
-N = 21, R² = 0.801, Adj. R² = 0.716, F = 9.39
+**Model Fit:** N = 21, R² = 0.801, Adj. R² = 0.716, F = 9.39
+
+\* *p<0.1,* \*\* *p<0.05,* \*\*\* *p<0.01*
 
 :::
 
@@ -555,45 +681,57 @@ N = 21, R² = 0.801, Adj. R² = 0.716, F = 9.39
 
 #### 2000 Cross-Section
 
+*Single regression with key predictors entered simultaneously.*
+
 | Variable | Coefficient | Std. Error | p-value |
-|----------|-------------|------------|---------|
+|:----------|------------:|-----------:|--------:|
 | avg_income | -0.0002 | (0.0002) | 0.182 |
-| avg_age | 0.912* | (0.485) | 0.081 |
-| pct_hs_grad | -0.511 | (0.440) | 0.264 |
-| pct_white | -0.418 | (0.695) | 0.557 |
-| pct_hispanic | 0.183 | (0.300) | 0.551 |
-| pct_black | -0.098 | (0.692) | 0.889 |
+| avg_age | 0.9125* | (0.4850) | 0.081 |
+| pct_hs_grad | -0.5114 | (0.4396) | 0.264 |
+| pct_white | -0.4178 | (0.6949) | 0.557 |
+| pct_hispanic | 0.1833 | (0.3002) | 0.551 |
+| pct_black | -0.0985 | (0.6917) | 0.889 |
 | Constant | 34.34 | (58.12) | 0.564 |
 
-N = 21, R² = 0.548, Adj. R² = 0.354, F = 2.83
+**Model Fit:** N = 21, R² = 0.548, Adj. R² = 0.354, F = 2.83
+
+\* *p<0.1,* \*\* *p<0.05,* \*\*\* *p<0.01*
 
 #### 1990 Cross-Section
 
+*Single regression with key predictors entered simultaneously.*
+
 | Variable | Coefficient | Std. Error | p-value |
-|----------|-------------|------------|---------|
+|:----------|------------:|-----------:|--------:|
 | avg_income | -0.0001 | (0.0001) | 0.360 |
-| avg_age | 0.390 | (0.386) | 0.329 |
-| pct_hs_grad | -0.096 | (0.318) | 0.768 |
-| pct_white | 0.219 | (0.950) | 0.821 |
-| pct_hispanic | 0.531** | (0.230) | 0.037 |
-| pct_black | 0.589 | (0.914) | 0.530 |
+| avg_age | 0.3904 | (0.3862) | 0.329 |
+| pct_hs_grad | -0.0956 | (0.3176) | 0.768 |
+| pct_white | 0.2191 | (0.9500) | 0.821 |
+| pct_hispanic | 0.5308** | (0.2303) | 0.037 |
+| pct_black | 0.5893 | (0.9144) | 0.530 |
 | Constant | -26.74 | (87.26) | 0.764 |
 
-N = 21, R² = 0.565, Adj. R² = 0.379, F = 3.04
+**Model Fit:** N = 21, R² = 0.565, Adj. R² = 0.379, F = 3.04
+
+\* *p<0.1,* \*\* *p<0.05,* \*\*\* *p<0.01*
 
 #### 2000-1990 Difference
 
+*Single regression with key predictors entered simultaneously.*
+
 | Variable (Δ) | Coefficient | Std. Error | p-value |
-|--------------|-------------|------------|---------|
+|:----------|------------:|-----------:|--------:|
 | Δavg_income | -0.0002 | (0.0002) | 0.331 |
-| Δavg_age | -0.212 | (0.541) | 0.701 |
-| Δpct_hs_grad | -0.904 | (0.762) | 0.256 |
-| Δpct_white | -1.91*** | (0.592) | 0.006 |
-| Δpct_hispanic | -1.13*** | (0.362) | 0.008 |
+| Δavg_age | -0.2118 | (0.5408) | 0.701 |
+| Δpct_hs_grad | -0.9036 | (0.7622) | 0.256 |
+| Δpct_white | -1.91*** | (0.5924) | 0.006 |
+| Δpct_hispanic | -1.13*** | (0.3617) | 0.008 |
 | Δpct_black | -2.02* | (1.04) | 0.073 |
 | Constant | 14.19* | (7.40) | 0.076 |
 
-N = 21, R² = 0.624, Adj. R² = 0.463, F = 3.87
+**Model Fit:** N = 21, R² = 0.624, Adj. R² = 0.463, F = 3.87
+
+\* *p<0.1,* \*\* *p<0.05,* \*\*\* *p<0.01*
 
 :::
 
@@ -605,45 +743,57 @@ N = 21, R² = 0.624, Adj. R² = 0.463, F = 3.87
 
 #### 2000 Cross-Section
 
+*Single regression with key predictors entered simultaneously.*
+
 | Variable | Coefficient | Std. Error | p-value |
-|----------|-------------|------------|---------|
+|:----------|------------:|-----------:|--------:|
 | avg_income | -0.0002* | (0.0001) | 0.076 |
-| avg_age | 0.756** | (0.283) | 0.018 |
-| pct_hs_grad | -0.505* | (0.256) | 0.069 |
-| pct_white | -0.412 | (0.405) | 0.327 |
-| pct_hispanic | 0.107 | (0.175) | 0.549 |
-| pct_black | -0.264 | (0.403) | 0.523 |
+| avg_age | 0.7558** | (0.2828) | 0.018 |
+| pct_hs_grad | -0.5049* | (0.2563) | 0.069 |
+| pct_white | -0.4119 | (0.4052) | 0.327 |
+| pct_hispanic | 0.1074 | (0.1750) | 0.549 |
+| pct_black | -0.2642 | (0.4034) | 0.523 |
 | Constant | 36.68 | (33.89) | 0.297 |
 
-N = 21, R² = 0.565, Adj. R² = 0.379, F = 3.03
+**Model Fit:** N = 21, R² = 0.565, Adj. R² = 0.379, F = 3.03
+
+\* *p<0.1,* \*\* *p<0.05,* \*\*\* *p<0.01*
 
 #### 1990 Cross-Section
 
+*Single regression with key predictors entered simultaneously.*
+
 | Variable | Coefficient | Std. Error | p-value |
-|----------|-------------|------------|---------|
+|:----------|------------:|-----------:|--------:|
 | avg_income | -0.0001 | (0.0001) | 0.228 |
-| avg_age | 0.407 | (0.238) | 0.109 |
-| pct_hs_grad | -0.202 | (0.195) | 0.319 |
-| pct_white | -0.229 | (0.585) | 0.702 |
-| pct_hispanic | 0.318** | (0.142) | 0.042 |
-| pct_black | -0.021 | (0.563) | 0.971 |
+| avg_age | 0.4068 | (0.2377) | 0.109 |
+| pct_hs_grad | -0.2021 | (0.1955) | 0.319 |
+| pct_white | -0.2286 | (0.5848) | 0.702 |
+| pct_hispanic | 0.3178** | (0.1417) | 0.042 |
+| pct_black | -0.0209 | (0.5629) | 0.971 |
 | Constant | 17.67 | (53.72) | 0.747 |
 
-N = 21, R² = 0.534, Adj. R² = 0.335, F = 2.68
+**Model Fit:** N = 21, R² = 0.534, Adj. R² = 0.335, F = 2.68
+
+\* *p<0.1,* \*\* *p<0.05,* \*\*\* *p<0.01*
 
 #### 2000-1990 Difference
 
+*Single regression with key predictors entered simultaneously.*
+
 | Variable (Δ) | Coefficient | Std. Error | p-value |
-|--------------|-------------|------------|---------|
+|:----------|------------:|-----------:|--------:|
 | Δavg_income | -0.0001 | (0.0001) | 0.289 |
-| Δavg_age | -0.125 | (0.295) | 0.678 |
-| Δpct_hs_grad | -0.720 | (0.415) | 0.105 |
-| Δpct_white | -1.25*** | (0.323) | 0.002 |
-| Δpct_hispanic | -0.756*** | (0.197) | 0.002 |
-| Δpct_black | -1.47** | (0.567) | 0.022 |
+| Δavg_age | -0.1251 | (0.2946) | 0.678 |
+| Δpct_hs_grad | -0.7201 | (0.4152) | 0.105 |
+| Δpct_white | -1.25*** | (0.3227) | 0.002 |
+| Δpct_hispanic | -0.7561*** | (0.1971) | 0.002 |
+| Δpct_black | -1.47** | (0.5671) | 0.022 |
 | Constant | 9.45** | (4.03) | 0.034 |
 
-N = 21, R² = 0.684, Adj. R² = 0.549, F = 5.06
+**Model Fit:** N = 21, R² = 0.684, Adj. R² = 0.549, F = 5.06
+
+\* *p<0.1,* \*\* *p<0.05,* \*\*\* *p<0.01*
 
 :::
 
@@ -682,5 +832,4 @@ N = 21, R² = 0.684, Adj. R² = 0.549, F = 5.06
 -   MCDC Geocorr 2000: Links Census blocks to counties
 -   Regressions weighted by school-age population (ages 5-17)
 :::
-
 
