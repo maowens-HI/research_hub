@@ -26,6 +26,20 @@ Recent notes.
 ::::::: carousel-wrapper
 :::: carousel-slide
 ::: research-card
+[Analysis]{.card-category}
+
+[JJP Final vs JJP Alt: Figure Comparison]{.card-title}
+
+[Side-by-side comparison of event-study figures using lexp_ma_strict vs lexp balancing approaches]{.card-excerpt}
+
+[January 2026]{.card-meta}
+
+[View Comparison](alt_test_comparison.qmd){.card-link}
+:::
+::::
+
+:::: carousel-slide
+::: research-card
 [Notes]{.card-category}
 
 [January 13: Florida County-Level Analysis (V2) - Simple School Counts]{.card-title}
@@ -140,6 +154,21 @@ A chronological record of project milestones and findings.
 ------------------------------------------------------------------------
 
 ### January 2026 {.mt-xl}
+
+#### JJP Final vs JJP Alt: Figure Comparison
+
+Comparison of event-study figures between two balancing approaches to assess sensitivity of results.
+
+::: {.callout-note appearance="minimal"}
+- Original (JJP Final): Balanced using `lexp_ma_strict`
+- Alternative (JJP Alt): Balanced using `lexp`
+- Includes Figure 1 (by baseline spending quartile) and Figure 2 (high vs low and quartile breakdowns)
+- Multiple specifications: Spec A and B, with and without jackknife
+:::
+
+[View Full Comparison](alt_test_comparison.qmd){.btn-ghost}
+
+------------------------------------------------------------------------
 
 #### January 13: Florida County-Level Analysis (V2) - Simple School Counts
 

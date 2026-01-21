@@ -1,0 +1,317 @@
+---
+title: "JJP Final vs JJP Alt: Figure Comparison"
+date: "January 2026"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+---
+
+## Overview
+
+This page compares event-study figures between two balancing approaches:
+
+- Original (JJP Final): Balanced using `lexp_ma_strict`
+- Alternative (JJP Alt): Balanced using `lexp`
+
+The comparison includes Figure 1 (event-study results by baseline spending quartile) and Figure 2 (high vs low predicted spending and quartile breakdowns) across multiple specifications.
+
+# Figure 1 Comparisons
+
+Figure 1 shows event-study results by baseline spending quartile.
+
+## Log Expenditure (lexp)
+
+### Q1
+::: {layout-ncol=2}
+![Original (JJP Final)](alt_test/fig1_lexp_q1_orig.png)
+
+![Alternative (JJP Alt)](alt_test/fig1_lexp_q1_alt.png)
+:::
+
+### Q2
+::: {layout-ncol=2}
+![Original (JJP Final)](alt_test/fig1_lexp_q2_orig.png)
+
+![Alternative (JJP Alt)](alt_test/fig1_lexp_q2_alt.png)
+:::
+
+### Q3
+::: {layout-ncol=2}
+![Original (JJP Final)](alt_test/fig1_lexp_q3_orig.png)
+
+![Alternative (JJP Alt)](alt_test/fig1_lexp_q3_alt.png)
+:::
+
+### Q4
+::: {layout-ncol=2}
+![Original (JJP Final)](alt_test/fig1_lexp_q4_orig.png)
+
+![Alternative (JJP Alt)](alt_test/fig1_lexp_q4_alt.png)
+:::
+
+## Log Expenditure Moving Average (lexp_ma)
+
+### Q1
+::: {layout-ncol=2}
+![Original (JJP Final)](alt_test/fig1_lexp_ma_q1_orig.png)
+
+![Alternative (JJP Alt)](alt_test/fig1_lexp_ma_q1_alt.png)
+:::
+
+### Q2
+::: {layout-ncol=2}
+![Original (JJP Final)](alt_test/fig1_lexp_ma_q2_orig.png)
+
+![Alternative (JJP Alt)](alt_test/fig1_lexp_ma_q2_alt.png)
+:::
+
+### Q3
+::: {layout-ncol=2}
+![Original (JJP Final)](alt_test/fig1_lexp_ma_q3_orig.png)
+
+![Alternative (JJP Alt)](alt_test/fig1_lexp_ma_q3_alt.png)
+:::
+
+### Q4
+::: {layout-ncol=2}
+![Original (JJP Final)](alt_test/fig1_lexp_ma_q4_orig.png)
+
+![Alternative (JJP Alt)](alt_test/fig1_lexp_ma_q4_alt.png)
+:::
+
+## Log Expenditure Strict Moving Average (lexp_ma_strict)
+
+### Q1
+::: {layout-ncol=2}
+![Original (JJP Final)](alt_test/fig1_lexp_ma_strict_q1_orig.png)
+
+![Alternative (JJP Alt)](alt_test/fig1_lexp_ma_strict_q1_alt.png)
+:::
+
+### Q2
+::: {layout-ncol=2}
+![Original (JJP Final)](alt_test/fig1_lexp_ma_strict_q2_orig.png)
+
+![Alternative (JJP Alt)](alt_test/fig1_lexp_ma_strict_q2_alt.png)
+:::
+
+### Q3
+::: {layout-ncol=2}
+![Original (JJP Final)](alt_test/fig1_lexp_ma_strict_q3_orig.png)
+
+![Alternative (JJP Alt)](alt_test/fig1_lexp_ma_strict_q3_alt.png)
+:::
+
+### Q4
+::: {layout-ncol=2}
+![Original (JJP Final)](alt_test/fig1_lexp_ma_strict_q4_orig.png)
+
+![Alternative (JJP Alt)](alt_test/fig1_lexp_ma_strict_q4_alt.png)
+:::
+
+---
+
+# Figure 2 Comparisons
+
+Figure 2 shows high vs low predicted spending results and quartile breakdowns.
+
+## Specification A - No Jackknife
+
+### Log Expenditure (lexp)
+
+#### High vs Low
+::: {layout-ncol=2}
+![Original (JJP Final)](alt_test/fig2_lexp_specA_nojk_orig.png)
+
+![Alternative (JJP Alt)](alt_test/fig2_lexp_specA_nojk_alt.png)
+:::
+
+#### Quartiles
+::: {layout-ncol=2}
+![Original (JJP Final)](alt_test/fig2_lexp_specA_nojk_orig_quartiles.png)
+
+![Alternative (JJP Alt)](alt_test/fig2_lexp_specA_nojk_alt_quartiles.png)
+:::
+
+### Log Expenditure Moving Average (lexp_ma)
+
+#### High vs Low
+::: {layout-ncol=2}
+![Original (JJP Final)](alt_test/fig2_lexp_ma_specA_nojk_orig.png)
+
+![Alternative (JJP Alt)](alt_test/fig2_lexp_ma_specA_nojk_alt.png)
+:::
+
+#### Quartiles
+::: {layout-ncol=2}
+![Original (JJP Final)](alt_test/fig2_lexp_ma_specA_nojk_orig_quartiles.png)
+
+![Alternative (JJP Alt)](alt_test/fig2_lexp_ma_specA_nojk_alt_quartiles.png)
+:::
+
+### Log Expenditure Strict Moving Average (lexp_ma_strict)
+
+#### High vs Low
+::: {layout-ncol=2}
+![Original (JJP Final)](alt_test/fig2_lexp_ma_strict_specA_nojk_orig.png)
+
+![Alternative (JJP Alt)](alt_test/fig2_lexp_ma_strict_specA_nojk_alt.png)
+:::
+
+#### Quartiles
+::: {layout-ncol=2}
+![Original (JJP Final)](alt_test/fig2_lexp_ma_strict_specA_nojk_orig_quartiles.png)
+
+![Alternative (JJP Alt)](alt_test/fig2_lexp_ma_strict_specA_nojk_alt_quartiles.png)
+:::
+
+## Specification A - Jackknife
+
+### Log Expenditure (lexp)
+
+#### High vs Low
+::: {layout-ncol=2}
+![Original (JJP Final)](alt_test/fig2_lexp_specA_jk_orig.png)
+
+![Alternative (JJP Alt)](alt_test/fig2_lexp_specA_jk_alt.png)
+:::
+
+#### Quartiles
+::: {layout-ncol=2}
+![Original (JJP Final)](alt_test/fig2_lexp_specA_jk_orig_quartiles.png)
+
+![Alternative (JJP Alt)](alt_test/fig2_lexp_specA_jk_alt_quartiles.png)
+:::
+
+### Log Expenditure Moving Average (lexp_ma)
+
+#### High vs Low
+::: {layout-ncol=2}
+![Original (JJP Final)](alt_test/fig2_lexp_ma_specA_jk_orig.png)
+
+![Alternative (JJP Alt)](alt_test/fig2_lexp_ma_specA_jk_alt.png)
+:::
+
+#### Quartiles
+::: {layout-ncol=2}
+![Original (JJP Final)](alt_test/fig2_lexp_ma_specA_jk_orig_quartiles.png)
+
+![Alternative (JJP Alt)](alt_test/fig2_lexp_ma_specA_jk_alt_quartiles.png)
+:::
+
+### Log Expenditure Strict Moving Average (lexp_ma_strict)
+
+#### High vs Low
+::: {layout-ncol=2}
+![Original (JJP Final)](alt_test/fig2_lexp_ma_strict_specA_jk_orig.png)
+
+![Alternative (JJP Alt)](alt_test/fig2_lexp_ma_strict_specA_jk_alt.png)
+:::
+
+#### Quartiles
+::: {layout-ncol=2}
+![Original (JJP Final)](alt_test/fig2_lexp_ma_strict_specA_jk_orig_quartiles.png)
+
+![Alternative (JJP Alt)](alt_test/fig2_lexp_ma_strict_specA_jk_alt_quartiles.png)
+:::
+
+## Specification B - No Jackknife
+
+### Log Expenditure (lexp)
+
+#### High vs Low
+::: {layout-ncol=2}
+![Original (JJP Final)](alt_test/fig2_lexp_specB_nojk_orig.png)
+
+![Alternative (JJP Alt)](alt_test/fig2_lexp_specB_nojk_alt.png)
+:::
+
+#### Quartiles
+::: {layout-ncol=2}
+![Original (JJP Final)](alt_test/fig2_lexp_specB_nojk_orig_quartiles.png)
+
+![Alternative (JJP Alt)](alt_test/fig2_lexp_specB_nojk_alt_quartiles.png)
+:::
+
+### Log Expenditure Moving Average (lexp_ma)
+
+#### High vs Low
+::: {layout-ncol=2}
+![Original (JJP Final)](alt_test/fig2_lexp_ma_specB_nojk_orig.png)
+
+![Alternative (JJP Alt)](alt_test/fig2_lexp_ma_specB_nojk_alt.png)
+:::
+
+#### Quartiles
+::: {layout-ncol=2}
+![Original (JJP Final)](alt_test/fig2_lexp_ma_specB_nojk_orig_quartiles.png)
+
+![Alternative (JJP Alt)](alt_test/fig2_lexp_ma_specB_nojk_alt_quartiles.png)
+:::
+
+### Log Expenditure Strict Moving Average (lexp_ma_strict)
+
+#### High vs Low
+::: {layout-ncol=2}
+![Original (JJP Final)](alt_test/fig2_lexp_ma_strict_specB_nojk_orig.png)
+
+![Alternative (JJP Alt)](alt_test/fig2_lexp_ma_strict_specB_nojk_alt.png)
+:::
+
+#### Quartiles
+::: {layout-ncol=2}
+![Original (JJP Final)](alt_test/fig2_lexp_ma_strict_specB_nojk_orig_quartiles.png)
+
+![Alternative (JJP Alt)](alt_test/fig2_lexp_ma_strict_specB_nojk_alt_quartiles.png)
+:::
+
+## Specification B - Jackknife
+
+### Log Expenditure (lexp)
+
+#### High vs Low
+::: {layout-ncol=2}
+![Original (JJP Final)](alt_test/fig2_lexp_specB_jk_orig.png)
+
+![Alternative (JJP Alt)](alt_test/fig2_lexp_specB_jk_alt.png)
+:::
+
+#### Quartiles
+::: {layout-ncol=2}
+![Original (JJP Final)](alt_test/fig2_lexp_specB_jk_orig_quartiles.png)
+
+![Alternative (JJP Alt)](alt_test/fig2_lexp_specB_jk_alt_quartiles.png)
+:::
+
+### Log Expenditure Moving Average (lexp_ma)
+
+#### High vs Low
+::: {layout-ncol=2}
+![Original (JJP Final)](alt_test/fig2_lexp_ma_specB_jk_orig.png)
+
+![Alternative (JJP Alt)](alt_test/fig2_lexp_ma_specB_jk_alt.png)
+:::
+
+#### Quartiles
+::: {layout-ncol=2}
+![Original (JJP Final)](alt_test/fig2_lexp_ma_specB_jk_orig_quartiles.png)
+
+![Alternative (JJP Alt)](alt_test/fig2_lexp_ma_specB_jk_alt_quartiles.png)
+:::
+
+### Log Expenditure Strict Moving Average (lexp_ma_strict)
+
+#### High vs Low
+::: {layout-ncol=2}
+![Original (JJP Final)](alt_test/fig2_lexp_ma_strict_specB_jk_orig.png)
+
+![Alternative (JJP Alt)](alt_test/fig2_lexp_ma_strict_specB_jk_alt.png)
+:::
+
+#### Quartiles
+::: {layout-ncol=2}
+![Original (JJP Final)](alt_test/fig2_lexp_ma_strict_specB_jk_orig_quartiles.png)
+
+![Alternative (JJP Alt)](alt_test/fig2_lexp_ma_strict_specB_jk_alt_quartiles.png)
+:::
