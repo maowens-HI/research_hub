@@ -135,6 +135,14 @@ This is where you can check out the latest code.
 :::
 
 ::: card
+### Data Construction Pipeline
+
+How we build analysis-ready datasets from raw school finance data.
+
+[View Pipeline](data_construction_pipeline.qmd){.card-link}
+:::
+
+::: card
 ### State Summary
 
 Tracks which states are in our final regression results.
