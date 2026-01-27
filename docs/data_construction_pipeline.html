@@ -1,0 +1,3238 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Myles Owens">
+<meta name="dcterms.date" content="2026-01-22">
+
+<title>Data Construction Pipeline – Research Hub</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-937d584fb5d552ffcd9025614ad707e2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Research Hub</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://github.com/maowens-HI/school_finance"> 
+<span class="menu-text">Github</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"><span class="header-section-number">0.1</span> Overview</a></li>
+  <li><a href="#stage1" id="toc-stage1" class="nav-link" data-scroll-target="#stage1"><span class="header-section-number">1</span> Stage 1: District Panel Construction</a>
+  <ul class="collapse">
+  <li><a href="#source-datasets" id="toc-source-datasets" class="nav-link" data-scroll-target="#source-datasets"><span class="header-section-number">1.1</span> Source Datasets</a></li>
+  <li><a href="#step-1-build-the-leaidgovid-crosswalk" id="toc-step-1-build-the-leaidgovid-crosswalk" class="nav-link" data-scroll-target="#step-1-build-the-leaidgovid-crosswalk"><span class="header-section-number">1.2</span> Step 1: Build the LEAID↔︎GOVID Crosswalk</a></li>
+  <li><a href="#step-2-add-leaids-to-indfin-panel" id="toc-step-2-add-leaids-to-indfin-panel" class="nav-link" data-scroll-target="#step-2-add-leaids-to-indfin-panel"><span class="header-section-number">1.3</span> Step 2: Add LEAIDs to INDFIN Panel</a>
+  <ul class="collapse">
+  <li><a href="#baseline-year-flags" id="toc-baseline-year-flags" class="nav-link" data-scroll-target="#baseline-year-flags"><span class="header-section-number">1.3.1</span> Baseline year flags</a></li>
+  </ul></li>
+  <li><a href="#step-3-restrict-f-33-panel-to-crosswalk" id="toc-step-3-restrict-f-33-panel-to-crosswalk" class="nav-link" data-scroll-target="#step-3-restrict-f-33-panel-to-crosswalk"><span class="header-section-number">1.4</span> Step 3: Restrict F-33 Panel to Crosswalk</a></li>
+  <li><a href="#step-4-append-historical-and-modern-panels" id="toc-step-4-append-historical-and-modern-panels" class="nav-link" data-scroll-target="#step-4-append-historical-and-modern-panels"><span class="header-section-number">1.5</span> Step 4: Append Historical and Modern Panels</a></li>
+  <li><a href="#step-5-link-to-census-geography-grf-merge" id="toc-step-5-link-to-census-geography-grf-merge" class="nav-link" data-scroll-target="#step-5-link-to-census-geography-grf-merge"><span class="header-section-number">1.6</span> Step 5: Link to Census Geography (GRF Merge)</a>
+  <ul class="collapse">
+  <li><a href="#key-identifiers" id="toc-key-identifiers" class="nav-link" data-scroll-target="#key-identifiers"><span class="header-section-number">1.6.1</span> Key Identifiers</a></li>
+  <li><a href="#finance-variables" id="toc-finance-variables" class="nav-link" data-scroll-target="#finance-variables"><span class="header-section-number">1.6.2</span> Finance Variables</a></li>
+  <li><a href="#quality-flags" id="toc-quality-flags" class="nav-link" data-scroll-target="#quality-flags"><span class="header-section-number">1.6.3</span> Quality Flags</a></li>
+  <li><a href="#what-gets-dropped-and-why" id="toc-what-gets-dropped-and-why" class="nav-link" data-scroll-target="#what-gets-dropped-and-why"><span class="header-section-number">1.6.4</span> What Gets Dropped (and Why)</a></li>
+  </ul></li>
+  <li><a href="#stage1-diagram" id="toc-stage1-diagram" class="nav-link" data-scroll-target="#stage1-diagram"><span class="header-section-number">1.7</span> Stage 1 Pipeline Diagram</a></li>
+  </ul></li>
+  <li><a href="#stage2" id="toc-stage2" class="nav-link" data-scroll-target="#stage2"><span class="header-section-number">2</span> Stage 2: Tract Panel Construction</a>
+  <ul class="collapse">
+  <li><a href="#the-core-challenge" id="toc-the-core-challenge" class="nav-link" data-scroll-target="#the-core-challenge"><span class="header-section-number">2.0.1</span> The Core Challenge</a></li>
+  <li><a href="#source-datasets-1" id="toc-source-datasets-1" class="nav-link" data-scroll-target="#source-datasets-1"><span class="header-section-number">2.1</span> Source Datasets</a></li>
+  <li><a href="#key-operations" id="toc-key-operations" class="nav-link" data-scroll-target="#key-operations"><span class="header-section-number">2.2</span> Key Operations</a>
+  <ul class="collapse">
+  <li><a href="#step-1-grf-import-and-cleaning" id="toc-step-1-grf-import-and-cleaning" class="nav-link" data-scroll-target="#step-1-grf-import-and-cleaning"><span class="header-section-number">2.2.1</span> Step 1: GRF Import and Cleaning</a></li>
+  <li><a href="#understanding-allocated-population" id="toc-understanding-allocated-population" class="nav-link" data-scroll-target="#understanding-allocated-population"><span class="header-section-number">2.2.2</span> Understanding Allocated Population</a></li>
+  <li><a href="#step-2-tract-district-assignment" id="toc-step-2-tract-district-assignment" class="nav-link" data-scroll-target="#step-2-tract-district-assignment"><span class="header-section-number">2.2.3</span> Step 2: Tract-District Assignment</a></li>
+  <li><a href="#propagating-quality-flags" id="toc-propagating-quality-flags" class="nav-link" data-scroll-target="#propagating-quality-flags"><span class="header-section-number">2.2.4</span> Propagating Quality Flags</a></li>
+  <li><a href="#step-3-final-merge" id="toc-step-3-final-merge" class="nav-link" data-scroll-target="#step-3-final-merge"><span class="header-section-number">2.2.5</span> Step 3: Final Merge</a></li>
+  </ul></li>
+  <li><a href="#stage-2-output-tract_panel.dta" id="toc-stage-2-output-tract_panel.dta" class="nav-link" data-scroll-target="#stage-2-output-tract_panel.dta"><span class="header-section-number">2.3</span> Stage 2 Output: tract_panel.dta</a></li>
+  <li><a href="#stage2-diagram" id="toc-stage2-diagram" class="nav-link" data-scroll-target="#stage2-diagram"><span class="header-section-number">2.4</span> Stage 2 Pipeline Diagram</a></li>
+  </ul></li>
+  <li><a href="#stage3" id="toc-stage3" class="nav-link" data-scroll-target="#stage3"><span class="header-section-number">3</span> Stage 3: County Quality Tagging</a>
+  <ul class="collapse">
+  <li><a href="#key-operation-conservative-collapse" id="toc-key-operation-conservative-collapse" class="nav-link" data-scroll-target="#key-operation-conservative-collapse"><span class="header-section-number">3.1</span> Key Operation: Conservative Collapse</a></li>
+  <li><a href="#stage-3-output-county_qual_flags.dta" id="toc-stage-3-output-county_qual_flags.dta" class="nav-link" data-scroll-target="#stage-3-output-county_qual_flags.dta"><span class="header-section-number">3.2</span> Stage 3 Output: county_qual_flags.dta</a></li>
+  <li><a href="#stage3-diagram" id="toc-stage3-diagram" class="nav-link" data-scroll-target="#stage3-diagram"><span class="header-section-number">3.3</span> Stage 3 Pipeline Diagram</a></li>
+  </ul></li>
+  <li><a href="#stage4" id="toc-stage4" class="nav-link" data-scroll-target="#stage4"><span class="header-section-number">4</span> Stage 4: County Panel Construction</a>
+  <ul class="collapse">
+  <li><a href="#stage4-1" id="toc-stage4-1" class="nav-link" data-scroll-target="#stage4-1"><span class="header-section-number">4.1</span> Stage 4.1: District Interpolation and Tract Assignment</a>
+  <ul class="collapse">
+  <li><a href="#source-datasets-2" id="toc-source-datasets-2" class="nav-link" data-scroll-target="#source-datasets-2"><span class="header-section-number">4.1.1</span> Source Datasets</a></li>
+  <li><a href="#part-1-district-interpolation" id="toc-part-1-district-interpolation" class="nav-link" data-scroll-target="#part-1-district-interpolation"><span class="header-section-number">4.1.2</span> Part 1: District Interpolation</a></li>
+  <li><a href="#part-2-tract-assignment" id="toc-part-2-tract-assignment" class="nav-link" data-scroll-target="#part-2-tract-assignment"><span class="header-section-number">4.1.3</span> Part 2: Tract Assignment</a></li>
+  <li><a href="#part-3-county-classification" id="toc-part-3-county-classification" class="nav-link" data-scroll-target="#part-3-county-classification"><span class="header-section-number">4.1.4</span> Part 3: County Classification</a></li>
+  <li><a href="#stage-4.1-output-tract_panel_interp.dta" id="toc-stage-4.1-output-tract_panel_interp.dta" class="nav-link" data-scroll-target="#stage-4.1-output-tract_panel_interp.dta"><span class="header-section-number">4.1.5</span> Stage 4.1 Output: tract_panel_interp.dta</a></li>
+  <li><a href="#stage4-1-diagram" id="toc-stage4-1-diagram" class="nav-link" data-scroll-target="#stage4-1-diagram"><span class="header-section-number">4.1.6</span> Stage 4.1 Pipeline Diagram</a></li>
+  </ul></li>
+  <li><a href="#stage4-2" id="toc-stage4-2" class="nav-link" data-scroll-target="#stage4-2"><span class="header-section-number">4.2</span> Stage 4.2: Inflation Adjustment and School-Age Population</a>
+  <ul class="collapse">
+  <li><a href="#source-datasets-3" id="toc-source-datasets-3" class="nav-link" data-scroll-target="#source-datasets-3"><span class="header-section-number">4.2.1</span> Source Datasets</a></li>
+  <li><a href="#step-1-inflation-adjustment" id="toc-step-1-inflation-adjustment" class="nav-link" data-scroll-target="#step-1-inflation-adjustment"><span class="header-section-number">4.2.2</span> Step 1: Inflation Adjustment</a></li>
+  <li><a href="#step-2-school-age-population-import" id="toc-step-2-school-age-population-import" class="nav-link" data-scroll-target="#step-2-school-age-population-import"><span class="header-section-number">4.2.3</span> Step 2: School-Age Population Import</a></li>
+  <li><a href="#step-3-handling-tracted-vs.-untracted-areas" id="toc-step-3-handling-tracted-vs.-untracted-areas" class="nav-link" data-scroll-target="#step-3-handling-tracted-vs.-untracted-areas"><span class="header-section-number">4.2.4</span> Step 3: Handling Tracted vs.&nbsp;Untracted Areas</a></li>
+  <li><a href="#step-4-reshape-and-assign-tract-level-ppe-per-pupil-expenditure" id="toc-step-4-reshape-and-assign-tract-level-ppe-per-pupil-expenditure" class="nav-link" data-scroll-target="#step-4-reshape-and-assign-tract-level-ppe-per-pupil-expenditure"><span class="header-section-number">4.2.5</span> Step 4: Reshape and Assign Tract-Level PPE (Per-Pupil Expenditure)</a></li>
+  <li><a href="#step-5-handle-mixed-counties" id="toc-step-5-handle-mixed-counties" class="nav-link" data-scroll-target="#step-5-handle-mixed-counties"><span class="header-section-number">4.2.6</span> Step 5: Handle Mixed Counties</a></li>
+  <li><a href="#step-6-collapse-to-counties" id="toc-step-6-collapse-to-counties" class="nav-link" data-scroll-target="#step-6-collapse-to-counties"><span class="header-section-number">4.2.7</span> Step 6: Collapse to Counties</a></li>
+  <li><a href="#stage-4.2-output-county_panel_interp.dta" id="toc-stage-4.2-output-county_panel_interp.dta" class="nav-link" data-scroll-target="#stage-4.2-output-county_panel_interp.dta"><span class="header-section-number">4.2.8</span> Stage 4.2 Output: county_panel_interp.dta</a></li>
+  <li><a href="#stage4-2-diagram" id="toc-stage4-2-diagram" class="nav-link" data-scroll-target="#stage4-2-diagram"><span class="header-section-number">4.2.9</span> Stage 4.2 Pipeline Diagram</a></li>
+  </ul></li>
+  <li><a href="#stage4-3" id="toc-stage4-3" class="nav-link" data-scroll-target="#stage4-3"><span class="header-section-number">4.3</span> Stage 4.3: Reform Treatment Data</a>
+  <ul class="collapse">
+  <li><a href="#understanding-school-finance-reforms" id="toc-understanding-school-finance-reforms" class="nav-link" data-scroll-target="#understanding-school-finance-reforms"><span class="header-section-number">4.3.1</span> Understanding School Finance Reforms</a></li>
+  <li><a href="#step-1-processing-the-reform-table" id="toc-step-1-processing-the-reform-table" class="nav-link" data-scroll-target="#step-1-processing-the-reform-table"><span class="header-section-number">4.3.2</span> Step 1: Processing the Reform Table</a></li>
+  <li><a href="#step-2-merge-to-county-panel" id="toc-step-2-merge-to-county-panel" class="nav-link" data-scroll-target="#step-2-merge-to-county-panel"><span class="header-section-number">4.3.3</span> Step 2: Merge to County Panel</a></li>
+  <li><a href="#stage-4.3-output-county_panel_w_reform.dta" id="toc-stage-4.3-output-county_panel_w_reform.dta" class="nav-link" data-scroll-target="#stage-4.3-output-county_panel_w_reform.dta"><span class="header-section-number">4.3.4</span> Stage 4.3 Output: county_panel_w_reform.dta</a></li>
+  <li><a href="#stage4-3-diagram" id="toc-stage4-3-diagram" class="nav-link" data-scroll-target="#stage4-3-diagram"><span class="header-section-number">4.3.5</span> Stage 4.3 Pipeline Diagram</a></li>
+  </ul></li>
+  <li><a href="#stage4-4" id="toc-stage4-4" class="nav-link" data-scroll-target="#stage4-4"><span class="header-section-number">4.4</span> Stage 4.4: Median Income and Output</a>
+  <ul class="collapse">
+  <li><a href="#stage4-4-diagram" id="toc-stage4-4-diagram" class="nav-link" data-scroll-target="#stage4-4-diagram"><span class="header-section-number">4.4.1</span> Stage 4.4 Pipeline Diagram</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#stage5" id="toc-stage5" class="nav-link" data-scroll-target="#stage5"><span class="header-section-number">5</span> Stage 5: Sample Restrictions and Final Dataset</a>
+  <ul class="collapse">
+  <li><a href="#stage5-1" id="toc-stage5-1" class="nav-link" data-scroll-target="#stage5-1"><span class="header-section-number">5.1</span> Stage 5.1 Build analysis_panel_bal.dta (Primary Balance)</a>
+  <ul class="collapse">
+  <li><a href="#step-1-creating-analysis-variables" id="toc-step-1-creating-analysis-variables" class="nav-link" data-scroll-target="#step-1-creating-analysis-variables"><span class="header-section-number">5.1.1</span> Step 1: Creating Analysis Variables</a></li>
+  <li><a href="#step-2-event-time-indicators" id="toc-step-2-event-time-indicators" class="nav-link" data-scroll-target="#step-2-event-time-indicators"><span class="header-section-number">5.1.2</span> Step 2: Event-Time Indicators</a></li>
+  <li><a href="#step-3-baseline-quartiles" id="toc-step-3-baseline-quartiles" class="nav-link" data-scroll-target="#step-3-baseline-quartiles"><span class="header-section-number">5.1.3</span> Step 3: Baseline Quartiles</a></li>
+  <li><a href="#step-4-balanced-panel-restriction" id="toc-step-4-balanced-panel-restriction" class="nav-link" data-scroll-target="#step-4-balanced-panel-restriction"><span class="header-section-number">5.1.4</span> Step 4: Balanced Panel Restriction</a></li>
+  <li><a href="#step-5-state-filter" id="toc-step-5-state-filter" class="nav-link" data-scroll-target="#step-5-state-filter"><span class="header-section-number">5.1.5</span> Step 5: State Filter</a></li>
+  <li><a href="#stage-5.1-output-analysis_panel_bal.dta" id="toc-stage-5.1-output-analysis_panel_bal.dta" class="nav-link" data-scroll-target="#stage-5.1-output-analysis_panel_bal.dta"><span class="header-section-number">5.1.6</span> Stage 5.1 Output: analysis_panel_bal.dta</a></li>
+  <li><a href="#stage5-1-diagram" id="toc-stage5-1-diagram" class="nav-link" data-scroll-target="#stage5-1-diagram"><span class="header-section-number">5.1.7</span> Stage 5.1 Pipeline Diagram</a></li>
+  </ul></li>
+  <li><a href="#stage5-2" id="toc-stage5-2" class="nav-link" data-scroll-target="#stage5-2"><span class="header-section-number">5.2</span> Stage 5.2: Build analysis_panel_bal_alt.dta (Alternative Balance)</a></li>
+  </ul></li>
+  <li><a href="#stage6" id="toc-stage6" class="nav-link" data-scroll-target="#stage6"><span class="header-section-number">6</span> Stage 6: Event-Study Analysis</a>
+  <ul class="collapse">
+  <li><a href="#regression-specification" id="toc-regression-specification" class="nav-link" data-scroll-target="#regression-specification"><span class="header-section-number">6.1</span> Regression Specification</a></li>
+  <li><a href="#analysis-structure" id="toc-analysis-structure" class="nav-link" data-scroll-target="#analysis-structure"><span class="header-section-number">6.2</span> Analysis Structure</a></li>
+  <li><a href="#output-event-study-plots" id="toc-output-event-study-plots" class="nav-link" data-scroll-target="#output-event-study-plots"><span class="header-section-number">6.3</span> Output: Event-Study Plots</a>
+  <ul class="collapse">
+  <li><a href="#stage6-diagram" id="toc-stage6-diagram" class="nav-link" data-scroll-target="#stage6-diagram"><span class="header-section-number">6.3.1</span> Stage 6 Pipeline Diagram</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">7</span> Summary</a></li>
+  <li><a href="#full-diagram" id="toc-full-diagram" class="nav-link" data-scroll-target="#full-diagram"><span class="header-section-number">8</span> Complete Pipeline Diagram</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Data Construction Pipeline</h1>
+<p class="subtitle lead">Building the District, Tract, and County Panels for School Finance Analysis</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Myles Owens </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 22, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="overview" class="level2" data-number="0.1">
+<h2 data-number="0.1" class="anchored" data-anchor-id="overview"><span class="header-section-number">0.1</span> Overview</h2>
+<p>This document explains how we build analysis-ready datasets from raw school finance data. The pipeline transforms unbalanced district-level spending records into a balanced county-year panel suitable for event-study analysis of school finance reforms.</p>
+<p><strong>The Pipeline at a Glance:</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Stage</th>
+<th>Purpose</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Unify historical and modern district finance data</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Assign districts to Census tracts</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Flag counties with complete baseline data</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Aggregate tracts to counties, merge reforms</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Apply sample restrictions, create analysis variables</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>Run event-study regressions</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="stage1" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Stage 1: District Panel Construction</h1>
+<p>Stage 1 unifies historical and modern school finance data into a single district-year panel. The key challenge in unification is that historical data and modern data use two different district identifier systems. The historical data from the Census’ Individual Government Finance Database (INDFIN) uses the Government ID standard (GOVID) while modern data from the National Center for Education Statistics (NCES) Local Education Agency Finance Survey (f-33) uses the Local Education Agency ID standard (LEAID). Fortunately, we are able to construct a crosswalk from the f-33 data as it includes links between each LEAID to each GOVID. This crosswalk enables us to append historical and modern data, and ultimately link everything to Census geography for county-level aggregation.</p>
+<p>This seems like it would be a straightforward process, but there is a major caveat: each LEAID does not always have a one-to-one match in the GOVID system. We will elaborate further in the subsequent section.</p>
+<p><strong>Linking District Identifiers</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 18%">
+<col style="width: 32%">
+<col style="width: 27%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Source</th>
+<th>Years</th>
+<th>Identifier</th>
+<th>Coverage</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>F-33 (NCES [National Center for Education Statistics] Local Education Agency Finance Survey)</td>
+<td>1992–2022</td>
+<td>LEAID (Local Education Agency ID)</td>
+<td>Modern finance data</td>
+</tr>
+<tr class="even">
+<td>INDFIN (Individual Government Finance Database)</td>
+<td>1967–1991</td>
+<td>GOVID (Government ID)</td>
+<td>Historical finance data</td>
+</tr>
+<tr class="odd">
+<td>GRF (Geographic Reference File)</td>
+<td>1969</td>
+<td>LEAID</td>
+<td>Links districts to Census tracts</td>
+</tr>
+</tbody>
+</table>
+<section id="source-datasets" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="source-datasets"><span class="header-section-number">1.1</span> Source Datasets</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 14%">
+<col style="width: 27%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Dataset</th>
+<th>Years</th>
+<th>Identifiers</th>
+<th>What It Contains</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>F-33 Panel</strong></td>
+<td>1992–2022</td>
+<td>LEAID + GOVID</td>
+<td>Per-pupil expenditure, enrollment, district characteristics</td>
+</tr>
+<tr class="even">
+<td><strong>F-33 ID File</strong></td>
+<td>All years</td>
+<td>LEAID + GOVID</td>
+<td>Source for building the identifier crosswalk</td>
+</tr>
+<tr class="odd">
+<td><strong>INDFIN</strong></td>
+<td>1967, 1970–1991</td>
+<td>GOVID only</td>
+<td>Historical per-pupil expenditure (no LEAID available)</td>
+</tr>
+<tr class="even">
+<td><strong>GRF</strong></td>
+<td>1969</td>
+<td>LEAID</td>
+<td>Links districts to 1969-70 Census tracts</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="step-1-build-the-leaidgovid-crosswalk" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="step-1-build-the-leaidgovid-crosswalk"><span class="header-section-number">1.2</span> Step 1: Build the LEAID↔︎GOVID Crosswalk</h2>
+<p>Not every LEAID maps to exactly one GOVID. There are a variety of reasons why this can happen. Districts split, merge, and change codes over time, creating one-to-many and many-to-many relationships. However, there is a conservative solution to this problem: we keep only the clean one-to-one pairs. Concretely, this means building a dataset of only districts where one LEAID corresponds to exactly one GOVID across all years.</p>
+<p><strong>Why drop non-one-to-one relationships?</strong> Ambiguous mappings prevent us from consistently tracking a district over time. If LEAID “A” maps to both GOVID “X” and GOVID “Y” in different years, we cannot reliably link that district’s historical and modern spending data.</p>
+<p>After filtering, we retain 15,047 clean one-to-one pairs in the <code>xwalk_leaid_govid</code> crosswalk.</p>
+<pre><code>Total LEAID↔GOVID pairs in F-33 ID file
+              │
+              ▼
+     ┌────────┴────────┐
+     │  1. Drop junk   │
+     │  LEAIDs &amp; GOVIDs│
+     │  ("M","N",miss) │
+     └────────┬────────┘
+              │
+              ▼
+     ┌────────┴────────┐
+     │  2. Filter by   │
+     │  relationship   │
+     │  type           │
+     └────────┬────────┘
+              │
+    ┌─────────┼─────────┬─────────┐
+    ▼         ▼         ▼         ▼
+  m:m       1:m       m:1       1:1
+ (drop)   (drop)    (drop)   (keep)
+
+</code></pre>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Relationship</th>
+<th>Example</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>1:1</strong></td>
+<td>LEAID A ↔︎ GOVID X</td>
+<td>Keep</td>
+</tr>
+<tr class="even">
+<td><strong>1:m</strong></td>
+<td>LEAID A → GOVID X, Y</td>
+<td>Drop</td>
+</tr>
+<tr class="odd">
+<td><strong>m:1</strong></td>
+<td>LEAID A, B → GOVID X</td>
+<td>Drop</td>
+</tr>
+<tr class="even">
+<td><strong>m:m</strong></td>
+<td>LEAID A, B ↔︎ GOVID X, Y</td>
+<td>Drop</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="step-2-add-leaids-to-indfin-panel" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="step-2-add-leaids-to-indfin-panel"><span class="header-section-number">1.3</span> Step 2: Add LEAIDs to INDFIN Panel</h2>
+<p>As stated previously, the INDFIN panel contains historical spending data identified only by GOVID. To link it with modern data and Census geography, we must assign LEAIDs to each GOVID. The first step is to get a list of every GOVID in INDFIN. To do this, we collapse the INDFIN panel by GOVID to create govtag, giving us a file with one row per GOVID. This sets us up to use our crosswalk to assign LEAIDs.</p>
+<p>Remember that our crosswalk only contains GOVIDs and LEAIDs with one-to-one relationships. Therefore, we expect a portion of IDs from <code>govtag</code> to go unmatched. The merge attaches quality flags from INDFIN to the crosswalk pairs. After dropping unmatched GOVIDs (those not in the crosswalk), we retain the full 15,047 LEAID-GOVID pairs from the crosswalk. Of these, 13,773 have INDFIN spending data and inherit their quality flags; the remaining 1,274 crosswalk pairs have no INDFIN data, so their flags are set to zero.</p>
+<pre><code>govtag                          xwalk_leaid_govid
+(GOVID + quality flags)         (LEAID ↔ GOVID)
+[MASTER]                        [USING]
+     │                                │
+     └──────────── MERGE ─────────────┘
+                     │
+                     ▼
+           ┌─────────────────┐
+           │ Merge Results:  │
+           │ • Master: X     │ ← GOVIDs not in crosswalk (drop)
+           │ • Using:  1,274 │ ← Crosswalk pairs not in INDFIN (keep, flags=0)
+           │ • Match: 13,773 │ ← GOVIDs matched to LEAIDs (keep)
+           └─────────────────┘
+                     │
+                     ▼
+           15,047 LEAID-GOVID pairs
+           (= size of crosswalk)
+</code></pre>
+<section id="baseline-year-flags" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="baseline-year-flags"><span class="header-section-number">1.3.1</span> Baseline year flags</h3>
+<p>Before we move on to the next step of our data cleaning process we must first mention another important step concerning the INDFIN panel and <code>govtag</code>. During this part in the pipeline, before we collapse INDFIN into <code>govtag</code>, we create flags indicating whether each GOVID has valid spending in what we call the baseline spending years (1967, 1970, 1971, 1972). The name stems from the fact that we are concerned with the spending of each district during the beginning period of INDFIN, before the exogenous shocks central to our research design occurred.</p>
+<p>Baseline spending plays a critical role in our event-study analysis. The event-study design compares how reforms affected districts with different initial spending levels. Districts in the bottom quartile (Q1) had the lowest pre-reform spending; districts in the top quartile (Q4) had the highest. Without baseline spending data, we cannot classify districts into quartiles and cannot test for heterogeneous treatment effects.</p>
+<p>If a district lacks valid spending data for the baseline years, we cannot include it in the regression. The quality flags (<code>good_govid_1967</code>, <code>good_govid_1970</code>, etc.) track this. These flags propagate through the pipeline, from districts to tracts to counties, ensuring our final sample contains only observations with complete baseline histories.</p>
+<p>This explains why we retain the crosswalk-only pairs from the previous merge. Those pairs have valid LEAIDs, so they can still be linked to census tracts. Their flags propagate through the pipeline like any other observation. But since their flags are set to zero, they will be excluded from analyses requiring baseline spending.</p>
+</section>
+</section>
+<section id="step-3-restrict-f-33-panel-to-crosswalk" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="step-3-restrict-f-33-panel-to-crosswalk"><span class="header-section-number">1.4</span> Step 3: Restrict F-33 Panel to Crosswalk</h2>
+<p>Steps 2 and 3 are parallel operations on opposite ends of our panel. Step 2 attached LEAIDs to historical INDFIN data (1967–1991); Step 3 restricts modern F-33 data (1992–2022) to the same set of clean identifiers.</p>
+<p>Without this restriction, we would include districts that we cannot reliably track across the historical/modern data boundary. For example, if a district’s LEAID maps to multiple GOVIDs, we cannot determine which historical spending record (if any) corresponds to the modern district. By restricting to the crosswalk, we ensure that every district in our final panel has a consistent identifier across all years.</p>
+<p>As with the data set in step 2, any observation in the F33 panel whose LEAID does not appear in the crosswalk gets dropped. This leaves us with 15,047 district-year observations, all of which share identifiers with our restricted historical data. The two panels are now ready to be appended into a single district-year panel spanning 1967–2022.</p>
+<pre><code>xwalk_leaid_govid               F-33 Panel
+(LEAID ↔ GOVID)                 (district-year obs)
+[MASTER]                        [USING]
+     │                                │
+     └──────────── MERGE ─────────────┘
+                     │
+                     ▼
+           ┌──────────────────┐
+           │ Merge Results:   │
+           │ • Master:  0     │ ← Crosswalk pairs not in F-33
+           │ • Using: 10,236  │ ← F-33 obs without clean crosswalk (drop)
+           │ • Match: 15,047  │ ← Kept observations
+           └──────────────────┘</code></pre>
+</section>
+<section id="step-4-append-historical-and-modern-panels" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="step-4-append-historical-and-modern-panels"><span class="header-section-number">1.5</span> Step 4: Append Historical and Modern Panels</h2>
+<p>With both panels now restricted to consistent identifiers, we can combine them. At this point, both panels contain the same identifier variables (LEAID and GOVID), the same spending variable (per-pupil expenditure), and the same quality flags. The panels differ only in their time coverage: INDFIN covers the historical period (1967-1991) and F-33 covers the modern period (1992-2022).</p>
+<pre><code>F-33 Panel (restricted)      INDFIN Panel (with LEAIDs)
+   1992–2022                     1967–1991
+        │                            │
+        └──────────┬─────────────────┘
+                   │
+                   ▼
+              APPEND
+                   │
+                   ▼
+           dist_panel
+        ━━━━━━━━━━━━━━━━━━━━━
+        605,245 observations
+        15,047 unique LEAIDs
+        15,047 unique GOVIDs
+        Years: 1967–2022</code></pre>
+<p>The append confirms our crosswalk worked as intended. The 15,047 unique LEAIDs exactly equals the 15,047 unique GOVIDs: each district has one identifier in each system, no exceptions. Additionally, because INDFIN ends in 1991 and F-33 begins in 1992, there is no year overlap; the append is clean.</p>
+<p><strong>Data limitations to note:</strong></p>
+<p>The panel is unbalanced: not every district appears in every year due to districts entering or exiting the data over time. The quality flags from Step 2 track which districts have valid baseline spending. Additionally, INDFIN contains no data for 1968 or 1969, creating a gap between 1967 and 1970.</p>
+</section>
+<section id="step-5-link-to-census-geography-grf-merge" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="step-5-link-to-census-geography-grf-merge"><span class="header-section-number">1.6</span> Step 5: Link to Census Geography (GRF Merge)</h2>
+<p>The final step of Stage 1 connects our district finance data to Census geography. The Geographic Reference File (GRF) from 1969 provides the link between school district boundaries (identified by LEAID) and 1970 Census tracts. This geographic linkage is essential for three reasons.</p>
+<p>First, our analysis occurs at the county level. While the original JJP study was at the district level, our replication analyzes spending at the county level. Counties provide a stable geographic unit over time since county boundaries change rarely, and they align well with the administrative data we have access to.</p>
+<p>Second, tracts nest cleanly within counties; every tract belongs to exactly one county. By linking districts to tracts, and then tracts to counties in Stage 2, we can compute county-level spending measures through straightforward aggregation.</p>
+<p>Third, the GRF provides consistent geographic definitions over time. The 1969 GRF captures district boundaries as of the 1969–70 school year, which means districts that formed later, dissolved earlier, or underwent major reorganization may not appear. We accept this limitation because it mirrors the approach used in JJP and gives us a stable geographic foundation for the entire panel.</p>
+<p>With these motivations in mind, we merge the district panel with the GRF on LEAID:</p>
+<pre><code>GRF-ID                          dist_panel
+(LEAID → tract70)               (LEAID + GOVID + spending)
+[MASTER]                        [USING]
+     │                                │
+     └──────────── MERGE ─────────────┘
+                     │
+                     ▼
+           ┌──────────────────┐
+           │ Merge Results:   │
+           │ • Master:  2,932 │ ← GRF LEAIDs not in panel (drop)
+           │ • Using: 5,611   │ ← Panel obs without GRF match (drop)
+           │ • Match: 9,436   │ ← Final canonical panel
+           └──────────────────┘
+                     │
+                Minor Cleaning
+                     |
+                     ▼
+             dist_panel
+         ━━━━━━━━━━━━━━━━━━━━
+         424,404 observations
+         9,428 unique LEAIDs
+         Final canonical panel</code></pre>
+<p><strong>Understanding the merge results</strong></p>
+<p>The merge drops a substantial number of observations on both sides, so it’s worth understanding what we’re losing and why.</p>
+<p>The 2,932 master-only records represent districts that appear in the GRF but have no finance data in our panel. These districts may have had non-1:1 LEAID-GOVID mappings (and were therefore dropped in Step 1) or may have been small or short-lived districts not consistently tracked in the finance data.</p>
+<p>The 5,611 using-only districts are districts from our finance panel that we cannot link to Census geography. This may occur because these districts operated in areas not covered by the 1969 GRF, either because they formed after 1969 or because their boundaries did not contain any tracts in that year’s geographic file.</p>
+<p>These dropped observations could potentially be recovered at a later stage if we locate alternative geographic crosswalks. This may be important if we later determine that the coverage gaps are bias our analysis.</p>
+<p><strong>Understanding the merge results</strong></p>
+<p>Of the 12,368 unique LEAIDs in the GRF, 9,428 (76%) successfully match our district panel. The resulting canonical panel contains only districts that meet all three criteria: (1) they have clean 1:1 LEAID↔︎GOVID mappings, (2) they appear in the 1969 GRF, and (3) they have spending data for at least some years. This is our cleanest, most consistently-defined sample of districts, and it forms the foundation for the tract and county panels we construct in subsequent stages.</p>
+<section id="key-identifiers" class="level3" data-number="1.6.1">
+<h3 data-number="1.6.1" class="anchored" data-anchor-id="key-identifiers"><span class="header-section-number">1.6.1</span> Key Identifiers</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 32%">
+<col style="width: 41%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Description</th>
+<th>Format</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>LEAID</code></td>
+<td>NCES Local Education Agency ID</td>
+<td>7-character string (SSDDDDD)</td>
+</tr>
+<tr class="even">
+<td><code>GOVID</code></td>
+<td>Census Government ID</td>
+<td>9-character string (SS5CCCDDD)</td>
+</tr>
+<tr class="odd">
+<td><code>tract70</code></td>
+<td>1970 Census tract</td>
+<td>11-character string</td>
+</tr>
+<tr class="even">
+<td><code>year</code></td>
+<td>Fiscal year</td>
+<td>Numeric</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="finance-variables" class="level3" data-number="1.6.2">
+<h3 data-number="1.6.2" class="anchored" data-anchor-id="finance-variables"><span class="header-section-number">1.6.2</span> Finance Variables</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>pp_exp</code></td>
+<td>Per-pupil expenditure (nominal dollars)</td>
+</tr>
+<tr class="even">
+<td><code>totalexp</code></td>
+<td>Total expenditure</td>
+</tr>
+<tr class="odd">
+<td><code>enrollment</code></td>
+<td>Student enrollment</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="quality-flags" class="level3" data-number="1.6.3">
+<h3 data-number="1.6.3" class="anchored" data-anchor-id="quality-flags"><span class="header-section-number">1.6.3</span> Quality Flags</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>good_govid</code></td>
+<td>District has complete baseline data (1967, 1970–1972)</td>
+</tr>
+<tr class="even">
+<td><code>good_govid_1967</code></td>
+<td>Has valid 1967 spending data</td>
+</tr>
+<tr class="odd">
+<td><code>good_govid_1970</code></td>
+<td>Has valid 1970 spending data</td>
+</tr>
+<tr class="even">
+<td><code>good_govid_1971</code></td>
+<td>Has valid 1971 spending data</td>
+</tr>
+<tr class="odd">
+<td><code>good_govid_1972</code></td>
+<td>Has valid 1972 spending data</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="what-gets-dropped-and-why" class="level3" data-number="1.6.4">
+<h3 data-number="1.6.4" class="anchored" data-anchor-id="what-gets-dropped-and-why"><span class="header-section-number">1.6.4</span> What Gets Dropped (and Why)</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Stage</th>
+<th>LEAIDs</th>
+<th>% of Start</th>
+<th>Reason for Drop</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>F-33 ID file (start)</td>
+<td>24,700</td>
+<td>100%</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>Elementary and Secondary Only</td>
+<td>21,990</td>
+<td>89%</td>
+<td>Non K-12</td>
+</tr>
+<tr class="odd">
+<td>After 1:1 filtering</td>
+<td>15,047</td>
+<td>61%</td>
+<td>Non-1:1 mappings</td>
+</tr>
+<tr class="even">
+<td>After appending panels</td>
+<td>15,047</td>
+<td>61%</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>After GRF merge (final)</td>
+<td>9,428</td>
+<td>39%</td>
+<td>Not in 1969 GRF</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="stage1-diagram" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="stage1-diagram"><span class="header-section-number">1.7</span> Stage 1 Pipeline Diagram</h2>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#ffffff', 'primaryTextColor': '#000000', 'primaryBorderColor': '#333333', 'lineColor': '#666666', 'secondaryColor': '#f5f5f5', 'tertiaryColor': '#fafafa', 'fontSize': '13px', 'fontFamily': 'arial'}}}%%
+flowchart TB
+    F33P["&lt;b&gt;f33-panel&lt;/b&gt;&lt;br/&gt;1992-2019&lt;br/&gt;Modern finance data"]
+    INDFIN["&lt;b&gt;Indfin-panel&lt;/b&gt;&lt;br/&gt;1967-1991&lt;br/&gt;GOVID only"]
+    F33ID["&lt;b&gt;f33-ID&lt;/b&gt;&lt;br/&gt;Crosswalk source&lt;br/&gt;LEAID + GOVID"]
+    GRFID["&lt;b&gt;GRF-id&lt;/b&gt;&lt;br/&gt;12,368 LEAIDs&lt;br/&gt;Census geography"]
+
+    STEP1_LABEL["&lt;b&gt;STEP 1: CROSSWALK FILTERING&lt;/b&gt;"]
+    FILTER["Filter to 1:1&lt;br/&gt;LEAID-GOVID"]
+    MM["m:m (drop)"]
+    ONEM["1:m (drop)"]
+    MONE["m:1 (drop)"]
+    ONEONE["&lt;b&gt;1:1: 15,047&lt;/b&gt;&lt;br/&gt;KEEP"]
+
+    F33_1TO1["&lt;b&gt;xwalk_leaid_govid&lt;/b&gt;&lt;br/&gt;15,047 LEAID-GOVID pairs"]
+
+    GOVTAG["&lt;b&gt;govtag&lt;/b&gt;&lt;br/&gt;GOVIDs from INDFIN&lt;br/&gt;+ quality flags"]
+
+    STEP2_LABEL["&lt;b&gt;STEP 2: MERGE govtag x xwalk_leaid_govid&lt;/b&gt;"]
+    M1_RESULTS["_merge=1 (master): X&lt;br/&gt;(GOVIDs not in crosswalk - drop)&lt;br/&gt;_merge=2 (using): 1,274&lt;br/&gt;(Crosswalk pairs not in INDFIN - keep, flags=0)&lt;br/&gt;_merge=3 (match): 13,773"]
+
+    INDFIN_W_LEAID["&lt;b&gt;INDFIN + LEAID&lt;/b&gt;&lt;br/&gt;15,047 LEAID-GOVID pairs"]
+
+    STEP3_LABEL["&lt;b&gt;STEP 3: MERGE xwalk_leaid_govid x f33-panel&lt;/b&gt;"]
+    M2_RESULTS["_merge=1 (master): 0&lt;br/&gt;_merge=2 (using): dropped&lt;br/&gt;(F-33 obs without clean crosswalk)&lt;br/&gt;_merge=3 (match): 15,047"]
+
+    F33_RESTRICTED["&lt;b&gt;f33-panel (restricted)&lt;/b&gt;&lt;br/&gt;15,047 unique LEAIDs"]
+
+    STEP4_LABEL["&lt;b&gt;STEP 4: APPEND&lt;/b&gt;"]
+
+    DIST_PANEL["&lt;b&gt;dist_panel&lt;/b&gt;&lt;br/&gt;605,245 obs&lt;br/&gt;15,047 unique LEAIDs&lt;br/&gt;15,047 unique GOVIDs&lt;br/&gt;1967-2022"]
+
+    STEP5_LABEL["&lt;b&gt;STEP 5: MERGE GRF x dist_panel&lt;/b&gt;"]
+    M3_RESULTS["_merge=1 (master): 2,932 drop&lt;br/&gt;(GRF LEAIDs not in panel)&lt;br/&gt;_merge=2 (using): 5,611 drop&lt;br/&gt;(Panel obs without GRF match)&lt;br/&gt;_merge=3 (match): 9,436"]
+
+    FINAL["&lt;b&gt;dist_panel&lt;/b&gt;&lt;br/&gt;424,404 obs&lt;br/&gt;9,428 unique LEAIDs&lt;br/&gt;(76% of GRF)"]
+
+    F33ID --&gt; STEP1_LABEL
+    STEP1_LABEL --&gt; FILTER
+    FILTER --&gt; MM
+    FILTER --&gt; ONEM
+    FILTER --&gt; MONE
+    FILTER --&gt; ONEONE
+    ONEONE --&gt; F33_1TO1
+
+    INDFIN --&gt; GOVTAG
+    GOVTAG --&gt; STEP2_LABEL
+    F33_1TO1 --&gt; STEP2_LABEL
+    STEP2_LABEL --&gt; M1_RESULTS
+    M1_RESULTS --&gt; INDFIN_W_LEAID
+
+    F33_1TO1 --&gt; STEP3_LABEL
+    F33P --&gt; STEP3_LABEL
+    STEP3_LABEL --&gt; M2_RESULTS
+    M2_RESULTS --&gt; F33_RESTRICTED
+
+    F33_RESTRICTED --&gt; STEP4_LABEL
+    INDFIN_W_LEAID --&gt; STEP4_LABEL
+    STEP4_LABEL --&gt; DIST_PANEL
+
+    GRFID --&gt; STEP5_LABEL
+    DIST_PANEL --&gt; STEP5_LABEL
+    STEP5_LABEL --&gt; M3_RESULTS
+    M3_RESULTS --&gt; FINAL
+
+    %% Styling - high contrast colors
+    classDef sourceBox fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#000000
+    classDef stepLabel fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#000000
+    classDef filterBox fill:#fff8e1,stroke:#ffa000,stroke-width:1px,color:#000000
+    classDef mergeResults fill:#f3e5f5,stroke:#7b1fa2,stroke-width:1px,color:#000000
+    classDef outputBox fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#000000
+    classDef finalBox fill:#c8e6c9,stroke:#1b5e20,stroke-width:3px,color:#000000
+    classDef dropBox fill:#ffebee,stroke:#c62828,stroke-width:1px,color:#000000
+    classDef keepBox fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#000000
+
+    class F33P,INDFIN,F33ID,GRFID sourceBox
+    class STEP1_LABEL,STEP2_LABEL,STEP3_LABEL,STEP4_LABEL,STEP5_LABEL stepLabel
+    class FILTER filterBox
+    class MM,ONEM,MONE dropBox
+    class ONEONE keepBox
+    class M1_RESULTS,M2_RESULTS,M3_RESULTS mergeResults
+    class F33_1TO1,GOVTAG,INDFIN_W_LEAID,F33_RESTRICTED,DIST_PANEL outputBox
+    class FINAL finalBox
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="stage2" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Stage 2: Tract Panel Construction</h1>
+<p>Stage 1 produced a district-year panel with consistent identifiers and quality flags. Stage 2 transforms this into a tract-year panel, an intermediate step essential for constructing county-level spending measures.</p>
+<section id="the-core-challenge" class="level3" data-number="2.0.1">
+<h3 data-number="2.0.1" class="anchored" data-anchor-id="the-core-challenge"><span class="header-section-number">2.0.1</span> The Core Challenge</h3>
+<p>The complication is that multiple districts can serve the same tract. In many areas, separate districts handle primary and secondary schools. Some tracts fall within overlapping district boundaries. For clean county aggregation, we need exactly one spending value per tract.</p>
+<p>Our solution is to assign each tract to the district serving the largest share of its population. The 1969 Geographic Reference File records population allocations between tracts and districts. We sum these allocations and pick the “winning” district for each tract. The following sections walk through this process in detail.</p>
+</section>
+<section id="source-datasets-1" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="source-datasets-1"><span class="header-section-number">2.1</span> Source Datasets</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Dataset</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>GRF 1969</strong></td>
+<td>Links tracts to districts with population weights</td>
+</tr>
+<tr class="even">
+<td><strong>dist_panel.dta</strong></td>
+<td>District spending and quality flags (from Stage 1)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="key-operations" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="key-operations"><span class="header-section-number">2.2</span> Key Operations</h2>
+<section id="step-1-grf-import-and-cleaning" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="step-1-grf-import-and-cleaning"><span class="header-section-number">2.2.1</span> Step 1: GRF Import and Cleaning</h3>
+<p>The first step prepares the Geographic Reference File for use. We import the raw GRF, drop special geographies (water bodies, Native lands, ships, tract revisions), and construct standardized identifiers.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 36%">
+<col style="width: 24%">
+<col style="width: 27%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>ID</th>
+<th>Components</th>
+<th>Length</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>tract70</code></td>
+<td>state(2) + county(3) + btc(4) + tsc(2)</td>
+<td>11 chars</td>
+<td>01001000100</td>
+</tr>
+<tr class="even">
+<td><code>LEAID</code></td>
+<td>state(2) + sdc(5)</td>
+<td>7 chars</td>
+<td>0100005</td>
+</tr>
+</tbody>
+</table>
+<p>Here <code>btc</code> = basic tract code, <code>tsc</code> = tract suffix code, and <code>sdc</code> = school district code.</p>
+</section>
+<section id="understanding-allocated-population" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="understanding-allocated-population"><span class="header-section-number">2.2.2</span> Understanding Allocated Population</h3>
+<p>A key concept in the GRF is “allocated population.” The GRF records how much of each block’s population each district serves. A single block can be split across multiple districts.</p>
+<p>The formula is:</p>
+<p><span class="math display">\[
+\text{alloc\_pop} = \text{popc} \times \frac{\text{perc}}{100}
+\]</span></p>
+<p>where <code>popc</code> is block population and <code>perc</code> is the percentage served by the district.</p>
+<p><strong>Example:</strong> Consider a tract with two blocks:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Tract</th>
+<th>Block</th>
+<th>popc</th>
+<th>District</th>
+<th>perc</th>
+<th>alloc_pop</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>001</td>
+<td>A</td>
+<td>1,000</td>
+<td>District 1</td>
+<td>60%</td>
+<td>600</td>
+</tr>
+<tr class="even">
+<td>001</td>
+<td>A</td>
+<td>1,000</td>
+<td>District 2</td>
+<td>40%</td>
+<td>400</td>
+</tr>
+<tr class="odd">
+<td>001</td>
+<td>B</td>
+<td>500</td>
+<td>District 1</td>
+<td>100%</td>
+<td>500</td>
+</tr>
+</tbody>
+</table>
+<p>We sum <code>alloc_pop</code> across blocks for each district. District 1 gets 600 + 500 = 1,100. District 2 gets 400. District 1 “wins” because it serves more people, and the tract inherits District 1’s spending data.</p>
+<p>Occasionally two or more districts have identical <code>alloc_pop</code> values for the same tract. We need a tiebreaker. The code uses <code>gsort tract70 sdtc -alloc_pop LEAID</code>, which sorts by tract, then district type, then population (descending), and finally LEAID (ascending). In tie situations, the district with the lower LEAID value wins. In the current data, this occurs only 12 times.</p>
+<p><strong>Note on <code>sdtc</code>:</strong> The school district type code (<code>sdtc</code>) classifies districts by the grade levels they serve: 1 = unified (K-12), 2 = elementary only, 3 = secondary only, 4 = vocational. This classification matters because a single tract may be served by separate elementary and secondary districts.</p>
+</section>
+<section id="step-2-tract-district-assignment" class="level3" data-number="2.2.3">
+<h3 data-number="2.2.3" class="anchored" data-anchor-id="step-2-tract-district-assignment"><span class="header-section-number">2.2.3</span> Step 2: Tract-District Assignment</h3>
+<p>With allocated populations computed, we can now assign each tract to a single district. This involves three operations.</p>
+<p>First, we collapse block-level <code>alloc_pop</code> to the tract × district × type level. This aggregates the block-level data up to tracts while preserving district type distinctions.</p>
+<p>Second, we drop vocational districts (<code>sdtc</code> = 4). These are not relevant for K-12 analysis and would complicate the tract assignment.</p>
+<p>Third, we pick the winner. For each tract-type combination, we keep only the district with the highest <code>alloc_pop</code>. This gives us a clean one-to-one mapping from tracts to districts.</p>
+</section>
+<section id="propagating-quality-flags" class="level3" data-number="2.2.4">
+<h3 data-number="2.2.4" class="anchored" data-anchor-id="propagating-quality-flags"><span class="header-section-number">2.2.4</span> Propagating Quality Flags</h3>
+<p>We also need to propagate district-level quality flags to tracts. We use a conservative rule: a tract is “good” for a given baseline year only if ALL districts serving it have valid data for that year.</p>
+<p>There are two types of quality flags. Year-specific flags (<code>good_tract_YYYY</code>) indicate whether the tract has valid spending data for a specific baseline year. For example, <code>good_tract_1967</code> = 1 means all districts serving this tract have valid 1967 spending data. The formula is:</p>
+<p><span class="math display">\[
+\text{good\_tract\_YYYY} = \min(\text{good\_govid\_YYYY})
+\]</span></p>
+<p>across all districts in the tract.</p>
+<p>The composite flag (<code>good_tract</code>) indicates whether the tract has valid data for ALL baseline years (1967, 1970, 1971, and 1972). A tract is “good” only if all four year-specific flags equal 1. The formula is:</p>
+<p><span class="math display">\[
+\text{good\_tract} = \min(\text{good\_tract\_1967}, \text{good\_tract\_1970}, \text{good\_tract\_1971}, \text{good\_tract\_1972})
+\]</span></p>
+<p>Why take the minimum? Consider a tract served by three districts: A, B, and C. Even if we assign the tract’s spending to District A (the population winner), Districts B and C also serve students in this tract. If District B lacks 1970 spending data, the tract’s true 1970 spending picture is incomplete; we only observe what District A spent, not what Districts B and C spent. By taking the minimum, we flag such tracts as problematic.</p>
+<p>This conservative approach means we may exclude some tracts that would otherwise have usable data. But it ensures that tracts flagged as “good” have unambiguous, complete spending histories.</p>
+</section>
+<section id="step-3-final-merge" class="level3" data-number="2.2.5">
+<h3 data-number="2.2.5" class="anchored" data-anchor-id="step-3-final-merge"><span class="header-section-number">2.2.5</span> Step 3: Final Merge</h3>
+<p>The final step joins district-year spending to tracts. We use <code>joinby LEAID</code> to link the tract-district crosswalk with the district panel from Stage 1. This expands one district-year row into multiple tract-year rows, since the same district can be assigned to multiple tracts. We then merge in the quality flags computed above.</p>
+<p>The result is a tract-year panel where each tract has spending data inherited from its assigned district, along with quality flags indicating baseline data completeness.</p>
+</section>
+</section>
+<section id="stage-2-output-tract_panel.dta" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="stage-2-output-tract_panel.dta"><span class="header-section-number">2.3</span> Stage 2 Output: tract_panel.dta</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 43%">
+<col style="width: 56%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>tract70</code></td>
+<td>1970 Census tract (11 chars)</td>
+</tr>
+<tr class="even">
+<td><code>LEAID</code></td>
+<td>Assigned school district</td>
+</tr>
+<tr class="odd">
+<td><code>year4</code></td>
+<td>Fiscal year</td>
+</tr>
+<tr class="even">
+<td><code>pp_exp</code></td>
+<td>Per-pupil expenditure</td>
+</tr>
+<tr class="odd">
+<td><code>good_tract</code></td>
+<td>Composite quality flag: 1 if tract has valid data for ALL baseline years (1967, 1970, 1971, 1972)</td>
+</tr>
+<tr class="even">
+<td><code>good_tract_1967</code></td>
+<td>Year-specific flag: 1 if all serving districts have valid 1967 spending data</td>
+</tr>
+<tr class="odd">
+<td><code>good_tract_1970</code></td>
+<td>Year-specific flag: 1 if all serving districts have valid 1970 spending data</td>
+</tr>
+<tr class="even">
+<td><code>good_tract_1971</code></td>
+<td>Year-specific flag: 1 if all serving districts have valid 1971 spending data</td>
+</tr>
+<tr class="odd">
+<td><code>good_tract_1972</code></td>
+<td>Year-specific flag: 1 if all serving districts have valid 1972 spending data</td>
+</tr>
+<tr class="even">
+<td><code>county_code</code></td>
+<td>State + County FIPS (Federal Information Processing Standards code, 5 chars)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="stage2-diagram" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="stage2-diagram"><span class="header-section-number">2.4</span> Stage 2 Pipeline Diagram</h2>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#ffffff', 'primaryTextColor': '#000000', 'primaryBorderColor': '#333333', 'lineColor': '#666666', 'secondaryColor': '#f5f5f5', 'tertiaryColor': '#fafafa', 'fontSize': '13px', 'fontFamily': 'arial'}}}%%
+flowchart TB
+    GRF["&lt;b&gt;GRF 1969&lt;/b&gt;&lt;br/&gt;03515-0001-Data.txt&lt;br/&gt;Fixed-width ASCII&lt;br/&gt;34 variables"]
+    DIST_PANEL["&lt;b&gt;dist_panel&lt;/b&gt;&lt;br/&gt;421,404 obs&lt;br/&gt;District-year panel&lt;br/&gt;1967-2019"]
+
+    STEP1A_LABEL["&lt;b&gt;STEP 1A: IMPORT GRF&lt;/b&gt;"]
+
+    STEP1B_LABEL["&lt;b&gt;STEP 1B: DROP SPECIAL GEOGRAPHIES&lt;/b&gt;"]
+    DROP_SPECIAL["Drop if:&lt;br/&gt;• tsc == 99 (ships/special)&lt;br/&gt;• tsc 70-98 (tract revisions)&lt;br/&gt;• btc 9400-9499 (Native lands)&lt;br/&gt;• btc 9800-9899 (admin codes)&lt;br/&gt;• btc 9900-9998 (water)"]
+
+    STEP1C_LABEL["&lt;b&gt;STEP 1C: BUILD IDs&lt;/b&gt;"]
+    BUILD_IDS["Construct:&lt;br/&gt;• tract70 (11 chars)&lt;br/&gt;• gisjoin2 (13 chars)&lt;br/&gt;• LEAID (7 chars)&lt;br/&gt;• govid (9 chars)"]
+
+    STEP1D_LABEL["&lt;b&gt;STEP 1D: CALC ALLOC_POP&lt;/b&gt;"]
+    CALC_POP["alloc_pop = popc × (perc/100)&lt;br/&gt;Population assigned to district"]
+
+    GRF_BLOCK["&lt;b&gt;grf_block.dta&lt;/b&gt;&lt;br/&gt;Block/ED level&lt;br/&gt;tract70, LEAID, alloc_pop"]
+
+    STEP2A_LABEL["&lt;b&gt;STEP 2A: COLLAPSE TO TRACT×DISTRICT&lt;/b&gt;"]
+    COLLAPSE["collapse (sum) alloc_pop&lt;br/&gt;by tract70, sdtc, LEAID"]
+
+    GRF_TRACT["&lt;b&gt;xwalk_tract_dist&lt;/b&gt;&lt;br/&gt;Tract × District × Type"]
+
+    STEP2B_LABEL["&lt;b&gt;STEP 2B: DROP VOCATIONAL&lt;/b&gt;"]
+    DROP_VOC["drop if sdtc == 4&lt;br/&gt;(vocational districts)"]
+
+    STEP2C_LABEL["&lt;b&gt;STEP 2C: PICK ONE LEAID PER TRACT-TYPE&lt;/b&gt;"]
+    GSORT["gsort tract70 sdtc -alloc_pop LEAID&lt;br/&gt;by tract70 sdtc: keep if _n==1&lt;br/&gt;&lt;i&gt;Highest pop wins&lt;/i&gt;"]
+
+    XWALK["&lt;b&gt;xwalk (tempfile)&lt;/b&gt;&lt;br/&gt;One LEAID per tract-type&lt;br/&gt;isid tract70 sdtc"]
+
+    QUAL_LABEL["&lt;b&gt;TAG TRACTS BY DATA QUALITY&lt;/b&gt;"]
+    QUAL_JOIN["joinby LEAID&lt;br/&gt;xwalk_tract_dist × dist_panel"]
+    QUAL_AGG["bys tract70: egen good_tract = min(good_govid)&lt;br/&gt;&lt;i&gt;Tract is good only if ALL its districts are good&lt;/i&gt;"]
+    TRACT_FLAG["&lt;b&gt;tract_flag (tempfile)&lt;/b&gt;&lt;br/&gt;tract70, good_tract flags"]
+
+    STEP3_LABEL["&lt;b&gt;STEP 3: JOINBY SPENDING DATA&lt;/b&gt;"]
+    JOINBY["joinby LEAID&lt;br/&gt;xwalk × dist_panel"]
+    M1_RESULTS["keep if _merge == 3&lt;br/&gt;&lt;i&gt;Only matched records&lt;/i&gt;"]
+
+    STEP4_LABEL["&lt;b&gt;STEP 4: MERGE QUALITY FLAGS&lt;/b&gt;"]
+    MERGE_FLAGS["merge m:1 tract70&lt;br/&gt;using tract_flag"]
+    M2_RESULTS["keep if _merge == 3"]
+
+    FINAL["&lt;b&gt;tract_panel.dta&lt;/b&gt;&lt;br/&gt;Tract-year panel&lt;br/&gt;tract70, LEAID, year4&lt;br/&gt;pp_exp, good_tract"]
+
+    %% Flow connections
+    GRF --&gt; STEP1A_LABEL
+    STEP1A_LABEL --&gt; STEP1B_LABEL
+    STEP1B_LABEL --&gt; DROP_SPECIAL
+    DROP_SPECIAL --&gt; STEP1C_LABEL
+    STEP1C_LABEL --&gt; BUILD_IDS
+    BUILD_IDS --&gt; STEP1D_LABEL
+    STEP1D_LABEL --&gt; CALC_POP
+    CALC_POP --&gt; GRF_BLOCK
+
+    GRF_BLOCK --&gt; STEP2A_LABEL
+    STEP2A_LABEL --&gt; COLLAPSE
+    COLLAPSE --&gt; GRF_TRACT
+
+    GRF_TRACT --&gt; STEP2B_LABEL
+    STEP2B_LABEL --&gt; DROP_VOC
+    DROP_VOC --&gt; STEP2C_LABEL
+    STEP2C_LABEL --&gt; GSORT
+    GSORT --&gt; XWALK
+
+    %% Quality flag branch
+    GRF_TRACT --&gt; QUAL_LABEL
+    DIST_PANEL --&gt; QUAL_LABEL
+    QUAL_LABEL --&gt; QUAL_JOIN
+    QUAL_JOIN --&gt; QUAL_AGG
+    QUAL_AGG --&gt; TRACT_FLAG
+
+    %% Final merge
+    XWALK --&gt; STEP3_LABEL
+    DIST_PANEL --&gt; STEP3_LABEL
+    STEP3_LABEL --&gt; JOINBY
+    JOINBY --&gt; M1_RESULTS
+
+    M1_RESULTS --&gt; STEP4_LABEL
+    TRACT_FLAG --&gt; STEP4_LABEL
+    STEP4_LABEL --&gt; MERGE_FLAGS
+    MERGE_FLAGS --&gt; M2_RESULTS
+    M2_RESULTS --&gt; FINAL
+
+    %% Styling
+    classDef sourceBox fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#000000
+    classDef stepLabel fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#000000
+    classDef filterBox fill:#fff8e1,stroke:#ffa000,stroke-width:1px,color:#000000
+    classDef mergeResults fill:#f3e5f5,stroke:#7b1fa2,stroke-width:1px,color:#000000
+    classDef outputBox fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#000000
+    classDef finalBox fill:#c8e6c9,stroke:#1b5e20,stroke-width:3px,color:#000000
+    classDef dropBox fill:#ffebee,stroke:#c62828,stroke-width:1px,color:#000000
+    classDef keepBox fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#000000
+
+    class GRF,DIST_PANEL sourceBox
+    class STEP1A_LABEL,STEP1B_LABEL,STEP1C_LABEL,STEP1D_LABEL,STEP2A_LABEL,STEP2B_LABEL,STEP2C_LABEL,STEP3_LABEL,STEP4_LABEL,QUAL_LABEL stepLabel
+    class BUILD_IDS,CALC_POP,COLLAPSE,GSORT,QUAL_JOIN,QUAL_AGG,JOINBY,MERGE_FLAGS filterBox
+    class DROP_SPECIAL,DROP_VOC dropBox
+    class M1_RESULTS,M2_RESULTS mergeResults
+    class GRF_BLOCK,GRF_TRACT,XWALK,TRACT_FLAG outputBox
+    class FINAL finalBox
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="stage3" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Stage 3: County Quality Tagging</h1>
+<p>Stage 2 produced a tract-year panel with quality flags indicating baseline data completeness. Stage 3 aggregates these flags to the county level. The event-study design requires baseline data to construct spending quartiles, so we need to identify which counties have complete coverage.</p>
+<section id="key-operation-conservative-collapse" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="key-operation-conservative-collapse"><span class="header-section-number">3.1</span> Key Operation: Conservative Collapse</h2>
+<p>We collapse tract-level quality flags to counties using the minimum. The logic mirrors the tract-level approach: a county is “good” only if ALL its tracts are “good.”</p>
+<p><span class="math display">\[
+\text{good\_county\_YYYY} = \min(\text{good\_tract\_YYYY})
+\]</span></p>
+<p>across all tracts in the county. This produces two types of county quality flags.</p>
+<p>Year-specific flags (<code>good_county_YYYY</code>) indicate whether the county has valid spending data for a specific baseline year. For example, <code>good_county_1970</code> = 1 means every tract in this county has valid 1970 spending data. If even one tract in the county lacks data for that year, the flag equals zero.</p>
+<p>Composite flags combine multiple years. The strictest is <code>good_county</code>, which equals 1 only if the county has valid data for all four baseline years (1967, 1970, 1971, and 1972). We also create <code>good_county_6771</code> (valid for 1967, 1970, and 1971) and <code>good_county_7072</code> (valid for 1970, 1971, and 1972). These alternatives provide flexibility: a county missing 1967 data but with complete 1970–1972 coverage can still be included in analyses that use a 1971 baseline.</p>
+<p>Quality flags propagate through three levels:</p>
+<ol type="1">
+<li><p><strong>District level:</strong> <code>good_govid_YYYY</code> = 1 if the district has valid spending data for year YYYY</p></li>
+<li><p><strong>Tract level:</strong> <code>good_tract_YYYY</code> = min(<code>good_govid_YYYY</code>) across all districts serving the tract</p></li>
+<li><p><strong>County level:</strong> <code>good_county_YYYY</code> = min(<code>good_tract_YYYY</code>) across all tracts in the county</p></li>
+</ol>
+<p>At each level, the MIN operation ensures that a single missing observation flags the entire unit as problematic.</p>
+<p>With county quality tags in place, Stage 4 can construct the final county-year panel by aggregating tract spending, merging reform timing data, and applying sample restrictions.</p>
+</section>
+<section id="stage-3-output-county_qual_flags.dta" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="stage-3-output-county_qual_flags.dta"><span class="header-section-number">3.2</span> Stage 3 Output: county_qual_flags.dta</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 43%">
+<col style="width: 56%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>county</code></td>
+<td>State + County FIPS (5 chars)</td>
+</tr>
+<tr class="even">
+<td><code>good_county</code></td>
+<td>Composite flag: 1 if county has valid data for ALL baseline years (1967, 1970, 1971, 1972)</td>
+</tr>
+<tr class="odd">
+<td><code>good_county_6771</code></td>
+<td>Composite flag: 1 if county has valid data for 1967, 1970, and 1971</td>
+</tr>
+<tr class="even">
+<td><code>good_county_7072</code></td>
+<td>Composite flag: 1 if county has valid data for 1970, 1971, and 1972</td>
+</tr>
+<tr class="odd">
+<td><code>good_county_1967</code></td>
+<td>Year-specific flag: 1 if all tracts have valid 1967 spending data</td>
+</tr>
+<tr class="even">
+<td><code>good_county_1970</code></td>
+<td>Year-specific flag: 1 if all tracts have valid 1970 spending data</td>
+</tr>
+<tr class="odd">
+<td><code>good_county_1971</code></td>
+<td>Year-specific flag: 1 if all tracts have valid 1971 spending data</td>
+</tr>
+<tr class="even">
+<td><code>good_county_1972</code></td>
+<td>Year-specific flag: 1 if all tracts have valid 1972 spending data</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="stage3-diagram" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="stage3-diagram"><span class="header-section-number">3.3</span> Stage 3 Pipeline Diagram</h2>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#ffffff', 'primaryTextColor': '#000000', 'primaryBorderColor': '#333333', 'lineColor': '#666666', 'secondaryColor': '#f5f5f5', 'tertiaryColor': '#fafafa', 'fontSize': '13px', 'fontFamily': 'arial'}}}%%
+flowchart TB
+    INPUT["&lt;b&gt;tract_panel_real.dta&lt;/b&gt;&lt;br/&gt;Tract-year panel&lt;br/&gt;with good_tract flags"]
+
+    COLLAPSE_LABEL["&lt;b&gt;COLLAPSE&lt;/b&gt;"]
+    COLLAPSE_OP["collapse (min) good_county = good_tract&lt;br/&gt;by county&lt;br/&gt;&lt;i&gt;County is good only if ALL tracts are good&lt;/i&gt;"]
+
+    LIST["&lt;b&gt;List of 'good' counties&lt;/b&gt;&lt;br/&gt;One row per county&lt;br/&gt;with quality flags"]
+
+    OUTPUT["&lt;b&gt;county_qual_flags.dta&lt;/b&gt;&lt;br/&gt;County quality tags&lt;br/&gt;good_county, good_county_YYYY"]
+
+    INPUT --&gt; COLLAPSE_LABEL
+    COLLAPSE_LABEL --&gt; COLLAPSE_OP
+    COLLAPSE_OP --&gt; LIST
+    LIST --&gt; OUTPUT
+
+    %% Styling
+    classDef sourceBox fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#000000
+    classDef stepLabel fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#000000
+    classDef filterBox fill:#fff8e1,stroke:#ffa000,stroke-width:1px,color:#000000
+    classDef outputBox fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#000000
+    classDef finalBox fill:#c8e6c9,stroke:#1b5e20,stroke-width:3px,color:#000000
+
+    class INPUT sourceBox
+    class COLLAPSE_LABEL stepLabel
+    class COLLAPSE_OP filterBox
+    class LIST outputBox
+    class OUTPUT finalBox
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="stage4" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Stage 4: County Panel Construction</h1>
+<p>Stage 3 produced county-level quality tags indicating which counties have complete baseline data. Stage 4 transforms the tract panel into a county-year analysis panel. This is the most complex stage, involving four substages: interpolation and tract assignment (4.1), inflation adjustment and aggregation (4.2), reform data merge (4.3), and income data merge (4.4). Each substage builds on the previous one, culminating in <code>county_panel</code>.</p>
+<p><strong>Why interpolation happens in Stage 4, not Stage 1:</strong> We delay interpolation until after quality tagging (Stage 3) to preserve the distinction between observed and imputed data. The quality flags must reflect actual data availability, not interpolated values. Only after tagging do we fill small gaps to maximize coverage for analysis.</p>
+<section id="stage4-1" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="stage4-1"><span class="header-section-number">4.1</span> Stage 4.1: District Interpolation and Tract Assignment</h2>
+<p>Before we can aggregate tracts to counties, we need to address gaps in the district spending data. The district panel contains missing values where spending data was not reported for certain years. This substage fills small gaps using linear interpolation, reassigns districts to tracts, and classifies counties by their tract composition.</p>
+<section id="source-datasets-2" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="source-datasets-2"><span class="header-section-number">4.1.1</span> Source Datasets</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Dataset</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>dist_panel.dta</code></td>
+<td>District spending (Stage 1)</td>
+</tr>
+<tr class="even">
+<td><code>xwalk_tract_dist.dta</code></td>
+<td>Tract-district crosswalk (Stage 2)</td>
+</tr>
+<tr class="odd">
+<td><code>grf_id_tractlevel.dta</code></td>
+<td>Tract metadata with <code>no_tract</code> indicator</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="part-1-district-interpolation" class="level3" data-number="4.1.2">
+<h3 data-number="4.1.2" class="anchored" data-anchor-id="part-1-district-interpolation"><span class="header-section-number">4.1.2</span> Part 1: District Interpolation</h3>
+<p>The district panel contains gaps where spending data is missing for certain years. We fill gaps of three years or fewer using linear interpolation. Larger gaps risk too much measurement error, so we leave them unfilled.</p>
+<p>The process works as follows. First, we compute the gap size between consecutive observations for each district. Second, we flag observations where the next available year is more than three years away. Third, we apply linear interpolation only within the acceptable gap range. This ensures we never extrapolate across long periods of missing data.</p>
+<p><strong>Process:</strong></p>
+<ol type="1">
+<li><p>Compute gap size: <code>gap_next</code> = <code>year[_n+1]</code> - <code>year</code></p></li>
+<li><p>Flag large gaps: <code>too_far</code> = 1 if <code>gap_next</code> &gt; 3</p></li>
+<li><p>Interpolate: <code>ipolate pp_exp year if too_far == 0</code></p></li>
+</ol>
+</section>
+<section id="part-2-tract-assignment" class="level3" data-number="4.1.3">
+<h3 data-number="4.1.3" class="anchored" data-anchor-id="part-2-tract-assignment"><span class="header-section-number">4.1.3</span> Part 2: Tract Assignment</h3>
+<p>After interpolation, we repeat the tract assignment process from Stage 2. We load the tract-district crosswalk, pick the highest-population LEAID per tract, and join the interpolated spending data to tracts. This gives us a tract-year panel with more complete coverage than before interpolation.</p>
+</section>
+<section id="part-3-county-classification" class="level3" data-number="4.1.4">
+<h3 data-number="4.1.4" class="anchored" data-anchor-id="part-3-county-classification"><span class="header-section-number">4.1.4</span> Part 3: County Classification</h3>
+<p>Rural or sparsely populated areas lacked Census tract codes in 1970. The Census Bureau did not define tract boundaries for these “untracted areas,” so the GRF records them differently than tracted areas. We must handle untracted areas carefully to avoid mismeasuring county populations and spending.</p>
+<p>We classify counties into four types based on their tract composition.</p>
+<p>Type 1 counties are entirely tracted. These are counties where tract boundaries are well-defined. We process them using standard aggregation: sum tract populations and compute weighted average spending.</p>
+<p>Type 2 counties contain only a single untracted area. These are counties where the Census defined no tracts. The GRF provides a single “untracted” record for the whole county, and we use county-level population data directly.</p>
+<p>Type 3 counties contain multiple untracted areas (two or more). Some counties have multiple distinct “untracted” areas recorded separately in the GRF. This creates ambiguity, since we cannot determine how to distribute county population across these records. We average spending across the untracted units.</p>
+<p>Type 4 counties are mixed, containing both tracted and untracted areas. The sum of tract populations does not equal the total county population. We compute the residual population and assign it to the untracted area: <code>untracted_pop = county_total - sum(tract_populations)</code>.</p>
+<p>With interpolated spending data and county classifications in place, we can proceed to Stage 4.2 to adjust for inflation and aggregate tracts to counties.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 44%">
+<col style="width: 34%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Description</th>
+<th>Handling</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>All tracted</td>
+<td>Standard processing: aggregate tract-level data</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Single untracted only</td>
+<td>Treat the entire county as one unit</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Multiple untracted (≥2)</td>
+<td>Ambiguous boundaries; average spending across units</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Mixed (1 untracted + tracts)</td>
+<td>Compute residual population for untracted area</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="stage-4.1-output-tract_panel_interp.dta" class="level3" data-number="4.1.5">
+<h3 data-number="4.1.5" class="anchored" data-anchor-id="stage-4.1-output-tract_panel_interp.dta"><span class="header-section-number">4.1.5</span> Stage 4.1 Output: tract_panel_interp.dta</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 43%">
+<col style="width: 56%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>tract70</code></td>
+<td>1970 Census tract (11 chars)</td>
+</tr>
+<tr class="even">
+<td><code>county</code></td>
+<td>State + County FIPS (5 chars)</td>
+</tr>
+<tr class="odd">
+<td><code>LEAID</code></td>
+<td>Assigned school district</td>
+</tr>
+<tr class="even">
+<td><code>year4</code></td>
+<td>Fiscal year</td>
+</tr>
+<tr class="odd">
+<td><code>pp_exp</code></td>
+<td>Per-pupil expenditure (interpolated)</td>
+</tr>
+<tr class="even">
+<td><code>enrollment</code></td>
+<td>Student enrollment (interpolated)</td>
+</tr>
+<tr class="odd">
+<td><code>county_type</code></td>
+<td>1=All tracted, 2=Single untracted, 3=≥2 untracted, 4=Mixed</td>
+</tr>
+<tr class="even">
+<td><code>no_tract</code></td>
+<td>Indicator for untracted area</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="stage4-1-diagram" class="level3" data-number="4.1.6">
+<h3 data-number="4.1.6" class="anchored" data-anchor-id="stage4-1-diagram"><span class="header-section-number">4.1.6</span> Stage 4.1 Pipeline Diagram</h3>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#ffffff', 'primaryTextColor': '#000000', 'primaryBorderColor': '#333333', 'lineColor': '#666666', 'secondaryColor': '#f5f5f5', 'tertiaryColor': '#fafafa', 'fontSize': '13px', 'fontFamily': 'arial'}}}%%
+flowchart TB
+    DIST_CANON["&lt;b&gt;dist_panel.dta&lt;/b&gt;&lt;br/&gt;District-year panel&lt;br/&gt;1967-2019"]
+    GRF_TRACT["&lt;b&gt;xwalk_tract_dist.dta&lt;/b&gt;&lt;br/&gt;Tract-district crosswalk&lt;br/&gt;with alloc_pop"]
+    GRF_ID["&lt;b&gt;grf_id_tractlevel&lt;/b&gt;&lt;br/&gt;Tract metadata&lt;br/&gt;no_tract indicator"]
+
+    IPOLATE_LABEL["&lt;b&gt;IPOLATE&lt;/b&gt;"]
+    IPOLATE_OP["Impute spending for&lt;br/&gt;gaps ≤ 3 years"]
+
+    INTERP_D["&lt;b&gt;dist_panel_interp.dta&lt;/b&gt;&lt;br/&gt;Interpolated district panel"]
+
+    ASSIGN_LABEL["&lt;b&gt;ASSIGN BASED ON ALLOC_POP&lt;/b&gt;"]
+    XWALK["&lt;b&gt;xwalk&lt;/b&gt;&lt;br/&gt;One LEAID per tract"]
+
+    JOINBY_LABEL["&lt;b&gt;JOINBY&lt;/b&gt;"]
+
+    INTERP_T_TEMP["&lt;b&gt;interp_t_temp&lt;/b&gt;&lt;br/&gt;Tract-year panel"]
+
+    MERGE_LABEL["&lt;b&gt;MERGE&lt;/b&gt;"]
+
+    CLASSIFY["&lt;b&gt;CLASSIFY COUNTIES&lt;/b&gt;&lt;br/&gt;by tracted/untracted status"]
+
+    TYPE1["1: All tracted"]
+    TYPE2["2: Single untracted"]
+    TYPE3["3: ≥2 untracted"]
+    TYPE4["Mixed: 1 untr +&lt;br/&gt;some tracted"]
+
+    INTERP_T["&lt;b&gt;tract_panel_interp.dta&lt;/b&gt;&lt;br/&gt;Tract panel with&lt;br/&gt;county classification"]
+
+    %% Flow
+    DIST_CANON --&gt; IPOLATE_LABEL
+    IPOLATE_LABEL --&gt; IPOLATE_OP
+    IPOLATE_OP --&gt; INTERP_D
+
+    GRF_TRACT --&gt; ASSIGN_LABEL
+    ASSIGN_LABEL --&gt; XWALK
+
+    INTERP_D --&gt; JOINBY_LABEL
+    XWALK --&gt; JOINBY_LABEL
+    JOINBY_LABEL --&gt; INTERP_T_TEMP
+
+    INTERP_T_TEMP --&gt; MERGE_LABEL
+    GRF_ID --&gt; MERGE_LABEL
+
+    MERGE_LABEL --&gt; CLASSIFY
+    CLASSIFY --&gt; TYPE1
+    CLASSIFY --&gt; TYPE2
+    CLASSIFY --&gt; TYPE3
+    CLASSIFY --&gt; TYPE4
+
+    TYPE1 --&gt; INTERP_T
+    TYPE2 --&gt; INTERP_T
+    TYPE3 --&gt; INTERP_T
+    TYPE4 --&gt; INTERP_T
+
+    %% Styling
+    classDef sourceBox fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#000000
+    classDef stepLabel fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#000000
+    classDef filterBox fill:#fff8e1,stroke:#ffa000,stroke-width:1px,color:#000000
+    classDef outputBox fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#000000
+    classDef finalBox fill:#c8e6c9,stroke:#1b5e20,stroke-width:3px,color:#000000
+    classDef typeBox fill:#fff8e1,stroke:#ffa000,stroke-width:1px,color:#000000
+
+    class DIST_CANON,GRF_TRACT,GRF_ID sourceBox
+    class IPOLATE_LABEL,ASSIGN_LABEL,JOINBY_LABEL,MERGE_LABEL,CLASSIFY stepLabel
+    class IPOLATE_OP,XWALK filterBox
+    class INTERP_D,INTERP_T_TEMP outputBox
+    class TYPE1,TYPE2,TYPE3,TYPE4 typeBox
+    class INTERP_T finalBox
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="stage4-2" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="stage4-2"><span class="header-section-number">4.2</span> Stage 4.2: Inflation Adjustment and School-Age Population</h2>
+<p>Stage 4.1 produced a tract panel with interpolated spending in nominal dollars. Stage 4.2 converts spending to constant 2000 dollars, imports school-age population weights, and collapses tracts to counties. The result is a county-year panel with real per-pupil expenditure.</p>
+<section id="source-datasets-3" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="source-datasets-3"><span class="header-section-number">4.2.1</span> Source Datasets</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Dataset</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>tract_panel_interp.dta</code></td>
+<td>Tract panel from Stage 4.1</td>
+</tr>
+<tr class="even">
+<td><code>enroll_age_tract.csv</code></td>
+<td>NHGIS (National Historical Geographic Information System) tract-level school-age population</td>
+</tr>
+<tr class="odd">
+<td><code>enroll_age_county.csv</code></td>
+<td>NHGIS county-level population (for untracted areas)</td>
+</tr>
+<tr class="even">
+<td>FRED (Federal Reserve Economic Data) CPI-U (Consumer Price Index for All Urban Consumers)</td>
+<td>Inflation adjustment</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="step-1-inflation-adjustment" class="level3" data-number="4.2.2">
+<h3 data-number="4.2.2" class="anchored" data-anchor-id="step-1-inflation-adjustment"><span class="header-section-number">4.2.2</span> Step 1: Inflation Adjustment</h3>
+<p>We convert nominal spending to constant 2000 dollars using the CPI-U (Consumer Price Index for All Urban Consumers) from FRED. The formula is:</p>
+<p><strong>The formula:</strong></p>
+<p><span class="math display">\[
+\text{pp\_exp\_real} = \text{pp\_exp} \times \frac{\text{CPI}_{2000}}{\text{CPI}_{FY}}
+\]</span></p>
+<p>where: - <span class="math inline">\(\text{pp\_exp}\)</span> = nominal per-pupil expenditure in the given fiscal year - <span class="math inline">\(\text{CPI}_{2000}\)</span> = CPI-U value for calendar year 2000 (our base year) - <span class="math inline">\(\text{CPI}_{FY}\)</span> = average CPI-U value for the state’s fiscal year</p>
+<p>The adjustment accounts for state-specific fiscal year calendars. School districts report spending by fiscal year, not calendar year, and fiscal year definitions vary by state. Most states use July 1 through June 30, but some use October 1 through September 30 or other calendars. We compute the CPI for each state’s fiscal year as the average CPI across the months in that fiscal year.</p>
+</section>
+<section id="step-2-school-age-population-import" class="level3" data-number="4.2.3">
+<h3 data-number="4.2.3" class="anchored" data-anchor-id="step-2-school-age-population-import"><span class="header-section-number">4.2.3</span> Step 2: School-Age Population Import</h3>
+<p>School-age population (ages 5–17) serves as the weighting variable for county aggregation. We import tract-level population from NHGIS, summing the variables that capture all children ages 5–17 regardless of enrollment status.</p>
+</section>
+<section id="step-3-handling-tracted-vs.-untracted-areas" class="level3" data-number="4.2.4">
+<h3 data-number="4.2.4" class="anchored" data-anchor-id="step-3-handling-tracted-vs.-untracted-areas"><span class="header-section-number">4.2.4</span> Step 3: Handling Tracted vs.&nbsp;Untracted Areas</h3>
+<p>Untracted areas lack tract-level Census data, so we must handle them separately. We split the data by the <code>no_tract</code> indicator: tracted areas merge with tract-level population data, while untracted areas merge with county-level population data. We then append the two pieces back together.</p>
+</section>
+<section id="step-4-reshape-and-assign-tract-level-ppe-per-pupil-expenditure" class="level3" data-number="4.2.5">
+<h3 data-number="4.2.5" class="anchored" data-anchor-id="step-4-reshape-and-assign-tract-level-ppe-per-pupil-expenditure"><span class="header-section-number">4.2.5</span> Step 4: Reshape and Assign Tract-Level PPE (Per-Pupil Expenditure)</h3>
+<p>Some tracts are served by multiple district types (for example, separate elementary and secondary districts). We reshape the data wide by district type to handle these cases. For tracts with multiple district types, we compute a weighted average based on the proportion of school-age children in each grade range. If data is missing for one district type, we fall back to the available single-district value.</p>
+<p><span class="math display">\[
+\text{ppe\_tract} = \text{pp\_exp\_real2} \times \text{share\_primary} + \text{pp\_exp\_real3} \times \text{share\_secondary}
+\]</span></p>
+</section>
+<section id="step-5-handle-mixed-counties" class="level3" data-number="4.2.6">
+<h3 data-number="4.2.6" class="anchored" data-anchor-id="step-5-handle-mixed-counties"><span class="header-section-number">4.2.6</span> Step 5: Handle Mixed Counties</h3>
+<p>For Type 4 counties (those with both tracted and untracted areas), the sum of tract populations does not equal the county total. We compute the residual population and assign it to the untracted row. This avoids double-counting when we aggregate to counties.</p>
+<p><span class="math display">\[
+\text{residual\_pop} = \text{county\_total} - \sum(\text{tract\_populations})
+\]</span></p>
+</section>
+<section id="step-6-collapse-to-counties" class="level3" data-number="4.2.7">
+<h3 data-number="4.2.7" class="anchored" data-anchor-id="step-6-collapse-to-counties"><span class="header-section-number">4.2.7</span> Step 6: Collapse to Counties</h3>
+<p>Finally, we aggregate tract-level spending to counties using a population-weighted average. The weighting ensures that tracts with more school-age children contribute more to the county average.</p>
+<p><strong>The formula:</strong></p>
+<p><span class="math display">\[
+\text{county\_exp} = \frac{\sum_{t \in \text{county}} \text{pp\_exp\_real}_t \times \text{school\_age\_pop}_t}{\sum_{t \in \text{county}} \text{school\_age\_pop}_t}
+\]</span></p>
+<p>where: - <span class="math inline">\(t\)</span> indexes tracts within the county - <span class="math inline">\(\text{pp\_exp\_real}_t\)</span> = inflation-adjusted per-pupil expenditure for tract <span class="math inline">\(t\)</span> - <span class="math inline">\(\text{school\_age\_pop}_t\)</span> = school-age population (ages 5-17) in tract <span class="math inline">\(t\)</span></p>
+<p>With inflation-adjusted county-level spending in hand, we can now merge the reform treatment data in Stage 4.3.</p>
+<p>The Stata command:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">collapse</span> (<span class="kw">mean</span>) pp_exp_real [<span class="fu">w</span> = school_age_pop], <span class="kw">by</span>(county year4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This produces <code>county_exp</code> (weighted average PPE) and <code>school_age_pop</code> (total) for each county-year.</p>
+</section>
+<section id="stage-4.2-output-county_panel_interp.dta" class="level3" data-number="4.2.8">
+<h3 data-number="4.2.8" class="anchored" data-anchor-id="stage-4.2-output-county_panel_interp.dta"><span class="header-section-number">4.2.8</span> Stage 4.2 Output: county_panel_interp.dta</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>county</code></td>
+<td>State + County FIPS (5 chars)</td>
+</tr>
+<tr class="even">
+<td><code>year4</code></td>
+<td>Fiscal year</td>
+</tr>
+<tr class="odd">
+<td><code>county_exp</code></td>
+<td>Enrollment-weighted average PPE (2000$)</td>
+</tr>
+<tr class="even">
+<td><code>school_age_pop</code></td>
+<td>Total school-age population</td>
+</tr>
+<tr class="odd">
+<td><code>county_name</code></td>
+<td>County name (cleaned)</td>
+</tr>
+<tr class="even">
+<td><code>state_fips</code></td>
+<td>State FIPS code</td>
+</tr>
+<tr class="odd">
+<td><code>year_unified</code></td>
+<td>Calendar year (year4 - 1)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="stage4-2-diagram" class="level3" data-number="4.2.9">
+<h3 data-number="4.2.9" class="anchored" data-anchor-id="stage4-2-diagram"><span class="header-section-number">4.2.9</span> Stage 4.2 Pipeline Diagram</h3>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#ffffff', 'primaryTextColor': '#000000', 'primaryBorderColor': '#333333', 'lineColor': '#666666', 'secondaryColor': '#f5f5f5', 'tertiaryColor': '#fafafa', 'fontSize': '13px', 'fontFamily': 'arial'}}}%%
+flowchart TB
+    INTERP_T["&lt;b&gt;tract_panel_interp.dta&lt;/b&gt;&lt;br/&gt;Tract panel from 4.1"]
+    NHGIS_TRACT["&lt;b&gt;NHGIS Tract&lt;/b&gt;&lt;br/&gt;enroll_age_tract.csv&lt;br/&gt;School-age population"]
+    NHGIS_COUNTY["&lt;b&gt;NHGIS County&lt;/b&gt;&lt;br/&gt;enroll_age_county.csv&lt;br/&gt;School-age population"]
+
+    INFLATE_LABEL["&lt;b&gt;INFLATION ADJUSTMENT&lt;/b&gt;"]
+    INFLATE_OP["pp_exp_real = pp_exp × inflator_2000&lt;br/&gt;Using state fiscal year CPI"]
+
+    INTERP_T_REAL["&lt;b&gt;tract_panel_interp_real.dta&lt;/b&gt;&lt;br/&gt;Real spending (2000$)"]
+
+    COLLAPSE_LABEL["&lt;b&gt;COLLAPSE&lt;/b&gt;"]
+    COLLAPSE_OP["school_age_pop&lt;br/&gt;by tract70"]
+
+    MERGE_LABEL["&lt;b&gt;MERGE&lt;/b&gt;"]
+
+    DROP_MERGE["drop if _merge = 1"]
+
+    SPLIT["Split by no_tract"]
+
+    NO_TRACT_0["&lt;b&gt;no_tract = 0&lt;/b&gt;&lt;br/&gt;(tracted areas)"]
+    NO_TRACT_1["&lt;b&gt;no_tract = 1&lt;/b&gt;&lt;br/&gt;(untracted areas)"]
+
+    GRF_TRACT_POP["&lt;b&gt;grf_tract_school_age_pop_v1&lt;/b&gt;&lt;br/&gt;Tracted with tract-level pop"]
+
+    MERGE_COUNTY["&lt;b&gt;MERGE&lt;/b&gt;&lt;br/&gt;county-level pop"]
+
+    GRF_NO_TRACT["&lt;b&gt;grf_no_tract&lt;/b&gt;&lt;br/&gt;Untracted with county-level pop"]
+
+    APPEND_LABEL["&lt;b&gt;APPEND&lt;/b&gt;"]
+
+    RESHAPE_LABEL["&lt;b&gt;RESHAPE WIDE&lt;/b&gt;"]
+    RESHAPE_OP["by sdtc (district type)&lt;br/&gt;Creates separate columns"]
+
+    PPE_LABEL["&lt;b&gt;ASSIGN TRACT PPE&lt;/b&gt;"]
+    PPE_OP["Weighted by primary/secondary shares&lt;br/&gt;or fallback to single district"]
+
+    FIX_UNTR["&lt;b&gt;FIX UNTRACTED POP&lt;/b&gt;"]
+    FIX_OP["Type 3/4: Compute residual&lt;br/&gt;county_total - tract_sum"]
+
+    COLLAPSE_COUNTY["&lt;b&gt;COLLAPSE TO COUNTY&lt;/b&gt;"]
+    COLLAPSE_COUNTY_OP["collapse (mean) pp_exp_real&lt;br/&gt;[w = school_age_pop]&lt;br/&gt;by county year4"]
+
+    OUTPUT["&lt;b&gt;county_panel_interp.dta&lt;/b&gt;&lt;br/&gt;County-year panel&lt;br/&gt;county_exp, school_age_pop"]
+
+    %% Flow
+    INTERP_T --&gt; INFLATE_LABEL
+    INFLATE_LABEL --&gt; INFLATE_OP
+    INFLATE_OP --&gt; INTERP_T_REAL
+
+    NHGIS_TRACT --&gt; COLLAPSE_LABEL
+    COLLAPSE_LABEL --&gt; COLLAPSE_OP
+
+    INTERP_T_REAL --&gt; MERGE_LABEL
+    COLLAPSE_OP --&gt; MERGE_LABEL
+    MERGE_LABEL --&gt; DROP_MERGE
+    DROP_MERGE --&gt; SPLIT
+
+    SPLIT --&gt; NO_TRACT_0
+    SPLIT --&gt; NO_TRACT_1
+
+    NO_TRACT_0 --&gt; GRF_TRACT_POP
+
+    NO_TRACT_1 --&gt; MERGE_COUNTY
+    NHGIS_COUNTY --&gt; MERGE_COUNTY
+    MERGE_COUNTY --&gt; GRF_NO_TRACT
+
+    GRF_TRACT_POP --&gt; APPEND_LABEL
+    GRF_NO_TRACT --&gt; APPEND_LABEL
+
+    APPEND_LABEL --&gt; RESHAPE_LABEL
+    RESHAPE_LABEL --&gt; RESHAPE_OP
+    RESHAPE_OP --&gt; PPE_LABEL
+    PPE_LABEL --&gt; PPE_OP
+    PPE_OP --&gt; FIX_UNTR
+    FIX_UNTR --&gt; FIX_OP
+    FIX_OP --&gt; COLLAPSE_COUNTY
+    COLLAPSE_COUNTY --&gt; COLLAPSE_COUNTY_OP
+    COLLAPSE_COUNTY_OP --&gt; OUTPUT
+
+    %% Styling
+    classDef sourceBox fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#000000
+    classDef stepLabel fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#000000
+    classDef filterBox fill:#fff8e1,stroke:#ffa000,stroke-width:1px,color:#000000
+    classDef outputBox fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#000000
+    classDef finalBox fill:#c8e6c9,stroke:#1b5e20,stroke-width:3px,color:#000000
+    classDef splitBox fill:#e1f5fe,stroke:#0288d1,stroke-width:1px,color:#000000
+
+    class INTERP_T,NHGIS_TRACT,NHGIS_COUNTY sourceBox
+    class INFLATE_LABEL,COLLAPSE_LABEL,MERGE_LABEL,APPEND_LABEL,RESHAPE_LABEL,MERGE_COUNTY,PPE_LABEL,FIX_UNTR,COLLAPSE_COUNTY stepLabel
+    class INFLATE_OP,COLLAPSE_OP,DROP_MERGE,RESHAPE_OP,PPE_OP,FIX_OP,COLLAPSE_COUNTY_OP filterBox
+    class INTERP_T_REAL,GRF_TRACT_POP,GRF_NO_TRACT outputBox
+    class SPLIT,NO_TRACT_0,NO_TRACT_1 splitBox
+    class OUTPUT finalBox
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="stage4-3" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="stage4-3"><span class="header-section-number">4.3</span> Stage 4.3: Reform Treatment Data</h2>
+<p>Stage 4.2 produced a county-year panel with real spending. Stage 4.3 merges school finance reform (SFR) treatment data from Jackson, Johnson, and Persico (2016), hereafter JJP. The reform data identifies when each state’s school finance system was overturned by a court and what type of reform followed. This information is essential for the event-study design, which compares spending trajectories before and after reform.</p>
+<p><strong>Source:</strong> <code>tabula-tabled2.xlsx</code> (Table D2 from the JJP 2014 NBER Working Paper 20118, extracted via Tabula)</p>
+<section id="understanding-school-finance-reforms" class="level3" data-number="4.3.1">
+<h3 data-number="4.3.1" class="anchored" data-anchor-id="understanding-school-finance-reforms"><span class="header-section-number">4.3.1</span> Understanding School Finance Reforms</h3>
+<p>School finance reforms occur when courts rule that a state’s school funding system violates the state constitution, typically by providing unequal educational opportunities across rich and poor districts. Following such rulings, states implement various reform mechanisms to equalize or increase school funding.</p>
+<p>JJP compiled a comprehensive dataset of these court cases and their outcomes. Table D2 (from the 2014 working paper) records the court case name and year, the year the ruling took effect (which may differ from the ruling year), and the reform types implemented after the ruling.</p>
+</section>
+<section id="step-1-processing-the-reform-table" class="level3" data-number="4.3.2">
+<h3 data-number="4.3.2" class="anchored" data-anchor-id="step-1-processing-the-reform-table"><span class="header-section-number">4.3.2</span> Step 1: Processing the Reform Table</h3>
+<p>The JJP table contains multiple court cases for some states (if the original ruling was appealed, modified, or followed by additional litigation). We take the <strong>first court overturn</strong> as the treatment date because:</p>
+<ol type="1">
+<li>The initial ruling establishes the legal precedent that forces legislative action.</li>
+<li>Later rulings typically build on or modify the initial reform, not replace it.</li>
+<li>Using the first ruling provides a consistent definition across states.</li>
+</ol>
+<p>The processing involves several steps. First, we import the Excel file. The JJP table is a PDF that we converted to Excel using Tabula. Second, we parse the reform year, extracting the first year the court ruled the system unconstitutional. Third, we keep only the first overturn per state. Fourth, we create reform type flags.</p>
+<p>JJP categorizes reforms into five types: minimum foundation plans (MFP), equalization plans (EP), local effort (LE), spending limits (SL), and equity cases (EQ). Reforms are not mutually exclusive. States without court overturns during our study period get <code>reform_year</code> = 0 and <code>never_treated</code> = 1. These states serve as the control group in our event-study design.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Reform Type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>reform_mfp</code></td>
+<td>Minimum Foundation Plan</td>
+</tr>
+<tr class="even">
+<td><code>reform_ep</code></td>
+<td>Equalization Plan</td>
+</tr>
+<tr class="odd">
+<td><code>reform_le</code></td>
+<td>Local Effort</td>
+</tr>
+<tr class="even">
+<td><code>reform_sl</code></td>
+<td>Spending Limits</td>
+</tr>
+<tr class="odd">
+<td><code>reform_eq</code></td>
+<td>Equity</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="step-2-merge-to-county-panel" class="level3" data-number="4.3.3">
+<h3 data-number="4.3.3" class="anchored" data-anchor-id="step-2-merge-to-county-panel"><span class="header-section-number">4.3.3</span> Step 2: Merge to County Panel</h3>
+<p>The reform data has one row per state. We merge it to the county panel using state FIPS codes. This is a many-to-one merge because many counties belong to each state. After the merge, every county-year observation inherits its state’s reform year and reform type flags.</p>
+</section>
+<section id="stage-4.3-output-county_panel_w_reform.dta" class="level3" data-number="4.3.4">
+<h3 data-number="4.3.4" class="anchored" data-anchor-id="stage-4.3-output-county_panel_w_reform.dta"><span class="header-section-number">4.3.4</span> Stage 4.3 Output: county_panel_w_reform.dta</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>county</code></td>
+<td>State + County FIPS (5 chars)</td>
+</tr>
+<tr class="even">
+<td><code>year4</code></td>
+<td>Fiscal year</td>
+</tr>
+<tr class="odd">
+<td><code>county_exp</code></td>
+<td>Enrollment-weighted average PPE (2000$)</td>
+</tr>
+<tr class="even">
+<td><code>school_age_pop</code></td>
+<td>Total school-age population</td>
+</tr>
+<tr class="odd">
+<td><code>reform_year</code></td>
+<td>Year of first court overturn (0 if never treated)</td>
+</tr>
+<tr class="even">
+<td><code>reform_mfp</code></td>
+<td>Minimum Foundation Program reform flag</td>
+</tr>
+<tr class="odd">
+<td><code>reform_ep</code></td>
+<td>Equalization percentage reform flag</td>
+</tr>
+<tr class="even">
+<td><code>reform_le</code></td>
+<td>Leveling-up reform flag</td>
+</tr>
+<tr class="odd">
+<td><code>reform_sl</code></td>
+<td>Spending limits reform flag</td>
+</tr>
+<tr class="even">
+<td><code>reform_eq</code></td>
+<td>Equity-focused reform flag</td>
+</tr>
+<tr class="odd">
+<td><code>never_treated</code></td>
+<td>Indicator for states without SFR</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="stage4-3-diagram" class="level3" data-number="4.3.5">
+<h3 data-number="4.3.5" class="anchored" data-anchor-id="stage4-3-diagram"><span class="header-section-number">4.3.5</span> Stage 4.3 Pipeline Diagram</h3>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#ffffff', 'primaryTextColor': '#000000', 'primaryBorderColor': '#333333', 'lineColor': '#666666', 'secondaryColor': '#f5f5f5', 'tertiaryColor': '#fafafa', 'fontSize': '13px', 'fontFamily': 'arial'}}}%%
+flowchart TB
+    INTERP_C["&lt;b&gt;county_panel_interp.dta&lt;/b&gt;&lt;br/&gt;County-year panel&lt;br/&gt;from Stage 4.2"]
+    JJP["&lt;b&gt;tabula-tabled2.xlsx&lt;/b&gt;&lt;br/&gt;JJP Reform Table&lt;br/&gt;State × Reform Type"]
+
+    IMPORT_LABEL["&lt;b&gt;IMPORT EXCEL&lt;/b&gt;"]
+    IMPORT_OP["Import JJP Table D2&lt;br/&gt;Reform dates and types"]
+
+    CLEAN_LABEL["&lt;b&gt;CLEAN&lt;/b&gt;"]
+    CLEAN_OP["Rename variables&lt;br/&gt;Keep first overturn per state&lt;br/&gt;Set reform_year=0 if never treated"]
+
+    FLAGS_LABEL["&lt;b&gt;CREATE FLAGS&lt;/b&gt;"]
+    FLAGS_OP["reform_mfp, reform_ep&lt;br/&gt;reform_le, reform_sl, reform_eq"]
+
+    REFORM_DATA["&lt;b&gt;Reform Data&lt;/b&gt;&lt;br/&gt;One row per state&lt;br/&gt;reform_year + type flags"]
+
+    MERGE_LABEL["&lt;b&gt;MERGE m:1&lt;/b&gt;"]
+    MERGE_OP["on state_fips"]
+
+    OUTPUT["&lt;b&gt;county_panel_w_reform.dta&lt;/b&gt;&lt;br/&gt;County-year panel&lt;br/&gt;with reform treatment"]
+
+    %% Flow
+    JJP --&gt; IMPORT_LABEL
+    IMPORT_LABEL --&gt; IMPORT_OP
+    IMPORT_OP --&gt; CLEAN_LABEL
+    CLEAN_LABEL --&gt; CLEAN_OP
+    CLEAN_OP --&gt; FLAGS_LABEL
+    FLAGS_LABEL --&gt; FLAGS_OP
+    FLAGS_OP --&gt; REFORM_DATA
+
+    INTERP_C --&gt; MERGE_LABEL
+    REFORM_DATA --&gt; MERGE_LABEL
+    MERGE_LABEL --&gt; MERGE_OP
+    MERGE_OP --&gt; OUTPUT
+
+    %% Styling
+    classDef sourceBox fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#000000
+    classDef stepLabel fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#000000
+    classDef filterBox fill:#fff8e1,stroke:#ffa000,stroke-width:1px,color:#000000
+    classDef outputBox fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#000000
+    classDef finalBox fill:#c8e6c9,stroke:#1b5e20,stroke-width:3px,color:#000000
+
+    class INTERP_C,JJP sourceBox
+    class IMPORT_LABEL,CLEAN_LABEL,FLAGS_LABEL,MERGE_LABEL stepLabel
+    class IMPORT_OP,CLEAN_OP,FLAGS_OP,MERGE_OP filterBox
+    class REFORM_DATA outputBox
+    class OUTPUT finalBox
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="stage4-4" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="stage4-4"><span class="header-section-number">4.4</span> Stage 4.4: Median Income and Output</h2>
+<p>Stage 4.3 added reform treatment data to the county panel. Stage 4.4 completes the county panel by merging median family income from the 1970 Census. Income serves as an important control variable and helps characterize the economic context of each county at baseline.</p>
+<p>The income merge is straightforward. We import the county-level income file, clean the county identifiers to ensure they match our panel, and merge on the county FIPS code. The merge is many-to-one since income is measured once (in 1970) but the panel has multiple years per county.</p>
+<p>With the county panel complete, Stage 5 applies sample restrictions, constructs event-time variables, and prepares the data for regression analysis.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>county</code></td>
+<td>State + County FIPS (5 chars)</td>
+</tr>
+<tr class="even">
+<td><code>year4</code></td>
+<td>Fiscal year</td>
+</tr>
+<tr class="odd">
+<td><code>county_exp</code></td>
+<td>Enrollment-weighted average PPE (2000$)</td>
+</tr>
+<tr class="even">
+<td><code>school_age_pop</code></td>
+<td>Total school-age population</td>
+</tr>
+<tr class="odd">
+<td><code>reform_year</code></td>
+<td>Year of first court overturn (0 if never)</td>
+</tr>
+<tr class="even">
+<td><code>reform_mfp</code></td>
+<td>Minimum Foundation Program reform flag</td>
+</tr>
+<tr class="odd">
+<td><code>reform_ep</code></td>
+<td>Equalization percentage reform flag</td>
+</tr>
+<tr class="even">
+<td><code>reform_le</code></td>
+<td>Leveling-up reform flag</td>
+</tr>
+<tr class="odd">
+<td><code>reform_sl</code></td>
+<td>Spending limits reform flag</td>
+</tr>
+<tr class="even">
+<td><code>reform_eq</code></td>
+<td>Equity-focused reform flag</td>
+</tr>
+<tr class="odd">
+<td><code>never_treated</code></td>
+<td>Indicator for states without SFR</td>
+</tr>
+<tr class="even">
+<td><code>median_family_income</code></td>
+<td>County median family income (1970 Census)</td>
+</tr>
+<tr class="odd">
+<td><code>state_fips</code></td>
+<td>State FIPS code</td>
+</tr>
+<tr class="even">
+<td><code>county_name</code></td>
+<td>County name</td>
+</tr>
+</tbody>
+</table>
+<section id="stage4-4-diagram" class="level3" data-number="4.4.1">
+<h3 data-number="4.4.1" class="anchored" data-anchor-id="stage4-4-diagram"><span class="header-section-number">4.4.1</span> Stage 4.4 Pipeline Diagram</h3>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#ffffff', 'primaryTextColor': '#000000', 'primaryBorderColor': '#333333', 'lineColor': '#666666', 'secondaryColor': '#f5f5f5', 'tertiaryColor': '#fafafa', 'fontSize': '13px', 'fontFamily': 'arial'}}}%%
+flowchart TB
+    INTERP_TREAT["&lt;b&gt;county_panel_w_reform.dta&lt;/b&gt;&lt;br/&gt;County-year panel&lt;br/&gt;with reform treatment"]
+    COUNTY2["&lt;b&gt;county2.csv&lt;/b&gt;&lt;br/&gt;Median family income&lt;br/&gt;by county"]
+    STATE_FIPS["&lt;b&gt;state_fips_master.csv&lt;/b&gt;&lt;br/&gt;State FIPS crosswalk"]
+
+    IMPORT_LABEL["&lt;b&gt;IMPORT CSV&lt;/b&gt;"]
+    IMPORT_OP["Import median_family_income&lt;br/&gt;Clean county identifiers"]
+
+    MERGE_STATE["&lt;b&gt;MERGE STATE FIPS&lt;/b&gt;"]
+    MERGE_STATE_OP["Add numeric state codes"]
+
+    INCOME_DATA["&lt;b&gt;Income Data&lt;/b&gt;&lt;br/&gt;One row per county&lt;br/&gt;median_family_income"]
+
+    MERGE_LABEL["&lt;b&gt;MERGE m:1&lt;/b&gt;"]
+    MERGE_OP["on county"]
+
+    OUTPUT["&lt;b&gt;county_panel.dta&lt;/b&gt;&lt;br/&gt;★ FINAL OUTPUT ★&lt;br/&gt;Analysis-ready panel"]
+
+    %% Flow
+    COUNTY2 --&gt; IMPORT_LABEL
+    IMPORT_LABEL --&gt; IMPORT_OP
+    IMPORT_OP --&gt; MERGE_STATE
+    STATE_FIPS --&gt; MERGE_STATE
+    MERGE_STATE --&gt; MERGE_STATE_OP
+    MERGE_STATE_OP --&gt; INCOME_DATA
+
+    INTERP_TREAT --&gt; MERGE_LABEL
+    INCOME_DATA --&gt; MERGE_LABEL
+    MERGE_LABEL --&gt; MERGE_OP
+    MERGE_OP --&gt; OUTPUT
+
+    %% Styling
+    classDef sourceBox fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#000000
+    classDef stepLabel fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#000000
+    classDef filterBox fill:#fff8e1,stroke:#ffa000,stroke-width:1px,color:#000000
+    classDef outputBox fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#000000
+    classDef finalBox fill:#c8e6c9,stroke:#1b5e20,stroke-width:3px,color:#000000
+
+    class INTERP_TREAT,COUNTY2,STATE_FIPS sourceBox
+    class IMPORT_LABEL,MERGE_STATE,MERGE_LABEL stepLabel
+    class IMPORT_OP,MERGE_STATE_OP,MERGE_OP filterBox
+    class INCOME_DATA outputBox
+    class OUTPUT finalBox
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+</section>
+<section id="stage5" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Stage 5: Sample Restrictions and Final Dataset</h1>
+<p>Stage 4 produced a county-year panel with spending, reform treatment, and income data. Stage 5 transforms this into the final analysis dataset. This stage performs three critical functions: creating the spending variables used in regressions, constructing event-time indicators for the event-study design, and enforcing balanced panel requirements.</p>
+<p>Why do these steps matter? The event-study design requires consistent observation of units before and after treatment. If a county enters or exits our data during the event window, we cannot distinguish treatment effects from compositional changes. The restrictions in Stage 5 ensure that our estimates reflect actual spending responses to reform, not data artifacts.</p>
+<section id="stage5-1" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="stage5-1"><span class="header-section-number">5.1</span> Stage 5.1 Build analysis_panel_bal.dta (Primary Balance)</h2>
+<p>This substage produces the primary analysis dataset with strict balance requirements. The inputs are <code>county_panel.dta</code> from Stage 4.4 and <code>county_qual_flags.dta</code> from Stage 3.</p>
+<section id="step-1-creating-analysis-variables" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="step-1-creating-analysis-variables"><span class="header-section-number">5.1.1</span> Step 1: Creating Analysis Variables</h3>
+<p>The first step creates the spending variables we will use in regressions. We construct four versions, each with different properties.</p>
+<p>The base variable <code>exp</code> is per-pupil expenditure winsorized at the 1st and 99th percentiles by year. Winsorizing replaces extreme values with the percentile cutoffs, bounding the influence of outliers without dropping observations. Raw per-pupil expenditure contains extreme values, some from data errors, others from unusual circumstances like a tiny district with very high spending.</p>
+<p>From this we compute <code>lexp</code>, the log of winsorized spending. The log transformation enables percentage interpretation: a coefficient of 0.05 means approximately a 5% increase in spending.</p>
+<p>We then compute <code>lexp_ma</code>, the log of a 13-year rolling mean. School spending fluctuates year-to-year due to budget cycles, one-time expenditures, and accounting timing. The rolling mean smooths this noise by averaging spending from year <span class="math inline">\(t-12\)</span> through year <span class="math inline">\(t\)</span>. This choice also mirrors JJP’s use of average spending over ages 5–17.</p>
+<p>Finally, <code>lexp_ma_strict</code> is the log of the rolling mean computed only when all 13 years have data. The regular rolling mean uses whatever years are available; the strict version equals missing if any of the 13 years lacks data. This ensures counties with data gaps are excluded rather than measured with error.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 31%">
+<col style="width: 37%">
+<col style="width: 31%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Definition</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>exp</code></td>
+<td>Winsorized PPE (1st/99th percentile by year)</td>
+<td>Removes extreme outliers</td>
+</tr>
+<tr class="even">
+<td><code>lexp</code></td>
+<td>Log of winsorized PPE</td>
+<td>Regression outcome (single-year)</td>
+</tr>
+<tr class="odd">
+<td><code>lexp_ma</code></td>
+<td>Log of 13-year rolling mean</td>
+<td>Smoothed outcome</td>
+</tr>
+<tr class="even">
+<td><code>lexp_ma_strict</code></td>
+<td>Log of rolling mean, <strong>only if full 13-year window exists</strong></td>
+<td><strong>Primary outcome</strong></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[
+\text{rollingmean}_t = \frac{1}{13} \sum_{j=0}^{12} \text{exp}_{t-j}
+\]</span></p>
+</section>
+<section id="step-2-event-time-indicators" class="level3" data-number="5.1.2">
+<h3 data-number="5.1.2" class="anchored" data-anchor-id="step-2-event-time-indicators"><span class="header-section-number">5.1.2</span> Step 2: Event-Time Indicators</h3>
+<p>Event-study regressions use “event time” (years measured relative to the treatment date) rather than calendar time. We calculate relative year as calendar year minus reform year. For example, if Texas reformed in 1989, then 1987 is relative year -2 (two years before reform), 1989 is relative year 0 (the reform year), and 1995 is relative year 6 (six years after reform). For never-treated states, we set relative year to missing since they have no reform year.</p>
+<p>We then create indicator variables for each event-time period. The leads capture pre-reform years: <code>lead_5</code> equals 1 if relative year is -5 or earlier (binned), <code>lead_4</code> through <code>lead_1</code> capture years -4 through -1 individually. The lags capture post-reform years: <code>lag_1</code> through <code>lag_16</code> capture years 1 through 16 individually, and <code>lag_17</code> equals 1 if relative year is 17 or later (binned).</p>
+<p>Year 0 (the reform year) is omitted as the reference category. All coefficients therefore measure changes relative to spending in the reform year. A coefficient of 0.10 on <code>lag_5</code> means spending was 10% higher five years after reform compared to the reform year itself.</p>
+<p><strong>Calculating relative year:</strong></p>
+<p><span class="math display">\[
+\text{relative\_year} = \text{calendar\_year} - \text{reform\_year}
+\]</span></p>
+<p><strong>Lead and lag indicators:</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Definition</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>lead_5</code></td>
+<td>relative_year ≤ -5</td>
+<td>5+ years before reform (binned)</td>
+</tr>
+<tr class="even">
+<td><code>lead_4</code></td>
+<td>relative_year = -4</td>
+<td>4 years before reform</td>
+</tr>
+<tr class="odd">
+<td><code>lead_3</code></td>
+<td>relative_year = -3</td>
+<td>3 years before reform</td>
+</tr>
+<tr class="even">
+<td><code>lead_2</code></td>
+<td>relative_year = -2</td>
+<td>2 years before reform</td>
+</tr>
+<tr class="odd">
+<td><code>lead_1</code></td>
+<td>relative_year = -1</td>
+<td>1 year before reform</td>
+</tr>
+<tr class="even">
+<td>Year 0</td>
+<td>relative_year = 0</td>
+<td><strong>Omitted</strong> (reference period)</td>
+</tr>
+<tr class="odd">
+<td><code>lag_1</code></td>
+<td>relative_year = 1</td>
+<td>1 year after reform</td>
+</tr>
+<tr class="even">
+<td><code>lag_2</code></td>
+<td>relative_year = 2</td>
+<td>2 years after reform</td>
+</tr>
+<tr class="odd">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="even">
+<td><code>lag_16</code></td>
+<td>relative_year = 16</td>
+<td>16 years after reform</td>
+</tr>
+<tr class="odd">
+<td><code>lag_17</code></td>
+<td>relative_year ≥ 17</td>
+<td>17+ years after reform (binned)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="step-3-baseline-quartiles" class="level3" data-number="5.1.3">
+<h3 data-number="5.1.3" class="anchored" data-anchor-id="step-3-baseline-quartiles"><span class="header-section-number">5.1.3</span> Step 3: Baseline Quartiles</h3>
+<p>We classify counties by their pre-reform spending levels to test whether reforms affected low-spending and high-spending areas differently. Quartiles are computed within each state using 1971 (fiscal year 1972) data. For each state, we rank counties by their 1971 per-pupil expenditure and divide into four groups: Q1 (lowest 25%), Q2 (25th–50th percentile), Q3 (50th–75th percentile), and Q4 (highest 25%).</p>
+<p>Why 1971? We need a baseline year that predates most reforms (most court cases occurred in the late 1970s onward), has good data coverage, and is close enough to reforms to reflect the pre-reform status quo. The year 1971 satisfies all three criteria.</p>
+<p>We also compute income quartiles (<code>inc_q</code>) using 1970 Census median family income. This allows us to examine whether reforms helped low-income or high-income areas.</p>
+</section>
+<section id="step-4-balanced-panel-restriction" class="level3" data-number="5.1.4">
+<h3 data-number="5.1.4" class="anchored" data-anchor-id="step-4-balanced-panel-restriction"><span class="header-section-number">5.1.4</span> Step 4: Balanced Panel Restriction</h3>
+<p>The event-study design requires observing each county continuously across the event window. A county that appears and disappears cannot reliably identify treatment effects; changes in spending might reflect the county entering or exiting the data rather than responding to reform.</p>
+<p>A county is “balanced” if <code>lexp_ma_strict</code> is non-missing for all 23 years of the event window, from relative year -5 through relative year +17. Why 23 years? The window spans -5, -4, -3, -2, -1, 0, 1, 2, …, 17, which totals 23 years.</p>
+<p>This restriction substantially reduces sample size but ensures clean identification. Counties that fail the balance criterion often have data gaps from missing district-level finance data, from districts that formed or dissolved during the study period, or from incomplete Census tract coverage.</p>
+<p>One important caveat: this approach excludes many states with early reforms, since those reforms occur less than 13 years after the first year of available data (fiscal year 1967). The strict rolling mean requires 13 prior years of data, which mechanically excludes early-reforming states from the balanced sample.</p>
+<p><span class="math display">\[
+\text{balanced} = 1 \iff \text{lexp\_ma\_strict}_{it} \neq \text{missing} \quad \forall t \in [-5, +17]
+\]</span></p>
+<p><strong>Example:</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>County</th>
+<th>Years with <code>lexp_ma_strict</code></th>
+<th>Balanced?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Adams (CA)</td>
+<td>-5 to +17 (all 23)</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>Baker (TX)</td>
+<td>-5 to +12 (18 years)</td>
+<td>No, missing +13 to +17</td>
+</tr>
+<tr class="odd">
+<td>Clark (NY)</td>
+<td>-2 to +17 (missing early years)</td>
+<td>No, missing -5 to -3</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="step-5-state-filter" class="level3" data-number="5.1.5">
+<h3 data-number="5.1.5" class="anchored" data-anchor-id="step-5-state-filter"><span class="header-section-number">5.1.5</span> Step 5: State Filter</h3>
+<p>Some states have very few counties in our final sample, perhaps only 2 or 3. Computing within-state quartiles with so few observations produces unstable estimates. We flag states with sufficient data:</p>
+<ul>
+<li><code>valid_st = 1</code> if the state has ≥10 counties in the sample</li>
+<li><code>valid_st_gd = 1</code> if the state has ≥10 “good” counties (with complete baseline data)</li>
+</ul>
+<p>States failing this criterion remain in the dataset but are excluded from analyses that require within-state quartile comparisons.</p>
+</section>
+<section id="stage-5.1-output-analysis_panel_bal.dta" class="level3" data-number="5.1.6">
+<h3 data-number="5.1.6" class="anchored" data-anchor-id="stage-5.1-output-analysis_panel_bal.dta"><span class="header-section-number">5.1.6</span> Stage 5.1 Output: analysis_panel_bal.dta</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>county_id</code></td>
+<td>5-digit FIPS (state + county)</td>
+</tr>
+<tr class="even">
+<td><code>state_fips</code></td>
+<td>State FIPS code</td>
+</tr>
+<tr class="odd">
+<td><code>year</code></td>
+<td>School year (year4 - 1)</td>
+</tr>
+<tr class="even">
+<td><code>relative_year</code></td>
+<td>Years since reform</td>
+</tr>
+<tr class="odd">
+<td><code>good</code></td>
+<td>Good county flag (has 1972 baseline data)</td>
+</tr>
+<tr class="even">
+<td><code>exp</code></td>
+<td>Per-pupil expenditure (winsorized, 2000$)</td>
+</tr>
+<tr class="odd">
+<td><code>lexp</code></td>
+<td>Log per-pupil expenditure</td>
+</tr>
+<tr class="even">
+<td><code>lexp_ma</code></td>
+<td>Log 13-year rolling mean PPE</td>
+</tr>
+<tr class="odd">
+<td><code>lexp_ma_strict</code></td>
+<td>Log 13-year strict rolling mean PPE</td>
+</tr>
+<tr class="even">
+<td><code>pre_q</code></td>
+<td>Baseline spending quartile (1971)</td>
+</tr>
+<tr class="odd">
+<td><code>inc_q</code></td>
+<td>Income quartile (1970 Census)</td>
+</tr>
+<tr class="even">
+<td><code>med_fam_inc</code></td>
+<td>Median family income</td>
+</tr>
+<tr class="odd">
+<td><code>school_age_pop</code></td>
+<td>School-age population (weight)</td>
+</tr>
+<tr class="even">
+<td><code>never_treated</code></td>
+<td>Never-treated state indicator</td>
+</tr>
+<tr class="odd">
+<td><code>reform_year</code></td>
+<td>Year of reform (0 if never)</td>
+</tr>
+<tr class="even">
+<td><code>reform_types</code></td>
+<td>Reform type grouping</td>
+</tr>
+<tr class="odd">
+<td><code>reform_eq</code>, <code>reform_mfp</code>, etc.</td>
+<td>Individual reform type flags</td>
+</tr>
+<tr class="even">
+<td><code>lead_1</code> to <code>lead_5</code></td>
+<td>Pre-reform indicators</td>
+</tr>
+<tr class="odd">
+<td><code>lag_1</code> to <code>lag_17</code></td>
+<td>Post-reform indicators</td>
+</tr>
+<tr class="even">
+<td><code>valid_st</code>, <code>valid_st_gd</code></td>
+<td>State validity flags</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="stage5-1-diagram" class="level3" data-number="5.1.7">
+<h3 data-number="5.1.7" class="anchored" data-anchor-id="stage5-1-diagram"><span class="header-section-number">5.1.7</span> Stage 5.1 Pipeline Diagram</h3>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#ffffff', 'primaryTextColor': '#000000', 'primaryBorderColor': '#333333', 'lineColor': '#666666', 'secondaryColor': '#f5f5f5', 'tertiaryColor': '#fafafa', 'fontSize': '13px', 'fontFamily': 'arial'}}}%%
+flowchart TB
+    COUNTY_EXP["&lt;b&gt;county_panel.dta&lt;/b&gt;&lt;br/&gt;From Stage 4.4"]
+    COUNTY_CLEAN["&lt;b&gt;county_qual_flags.dta&lt;/b&gt;&lt;br/&gt;Quality flags from Stage 3"]
+
+    MERGE_LABEL["&lt;b&gt;MERGE&lt;/b&gt;"]
+    MERGE_OP["Merge quality flags&lt;br/&gt;on county"]
+
+    VARS_LABEL["&lt;b&gt;CREATE VARIABLES&lt;/b&gt;"]
+    VARS_OP["Winsorize exp&lt;br/&gt;lexp = log(exp)&lt;br/&gt;lexp_ma_strict = strict rolling mean&lt;br/&gt;lead/lag indicators&lt;br/&gt;baseline quartiles"]
+
+    INTERP["&lt;b&gt;analysis_panel_unrestricted.dta&lt;/b&gt;&lt;br/&gt;Full panel before restrictions"]
+
+    BAL_LABEL["&lt;b&gt;BALANCE RESTRICTION&lt;/b&gt;"]
+    BAL_OP["Keep if:&lt;br/&gt;• relative_year -5 to +17 complete&lt;br/&gt;• lexp_ma_strict non-missing for all 23 yrs"]
+
+    STATE_LABEL["&lt;b&gt;STATE FILTER&lt;/b&gt;"]
+    STATE_OP["Flag states with ≥10 counties&lt;br/&gt;valid_st, valid_st_gd"]
+
+    OUTPUT["&lt;b&gt;analysis_panel_bal.dta&lt;/b&gt;&lt;br/&gt;★ ANALYSIS DATASET ★&lt;br/&gt;Balanced on lexp_ma_strict"]
+
+    %% Flow
+    COUNTY_EXP --&gt; MERGE_LABEL
+    COUNTY_CLEAN --&gt; MERGE_LABEL
+    MERGE_LABEL --&gt; MERGE_OP
+    MERGE_OP --&gt; VARS_LABEL
+    VARS_LABEL --&gt; VARS_OP
+    VARS_OP --&gt; INTERP
+
+    INTERP --&gt; BAL_LABEL
+    BAL_LABEL --&gt; BAL_OP
+    BAL_OP --&gt; STATE_LABEL
+    STATE_LABEL --&gt; STATE_OP
+    STATE_OP --&gt; OUTPUT
+
+    %% Styling
+    classDef sourceBox fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#000000
+    classDef stepLabel fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#000000
+    classDef filterBox fill:#fff8e1,stroke:#ffa000,stroke-width:1px,color:#000000
+    classDef outputBox fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#000000
+    classDef finalBox fill:#c8e6c9,stroke:#1b5e20,stroke-width:3px,color:#000000
+
+    class COUNTY_EXP,COUNTY_CLEAN sourceBox
+    class MERGE_LABEL,VARS_LABEL,BAL_LABEL,STATE_LABEL stepLabel
+    class MERGE_OP,VARS_OP,BAL_OP,STATE_OP filterBox
+    class INTERP outputBox
+    class OUTPUT finalBox
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="stage5-2" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="stage5-2"><span class="header-section-number">5.2</span> Stage 5.2: Build analysis_panel_bal_alt.dta (Alternative Balance)</h2>
+<p>Stage 5.1 imposed strict balance requirements that exclude counties with incomplete rolling-mean histories. Stage 5.2 creates an alternative dataset with relaxed requirements.</p>
+<p>The difference is simple: instead of requiring <code>lexp_ma_strict</code> to be non-missing for all 23 years, we require only <code>lexp</code> (the single-year log spending) to be non-missing. This includes counties that have event-window data but incomplete pre-window histories, such as counties in states with early reforms that cannot compute the full 13-year rolling mean.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 50%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Dataset</th>
+<th>Balance Criterion</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>analysis_panel_bal.dta</code></td>
+<td><code>lexp_ma_strict</code> non-missing for 23 years</td>
+<td>Strict analysis</td>
+</tr>
+<tr class="even">
+<td><code>analysis_panel_bal_alt.dta</code></td>
+<td><code>lexp</code> non-missing for 23 years</td>
+<td>Larger sample</td>
+</tr>
+</tbody>
+</table>
+<p>In our code the difference is simply which variable we check for missingness:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>* PRIMARY:   n_nonmiss = <span class="kw">sum</span>(!<span class="fu">missing</span>(lexp_ma_strict))</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>* ALTERNATIVE: n_nonmiss = <span class="kw">sum</span>(!<span class="fu">missing</span>(lexp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+</section>
+<section id="stage6" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Stage 6: Event-Study Analysis</h1>
+<p>Stage 5 produced balanced analysis datasets with spending variables, event-time indicators, and baseline quartiles. Stage 6 runs the event-study regressions that replicate Figure 1 from JJP (2016). These regressions estimate how school spending changed in response to court-ordered finance reforms, and whether those changes differed between initially low-spending and high-spending counties.</p>
+<p><strong>Source:</strong> <code>analysis_panel_bal.dta</code> or <code>analysis_panel_bal_alt.dta</code> (from Stage 5)</p>
+<section id="regression-specification" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="regression-specification"><span class="header-section-number">6.1</span> Regression Specification</h2>
+<p>The event-study design estimates spending trajectories before and after reform by regressing log per-pupil expenditure on a set of event-time indicators. The model takes the form:</p>
+<pre><code>lexp_ma_strict = α + Σ βₖ·lag_k + Σ γₖ·lead_k + δ·year + county_FE + ε
+</code></pre>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Outcome</td>
+<td><code>lexp</code>, <code>lexp_ma</code>, or <code>lexp_ma_strict</code></td>
+</tr>
+<tr class="even">
+<td>Fixed effects</td>
+<td>County (<code>absorb(county_id)</code>) + Year (<code>i.year</code>)</td>
+</tr>
+<tr class="odd">
+<td>Clustering</td>
+<td>County-level (<code>vce(cluster county_id)</code>)</td>
+</tr>
+<tr class="even">
+<td>Weights</td>
+<td>School-age population (<code>[w=school_age_pop]</code>)</td>
+</tr>
+<tr class="odd">
+<td>Sample</td>
+<td><code>good==1</code>, <code>valid_st_gd==1</code>, <code>reform_year&lt;2000</code></td>
+</tr>
+</tbody>
+</table>
+<p>The outcome variable is the log of the 13-year rolling mean of per-pupil expenditure, though we also estimate specifications using single-year log spending (<code>lexp</code>) and the non-strict rolling mean (<code>lexp_ma</code>). The key regressors are the lead and lag indicators constructed in Stage 5, which capture spending in each year relative to the reform date. Year 0 (the reform year) is omitted as the reference category, so all coefficients measure changes relative to spending in the reform year.</p>
+<p>The model includes county fixed effects (absorbed via <code>areg</code>) and year fixed effects. County fixed effects control for time-invariant differences across counties, while year fixed effects control for national trends in school spending that affect all counties equally. Standard errors are clustered at the county level to account for correlation within counties over time. Observations are weighted by school-age population so that larger counties contribute more to the estimates.</p>
+<p>The sample restrictions ensure we include only counties with complete baseline data (<code>good==1</code>), in states with at least 10 valid counties (<code>valid_st_gd==1</code>), and with reform dates early enough to observe post-reform outcomes (<code>reform_year&lt;2000</code>).</p>
+</section>
+<section id="analysis-structure" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="analysis-structure"><span class="header-section-number">6.2</span> Analysis Structure</h2>
+<p><strong>By Quartile.</strong> We run separate regressions for each baseline spending quartile (Q1=poorest to Q4=richest). This reveals whether reforms differentially affected poor vs.&nbsp;rich districts.</p>
+<p><strong>Pooled Q1-Q3.</strong> We pool the bottom three quartiles to test overall effects on non-wealthy districts.</p>
+</section>
+<section id="output-event-study-plots" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="output-event-study-plots"><span class="header-section-number">6.3</span> Output: Event-Study Plots</h2>
+<p>The code extracts coefficients via <code>lincom</code>, computes 90% confidence intervals, and generates plots showing:</p>
+<ul>
+<li><strong>X-axis:</strong> Years since reform (-5 to +17)</li>
+<li><strong>Y-axis:</strong> Coefficient (change in log PPE relative to year 0)</li>
+<li><strong>Shaded area:</strong> 90% confidence interval</li>
+</ul>
+<p><strong>Interpreting the plots:</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Pattern</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Flat pre-trends (leads ≈ 0)</td>
+<td>Parallel trends assumption holds</td>
+</tr>
+<tr class="even">
+<td>Positive lags</td>
+<td>Spending increased after reform</td>
+</tr>
+<tr class="odd">
+<td>Larger Q1 effects than Q4</td>
+<td>Reforms helped poorer districts more</td>
+</tr>
+</tbody>
+</table>
+<section id="stage6-diagram" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="stage6-diagram"><span class="header-section-number">6.3.1</span> Stage 6 Pipeline Diagram</h3>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#ffffff', 'primaryTextColor': '#000000', 'primaryBorderColor': '#333333', 'lineColor': '#666666', 'secondaryColor': '#f5f5f5', 'tertiaryColor': '#fafafa', 'fontSize': '13px', 'fontFamily': 'arial'}}}%%
+flowchart TB
+    INPUT["&lt;b&gt;analysis_panel_bal.dta&lt;/b&gt;&lt;br/&gt;or analysis_panel_bal_alt.dta"]
+
+    OPTION["&lt;b&gt;OPTIONS&lt;/b&gt;"]
+    OPTION_BOX["use_alt: 0 or 1&lt;br/&gt;outcomes: lexp, lexp_ma, lexp_ma_strict"]
+
+    PART_A["&lt;b&gt;PART A: BY QUARTILE&lt;/b&gt;"]
+    Q1["&lt;b&gt;Q1&lt;/b&gt;&lt;br/&gt;Poorest districts"]
+    Q2["&lt;b&gt;Q2&lt;/b&gt;"]
+    Q3["&lt;b&gt;Q3&lt;/b&gt;"]
+    Q4["&lt;b&gt;Q4&lt;/b&gt;&lt;br/&gt;Richest districts"]
+
+    AREG["&lt;b&gt;areg&lt;/b&gt;&lt;br/&gt;outcome ~ lead/lag + year&lt;br/&gt;absorb(county_id)&lt;br/&gt;cluster(county_id)&lt;br/&gt;weight=school_age_pop"]
+
+    COEF["&lt;b&gt;EXTRACT COEFFICIENTS&lt;/b&gt;"]
+    COEF_OP["lincom for each lead/lag&lt;br/&gt;Compute 90% CI"]
+
+    PLOT_Q["&lt;b&gt;PLOTS BY QUARTILE&lt;/b&gt;"]
+    PLOT_Q_OUT["fig1_outcome_q1.png&lt;br/&gt;fig1_outcome_q2.png&lt;br/&gt;fig1_outcome_q3.png&lt;br/&gt;fig1_outcome_q4.png"]
+
+    PART_B["&lt;b&gt;PART B: Q1-Q3 POOLED&lt;/b&gt;"]
+    POOL["&lt;b&gt;Pooled regression&lt;/b&gt;&lt;br/&gt;pre_q &lt; 4"]
+
+    PLOT_POOL["&lt;b&gt;POOLED PLOT&lt;/b&gt;"]
+    PLOT_POOL_OUT["fig1_outcome_q123.png"]
+
+    %% Flow
+    INPUT --&gt; OPTION
+    OPTION --&gt; OPTION_BOX
+    OPTION_BOX --&gt; PART_A
+
+    PART_A --&gt; Q1
+    PART_A --&gt; Q2
+    PART_A --&gt; Q3
+    PART_A --&gt; Q4
+
+    Q1 --&gt; AREG
+    Q2 --&gt; AREG
+    Q3 --&gt; AREG
+    Q4 --&gt; AREG
+
+    AREG --&gt; COEF
+    COEF --&gt; COEF_OP
+    COEF_OP --&gt; PLOT_Q
+    PLOT_Q --&gt; PLOT_Q_OUT
+
+    OPTION_BOX --&gt; PART_B
+    PART_B --&gt; POOL
+    POOL --&gt; AREG
+    COEF_OP --&gt; PLOT_POOL
+    PLOT_POOL --&gt; PLOT_POOL_OUT
+
+    %% Styling
+    classDef sourceBox fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#000000
+    classDef stepLabel fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#000000
+    classDef filterBox fill:#fff8e1,stroke:#ffa000,stroke-width:1px,color:#000000
+    classDef outputBox fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#000000
+    classDef finalBox fill:#c8e6c9,stroke:#1b5e20,stroke-width:3px,color:#000000
+    classDef quartileBox fill:#e1f5fe,stroke:#0288d1,stroke-width:1px,color:#000000
+
+    class INPUT sourceBox
+    class OPTION,PART_A,PART_B,COEF,PLOT_Q,PLOT_POOL stepLabel
+    class OPTION_BOX,AREG,COEF_OP filterBox
+    class Q1,Q2,Q3,Q4,POOL quartileBox
+    class PLOT_Q_OUT,PLOT_POOL_OUT finalBox
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+</section>
+<section id="summary" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Summary</h1>
+<p>The pipeline transforms raw school finance data into event-study estimates through six stages:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 21%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Stage</th>
+<th>Input</th>
+<th>Output</th>
+<th>Key Operation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>F-33, INDFIN, GRF</td>
+<td><code>dist_panel</code></td>
+<td>Build LEAID↔︎GOVID crosswalk, unify panels</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>District panel, GRF</td>
+<td><code>tract_panel</code></td>
+<td>Assign districts to tracts by population</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Tract panel</td>
+<td><code>county_qual_flags</code></td>
+<td>Tag counties by baseline data quality</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Tract panel, NHGIS, JJP</td>
+<td><code>county_panel</code></td>
+<td>Interpolate, adjust inflation, merge reforms</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>County panel</td>
+<td><code>analysis_panel_bal</code></td>
+<td>Apply balance restrictions, create analysis vars</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>Analysis dataset</td>
+<td>Figure 1 plots</td>
+<td>Run event-study regressions by quartile</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="full-diagram" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Complete Pipeline Diagram</h1>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#ffffff', 'primaryTextColor': '#000000', 'primaryBorderColor': '#333333', 'lineColor': '#666666', 'secondaryColor': '#f5f5f5', 'tertiaryColor': '#fafafa', 'fontSize': '11px', 'fontFamily': 'arial'}}}%%
+flowchart TB
+    %% ===== RAW DATA SOURCES =====
+    F33["&lt;b&gt;F-33 Panel&lt;/b&gt;&lt;br/&gt;1992-2019&lt;br/&gt;LEAID + GOVID"]
+    INDFIN["&lt;b&gt;INDFIN&lt;/b&gt;&lt;br/&gt;1967-1991&lt;br/&gt;GOVID only"]
+    F33ID["&lt;b&gt;F-33 ID File&lt;/b&gt;&lt;br/&gt;Crosswalk source"]
+    GRF["&lt;b&gt;GRF 1969&lt;/b&gt;&lt;br/&gt;Census geography"]
+    NHGIS_T["&lt;b&gt;NHGIS Tract&lt;/b&gt;&lt;br/&gt;School-age pop"]
+    NHGIS_C["&lt;b&gt;NHGIS County&lt;/b&gt;&lt;br/&gt;School-age pop"]
+    JJP["&lt;b&gt;JJP Table D2&lt;/b&gt;&lt;br/&gt;Reform data"]
+    COUNTY_INC["&lt;b&gt;County Income&lt;/b&gt;&lt;br/&gt;1970 Census"]
+
+    %% ===== STAGE 1: DISTRICT PANEL =====
+    S1["&lt;b&gt;STAGE 1&lt;/b&gt;&lt;br/&gt;District Panel"]
+    S1_XWALK["Build 1:1&lt;br/&gt;LEAID↔GOVID&lt;br/&gt;crosswalk"]
+    S1_MERGE["Merge INDFIN&lt;br/&gt;+ F-33"]
+    S1_GRF["Link to&lt;br/&gt;Census tracts"]
+    DIST_PANEL["&lt;b&gt;dist_panel&lt;/b&gt;&lt;br/&gt;District-year panel"]
+
+    %% ===== STAGE 2: TRACT PANEL =====
+    S2["&lt;b&gt;STAGE 2&lt;/b&gt;&lt;br/&gt;Tract Panel"]
+    S2_ASSIGN["Assign LEAID&lt;br/&gt;per tract&lt;br/&gt;(by alloc_pop)"]
+    S2_JOIN["Join district&lt;br/&gt;spending"]
+    TRACT_PANEL["&lt;b&gt;tract_panel&lt;/b&gt;&lt;br/&gt;Tract-year panel"]
+
+    %% ===== STAGE 3: COUNTY QUALITY =====
+    S3["&lt;b&gt;STAGE 3&lt;/b&gt;&lt;br/&gt;County Quality"]
+    S3_COLLAPSE["Collapse using MIN&lt;br/&gt;(conservative)"]
+    COUNTY_CLEAN["&lt;b&gt;county_qual_flags&lt;/b&gt;&lt;br/&gt;Quality flags"]
+
+    %% ===== STAGE 4: COUNTY PANEL =====
+    S4["&lt;b&gt;STAGE 4&lt;/b&gt;&lt;br/&gt;County Panel"]
+    S4_1["&lt;b&gt;4.1&lt;/b&gt; Interpolate&lt;br/&gt;+ tract assign"]
+    S4_2["&lt;b&gt;4.2&lt;/b&gt; Inflation adj&lt;br/&gt;+ collapse"]
+    S4_3["&lt;b&gt;4.3&lt;/b&gt; Merge&lt;br/&gt;reforms"]
+    S4_4["&lt;b&gt;4.4&lt;/b&gt; Merge&lt;br/&gt;income"]
+    COUNTY_EXP["&lt;b&gt;county_panel&lt;/b&gt;&lt;br/&gt;County-year panel"]
+
+    %% ===== STAGE 5: SAMPLE RESTRICTIONS =====
+    S5["&lt;b&gt;STAGE 5&lt;/b&gt;&lt;br/&gt;Sample Restrictions"]
+    S5_VARS["Create variables:&lt;br/&gt;rolling mean, leads/lags,&lt;br/&gt;quartiles"]
+    S5_BAL["Balance restriction&lt;br/&gt;(-5 to +17)"]
+    S5_STATE["State filter&lt;br/&gt;(≥10 counties)"]
+    JJP_FINAL["&lt;b&gt;analysis_panel_bal&lt;/b&gt;&lt;br/&gt;Analysis dataset"]
+    JJP_ALT["&lt;b&gt;analysis_panel_bal_alt&lt;/b&gt;&lt;br/&gt;(relaxed balance)"]
+
+    %% ===== STAGE 6: ANALYSIS =====
+    S6["&lt;b&gt;STAGE 6&lt;/b&gt;&lt;br/&gt;Event-Study"]
+    S6_REG["areg with&lt;br/&gt;county + year FE"]
+    S6_PLOT["Extract coefficients&lt;br/&gt;+ plot"]
+    FIGURES["&lt;b&gt;Figure 1 Plots&lt;/b&gt;&lt;br/&gt;By quartile + pooled"]
+
+    %% ===== CONNECTIONS =====
+    %% Stage 1
+    F33ID --&gt; S1
+    F33 --&gt; S1
+    INDFIN --&gt; S1
+    GRF --&gt; S1
+    S1 --&gt; S1_XWALK
+    S1_XWALK --&gt; S1_MERGE
+    S1_MERGE --&gt; S1_GRF
+    S1_GRF --&gt; DIST_PANEL
+
+    %% Stage 2
+    DIST_PANEL --&gt; S2
+    S2 --&gt; S2_ASSIGN
+    S2_ASSIGN --&gt; S2_JOIN
+    S2_JOIN --&gt; TRACT_PANEL
+
+    %% Stage 3
+    TRACT_PANEL --&gt; S3
+    S3 --&gt; S3_COLLAPSE
+    S3_COLLAPSE --&gt; COUNTY_CLEAN
+
+    %% Stage 4
+    DIST_PANEL --&gt; S4
+    S4 --&gt; S4_1
+    S4_1 --&gt; S4_2
+    NHGIS_T --&gt; S4_2
+    NHGIS_C --&gt; S4_2
+    S4_2 --&gt; S4_3
+    JJP --&gt; S4_3
+    S4_3 --&gt; S4_4
+    COUNTY_INC --&gt; S4_4
+    S4_4 --&gt; COUNTY_EXP
+
+    %% Stage 5
+    COUNTY_EXP --&gt; S5
+    COUNTY_CLEAN --&gt; S5
+    S5 --&gt; S5_VARS
+    S5_VARS --&gt; S5_BAL
+    S5_BAL --&gt; S5_STATE
+    S5_STATE --&gt; JJP_FINAL
+    S5_STATE --&gt; JJP_ALT
+
+    %% Stage 6
+    JJP_FINAL --&gt; S6
+    JJP_ALT --&gt; S6
+    S6 --&gt; S6_REG
+    S6_REG --&gt; S6_PLOT
+    S6_PLOT --&gt; FIGURES
+
+    %% ===== STYLING =====
+    classDef sourceBox fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#000000
+    classDef stageLabel fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#000000
+    classDef stepBox fill:#fff8e1,stroke:#ffa000,stroke-width:1px,color:#000000
+    classDef outputBox fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#000000
+    classDef finalBox fill:#c8e6c9,stroke:#1b5e20,stroke-width:3px,color:#000000
+
+    class F33,INDFIN,F33ID,GRF,NHGIS_T,NHGIS_C,JJP,COUNTY_INC sourceBox
+    class S1,S2,S3,S4,S5,S6 stageLabel
+    class S1_XWALK,S1_MERGE,S1_GRF,S2_ASSIGN,S2_JOIN,S3_COLLAPSE,S4_1,S4_2,S4_3,S4_4,S5_VARS,S5_BAL,S5_STATE,S6_REG,S6_PLOT stepBox
+    class DIST_PANEL,TRACT_PANEL,COUNTY_CLEAN,COUNTY_EXP,JJP_FINAL,JJP_ALT outputBox
+    class FIGURES finalBox
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
