@@ -11,47 +11,47 @@ format:
     code-fold: true
 ---
 
-## Overview
+## Executive Summary
 
-This document explains how we build analysis-ready datasets from raw school finance data. The pipeline transforms unbalanced district-level spending records into a balanced county-year panel suitable for event-study analysis of school finance reforms.
+Our goal is to replicate Jackson, Johnson, and Persico (2016) as faithfully as possible given our data limitations and some methodological differences. This document details how we constructed the data and replicated the analysis up to the first stage of JJP, which corresponds to their event-study estimates used to construct Figure 1 in the original paper. Replicating JJP required building a complex data pipeline, and we found it essential to document each step to understand exactly which units enter our regressions and why others are excluded.
 
-**The Pipeline at a Glance:**
+This document is meant to help readers understand the data pipeline. Those who simply wish to run our code should see the README located in the repository: [github.com/maowens-HI/school_finance](https://github.com/maowens-HI/school_finance).
 
-| Stage | Purpose |
-|-------|--------|--------|---------|
-| 1 | Unify historical and modern district finance data |
-| 2 |  Assign districts to Census tracts |
-| 3 |  Flag counties with complete baseline data |
-| 4 |  Aggregate tracts to counties, merge reforms |
-| 5 |  Apply sample restrictions, create analysis variables |
-| 6 |  Run event-study regressions |
+### Pipeline Overview 
 
+Each stage in the data pipeline corresponds to a distinct Stata do file. At the end of each stage section, you will find a diagram illustrating the data flow and key operations for that stage. A comprehensive diagram showing all stages together appears at the bottom of the document.
 
+**[Stage 1: District Panel Construction.](#stage1)** Historical and modern finance data use different district identifier systems, so we build a crosswalk linking modern (LEAID) and historical (GOVID) identifiers, retaining only clean 1:1 mappings. After appending the panels and linking to Census geography via the GRF, we have 9,428 districts and 424,404 observations. This stage also creates baseline spending flags indicating whether each district has valid data for 1967, 1970, 1971, and/or 1972.
+
+**[Stage 2: Tract Panel Construction.](#stage2)** Assigns each tract to the district serving the largest share of its population. Propagates baseline spending flags using the MIN rule, so a tract is marked as good only if all serving districts have valid baseline data.
+
+**[Stage 3: County Baseline Spending Tagging.](#stage3)** Collapses tract-level baseline spending flags to counties using the MIN function. A county is marked as good only if all of its tracts have complete baseline data. This file is merged into the final analysis dataset so that regressions can exclude counties without good baseline spending.
+
+**[Stage 4: County Panel Construction.](#stage4)** Interpolates small gaps (three years or fewer) in district spending, adjusts for inflation using CPI-U, and collapses to county using school-age population weights. Merges JJP reform treatment data and 1970 Census median family income.
+
+**[Stage 5: Sample Restrictions and Analysis Variables.](#stage5)** Creates spending variables (winsorized per-pupil expenditure [PPE], log PPE, 13-year rolling mean), constructs event-time indicators, and computes baseline spending quartiles within each state. Enforces a balanced panel requirement so that counties must have data for all 23 years of the event window (-5 to +17).
+
+**[Stage 6: Event-Study Analysis.](#stage6)** Runs regressions by baseline spending quartile (Q1–Q4) with county and year fixed effects and clustered standard errors. Produces Figure 1 plots showing spending trajectories before and after reform.
+
+### Attrition
+
+The final analysis sample contains 1,587 counties across 35 states (strict balance on `lexp_ma_strict`) or 1,986 counties across 43 states (relaxed balance on `lexp`). See the [Sample Attrition](#sample-attrition) section at the end of this document for a full breakdown of sample restrictions at each stage.
 
 ---
 
 # Stage 1: District Panel Construction {#stage1}
 
-Stage 1 unifies historical and modern school finance data into a single district-year panel. The key challenge in unification is that historical data and modern data use two different district identifier systems. The historical data from the Census' Individual Government Finance Database (INDFIN) uses the Government ID standard (GOVID) while modern data from the National Center for Education Statistics (NCES) Local Education Agency Finance Survey (f-33) uses the Local Education Agency ID standard (LEAID). Fortunately, we are able to construct a crosswalk from the f-33 data as it includes links between each LEAID to each GOVID. This crosswalk enables us to append historical and modern data, and ultimately link everything to Census geography for county-level aggregation.
+Stage 1 unifies historical and modern school finance data into a single district-year panel. The key challenge in unification is that historical data and modern data use two different district identifier systems. The historical data from the Census' Individual Local Government Finances (INDFIN) uses the Government ID standard (GOVID) while modern data from the National Center for Education Statistics (NCES) Local Education Agency Finance Survey (f-33) uses the Local Education Agency ID standard (LEAID). Fortunately, we are able to construct a crosswalk from the f-33 data as it includes links between each LEAID to each GOVID. This crosswalk enables us to append historical and modern data, and ultimately link everything to Census geography for county-level aggregation.
 
 This seems like it would be a straightforward process, but there is a major caveat: each LEAID does not always have a one-to-one match in the GOVID system. We will elaborate further in the subsequent section.
 
-**Linking District Identifiers**
+**Table 1: Stage 1 Data Sources**
 
 | Source | Years | Identifier | Coverage |
 |--------|-------|------------|----------|
 | F-33 (NCES [National Center for Education Statistics] Local Education Agency Finance Survey) | 1992–2022 | LEAID (Local Education Agency ID) | Modern finance data |
-| INDFIN (Individual Government Finance Database) | 1967–1991 | GOVID (Government ID) | Historical finance data |
+| INDFIN (Individual Local Government Finances) | 1967–1991 | GOVID (Government ID) | Historical finance data |
 | GRF (Geographic Reference File) | 1969 | LEAID | Links districts to Census tracts |
-
-## Source Datasets
-
-| Dataset | Years | Identifiers | What It Contains |
-|---------|-------|-------------|------------------|
-| **F-33 Panel** | 1992–2022 | LEAID + GOVID | Per-pupil expenditure, enrollment, district characteristics |
-| **F-33 ID File** | All years | LEAID + GOVID | Source for building the identifier crosswalk |
-| **INDFIN** | 1967, 1970–1991 | GOVID only | Historical per-pupil expenditure (no LEAID available) |
-| **GRF** | 1969 | LEAID | Links districts to 1969-70 Census tracts |
 
 ## Step 1: Build the LEAID↔GOVID Crosswalk
 
@@ -87,6 +87,8 @@ Total LEAID↔GOVID pairs in F-33 ID file
 ```
 
 
+
+**Table 2: LEAID-GOVID Relationship Types**
 
 | Relationship | Example | Action |
 |--------------|---------|--------|
@@ -189,7 +191,7 @@ The append confirms our crosswalk worked as intended. The 15,047 unique LEAIDs e
 
 **Data limitations to note:**
 
-The panel is unbalanced: not every district appears in every year due to districts entering or exiting the data over time. The quality flags from Step 2 track which districts have valid baseline spending. Additionally, INDFIN contains no data for 1968 or 1969, creating a gap between 1967 and 1970.
+The panel is unbalanced: not every district appears in every year due to districts entering or exiting the data over time. Additionally, INDFIN contains no data for 1968 or 1969, creating a gap between 1967 and 1970.
 
 ## Step 5: Link to Census Geography (GRF Merge)
 
@@ -231,57 +233,32 @@ GRF-ID                          dist_panel
 **Understanding the merge results**
 
 The merge drops a substantial number of observations on both sides, so it's worth understanding what we're losing and why.
-
+ 
 The 2,932 master-only records represent districts that appear in the GRF but have no finance data in our panel. These districts may have had non-1:1 LEAID-GOVID mappings (and were therefore dropped in Step 1) or may have been small or short-lived districts not consistently tracked in the finance data.
-
+ 
 The 5,611 using-only districts are districts from our finance panel that we cannot link to Census geography. This may occur because these districts operated in areas not covered by the 1969 GRF, either because they formed after 1969 or because their boundaries did not contain any tracts in that year's geographic file.
-
-These dropped observations could potentially be recovered at a later stage if we locate alternative geographic crosswalks. This may be important if we later determine that the coverage gaps are bias our analysis.
-
-**Understanding the merge results**
-
-Of the 12,368 unique LEAIDs in the GRF, 9,428 (76%) successfully match our district panel. The resulting canonical panel contains only districts that meet all three criteria: (1) they have clean 1:1 LEAID↔GOVID mappings, (2) they appear in the 1969 GRF, and (3) they have spending data for at least some years. This is our cleanest, most consistently-defined sample of districts, and it forms the foundation for the tract and county panels we construct in subsequent stages.
+ 
+These dropped observations could potentially be recovered at a later through various means. This may be important if we later determine that the coverage gaps are bias our analysis.
 
 
-### Key Identifiers
+### Stage 1 Output: dist_panel.dta
 
-| Variable | Description | Format |
-|----------|-------------|--------|
-| `LEAID` | NCES Local Education Agency ID | 7-character string (SSDDDDD) |
-| `GOVID` | Census Government ID | 9-character string (SS5CCCDDD) |
-| `tract70` | 1970 Census tract | 11-character string |
-| `year` | Fiscal year | Numeric |
-
-### Finance Variables
+**Table 3: Stage 1 Output Variables**
 
 | Variable | Description |
 |----------|-------------|
+| `LEAID` | NCES Local Education Agency ID (7-character string) |
+| `GOVID` | Census Government ID (9-character string) |
+| `tract70` | 1970 Census tract (11-character string) |
+| `year` | Fiscal year |
 | `pp_exp` | Per-pupil expenditure (nominal dollars) |
 | `totalexp` | Total expenditure |
 | `enrollment` | Student enrollment |
-
-### Quality Flags
-
-| Variable | Description |
-|----------|-------------|
 | `good_govid` | District has complete baseline data (1967, 1970–1972) |
 | `good_govid_1967` | Has valid 1967 spending data |
 | `good_govid_1970` | Has valid 1970 spending data |
 | `good_govid_1971` | Has valid 1971 spending data |
 | `good_govid_1972` | Has valid 1972 spending data |
-
-### What Gets Dropped (and Why)
-
-
-| Stage | LEAIDs | % of Start | Reason for Drop |
-|-------|--------|------------|-----------------|
-| F-33 ID file (start) | 24,700 | 100% | — |
-| Elementary and Secondary Only | 21,990 | 89% | Non K-12 |
-| After 1:1 filtering | 15,047 | 61% | Non-1:1 mappings |
-| After appending panels | 15,047 | 61% |  |
-| After GRF merge (final) | 9,428 | 39% | Not in 1969 GRF |
-
-
 
 ## Stage 1 Pipeline Diagram {#stage1-diagram}
 
@@ -381,9 +358,11 @@ Stage 1 produced a district-year panel with consistent identifiers and quality f
 
 The complication is that multiple districts can serve the same tract. In many areas, separate districts handle primary and secondary schools. Some tracts fall within overlapping district boundaries. For clean county aggregation, we need exactly one spending value per tract.
 
-Our solution is to assign each tract to the district serving the largest share of its population. The 1969 Geographic Reference File records population allocations between tracts and districts. We sum these allocations and pick the "winning" district for each tract. The following sections walk through this process in detail.
+Our solution is to assign each tract to the district serving the largest share of its population. The 1969 Geographic Reference File enables us to calculate how much of a tracts population is served by each associated district. We make the district serving the largest portion of a tracts population the "winning" district. The following sections walk through this process in detail.
 
-## Source Datasets
+## Data
+
+**Table 4: Stage 2 Data Sources**
 
 | Dataset | Purpose |
 |---------|---------|
@@ -397,6 +376,8 @@ Our solution is to assign each tract to the district serving the largest share o
 
 The first step prepares the Geographic Reference File for use. We import the raw GRF, drop special geographies (water bodies, Native lands, ships, tract revisions), and construct standardized identifiers.
 
+**Table 5: Geographic Identifier Construction**
+
 | ID | Components | Length | Example |
 |----|------------|--------|---------|
 | `tract70` | state(2) + county(3) + btc(4) + tsc(2) | 11 chars | 01001000100 |
@@ -407,58 +388,48 @@ Here `btc` = basic tract code, `tsc` = tract suffix code, and `sdc` = school dis
 
 ### Understanding Allocated Population
 
-A key concept in the GRF is "allocated population." The GRF records how much of each block's population each district serves. A single block can be split across multiple districts.
-
-The formula is:
+A key variable we create from the GRF is "allocated population." The raw GRF is at the block/ED level. Each record shows the population of a block/ED (`popc`) and the percentage of that block/ED served by a given district (`perc`). Allocated population is the product:
 
 $$
 \text{alloc\_pop} = \text{popc} \times \frac{\text{perc}}{100}
 $$
 
-where `popc` is block population and `perc` is the percentage served by the district.
+We collapse the block/ED-level data to the tract × district level by summing `alloc_pop`. This gives us the total population in each tract served by each district.
 
-**Example:** Consider a tract with two blocks:
+**Table 6: Allocated Population Example**
 
-| Tract | Block | popc | District | perc | alloc_pop |
-|-------|-------|------|----------|------|-----------|
-| 001   | A     | 1,000 | District 1 | 60% | 600       |
-| 001   | A     | 1,000 | District 2 | 40% | 400       |
-| 001   | B     | 500   | District 1 | 100% | 500       |
+| Tract | Block/ED | popc | District | perc | alloc_pop |
+|-------|----------|------|----------|------|-----------|
+| 001   | A        | 600  | District 1 | 60% | 360 |
+| 001   | A        | 600  | District 2 | 40% | 240 |
+| 001   | B        | 400  | District 1 | 100% | 400 |
 
-We sum `alloc_pop` across blocks for each district. District 1 gets 600 + 500 = 1,100. District 2 gets 400. District 1 "wins" because it serves more people, and the tract inherits District 1's spending data.
+After collapsing by tract × district: District 1 serves 760 people (360 + 400), District 2 serves 240 people. District 1 "wins" because it serves more people, and the tract inherits District 1's spending data.
 
-Occasionally two or more districts have identical `alloc_pop` values for the same tract. We need a tiebreaker. The code uses `gsort tract70 sdtc -alloc_pop LEAID`, which sorts by tract, then district type, then population (descending), and finally LEAID (ascending). In tie situations, the district with the lower LEAID value wins. In the current data, this occurs only 12 times.
+Occasionally two or more districts have identical `alloc_pop` values for the same tract. We need a tiebreaker. The code sorts by LEAID, so the district with the lower LEAID value wins.
 
-**Note on `sdtc`:** The school district type code (`sdtc`) classifies districts by the grade levels they serve: 1 = unified (K-12), 2 = elementary only, 3 = secondary only, 4 = vocational. This classification matters because a single tract may be served by separate elementary and secondary districts.
+**Note on `sdtc`:** The school district type code (`sdtc`) classifies districts by the grade levels they serve: 1 = unified (K-12), 2 = elementary only, 3 = secondary only, 4 = vocational. This classification matters because a single tract may be served by separate elementary and secondary districts. The winner selection actually happens within each district type, so a tract can have up to three assigned districts (one unified, one elementary, one secondary).
 
 
 ### Step 2: Tract-District Assignment
 
-With allocated populations computed, we can now assign each tract to a single district. This involves three operations.
+Assignment involves three operations.
 
-First, we collapse block-level `alloc_pop` to the tract × district × type level. This aggregates the block-level data up to tracts while preserving district type distinctions.
+First, we collapse `alloc_pop` to the tract × district × type level. This aggregates the block-level data up to tracts while preserving district type distinctions.
 
 Second, we drop vocational districts (`sdtc` = 4). These are not relevant for K-12 analysis and would complicate the tract assignment.
 
-Third, we pick the winner. For each tract-type combination, we keep only the district with the highest `alloc_pop`. This gives us a clean one-to-one mapping from tracts to districts.
+Third, we pick the winner. For each tract × type combination, we keep only the district with the highest `alloc_pop`. This means a tract can have up to three assigned districts: one unified (sdtc=1), one elementary (sdtc=2), and one secondary (sdtc=3). In practice, most tracts are served by either a single unified district or by separate elementary and secondary districts.
 
 ### Propagating Quality Flags
 
-We also need to propagate district-level quality flags to tracts. We use a conservative rule: a tract is "good" for a given baseline year only if ALL districts serving it have valid data for that year.
-
-There are two types of quality flags. Year-specific flags (`good_tract_YYYY`) indicate whether the tract has valid spending data for a specific baseline year. For example, `good_tract_1967` = 1 means all districts serving this tract have valid 1967 spending data. The formula is:
+We also need to propagate district-level quality flags to tracts. We use a conservative rule: a tract is "good" for a given baseline year only if ALL districts serving it have valid data for that year. The formula is:
 
 $$
-\text{good\_tract\_YYYY} = \min(\text{good\_govid\_YYYY})
+\text{good\_tract\_flag} = \min(\text{good\_govid\_flag})
 $$
 
-across all districts in the tract.
-
-The composite flag (`good_tract`) indicates whether the tract has valid data for ALL baseline years (1967, 1970, 1971, and 1972). A tract is "good" only if all four year-specific flags equal 1. The formula is:
-
-$$
-\text{good\_tract} = \min(\text{good\_tract\_1967}, \text{good\_tract\_1970}, \text{good\_tract\_1971}, \text{good\_tract\_1972})
-$$
+across all districts in the tract. We create several versions of these flags: year-specific flags (`good_tract_1967`, `good_tract_1970`, `good_tract_1971`, `good_tract_1972`) and composite flags that combine multiple years (`good_tract` for all four years, `good_tract_6771` for 1967/1970/1971, and `good_tract_7072` for 1970/1971/1972). The composite flags are computed at the district level and then propagated to tracts using the same MIN rule.
 
 Why take the minimum? Consider a tract served by three districts: A, B, and C. Even if we assign the tract's spending to District A (the population winner), Districts B and C also serve students in this tract. If District B lacks 1970 spending data, the tract's true 1970 spending picture is incomplete; we only observe what District A spent, not what Districts B and C spent. By taking the minimum, we flag such tracts as problematic.
 
@@ -470,20 +441,27 @@ The final step joins district-year spending to tracts. We use `joinby LEAID` to 
 
 The result is a tract-year panel where each tract has spending data inherited from its assigned district, along with quality flags indicating baseline data completeness.
 
+## District Attrition
+
+Tract assignment can cause units to disappear for several reasons. Districts can be dropped if all tracts associated with that district are assigned to other districts with larger populations. Larger geographies like counties can also disappear if the districts nested within a county are all assigned to districts that do not exist in the clean panel. Recall that only 76% of the districts in the GRF are present in the district panel. After tract assignment, we are left with 5,760 unique LEAIDs and 2,308 unique counties across 46 states.
+
+
+
 ## Stage 2 Output: tract_panel.dta
+
+**Table 7: Stage 2 Output Variables**
 
 | Variable | Description |
 |----------|-------------|
 | `tract70` | 1970 Census tract (11 chars) |
 | `LEAID` | Assigned school district |
+| `GOVID` | Census Government ID (9-character string) |
 | `year4` | Fiscal year |
 | `pp_exp` | Per-pupil expenditure |
-| `good_tract` | Composite quality flag: 1 if tract has valid data for ALL baseline years (1967, 1970, 1971, 1972) |
-| `good_tract_1967` | Year-specific flag: 1 if all serving districts have valid 1967 spending data |
-| `good_tract_1970` | Year-specific flag: 1 if all serving districts have valid 1970 spending data |
-| `good_tract_1971` | Year-specific flag: 1 if all serving districts have valid 1971 spending data |
-| `good_tract_1972` | Year-specific flag: 1 if all serving districts have valid 1972 spending data |
-| `county_code` | State + County FIPS (Federal Information Processing Standards code, 5 chars) |
+| `sdtc` | School district type code (1=unified, 2=elementary, 3=secondary) |
+| `good_tract_*` | Baseline spending flags propagated from districts using MIN rule |
+| `state_fips` | State FIPS code (2 chars) |
+| `county_code` | State + County FIPS (5 chars) |
 
 ---
 
@@ -625,9 +603,33 @@ Quality flags propagate through three levels:
 
 At each level, the MIN operation ensures that a single missing observation flags the entire unit as problematic.
 
-With county quality tags in place, Stage 4 can construct the final county-year panel by aggregating tract spending, merging reform timing data, and applying sample restrictions.
+## Why Stage 3 is Separate
+
+Stage 3 produces a standalone file (`county_qual_flags.dta`) that is merged into the analysis dataset in Stage 5. This separation is intentional: Stage 4 interpolates missing spending data to fill small gaps, but we do not want interpolated values to affect our baseline spending flags or tract/district assignments. By computing the flags before interpolation, we ensure they reflect actual data availability rather than imputed values.
+
+The flags are used in the final regressions to exclude counties without valid baseline spending:
+
+```
+county_panel.dta                 county_qual_flags.dta
+(from Stage 4)                   (from Stage 3)
+      │                                │
+      └──────────── MERGE ─────────────┘
+                      │
+                      ▼
+            analysis_panel.dta
+                      │
+                      ▼
+              ┌───────────────┐
+              │  Regressions  │
+              │  exclude obs  │
+              │  where good   │
+              │  flag = 0     │
+              └───────────────┘
+```
 
 ## Stage 3 Output: county_qual_flags.dta
+
+**Table 8: Stage 3 Output Variables**
 
 | Variable | Description |
 |----------|-------------|
@@ -645,7 +647,7 @@ With county quality tags in place, Stage 4 can construct the final county-year p
 ```{mermaid}
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#ffffff', 'primaryTextColor': '#000000', 'primaryBorderColor': '#333333', 'lineColor': '#666666', 'secondaryColor': '#f5f5f5', 'tertiaryColor': '#fafafa', 'fontSize': '13px', 'fontFamily': 'arial'}}}%%
 flowchart TB
-    INPUT["<b>tract_panel_real.dta</b><br/>Tract-year panel<br/>with good_tract flags"]
+    INPUT["<b>tract_panel.dta</b><br/>Tract-year panel<br/>with good_tract flags"]
 
     COLLAPSE_LABEL["<b>COLLAPSE</b>"]
     COLLAPSE_OP["collapse (min) good_county = good_tract<br/>by county<br/><i>County is good only if ALL tracts are good</i>"]
@@ -687,6 +689,8 @@ Before we can aggregate tracts to counties, we need to address gaps in the distr
 
 ### Source Datasets
 
+**Table 9: Stage 4.1 Data Sources**
+
 | Dataset | Purpose |
 |---------|---------|
 | `dist_panel.dta` | District spending (Stage 1) |
@@ -727,6 +731,8 @@ Type 4 counties are mixed, containing both tracted and untracted areas. The sum 
 
 With interpolated spending data and county classifications in place, we can proceed to Stage 4.2 to adjust for inflation and aggregate tracts to counties.
 
+**Table 10: County Type Classification**
+
 | Type | Description | Handling |
 |------|-------------|----------|
 | 1 | All tracted | Standard processing: aggregate tract-level data |
@@ -735,6 +741,8 @@ With interpolated spending data and county classifications in place, we can proc
 | 4 | Mixed (1 untracted + tracts) | Compute residual population for untracted area |
 
 ### Stage 4.1 Output: tract_panel_interp.dta
+
+**Table 11: Stage 4.1 Output Variables**
 
 | Variable | Description |
 |----------|-------------|
@@ -829,6 +837,8 @@ Stage 4.1 produced a tract panel with interpolated spending in nominal dollars. 
 
 ### Source Datasets
 
+**Table 12: Stage 4.2 Data Sources**
+
 | Dataset | Purpose |
 |---------|---------|
 | `tract_panel_interp.dta` | Tract panel from Stage 4.1 |
@@ -903,6 +913,8 @@ collapse (mean) pp_exp_real [w = school_age_pop], by(county year4)
 This produces `county_exp` (weighted average PPE) and `school_age_pop` (total) for each county-year.
 
 ### Stage 4.2 Output: county_panel_interp.dta
+
+**Table 13: Stage 4.2 Output Variables**
 
 | Variable | Description |
 |----------|-------------|
@@ -1039,33 +1051,19 @@ The processing involves several steps. First, we import the Excel file. The JJP 
 
 JJP categorizes reforms into five types: minimum foundation plans (MFP), equalization plans (EP), local effort (LE), spending limits (SL), and equity cases (EQ). Reforms are not mutually exclusive. States without court overturns during our study period get `reform_year` = 0 and `never_treated` = 1. These states serve as the control group in our event-study design.
 
-| Variable | Reform Type | 
+**Table 14: Reform Type Variables**
+
+| Variable | Reform Type |
 |----------|-------------|
-| `reform_mfp` | Minimum Foundation Plan | 
-| `reform_ep` | Equalization Plan | 
-| `reform_le` | Local Effort | 
-| `reform_sl` | Spending Limits | 
-| `reform_eq` | Equity | 
+| `reform_mfp` | Minimum Foundation Plan |
+| `reform_ep` | Equalization Plan |
+| `reform_le` | Local Effort |
+| `reform_sl` | Spending Limits |
+| `reform_eq` | Equity |
 
 ### Step 2: Merge to County Panel
 
 The reform data has one row per state. We merge it to the county panel using state FIPS codes. This is a many-to-one merge because many counties belong to each state. After the merge, every county-year observation inherits its state's reform year and reform type flags.
-
-### Stage 4.3 Output: county_panel_w_reform.dta
-
-| Variable | Description |
-|----------|-------------|
-| `county` | State + County FIPS (5 chars) |
-| `year4` | Fiscal year |
-| `county_exp` | Enrollment-weighted average PPE (2000$) |
-| `school_age_pop` | Total school-age population |
-| `reform_year` | Year of first court overturn (0 if never treated) |
-| `reform_mfp` | Minimum Foundation Program reform flag |
-| `reform_ep` | Equalization percentage reform flag |
-| `reform_le` | Leveling-up reform flag |
-| `reform_sl` | Spending limits reform flag |
-| `reform_eq` | Equity-focused reform flag |
-| `never_treated` | Indicator for states without SFR |
 
 ### Stage 4.3 Pipeline Diagram {#stage4-3-diagram}
 
@@ -1125,9 +1123,15 @@ flowchart TB
 
 Stage 4.3 added reform treatment data to the county panel. Stage 4.4 completes the county panel by merging median family income from the 1970 Census. Income serves as an important control variable and helps characterize the economic context of each county at baseline.
 
-The income merge is straightforward. We import the county-level income file, clean the county identifiers to ensure they match our panel, and merge on the county FIPS code. The merge is many-to-one since income is measured once (in 1970) but the panel has multiple years per county.
+The income merge is straightforward. We import the county-level income file, clean the county identifiers to ensure they match our panel, and merge on county name and state FIPS code. The merge is many-to-one since income is measured once (in 1970) but the panel has multiple years per county.
 
 With the county panel complete, Stage 5 applies sample restrictions, constructs event-time variables, and prepares the data for regression analysis.
+
+## Attrition
+
+At the end of Stage 2, we had 2,308 unique counties across 46 states. Stage 4 leaves us with 2,290 counties, a loss of 18. These counties were dropped because they could not be merged with school-age population data or median family income data.
+
+**Table 15: Stage 4.4 Output Variables (county_panel.dta)**
 
 | Variable | Description |
 |----------|-------------|
@@ -1141,7 +1145,6 @@ With the county panel complete, Stage 5 applies sample restrictions, constructs 
 | `reform_le` | Leveling-up reform flag |
 | `reform_sl` | Spending limits reform flag |
 | `reform_eq` | Equity-focused reform flag |
-| `never_treated` | Indicator for states without SFR |
 | `median_family_income` | County median family income (1970 Census) |
 | `state_fips` | State FIPS code |
 | `county_name` | County name |
@@ -1203,7 +1206,7 @@ Stage 4 produced a county-year panel with spending, reform treatment, and income
 
 Why do these steps matter? The event-study design requires consistent observation of units before and after treatment. If a county enters or exits our data during the event window, we cannot distinguish treatment effects from compositional changes. The restrictions in Stage 5 ensure that our estimates reflect actual spending responses to reform, not data artifacts.
 
-## Stage 5.1 Build analysis_panel_bal.dta (Primary Balance) {#stage5-1}
+## Stage 5.1: Primary Balance {#stage5-1}
 
 This substage produces the primary analysis dataset with strict balance requirements. The inputs are `county_panel.dta` from Stage 4.4 and `county_qual_flags.dta` from Stage 3.
 
@@ -1218,6 +1221,8 @@ From this we compute `lexp`, the log of winsorized spending. The log transformat
 We then compute `lexp_ma`, the log of a 13-year rolling mean. School spending fluctuates year-to-year due to budget cycles, one-time expenditures, and accounting timing. The rolling mean smooths this noise by averaging spending from year $t-12$ through year $t$. This choice also mirrors JJP's use of average spending over ages 5–17.
 
 Finally, `lexp_ma_strict` is the log of the rolling mean computed only when all 13 years have data. The regular rolling mean uses whatever years are available; the strict version equals missing if any of the 13 years lacks data. This ensures counties with data gaps are excluded rather than measured with error.
+
+**Table 16: Spending Variables**
 
 | Variable | Definition | Use Case |
 |----------|------------|----------|
@@ -1245,7 +1250,7 @@ $$
 \text{relative\_year} = \text{calendar\_year} - \text{reform\_year}
 $$
 
-**Lead and lag indicators:**
+**Table 17: Lead and Lag Indicators**
 
 | Variable | Definition | Interpretation |
 |----------|------------|----------------|
@@ -1284,7 +1289,7 @@ $$
 \text{balanced} = 1 \iff \text{lexp\_ma\_strict}_{it} \neq \text{missing} \quad \forall t \in [-5, +17]
 $$
 
-**Example:**
+**Table 18: Balance Requirement Example**
 
 | County | Years with `lexp_ma_strict` | Balanced? |
 |--------|---------------------------|-----------|
@@ -1301,7 +1306,11 @@ Some states have very few counties in our final sample, perhaps only 2 or 3. Com
 
 States failing this criterion remain in the dataset but are excluded from analyses that require within-state quartile comparisons.
 
-### Stage 5.1 Output: analysis_panel_bal.dta
+### Attrition
+
+The strict balance requirement on `lexp_ma_strict` leaves us with 1,587 counties across 35 states.
+
+**Table 19: Stage 5.1 Output Variables**
 
 | Variable | Description |
 |----------|-------------|
@@ -1318,7 +1327,6 @@ States failing this criterion remain in the dataset but are excluded from analys
 | `inc_q` | Income quartile (1970 Census) |
 | `med_fam_inc` | Median family income |
 | `school_age_pop` | School-age population (weight) |
-| `never_treated` | Never-treated state indicator |
 | `reform_year` | Year of reform (0 if never) |
 | `reform_types` | Reform type grouping |
 | `reform_eq`, `reform_mfp`, etc. | Individual reform type flags |
@@ -1380,16 +1388,22 @@ flowchart TB
 
 ---
 
-## Stage 5.2: Build analysis_panel_bal_alt.dta (Alternative Balance) {#stage5-2}
+## Stage 5.2: Alternative Balance {#stage5-2}
 
 Stage 5.1 imposed strict balance requirements that exclude counties with incomplete rolling-mean histories. Stage 5.2 creates an alternative dataset with relaxed requirements.
 
 The difference is simple: instead of requiring `lexp_ma_strict` to be non-missing for all 23 years, we require only `lexp` (the single-year log spending) to be non-missing. This includes counties that have event-window data but incomplete pre-window histories, such as counties in states with early reforms that cannot compute the full 13-year rolling mean.
 
+**Table 20: Balance Criteria Comparison**
+
 | Dataset | Balance Criterion | Use Case |
 |---------|-------------------|----------|
 | `analysis_panel_bal.dta` | `lexp_ma_strict` non-missing for 23 years | Strict analysis |
 | `analysis_panel_bal_alt.dta` | `lexp` non-missing for 23 years | Larger sample |
+
+### Attrition
+
+The relaxed balance requirement on `lexp` leaves us with 1,986 counties across 43 states.
 
 In our code the difference is simply which variable we check for missingness:
 
@@ -1414,6 +1428,8 @@ The event-study design estimates spending trajectories before and after reform b
 lexp_ma_strict = α + Σ βₖ·lag_k + Σ γₖ·lead_k + δ·year + county_FE + ε
 
 ```
+
+**Table 21: Regression Specification Components**
 
 | Component | Implementation |
 |-----------|----------------|
@@ -1443,7 +1459,7 @@ The code extracts coefficients via `lincom`, computes 90% confidence intervals, 
 - **Y-axis:** Coefficient (change in log PPE relative to year 0)
 - **Shaded area:** 90% confidence interval
 
-**Interpreting the plots:**
+**Table 22: Interpreting Event-Study Plots**
 
 | Pattern | Interpretation |
 |---------|----------------|
@@ -1524,9 +1540,29 @@ flowchart TB
 
 ---
 
+# Sample Attrition {#sample-attrition}
+
+**Table 23: Sample Attrition by Stage**
+
+| Stage | Districts | Counties | States |
+|-------|-----------|----------|--------|
+| F-33 panel (LEAID universe) | 24,700 | 3,441 | 51 |
+| Stage 1: After 1:1 filter | 15,047 | 2,813 | 47 |
+| Stage 1: After GRF merge | 9,428 | 2,548 | 46 |
+| Stage 2: After tract assignment | 5,760 | 2,308 | 46 |
+| Stage 4: After income merge | — | 2,290 | 46 |
+| Stage 5.1: Strict balance (`lexp_ma_strict`) | — | 1,587 | 35 |
+| Stage 5.2: Alt balance (`lexp`) | — | 1,986 | 43 |
+
+The pipeline retains 38% of the original districts in the F-33 ID file. However, of the 12,368 unique districts in the GRF, 9,428 (76%) successfully match our district panel. Attrition occurs for several reasons. Districts with ambiguous identifier mappings (many-to-one or one-to-many LEAID-GOVID relationships) are dropped to ensure consistent tracking over time. Districts not appearing in the 1969 Geographic Reference File cannot be linked to Census geography. JJP note the absence of Alaska, Hawaii, Maryland, North Carolina, Virginia, and Washington DC from the historical data prior to 1992, which contributes to attrition as well. Finally, the balanced panel requirement in Stage 5 further reduces the sample by excluding counties that lack complete data across the 23-year event window.
+
+---
+
 # Summary
 
 The pipeline transforms raw school finance data into event-study estimates through six stages:
+
+**Table 24: Pipeline Summary**
 
 | Stage | Input | Output | Key Operation |
 |-------|-------|--------|---------------|
