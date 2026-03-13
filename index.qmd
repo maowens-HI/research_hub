@@ -26,6 +26,20 @@ Recent notes.
 ::::::: carousel-wrapper
 :::: carousel-slide
 ::: research-card
+[Validation]{.card-category}
+
+[Share Dataset Validation: Pipeline vs sfr_fig1_share.dta]{.card-title}
+
+[Side-by-side comparison of Figure 1 event-studies from full pipeline against standalone share dataset]{.card-excerpt}
+
+[March 2026]{.card-meta}
+
+[View Validation](jjp-share-validation.qmd){.card-link}
+:::
+::::
+
+:::: carousel-slide
+::: research-card
 [Analysis]{.card-category}
 
 [JJP Final vs JJP Alt: Figure Comparison]{.card-title}
@@ -158,6 +172,22 @@ Tracks which states are in our final regression results.
 ## Research Timeline
 
 A chronological record of project milestones and findings.
+
+------------------------------------------------------------------------
+
+### March 2026 {.mt-xl}
+
+#### Share Dataset Validation: Pipeline vs sfr_fig1_share.dta
+
+Verifies that `sfr_fig1_share.dta` reproduces the same Figure 1 event-studies as the full pipeline. Side-by-side comparison across outcomes (`lexp_ma_strict`, `lexp`), balance types (strict, alt), and all four baseline spending quartiles.
+
+::: {.callout-note appearance="minimal"}
+- Standalone dataset retains all states/counties with balance indicators instead of dropping
+- Two balance flags: `balanced_strict` (13-year strict rolling average) and `balanced_lexp` (raw log spending)
+- Pre-computed state validity flags (`vsgd_strict`, `vsgd_alt`) match each subsample
+:::
+
+[View Validation](jjp-share-validation.qmd){.btn-ghost}
 
 ------------------------------------------------------------------------
 

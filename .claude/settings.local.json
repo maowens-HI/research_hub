@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -lh alt_test/fig1_lexp_q1*.png images/share/fig1_lexp_q1*.png)"
+    ]
+  }
+}

@@ -130,6 +130,15 @@ ul.task-list li input[type="checkbox"] {
 <div class="carousel-wrapper">
 <div class="carousel-slide">
 <div class="research-card">
+<p><span class="card-category">Validation</span></p>
+<p><span class="card-title">Share Dataset Validation: Pipeline vs sfr_fig1_share.dta</span></p>
+<p><span class="card-excerpt">Side-by-side comparison of Figure 1 event-studies from full pipeline against standalone share dataset</span></p>
+<p><span class="card-meta">March 2026</span></p>
+<p><a href="./jjp-share-validation.html" class="card-link">View Validation</a></p>
+</div>
+</div>
+<div class="carousel-slide">
+<div class="research-card">
 <p><span class="card-category">Analysis</span></p>
 <p><span class="card-title">JJP Final vs JJP Alt: Figure Comparison</span></p>
 <p><span class="card-excerpt">Side-by-side comparison of event-study figures using lexp_ma_strict vs lexp balancing approaches</span></p>
@@ -219,6 +228,29 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="research-timeline">Research Timeline</h2>
 <p>A chronological record of project milestones and findings.</p>
 <hr>
+<section id="march-2026" class="level3 mt-xl">
+<h3 class="mt-xl anchored" data-anchor-id="march-2026">March 2026</h3>
+<section id="share-dataset-validation-pipeline-vs-sfr_fig1_share.dta" class="level4">
+<h4 class="anchored" data-anchor-id="share-dataset-validation-pipeline-vs-sfr_fig1_share.dta">Share Dataset Validation: Pipeline vs sfr_fig1_share.dta</h4>
+<p>Verifies that <code>sfr_fig1_share.dta</code> reproduces the same Figure 1 event-studies as the full pipeline. Side-by-side comparison across outcomes (<code>lexp_ma_strict</code>, <code>lexp</code>), balance types (strict, alt), and all four baseline spending quartiles.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<ul>
+<li>Standalone dataset retains all states/counties with balance indicators instead of dropping</li>
+<li>Two balance flags: <code>balanced_strict</code> (13-year strict rolling average) and <code>balanced_lexp</code> (raw log spending)</li>
+<li>Pre-computed state validity flags (<code>vsgd_strict</code>, <code>vsgd_alt</code>) match each subsample</li>
+</ul>
+</div>
+</div>
+</div>
+<p><a href="./jjp-share-validation.html" class="btn-ghost">View Validation</a></p>
+<hr>
+</section>
+</section>
 <section id="january-2026" class="level3 mt-xl">
 <h3 class="mt-xl anchored" data-anchor-id="january-2026">January 2026</h3>
 <section id="jjp-final-vs-jjp-alt-figure-comparison" class="level4">
