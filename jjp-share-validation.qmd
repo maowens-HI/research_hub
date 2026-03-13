@@ -13,7 +13,7 @@ format:
 
 This document compares Figure 1 event-study results produced two ways:
 
-- Pipeline (left): Figures from the full analysis pipeline (01--06), as shown in the [January comparison](alt_test_comparison.html)
+- Pipeline (left): Figures from the full analysis pipeline (01--06)
 - Share (right): Figures produced using only `sfr_fig1_share.dta`
 
 If the share dataset is built correctly, the left and right figures in each pair should match. The comparison covers two outcomes and two balance definitions across all four baseline spending quartiles (Q1 = poorest, Q4 = richest).
@@ -21,7 +21,7 @@ If the share dataset is built correctly, the left and right figures in each pair
 ::: {.callout-note}
 ## What is sfr_fig1_share.dta?
 
-A standalone dataset containing everything needed to replicate Figure 1 without running the upstream pipeline. Unlike the working analysis panels, it retains all states/counties and uses indicator variables (`balanced_strict`, `balanced_lexp`) for filtering, with pre-computed state validity flags (`vsgd_strict`, `vsgd_alt`) matching each subsample.
+A standalone dataset containing everything needed to replicate Figure 1 without running the upstream pipeline. Unlike the working analysis panels, it retains all states/counties and uses indicator variables (`balanced_strict`, `balanced_lexp`) for filtering, with state validity flags (`vsgd_strict`, `vsgd_alt`).
 :::
 
 ------------------------------------------------------------------------
@@ -34,28 +34,28 @@ A standalone dataset containing everything needed to replicate Figure 1 without 
 
 ### Q1
 ::: {layout-ncol=2}
-![Pipeline](alt_test/fig1_lexp_ma_strict_q1_orig.png)
+![Pipeline](share/original/fig1_lexp_ma_strict_q1_orig.png)
 
 ![Share](images/share/fig1_lexp_ma_strict_q1_strict.png)
 :::
 
 ### Q2
 ::: {layout-ncol=2}
-![Pipeline](alt_test/fig1_lexp_ma_strict_q2_orig.png)
+![Pipeline](share/original/fig1_lexp_ma_strict_q2_orig.png)
 
 ![Share](images/share/fig1_lexp_ma_strict_q2_strict.png)
 :::
 
 ### Q3
 ::: {layout-ncol=2}
-![Pipeline](alt_test/fig1_lexp_ma_strict_q3_orig.png)
+![Pipeline](share/original/fig1_lexp_ma_strict_q3_orig.png)
 
 ![Share](images/share/fig1_lexp_ma_strict_q3_strict.png)
 :::
 
 ### Q4
 ::: {layout-ncol=2}
-![Pipeline](alt_test/fig1_lexp_ma_strict_q4_orig.png)
+![Pipeline](share/original/fig1_lexp_ma_strict_q4_orig.png)
 
 ![Share](images/share/fig1_lexp_ma_strict_q4_strict.png)
 :::
@@ -64,28 +64,28 @@ A standalone dataset containing everything needed to replicate Figure 1 without 
 
 ### Q1
 ::: {layout-ncol=2}
-![Pipeline](alt_test/fig1_lexp_ma_strict_q1_alt.png)
+![Pipeline](share/original/fig1_lexp_ma_strict_q1_alt.png)
 
 ![Share](images/share/fig1_lexp_ma_strict_q1_alt.png)
 :::
 
 ### Q2
 ::: {layout-ncol=2}
-![Pipeline](alt_test/fig1_lexp_ma_strict_q2_alt.png)
+![Pipeline](share/original/fig1_lexp_ma_strict_q2_alt.png)
 
 ![Share](images/share/fig1_lexp_ma_strict_q2_alt.png)
 :::
 
 ### Q3
 ::: {layout-ncol=2}
-![Pipeline](alt_test/fig1_lexp_ma_strict_q3_alt.png)
+![Pipeline](share/original/fig1_lexp_ma_strict_q3_alt.png)
 
 ![Share](images/share/fig1_lexp_ma_strict_q3_alt.png)
 :::
 
 ### Q4
 ::: {layout-ncol=2}
-![Pipeline](alt_test/fig1_lexp_ma_strict_q4_alt.png)
+![Pipeline](share/original/fig1_lexp_ma_strict_q4_alt.png)
 
 ![Share](images/share/fig1_lexp_ma_strict_q4_alt.png)
 :::
@@ -102,28 +102,28 @@ A standalone dataset containing everything needed to replicate Figure 1 without 
 
 ### Q1
 ::: {layout-ncol=2}
-![Pipeline](alt_test/fig1_lexp_q1_orig.png)
+![Pipeline](share/original/fig1_lexp_q1_orig.png)
 
 ![Share](images/share/fig1_lexp_q1_strict.png)
 :::
 
 ### Q2
 ::: {layout-ncol=2}
-![Pipeline](alt_test/fig1_lexp_q2_orig.png)
+![Pipeline](share/original/fig1_lexp_q2_orig.png)
 
 ![Share](images/share/fig1_lexp_q2_strict.png)
 :::
 
 ### Q3
 ::: {layout-ncol=2}
-![Pipeline](alt_test/fig1_lexp_q3_orig.png)
+![Pipeline](share/original/fig1_lexp_q3_orig.png)
 
 ![Share](images/share/fig1_lexp_q3_strict.png)
 :::
 
 ### Q4
 ::: {layout-ncol=2}
-![Pipeline](alt_test/fig1_lexp_q4_orig.png)
+![Pipeline](share/original/fig1_lexp_q4_orig.png)
 
 ![Share](images/share/fig1_lexp_q4_strict.png)
 :::
@@ -132,28 +132,28 @@ A standalone dataset containing everything needed to replicate Figure 1 without 
 
 ### Q1
 ::: {layout-ncol=2}
-![Pipeline](alt_test/fig1_lexp_q1_alt.png)
+![Pipeline](share/original/fig1_lexp_q1_alt.png)
 
 ![Share](images/share/fig1_lexp_q1_alt.png)
 :::
 
 ### Q2
 ::: {layout-ncol=2}
-![Pipeline](alt_test/fig1_lexp_q2_alt.png)
+![Pipeline](share/original/fig1_lexp_q2_alt.png)
 
 ![Share](images/share/fig1_lexp_q2_alt.png)
 :::
 
 ### Q3
 ::: {layout-ncol=2}
-![Pipeline](alt_test/fig1_lexp_q3_alt.png)
+![Pipeline](share/original/fig1_lexp_q3_alt.png)
 
 ![Share](images/share/fig1_lexp_q3_alt.png)
 :::
 
 ### Q4
 ::: {layout-ncol=2}
-![Pipeline](alt_test/fig1_lexp_q4_alt.png)
+![Pipeline](share/original/fig1_lexp_q4_alt.png)
 
 ![Share](images/share/fig1_lexp_q4_alt.png)
 :::
