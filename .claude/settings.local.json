@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(ls -lh alt_test/fig1_lexp_q1*.png images/share/fig1_lexp_q1*.png)"
+      "Bash(ls -lh alt_test/fig1_lexp_q1*.png images/share/fig1_lexp_q1*.png)",
+      "Bash(ls \"C:\\\\Users\\\\maowens\\\\OneDrive - Stanford\\\\hoover_projects\\\\\")"
     ]
   }
 }

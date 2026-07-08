@@ -1,0 +1,62 @@
+---
+title: "Linking Children to Parental Income"
+subtitle: "Linking Children to Parents Through Tax Returns"
+author: "Myles Owens"
+date: "2026-07-08"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+---
+
+## Objective
+
+We want to attach each child to a measure of their parents' income during childhood. That measure becomes a regression cut, alongside district spending quartile and race/gender, so we can ask whether the returns to school finance reform differ by a child's economic standing growing up.
+
+We build this link through tax returns. A child is connected to a parent whenever the parent claims that child as a dependent, and once the link exists we read the parent's income directly from the tax records.
+
+This page is a brief overview of the process and the bugs we hit along the way. Variable and dataset names are kept generic, and all figures below are illustrative rather than actual output.
+
+## Inputs
+
+Two pieces come from Jon's loaders.
+
+The dependents crosswalk (Jon's dependents loader) links each child to their parent, anchored at age 15. For each child it carries the parent's identity and the child's birth year.
+
+The income-history loader (Jon's income-history loader) covers all available years. For each filer and year it gives the income reported on the return and the number of filers on that return.
+
+We match the parents from the crosswalk into the income panel, so each row is a linked parent's income in one income-history year, carried on the child.
+
+## Building the parental-income measure
+
+The pipeline goes from those matched rows to a single income number per child.
+
+1.  Attach each child's birth year to the income rows. The crosswalk is first reduced to one birth year per child so this join cannot multiply rows.
+2.  For each income-history year, compute the child's age that year as the income-history year minus the birth year, and keep only the years the child was between 12 and 17.
+3.  Convert each return to a per-filer amount by dividing the income reported on the return by the number of filers on it.
+4.  Sum the per-filer amounts within each child-year to get the household income that child saw that year.
+5.  Average those yearly figures across the ages 12 to 17 window to get one parental-income number per child.
+6.  Re-attach the crosswalk details to that one-row-per-child result.
+
+The per-filer division in step 3 is what keeps joint returns from being double counted. A return with two filers contributes half of its reported income per filer, so when step 4 sums a child's linked parents the joint income is not added twice.
+
+::: {.callout-note appearance="minimal"}
+**Illustrative example (not real data).** A child is claimed at ages 13, 15, and 17. The summed per-filer income in those years is \$50,000, \$60,000, and \$70,000. The childhood parental income is the average across years: **\$60,000**.
+:::
+
+## Percentiles and quartiles
+
+The income number is then turned into a within-cohort rank.
+
+Within each birth-year cohort, we rank children by their parental income and convert the rank to a percentile from 0 to 100 by dividing it by the number of children in that cohort. Each child is therefore ranked against others born the same year rather than against the whole sample.
+
+We then cut the percentile into quartiles: at or below 25 is Q1, at or below 50 is Q2, at or below 75 is Q3, and everything above is Q4. This quartile is the parental-income cut we carry into the regressions.
+
+## Bugs we encountered
+
+Most of the trouble came from the collapse-and-join steps, where a small mistake quietly changes the income figures instead of throwing an error.
+
+::: {.callout-warning appearance="minimal"}
+**Aggregating in one step instead of two.** Income came out too high for children whose guardians filed jointly. The cause was summing the per-filer amounts across all child-year rows at once. The fix is to sum *within* each year first, then average *across* years. In the example above the correct answer is \$60,000; the one-step version returned roughly three times that.
+:::
+

@@ -157,6 +157,14 @@ How we build analysis-ready datasets from raw school finance data.
 :::
 
 ::: card
+### Parent-Child Income Linkage
+
+How we link children to their parents' childhood income on the Census server.
+
+[View Overview](parent-child-income-linkage.qmd){.card-link}
+:::
+
+::: card
 ### State Summary
 
 Tracks which states are in our final regression results.
@@ -172,6 +180,22 @@ Tracks which states are in our final regression results.
 ## Research Timeline
 
 A chronological record of project milestones and findings.
+
+------------------------------------------------------------------------
+
+### July 2026 {.mt-xl}
+
+#### Linking Children to Parental Income
+
+Overview of the tax-return pipeline that attaches each child to a measure of their parents' childhood income, used as a regression cut for the intergenerational analysis.
+
+::: {.callout-note appearance="minimal"}
+- Children linked to parents through dependent claims on tax returns; income read directly from the tax records
+- Income collapsed to the child by summing guardian shares within a year, then averaging across the childhood window
+- Notes the main bugs hit along the way: one-step aggregation, re-join fan-out, and target-age settings
+:::
+
+[View Overview](parent-child-income-linkage.qmd){.btn-ghost}
 
 ------------------------------------------------------------------------
 
